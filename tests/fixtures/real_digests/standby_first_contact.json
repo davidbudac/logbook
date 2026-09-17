@@ -1,0 +1,200 @@
+{
+ "db": "testcdb_s",
+ "window": {
+  "from": "2026-01-15T00:00:00Z",
+  "to": "2026-01-16T00:00:00Z",
+  "day": "2026-01-15"
+ },
+ "generated_by": "dbwiki-compactor/0.1.0",
+ "pattern_versions": {
+  "alert": 1,
+  "listener": 1,
+  "dataguard": 1
+ },
+ "sources": {
+  "alert": {
+   "total_events": 18,
+   "by_class": {
+    "lifecycle": 1,
+    "routine": 11,
+    "unmatched": 5,
+    "error": 1
+   },
+   "routine_counters": {
+    "startup_banner": 11
+   },
+   "notable": [
+    {
+     "rule": "ora_error",
+     "class": "error",
+     "count": 1,
+     "first_ts": "2026-01-15T09:31:39.327Z",
+     "last_ts": "2026-01-15T09:31:39.327Z",
+     "codes": [
+      "ORA-16024"
+     ],
+     "message": "Errors in file /u01/app/oracle/diag/rdbms/testcdb_s/testcdb_s/trace/testcdb_s_ora_45126.trc:\nORA-16024: parameter LOG_ARCHIVE_DEST_1 cannot be parsed",
+     "template": "Errors in file /u#/app/oracle/diag/rdbms/testcdb_s/testcdb_s/trace/testcdb_s_ora_#.trc: ORA-16024: parameter LOG_ARCHIVE_DEST_# cannot be parsed",
+     "es_samples": [
+      {
+       "index": ".ds-logs-oracle.alert-default-2026.07.06-000001",
+       "id": "AZ83bZHL6JT2v6-J7TTb",
+       "ts": "2026-01-15T09:31:39.327Z"
+      }
+     ]
+    },
+    {
+     "rule": "instance_startup",
+     "class": "lifecycle",
+     "count": 1,
+     "first_ts": "2026-01-15T09:31:36.164Z",
+     "last_ts": "2026-01-15T09:31:36.164Z",
+     "codes": [],
+     "message": "Starting ORACLE instance (normal) (OS id: 45126)",
+     "template": "Starting ORACLE instance (normal) (OS id: #)",
+     "es_samples": [
+      {
+       "index": ".ds-logs-oracle.alert-default-2026.07.06-000001",
+       "id": "AZ83bZHL6JT2v697qRso",
+       "ts": "2026-01-15T09:31:36.164Z"
+      }
+     ]
+    },
+    {
+     "rule": "unmatched",
+     "class": "unmatched",
+     "count": 1,
+     "first_ts": "2026-01-15T09:31:36.179Z",
+     "last_ts": "2026-01-15T09:31:36.179Z",
+     "codes": [],
+     "message": "Dump of system resources acquired for SHARED GLOBAL AREA (SGA) \n",
+     "template": "Dump of system resources acquired for SHARED GLOBAL AREA (SGA)",
+     "es_samples": [
+      {
+       "index": ".ds-logs-oracle.alert-default-2026.07.06-000001",
+       "id": "AZ83bZHL6JT2v696p6ID",
+       "ts": "2026-01-15T09:31:36.179Z"
+      }
+     ]
+    },
+    {
+     "rule": "unmatched",
+     "class": "unmatched",
+     "count": 1,
+     "first_ts": "2026-01-15T09:31:36.179Z",
+     "last_ts": "2026-01-15T09:31:36.179Z",
+     "codes": [],
+     "message": "Available system pagesizes:\n  4K, 2048K ",
+     "template": "Available system pagesizes: #K, #K",
+     "es_samples": [
+      {
+       "index": ".ds-logs-oracle.alert-default-2026.07.06-000001",
+       "id": "AZ83bZHL6JT2v696p6MQ",
+       "ts": "2026-01-15T09:31:36.179Z"
+      }
+     ]
+    },
+    {
+     "rule": "unmatched",
+     "class": "unmatched",
+     "count": 1,
+     "first_ts": "2026-01-15T09:31:36.179Z",
+     "last_ts": "2026-01-15T09:31:36.179Z",
+     "codes": [],
+     "message": "4K       Configured               3            68611        NONE",
+     "template": "#K Configured # # NONE",
+     "es_samples": [
+      {
+       "index": ".ds-logs-oracle.alert-default-2026.07.06-000001",
+       "id": "AZ83bZHL6JT2v696p6Mb",
+       "ts": "2026-01-15T09:31:36.179Z"
+      }
+     ]
+    },
+    {
+     "rule": "unmatched",
+     "class": "unmatched",
+     "count": 1,
+     "first_ts": "2026-01-15T09:31:36.179Z",
+     "last_ts": "2026-01-15T09:31:36.179Z",
+     "codes": [],
+     "message": "2048K                0             135                0        NONE",
+     "template": "#K # # # NONE",
+     "es_samples": [
+      {
+       "index": ".ds-logs-oracle.alert-default-2026.07.06-000001",
+       "id": "AZ83bZHL6JT2v696p6Mm",
+       "ts": "2026-01-15T09:31:36.179Z"
+      }
+     ]
+    },
+    {
+     "rule": "unmatched",
+     "class": "unmatched",
+     "count": 1,
+     "first_ts": "2026-01-15T09:31:36.179Z",
+     "last_ts": "2026-01-15T09:31:36.179Z",
+     "codes": [],
+     "message": "1. For optimal performance, configure system with expected number \n of pages for every supported system pagesize prior to the next \n instance restart operation.",
+     "template": "#. For optimal performance, configure system with expected number of pages for every supported system pagesize prior to the next instance restart operation.",
+     "es_samples": [
+      {
+       "index": ".ds-logs-oracle.alert-default-2026.07.06-000001",
+       "id": "AZ83bZHL6JT2v696p6NM",
+       "ts": "2026-01-15T09:31:36.179Z"
+      }
+     ]
+    }
+   ],
+   "dropped_notable_groups": {}
+  },
+  "listener": {
+   "total_events": 1,
+   "by_class": {
+    "routine": 1
+   },
+   "routine_counters": {
+    "establish testcdb_s sqlplus": 1
+   },
+   "notable": [],
+   "dropped_notable_groups": {}
+  },
+  "dataguard": {
+   "total_events": 0,
+   "by_class": {},
+   "routine_counters": {},
+   "notable": [],
+   "dropped_notable_groups": {}
+  }
+ },
+ "deltas": [
+  {
+   "type": "first_ever_code",
+   "source": "alert",
+   "value": "ORA-16024",
+   "first_seen": "2026-01-15T09:31:39.327Z"
+  },
+  {
+   "type": "new_service",
+   "source": "listener",
+   "value": "testcdb_s"
+  },
+  {
+   "type": "new_client_program",
+   "source": "listener",
+   "value": "sqlplus"
+  },
+  {
+   "type": "first_ever_code",
+   "source": "dataguard",
+   "value": "ORA-16024",
+   "first_seen": "2026-01-15T09:31:39.327Z"
+  }
+ ],
+ "totals": {
+  "events": 19,
+  "notable_events": 7,
+  "notable_groups": 7
+ },
+ "notable": true
+}

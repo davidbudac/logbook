@@ -1,0 +1,31 @@
+{
+ "content_hash": "a8cfe5186bf6f9d7",
+ "db": "cdb1",
+ "explanation": "cdb1: wake (strong tier) \u2014 notable_class.",
+ "model_tier": "strong",
+ "outcome": "wake",
+ "reasons": [
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "error",
+    "count": 1,
+    "rule": "ora_error"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "lifecycle",
+    "count": 1,
+    "rule": "parameter_change"
+   }
+  }
+ ],
+ "schema_version": 1,
+ "window": {
+  "day": "2026-08-02",
+  "from": "2026-08-02T00:00:00Z",
+  "to": "2026-08-03T00:00:00Z"
+ }
+}

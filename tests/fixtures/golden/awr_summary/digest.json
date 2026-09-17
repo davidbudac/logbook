@@ -1,0 +1,114 @@
+{
+ "awr": {
+  "collected": {
+   "collected_at": "2026-07-12T11:05:00Z",
+   "file": "valid.json",
+   "tool": "awr-extract.sh"
+  },
+  "instance": "cdb1",
+  "snapshot": {
+   "begin_id": 4711,
+   "begin_time": "2026-07-12T10:00:00Z",
+   "end_id": 4712,
+   "end_time": "2026-07-12T11:00:00Z"
+  }
+ },
+ "awr_schema_version": 1,
+ "db": "cdb1",
+ "deltas": [],
+ "generated_by": "dbwiki-awr/(fixture)",
+ "notable": false,
+ "pattern_versions": {},
+ "sources": {
+  "awr": {
+   "by_class": {
+    "performance": 6
+   },
+   "dropped_notable_groups": {},
+   "notable": [
+    {
+     "class": "performance",
+     "codes": [],
+     "count": 1832,
+     "es_samples": [],
+     "first_ts": "2026-07-12T10:00:00Z",
+     "last_ts": "2026-07-12T11:00:00Z",
+     "message": "AWR snapshot 4711 -> 4712: 1832.4s DB time in 3600.0s elapsed",
+     "rule": "awr_window",
+     "template": "snap=4711-4712 db_time_s=1832.4 elapsed_s=3600.0 db_time_per_s=0.51 executes_per_s=120.4 redo_bytes_per_s=184320.0 user_calls_per_s=44.2"
+    },
+    {
+     "class": "performance",
+     "codes": [],
+     "count": 812,
+     "es_samples": [],
+     "first_ts": "2026-07-12T10:00:00Z",
+     "last_ts": "2026-07-12T11:00:00Z",
+     "message": "db file sequential read: 812.0s (44.3% of DB time), 91234 waits",
+     "rule": "awr_top_wait",
+     "template": "event=db file sequential read time_s=812.0 pct_db_time=44.3 waits=91234"
+    },
+    {
+     "class": "performance",
+     "codes": [],
+     "count": 190,
+     "es_samples": [],
+     "first_ts": "2026-07-12T10:00:00Z",
+     "last_ts": "2026-07-12T11:00:00Z",
+     "message": "log file sync: 190.5s (10.4% of DB time), 20411 waits",
+     "rule": "awr_top_wait",
+     "template": "event=log file sync time_s=190.5 pct_db_time=10.4 waits=20411"
+    },
+    {
+     "class": "performance",
+     "codes": [],
+     "count": 168,
+     "es_samples": [],
+     "first_ts": "2026-07-12T10:00:00Z",
+     "last_ts": "2026-07-12T11:00:00Z",
+     "message": "DB CPU: 168.2s (9.2% of DB time)",
+     "rule": "awr_top_wait",
+     "template": "event=DB CPU time_s=168.2 pct_db_time=9.2"
+    },
+    {
+     "class": "performance",
+     "codes": [],
+     "count": 1200,
+     "es_samples": [],
+     "first_ts": "2026-07-12T10:00:00Z",
+     "last_ts": "2026-07-12T11:00:00Z",
+     "message": "sql_id 9babjv8yq8ru3: 402.1s elapsed, 1200 executions",
+     "rule": "awr_top_sql",
+     "template": "sql_id=9babjv8yq8ru3 elapsed_s=402.1"
+    },
+    {
+     "class": "performance",
+     "codes": [],
+     "count": 3,
+     "es_samples": [],
+     "first_ts": "2026-07-12T10:00:00Z",
+     "last_ts": "2026-07-12T11:00:00Z",
+     "message": "sql_id b7k2m9x4nq1pz: 118.0s elapsed, 3 executions",
+     "rule": "awr_top_sql",
+     "template": "sql_id=b7k2m9x4nq1pz elapsed_s=118.0"
+    }
+   ],
+   "routine_counters": {
+    "awr_snapshots": 1,
+    "top_sql": 2,
+    "top_waits": 3
+   },
+   "total_events": 6
+  }
+ },
+ "totals": {
+  "events": 6,
+  "notable_events": 6,
+  "notable_groups": 6
+ },
+ "window": {
+  "day": "2026-07-12",
+  "from": "2026-07-12T10:00:00Z",
+  "to": "2026-07-12T11:00:00Z"
+ }
+}

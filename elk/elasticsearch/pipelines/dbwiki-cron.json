@@ -1,0 +1,27 @@
+{
+  "description": "Raw cron stdout/stderr from .state/cron.log. Wake/skip decision lines are structured into dbwiki.*; everything else (warnings, tracebacks — multiline-folded by filebeat) keeps its raw message and gets a log.level guess. Lines have no timestamps, so @timestamp is filebeat's read time: accurate while tailing live, wrong for a historical backfill.",
+  "processors": [
+    {
+      "grok": {
+        "field": "message",
+        "patterns": [
+          "^%{DBNAME:dbwiki.db}: %{WORD:dbwiki.decision} \\(%{NOTSPACE:dbwiki.reason}\\)( -> %{WORD:dbwiki.action}( \\[%{WORD:dbwiki.commit}\\])?)?$"
+        ],
+        "pattern_definitions": { "DBNAME": "[a-z][a-z0-9_]*" },
+        "ignore_failure": true
+      }
+    },
+    {
+      "script": {
+        "lang": "painless",
+        "source": "String m = ctx.message; String lvl = 'info'; if (m != null) { if (m.startsWith('Traceback') || m.contains('Error:') || m.contains('Exception:') || m.contains('failed')) { lvl = 'error'; } else if (m.startsWith('warning')) { lvl = 'warning'; } } if (!(ctx.log instanceof Map)) { ctx.log = new HashMap(); } ctx.log.level = lvl;",
+        "ignore_failure": true
+      }
+    },
+    { "set": { "field": "event.module", "value": "dbwiki" } },
+    { "set": { "field": "event.dataset", "value": "dbwiki.cron" } }
+  ],
+  "on_failure": [
+    { "append": { "field": "tags", "value": "dbwiki_pipeline_failure" } }
+  ]
+}

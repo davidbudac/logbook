@@ -1,0 +1,53 @@
+{
+ "name": "fra_space_pressure",
+ "title": "FRA space pressure: first-ever ORA-19815 plus archiver stall warnings, ECS layout",
+ "layout": "ecs",
+ "db": "cdb1",
+ "window": {"from": "2026-07-11T00:00:00Z", "to": "2026-07-12T00:00:00Z", "day": "2026-07-11"},
+ "registry": {
+  "codes": {
+   "ORA-16038": {"first_seen": "2026-04-01T09:00:00Z", "last_seen": "2026-06-11T09:00:00Z"}
+  },
+  "daily_counts": [
+   {"day": "2026-07-09", "source": "alert", "total": 27, "counters": {"log_switch": 25}},
+   {"day": "2026-07-10", "source": "alert", "total": 26, "counters": {"log_switch": 24}}
+  ]
+ },
+ "trigger": {"ledger_entry": null, "manual": false, "consolidation": false},
+ "hits": {
+  "alert": [
+   {"_index": ".ds-logs-oracle.alert-default-2026.07.11-000020", "_id": "fra-a1",
+    "_source": {"@timestamp": "2026-07-11T02:11:00Z",
+     "oracle": {"database": {"name": "cdb1"}, "instance": {"name": "cdb1"}},
+     "log": {"level": "WARNING"},
+     "message": "ORA-19815: WARNING: db_recovery_file_dest_size of 10737418240 bytes is 100.00% used, and has 0 remaining bytes available."}},
+   {"_index": ".ds-logs-oracle.alert-default-2026.07.11-000020", "_id": "fra-a2",
+    "_source": {"@timestamp": "2026-07-11T02:11:04Z",
+     "oracle": {"database": {"name": "cdb1"}, "instance": {"name": "cdb1"}},
+     "log": {"level": "ERROR"},
+     "message": "ARC0: Archival stopped, error occurred. Will continue retrying"}},
+   {"_index": ".ds-logs-oracle.alert-default-2026.07.11-000020", "_id": "fra-a3",
+    "_source": {"@timestamp": "2026-07-11T02:11:06Z",
+     "oracle": {"database": {"name": "cdb1"}, "instance": {"name": "cdb1"}},
+     "log": {"level": "ERROR"},
+     "message": "ORA-16038: log 3 sequence# 4712 cannot be archived"}},
+   {"_index": ".ds-logs-oracle.alert-default-2026.07.11-000020", "_id": "fra-a4",
+    "_source": {"@timestamp": "2026-07-11T02:12:30Z",
+     "oracle": {"database": {"name": "cdb1"}, "instance": {"name": "cdb1"}},
+     "log": {"level": "WARNING"},
+     "message": "cannot allocate new log, sequence 4713"}},
+   {"_index": ".ds-logs-oracle.alert-default-2026.07.11-000020", "_id": "fra-a5",
+    "_source": {"@timestamp": "2026-07-11T02:12:30Z",
+     "oracle": {"database": {"name": "cdb1"}, "instance": {"name": "cdb1"}},
+     "log": {"level": "WARNING"},
+     "message": "Checkpoint not complete"}},
+   {"_index": ".ds-logs-oracle.alert-default-2026.07.11-000020", "_id": "fra-a6",
+    "_source": {"@timestamp": "2026-07-11T02:40:00Z",
+     "oracle": {"database": {"name": "cdb1"}, "instance": {"name": "cdb1"}},
+     "log": {"level": "NOTIFICATION"},
+     "message": "Thread 1 advanced to log sequence 4714 (LGWR switch)"}}
+  ],
+  "listener": [],
+  "dataguard": []
+ }
+}

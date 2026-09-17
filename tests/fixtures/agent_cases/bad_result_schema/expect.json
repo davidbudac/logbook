@@ -1,0 +1,8 @@
+{
+ "title": "invalid result schema: wrong task name (the candidate also omits `notable`, which the orchestrator defaults from the digest rather than failing on)",
+ "outcome": "rollback",
+ "problems_contain": [
+  "result.task='ingestion', expected 'ingest'"
+ ],
+ "scored": ["result_schema"]
+}

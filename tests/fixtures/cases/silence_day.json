@@ -1,0 +1,22 @@
+{
+ "name": "silence_day",
+ "title": "a whole silent day after three active days: one silence delta per source",
+ "layout": "n/a (no events)",
+ "db": "cdb1",
+ "window": {"from": "2026-07-13T00:00:00Z", "to": "2026-07-14T00:00:00Z", "day": "2026-07-13"},
+ "registry": {
+  "daily_counts": [
+   {"day": "2026-07-10", "source": "alert", "total": 26, "counters": {"log_switch": 24}},
+   {"day": "2026-07-11", "source": "alert", "total": 25, "counters": {"log_switch": 23}},
+   {"day": "2026-07-12", "source": "alert", "total": 27, "counters": {"log_switch": 25}},
+   {"day": "2026-07-10", "source": "listener", "total": 40, "counters": {"establish cdb1.world emagent": 40}},
+   {"day": "2026-07-11", "source": "listener", "total": 44, "counters": {"establish cdb1.world emagent": 44}},
+   {"day": "2026-07-12", "source": "listener", "total": 41, "counters": {"establish cdb1.world emagent": 41}},
+   {"day": "2026-07-10", "source": "dataguard", "total": 12, "counters": {"dg_info": 12}},
+   {"day": "2026-07-11", "source": "dataguard", "total": 11, "counters": {"dg_info": 11}},
+   {"day": "2026-07-12", "source": "dataguard", "total": 13, "counters": {"dg_info": 13}}
+  ]
+ },
+ "trigger": {"ledger_entry": null, "manual": false, "consolidation": false},
+ "hits": {"alert": [], "listener": [], "dataguard": []}
+}

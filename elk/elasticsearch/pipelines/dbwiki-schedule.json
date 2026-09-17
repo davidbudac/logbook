@@ -1,0 +1,11 @@
+{
+  "description": "Cron-schedule snapshots (source: .state/elk/schedule.jsonl, emitted by elk/scripts/emit_derived.py from config/schedule.json). One doc per entry per snapshot, deduped on unchanged next_run_at. @timestamp = snapshot time.",
+  "processors": [
+    { "date": { "field": "at", "target_field": "@timestamp", "formats": ["ISO8601"], "if": "ctx.at != null", "ignore_failure": true } },
+    { "set": { "field": "event.module", "value": "dbwiki" } },
+    { "set": { "field": "event.dataset", "value": "dbwiki.schedule" } }
+  ],
+  "on_failure": [
+    { "append": { "field": "tags", "value": "dbwiki_pipeline_failure" } }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+ "content_hash": "fcfcc781bc3fae7d",
+ "db": "cdb1",
+ "explanation": "cdb1: wake (strong tier) \u2014 first_ever_code, notable_class.",
+ "model_tier": "strong",
+ "outcome": "wake",
+ "reasons": [
+  {
+   "code": "first_ever_code",
+   "evidence": {
+    "first_seen": "2026-07-11T04:17:03Z",
+    "source": "alert",
+    "type": "first_ever_code",
+    "value": "ORA-600"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "error",
+    "count": 1,
+    "rule": "internal_error"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "error",
+    "count": 1,
+    "rule": "errors_in_file"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "error",
+    "count": 1,
+    "rule": "incident_error"
+   }
+  }
+ ],
+ "schema_version": 1,
+ "window": {
+  "day": "2026-07-11",
+  "from": "2026-07-11T00:00:00Z",
+  "to": "2026-07-12T00:00:00Z"
+ }
+}

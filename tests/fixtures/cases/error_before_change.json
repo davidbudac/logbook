@@ -1,0 +1,33 @@
+{
+ "name": "error_before_change",
+ "title": "an ORA-1653 half an hour before the night's only ALTER SYSTEM SET",
+ "layout": "legacy",
+ "db": "cdb1",
+ "window": {"from": "2026-08-02T00:00:00Z", "to": "2026-08-03T00:00:00Z", "day": "2026-08-02"},
+ "registry": {
+  "codes_by_source": {
+   "alert": {
+    "ORA-1653": {"first_seen": "2026-03-11T21:07:00Z", "last_seen": "2026-07-28T04:12:00Z"}
+   }
+  }
+ },
+ "trigger": {"ledger_entry": null, "manual": false, "consolidation": false},
+ "hits": {
+  "alert": [
+   {"_index": "oracle-logs-alert-2026.08", "_id": "ebc-a1",
+    "_source": {"@timestamp": "2026-08-02T04:00:00Z", "db_name": "cdb1",
+     "oracle": {"alert_message": "Thread 1 advanced to log sequence 5291 (LGWR switch)",
+      "msg_type": "NOTIFICATION", "msg_id": "", "msg_level": 16, "con_id": "0"}}},
+   {"_index": "oracle-logs-alert-2026.08", "_id": "ebc-a2",
+    "_source": {"@timestamp": "2026-08-02T05:00:00Z", "db_name": "cdb1",
+     "oracle": {"alert_message": "ORA-01653: unable to extend table SOE.ORDERS by 128 in tablespace USERS",
+      "msg_type": "ERROR", "msg_id": "", "msg_level": 1, "con_id": "3"}}},
+   {"_index": "oracle-logs-alert-2026.08", "_id": "ebc-a3",
+    "_source": {"@timestamp": "2026-08-02T05:30:00Z", "db_name": "cdb1",
+     "oracle": {"alert_message": "ALTER SYSTEM SET db_cache_size=6G SCOPE=BOTH;",
+      "msg_type": "NOTIFICATION", "msg_id": "", "msg_level": 16, "con_id": "0"}}}
+  ],
+  "listener": [],
+  "dataguard": []
+ }
+}

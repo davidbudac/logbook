@@ -1,0 +1,61 @@
+[project]
+name = "dbwiki"
+version = "0.1.0"
+description = "Logbook: an evolving knowledge base built from database logs (CLI: dbwiki)"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "David Budac" }]
+requires-python = ">=3.13"
+keywords = ["oracle", "elasticsearch", "llm", "knowledge-base", "dba", "alert-log", "observability"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Intended Audience :: System Administrators",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Database",
+    "Topic :: System :: Monitoring",
+]
+dependencies = [
+    "requests>=2.32",
+    "pyyaml>=6.0",
+    # Langfuse trace export (src/dbwiki/observability.py, docs/langfuse.md).
+    # A default dependency, not an extra: a bare `uv sync` after a venv rebuild
+    # silently dropped the exporter for three days in 2026-09.
+    "langfuse>=3.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8",
+    "ruff==0.16.5",
+]
+
+[project.urls]
+Homepage = "https://github.com/davidbudac/logbook"
+Repository = "https://github.com/davidbudac/logbook"
+Documentation = "https://github.com/davidbudac/logbook/blob/main/docs/README.md"
+Changelog = "https://github.com/davidbudac/logbook/blob/main/CHANGELOG.md"
+
+[project.scripts]
+dbwiki = "dbwiki.cli:main"
+dbwiki-researcher = "dbwiki_researcher.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/dbwiki", "src/dbwiki_researcher"]
+
+# ruff checks the convention the `# noqa` markers already speak and nothing
+# wider: a broad except is either narrowed or marked with its reason. The
+# package and its tests are the tree that convention holds in; the standalone
+# stdlib scripts under elk/, n8n/ and docs/ are not part of it.
+[tool.ruff]
+include = ["src/**/*.py", "tests/**/*.py"]
+
+[tool.ruff.lint]
+select = ["BLE", "E402", "PT011"]

@@ -1,0 +1,204 @@
+# Filebeat inputs for dbwiki telemetry. Parsing lives in ES ingest pipelines
+# (installed by setup.sh; routed via the index template's default_pipeline =
+# dbwiki-router), so this file only tails files and assigns data streams.
+#
+# Dedup strategy — several sources are rewritten in place, which makes
+# filebeat re-read them from offset 0; every re-shipped doc must therefore
+# carry a deterministic _id so ES (create op on data streams) drops the
+# duplicate instead of double-counting:
+#   run_health.jsonl  truncated to the last 2000 lines by health.py  -> _id = run_id
+#   db_runs.jsonl / ledger_events.jsonl  rotated by emit_derived.py  -> _id = event_id
+#   run_starts.jsonl  appended/rotated by run_recorder (health.py)   -> _id = event_id
+#   schedule.jsonl / queue_state.jsonl  rotated by emit_derived.py   -> _id = event_id
+#   wiki/log.md  append-only by contract, but agent-written           -> _id = sha256(line)
+#   alerts.jsonl append-only, re-emissions share (fingerprint, at)    -> _id = sha256(fingerprint|at)
+#   cron.log     append-only (shell >>), no rewrites                  -> offset-based, no _id
+#
+# Every input shortens the fingerprint file-identity to 64 bytes: the beats 9
+# default (1024) silently delays ingestion of files smaller than 1 KiB, and a
+# freshly created agent_runs.jsonl or rotated derived file is exactly that.
+
+filebeat.inputs:
+
+  # One JSON doc per dbwiki command invocation (run/consolidate/lint/...).
+  - type: filestream
+    id: dbwiki-run-health
+    paths:
+      - /logs/state/run_health.jsonl
+    prospector.scanner.fingerprint:
+      length: 64
+      offset: 0
+    parsers:
+      - ndjson:
+          target: ""
+          add_error_key: true
+          document_id: run_id   # becomes _id; restored as a field by the pipeline
+    index: logs-dbwiki.run_health-default
+
+  # Raw cron stdout/stderr: wake/skip lines, warnings, tracebacks.
+  # Indented lines (traceback frames, ~~^^ markers) fold into the line above.
+  - type: filestream
+    id: dbwiki-cron
+    paths:
+      - /logs/state/cron.log
+    prospector.scanner.fingerprint:
+      length: 64
+      offset: 0
+    parsers:
+      - multiline:
+          type: pattern
+          pattern: '^[[:space:]]'
+          negate: false
+          match: after
+          max_lines: 500
+          timeout: 5s
+    index: logs-dbwiki.cron-default
+
+  # Agent audit trail: one "[UTC] task — summary" line per LLM stage.
+  - type: filestream
+    id: dbwiki-audit
+    paths:
+      - /logs/wiki/log.md
+    prospector.scanner.fingerprint:
+      length: 64
+      offset: 0
+    exclude_lines: ['^---\s*$', '^type:', '^#', '^\s*$']
+    processors:
+      - fingerprint:
+          fields: [message]
+          target_field: "@metadata._id"
+          method: sha256
+    index: logs-dbwiki.audit-default
+
+  # One doc per attempted agent stage (ingest/report/lint/research) with
+  # timings and token usage; written by health.record_agent_run, rewritten
+  # in place at 5000 lines — hence the event_id _id.
+  - type: filestream
+    id: dbwiki-agent-runs
+    paths:
+      - /logs/state/agent_runs.jsonl
+    prospector.scanner.fingerprint:
+      length: 64
+      offset: 0
+    parsers:
+      - ndjson:
+          target: ""
+          add_error_key: true
+          document_id: event_id
+    index: logs-dbwiki.agent_runs-default
+
+  # Derived streams written by scripts/emit_derived.py (cron, every 30 min).
+  - type: filestream
+    id: dbwiki-db-runs
+    paths:
+      - /logs/state/elk/db_runs.jsonl
+    prospector.scanner.fingerprint:
+      length: 64
+      offset: 0
+    parsers:
+      - ndjson:
+          target: ""
+          add_error_key: true
+          document_id: event_id
+    index: logs-dbwiki.db_runs-default
+
+  - type: filestream
+    id: dbwiki-ledger
+    paths:
+      - /logs/state/elk/ledger_events.jsonl
+    prospector.scanner.fingerprint:
+      length: 64
+      offset: 0
+    parsers:
+      - ndjson:
+          target: ""
+          add_error_key: true
+          document_id: event_id
+    index: logs-dbwiki.ledger-default
+
+  # One doc per recorded command, appended at start (finish lands in
+  # run_health). Written by run_recorder in src/dbwiki/health.py.
+  - type: filestream
+    id: dbwiki-run-starts
+    paths:
+      - /logs/state/elk/run_starts.jsonl
+    prospector.scanner.fingerprint:
+      length: 64
+      offset: 0
+    parsers:
+      - ndjson:
+          target: ""
+          add_error_key: true
+          document_id: event_id
+    index: logs-dbwiki.run_starts-default
+
+  # Cron-schedule snapshots, one doc per entry per snapshot, emitted by
+  # scripts/emit_derived.py from config/schedule.json.
+  - type: filestream
+    id: dbwiki-schedule
+    paths:
+      - /logs/state/elk/schedule.jsonl
+    prospector.scanner.fingerprint:
+      length: 64
+      offset: 0
+    parsers:
+      - ndjson:
+          target: ""
+          add_error_key: true
+          document_id: event_id
+    index: logs-dbwiki.schedule-default
+
+  # Analyst git-queue snapshot, emitted by scripts/emit_derived.py.
+  - type: filestream
+    id: dbwiki-queue-state
+    paths:
+      - /logs/state/elk/queue_state.jsonl
+    prospector.scanner.fingerprint:
+      length: 64
+      offset: 0
+    parsers:
+      - ndjson:
+          target: ""
+          add_error_key: true
+          document_id: event_id
+    index: logs-dbwiki.queue_state-default
+
+  # Alert records (see alerts.Alert.to_dict); the file is agent-adjacent and
+  # re-emissions of the same alert share (fingerprint, at), hence that pair
+  # as the _id instead of an offset.
+  - type: filestream
+    # id suffix bumps the registry key: the first rollout shipped this file
+    # against a broken mapping and the recorded offset sits past events that
+    # were dropped, never to be resent; a fresh key re-reads from byte 0 and
+    # the (fingerprint, at) _id dedups anything that did land.
+    id: dbwiki-alerts-r2
+    paths:
+      - /logs/state/alerts.jsonl
+    prospector.scanner.fingerprint:
+      length: 64
+      offset: 0
+    parsers:
+      - ndjson:
+          target: ""
+          add_error_key: true
+    processors:
+      - fingerprint:
+          fields: [fingerprint, at]
+          target_field: "@metadata._id"
+          method: sha256
+    index: logs-dbwiki.alerts-default
+
+output.elasticsearch:
+  hosts: ["${ES_HOST}"]
+  username: "${ES_USER}"
+  password: "${ES_PASSWORD}"
+
+# Index management is done by setup.sh (index template dbwiki-telemetry with
+# default_pipeline routing); filebeat must not install its own.
+setup.template.enabled: false
+setup.template.name: "dbwiki"
+setup.template.pattern: "logs-dbwiki.*"
+setup.ilm.enabled: false
+
+logging.level: info
+logging.metrics.enabled: false

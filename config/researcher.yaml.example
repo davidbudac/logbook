@@ -1,0 +1,13 @@
+# dbwiki-researcher (ADR-0002): the only config the cloud-connected box has.
+# It holds no ES credentials, no wiki clone — just a clone of the exchange
+# repo and the agent adapter it runs. Copy to researcher.yaml next to the
+# exchange clone (or pass --config).
+exchange:
+  path: ../exchange        # clone of the exchange repo, relative to this file
+adapter: codex             # codex | claude | pi | ollama (web access is required)
+model: null                # adapter default when null
+provider: null             # pi only (e.g. a hosted provider name)
+timeout_seconds: 600
+poll_seconds: 300          # --watch: sleep between empty polls
+name: researcher-1         # claimed_by stamp in the exchange
+push: true

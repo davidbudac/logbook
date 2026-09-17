@@ -1,0 +1,121 @@
+{
+ "id": "dbwiki-errors",
+ "name": "dbwiki errors \u2014 round-level alerting",
+ "active": false,
+ "nodes": [
+  {
+   "parameters": {},
+   "name": "Error Trigger",
+   "type": "n8n-nodes-base.errorTrigger",
+   "typeVersion": 1,
+   "position": [
+    0,
+    0
+   ]
+  },
+  {
+   "parameters": {
+    "assignments": {
+     "assignments": [
+      {
+       "id": "line",
+       "name": "line",
+       "type": "string",
+       "value": "={{ JSON.stringify({ts: $now.toISO(), source: 'n8n', workflow: $json.workflow.name, workflow_id: $json.workflow.id, execution_id: $json.execution.id, execution_url: $json.execution.url, last_node: $json.execution.lastNodeExecuted, error: $json.execution.error.message}) }}"
+      }
+     ]
+    },
+    "options": {}
+   },
+   "name": "Format event",
+   "type": "n8n-nodes-base.set",
+   "typeVersion": 3.4,
+   "position": [
+    240,
+    0
+   ]
+  },
+  {
+   "parameters": {
+    "authentication": "privateKey",
+    "command": "export PATH=/usr/local/bin:/usr/bin:/bin; cd /opt/logbook && mkdir -p .state/n8n && cat >> .state/n8n/events.jsonl <<'EOF'\n{{ $json.line }}\nEOF",
+    "cwd": "/opt/logbook"
+   },
+   "name": "Append to .state/n8n/events.jsonl",
+   "type": "n8n-nodes-base.ssh",
+   "typeVersion": 1,
+   "position": [
+    480,
+    0
+   ],
+   "credentials": {
+    "sshPrivateKey": {
+     "id": "dbwiki-host-ssh",
+     "name": "dbwiki host (ssh)"
+    }
+   }
+  },
+  {
+   "parameters": {},
+   "name": "TODO: notify (Telegram/ntfy/email)",
+   "type": "n8n-nodes-base.noOp",
+   "typeVersion": 1,
+   "position": [
+    720,
+    0
+   ]
+  }
+ ],
+ "connections": {
+  "Error Trigger": {
+   "main": [
+    [
+     {
+      "node": "Format event",
+      "type": "main",
+      "index": 0
+     }
+    ]
+   ]
+  },
+  "Format event": {
+   "main": [
+    [
+     {
+      "node": "Append to .state/n8n/events.jsonl",
+      "type": "main",
+      "index": 0
+     }
+    ]
+   ]
+  },
+  "Append to .state/n8n/events.jsonl": {
+   "main": [
+    [
+     {
+      "node": "TODO: notify (Telegram/ntfy/email)",
+      "type": "main",
+      "index": 0
+     }
+    ]
+   ]
+  }
+ },
+ "settings": {
+  "executionOrder": "v1",
+  "timezone": "Europe/Berlin",
+  "saveManualExecutions": true,
+  "saveDataErrorExecution": "all",
+  "saveDataSuccessExecution": "all",
+  "executionTimeout": 10800
+ },
+ "tags": [
+  {
+   "id": "dbwiki",
+   "name": "dbwiki"
+  }
+ ],
+ "meta": {
+  "templateCredsSetupCompleted": true
+ }
+}

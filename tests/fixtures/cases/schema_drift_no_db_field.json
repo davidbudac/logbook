@@ -1,0 +1,36 @@
+{
+ "name": "schema_drift_no_db_field",
+ "title": "events exist but carry no configured db field: compact must fail loudly",
+ "layout": "unsupported (drifted)",
+ "db": "cdb1",
+ "window": {"from": "2026-07-17T00:00:00Z", "to": "2026-07-18T00:00:00Z", "day": "2026-07-17"},
+ "registry": {},
+ "trigger": {"ledger_entry": null, "manual": false, "consolidation": false},
+ "expect_error": {
+  "type": "UnsupportedSchemaError",
+  "message_contains": [
+   ".ds-logs-oracle.alert-default-2026.07.17-000027",
+   "oracle.database.name",
+   "fleet_db",
+   "config/dbwiki.yaml"
+  ]
+ },
+ "hits": {
+  "alert": [
+   {"_index": ".ds-logs-oracle.alert-default-2026.07.17-000027", "_id": "sd-a1",
+    "_source": {"@timestamp": "2026-07-17T05:00:00Z",
+     "fleet_db": "fleetdb0001",
+     "host": {"name": "oracle-host-101"},
+     "log": {"level": "NOTIFICATION"},
+     "message": "[fixture-isoflare-7] Thread 1 advanced to log sequence 12"}},
+   {"_index": ".ds-logs-oracle.alert-default-2026.07.17-000027", "_id": "sd-a2",
+    "_source": {"@timestamp": "2026-07-17T06:00:00Z",
+     "fleet_db": "fleetdb0001",
+     "host": {"name": "oracle-host-101"},
+     "log": {"level": "NOTIFICATION"},
+     "message": "[fixture-isoflare-7] Completed checkpoint up to RBA [12.2.10]"}}
+  ],
+  "listener": [],
+  "dataguard": []
+ }
+}

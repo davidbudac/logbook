@@ -1,0 +1,229 @@
+{
+ "fixture_version": 7,
+ "note": "synthetic events in `cases` (compactor input), sanitized real digests in `real_digests` (compactor output)",
+ "provenance": {
+  "synthetic_only": false,
+  "why": "a digest is compactor output, so the events behind a real one cannot be reconstructed: every case below is hand-built or generated, and the real material enters as digests instead (see `real_digests`).",
+  "shapes": "hit shapes follow the two supported index layouts (legacy flat db_name / ECS oracle.database.name) as pinned by tests/test_normalize.py"
+ },
+ "goldens": {
+  "location": "tests/fixtures/golden/<case>/",
+  "files": ["events.json (normalized events in scan order)", "digest.json", "digest.md", "decision.json"],
+  "normalized_fields": {"generated_by": "dbwiki-compactor/(fixture)"},
+  "note": "`generated_by` is normalized so a package version bump does not churn goldens; `pattern_versions` is NOT normalized, because a pattern-library change is supposed to be reviewed.",
+  "update": "DBWIKI_UPDATE_GOLDENS=1 uv run pytest tests/test_fixtures.py",
+  "policy": "goldens are the frozen contract: any golden change requires bumping fixture_version here and reviewing the diff in the same change set. rate_anomaly deltas use the current schema only (window_hours / rate_per_hour / baseline_median_per_hour).",
+  "lint": "golden/lint/findings.json pins the deterministic provenance-v1 findings for the two deliberately broken pages in tests/fixtures/wiki_lint/"
+ },
+ "real_digests": {
+  "location": "tests/fixtures/real_digests/<name>.json",
+  "goldens": "tests/fixtures/golden/real/<name>/ (digest.md, decision.json)",
+  "what": "compactor output captured from the live Oracle fleet (wiki/digests/<db>/<day>.json), replayed by tests/test_real_digests.py through the layers that consume a digest as input: trigger.decide, trigger.digest_needs_escalation, digest_md.render_md, structured.digest_codes and structured.build_prompt. These digests are NOT events, so they cannot drive the compactor — that is what `cases` is for.",
+  "why": "the synthetic cases pin the compactor's own behaviour; these pin the downstream layers against real shapes no hand-built case reproduces — a 1,753-event storm collapsed into one group, 2,714 `noise` listener events, a 23k-character rendered digest that trips the build_prompt truncation, 67 notable groups with an unmatched cap hit, and days that carry no events at all.",
+  "schema": "all seven parse with the current digest schema as written by dbwiki-compactor/0.1.0; `rate_anomaly` deltas already use the window_hours / rate_per_hour / baseline_median_per_hour keys. Key order is preserved from the live files because render_md walks `sources` and `routine_counters` in insertion order.",
+  "sanitization": {
+   "how": "deterministic literal/anchored-regex substitution over the raw JSON text, applied once when the file was copied; tests/test_real_digests.py re-checks that no unsanitized token came back.",
+   "applied": {
+    "lab-dg1": "host-a",
+    "lab-dg2": "host-b",
+    "dbwin": "client-a",
+    "OS User: db": "OS User: appuser",
+    "10.0.2.2": "192.0.2.10"
+   },
+   "addresses": "replacements come from RFC 5737 TEST-NET-1 (192.0.2.0/24), which is reserved for documentation and routes nowhere",
+   "kept": [
+    "ORACLE_SID / db names (cdb1, testcdb_s, awrwh) — already throughout the outer repo's tests and docs",
+    "ORA-/TNS- codes, messages, templates and group structure — the whole point of the fixture",
+    "OFA paths (/u01/app/oracle/..., /u01/oradata/CDB1/...) and the `oracle` software account — Oracle defaults, already in tests/fixtures/cases/ora600_internal_error.json",
+    "the `.localdomain` suffix, ES data-stream index names, service names (cdb1.world), client programs (SQLcl, emagent, OMS, perl, sqlplus) and the SOE demo schema"
+   ]
+  },
+  "digests": [
+   {
+    "name": "fra_transport_storm",
+    "from": "wiki/digests/cdb1/2026-07-12.json",
+    "db": "cdb1",
+    "day": "2026-07-12",
+    "outcome": "wake",
+    "model_tier": "strong",
+    "covers": ["the real FRA-exhaustion + Fatal NI incident day", "a 1,753-event tns_error storm collapsed into one group with 5 capped es_samples", "10 codes across alert and dataguard", "notable with zero deltas: every trigger reason is notable_class", "a source whose 5,589 events are all routine"]
+   },
+   {
+    "name": "ora12154_partial_window",
+    "from": "wiki/digests/cdb1/2026-07-27.json",
+    "db": "cdb1",
+    "day": "2026-07-27",
+    "outcome": "wake",
+    "model_tier": "strong",
+    "covers": ["intra-day partial window (00:00 -> 22:15) as the live consolidation tick writes it", "the `noise` class, which only these ORA-12154 days produce", "an all-error dataguard source beside an alert source that is mostly unmatched"]
+   },
+   {
+    "name": "rate_anomaly_new_codes",
+    "from": "wiki/digests/cdb1/2025-11-21.json",
+    "db": "cdb1",
+    "day": "2025-11-21",
+    "outcome": "wake",
+    "model_tier": "strong",
+    "covers": ["real delta mix: 10 first_ever_code + 3 rate_anomaly + 1 new_client_program", "rate_anomaly on the current schema, straight from the live compactor", "67 notable groups over 6 classes with a 69-group unmatched cap hit", "23k rendered characters: the only fixture that trips build_prompt's MAX_DIGEST_CHARS truncation", "the sanitized client-identity lines (client-a / appuser / 192.0.2.10)"]
+   },
+   {
+    "name": "standby_first_contact",
+    "from": "wiki/digests/testcdb_s/2026-01-15.json",
+    "db": "testcdb_s",
+    "day": "2026-01-15",
+    "outcome": "wake",
+    "model_tier": "strong",
+    "covers": ["new_service and new_client_program deltas as the fleet actually emits them", "the same code first-ever for two sources in one window", "lifecycle group beside unmatched startup noise", "a 19-event day: the small end of the real range"]
+   },
+   {
+    "name": "listener_only_routine_day",
+    "from": "wiki/digests/cdb1/2026-01-28.json",
+    "db": "cdb1",
+    "day": "2026-01-28",
+    "outcome": "skip",
+    "model_tier": "cheap",
+    "covers": ["negative case: 11,520 events, nothing notable, no deltas -> skip/routine_only on the cheap tier", "routine_counters keyed by real `establish <service> <program>` values", "two silent sources beside a busy one, without a silence delta"]
+   },
+   {
+    "name": "full_day_silence",
+    "from": "wiki/digests/cdb1/2026-06-24.json",
+    "db": "cdb1",
+    "day": "2026-06-24",
+    "outcome": "wake",
+    "model_tier": "strong",
+    "covers": ["a real telemetry blackout: 0 events, one silence delta per source", "silence escalates to the strong tier with no notable group anywhere", "the exact `detail` wording the live compactor writes"]
+   },
+   {
+    "name": "empty_partial_window",
+    "from": "wiki/digests/awrwh/2026-07-27.json",
+    "db": "awrwh",
+    "day": "2026-07-27",
+    "outcome": "skip",
+    "model_tier": "cheap",
+    "covers": ["negative case for silence on a real db with no registry baseline: 0 events, no deltas, not notable", "a 22.25h window over silence_min_hours that still yields no silence delta", "render_md and build_prompt on a digest with nothing in it"]
+   }
+  ]
+ },
+ "cases": [
+  {
+   "name": "routine_traffic",
+   "title": "routine alert+listener+dataguard traffic, mixed legacy/ECS layouts",
+   "layout": "mixed",
+   "window_hours": 24,
+   "outcome": "skip",
+   "covers": ["routine counters", "both index layouts in one window", "seeded services/programs suppress new_* deltas", "negative case: nothing notable"]
+  },
+  {
+   "name": "ora600_internal_error",
+   "title": "ORA-00600 internal error with incident dump (legacy layout)",
+   "layout": "legacy",
+   "window_hours": 24,
+   "outcome": "wake",
+   "covers": ["error-class groups", "first_ever_code delta labelled with the source that saw the code", "strong model tier"]
+  },
+  {
+   "name": "ora600_trace_context",
+   "title": "ORA-00600 whose trace file is in the trace stream, excerpted into the digest",
+   "layout": "ecs",
+   "window_hours": 24,
+   "outcome": "wake",
+   "covers": ["trace_lookup end to end: alert line names a .trc, the digest carries the excerpt", "a mentioned path with no trace documents (incident dir) contributes no entry", "a trace document for an unmentioned path is never pulled in", "ORA-code lines win the excerpt budget over header chatter"]
+  },
+  {
+   "name": "listener_establish_fail",
+   "title": "listener establish failures (nonzero return_code) plus a dead service",
+   "layout": "ecs",
+   "window_hours": 24,
+   "outcome": "wake",
+   "covers": ["listener error/warning classes", "ECS listener docs attributed by service name", "error group without any delta"]
+  },
+  {
+   "name": "dataguard_transport_error",
+   "title": "Data Guard transport + connection errors on already-known codes",
+   "layout": "ecs",
+   "window_hours": 24,
+   "outcome": "wake",
+   "covers": ["dataguard error classes", "codes already known for that source produce no first_ever_code delta", "storm collapse of a repeated message"]
+  },
+  {
+   "name": "fra_space_pressure",
+   "title": "FRA space pressure: first-ever ORA-19815 plus archiver stall warnings",
+   "layout": "ecs",
+   "window_hours": 24,
+   "outcome": "wake",
+   "covers": ["warning class", "mixed error/warning/routine in one source", "first_ever_code delta beside a known code", "code grandfathered from the v1 global map (registry.codes seeded flat)"]
+  },
+  {
+   "name": "lifecycle_changes",
+   "title": "a maintenance night: instance restart, parameter and datafile changes beside an ORA-1555",
+   "layout": "legacy",
+   "window_hours": 24,
+   "outcome": "wake",
+   "covers": ["the `changes` digest key derived from the lifecycle-class groups", "the `## Changes` markdown section, with a ×2 group", "the new datafile_change rule (alert pattern library v2)", "`### Notable` keeps only the non-lifecycle group beside it", "the `headline` key on a lifecycle group: a two-line alert document whose change is named on the second line, so the change reads `alter pluggable database all close immediate` and not `Stopping background process MMON`"]
+  },
+  {
+   "name": "error_before_change",
+   "title": "an ORA-1653 half an hour before the night's only ALTER SYSTEM SET",
+   "layout": "legacy",
+   "window_hours": 24,
+   "outcome": "wake",
+   "covers": ["negative case for after_change: the error precedes the window's only lifecycle change, so no delta is produced", "the direction of the after_change window, pinned by a golden rather than by a unit test alone", "a code already known for the source, so `deltas` comes out empty beside a notable error group"]
+  },
+  {
+   "name": "storm_caps",
+   "title": "establish-failure storm exceeding max_groups_per_rule and max_samples_per_group",
+   "layout": "ecs",
+   "window_hours": 24,
+   "outcome": "wake",
+   "covers": ["dropped_notable_groups", "es_samples cap", "message_template digit collapse"]
+  },
+  {
+   "name": "unmatched_garbage",
+   "title": "53 distinct unclassifiable alert lines against max_unmatched_groups=50",
+   "layout": "ecs",
+   "window_hours": 24,
+   "outcome": "wake",
+   "covers": ["unmatched class", "max_unmatched_groups cap"]
+  },
+  {
+   "name": "silence_day",
+   "title": "a whole silent day after three active days",
+   "layout": "n/a (no events)",
+   "window_hours": 24,
+   "outcome": "wake",
+   "covers": ["silence delta per source", "empty window that is not a schema problem", "strong model tier"]
+  },
+  {
+   "name": "partial_window_anomaly",
+   "title": "partial 2h intra-day window with a rate anomaly",
+   "layout": "ecs",
+   "window_hours": 2,
+   "outcome": "wake",
+   "covers": ["rate_anomaly on the current delta schema", "per-hour rates from a partial window", "silence suppressed below silence_min_hours"]
+  },
+  {
+   "name": "late_replayed_events",
+   "title": "late arrival + replayed duplicate doc id, already ingested with the same content hash",
+   "layout": "ecs",
+   "window_hours": 24,
+   "outcome": "skip",
+   "covers": ["scan order independent of document order", "duplicate doc ids counted as delivered", "content_unchanged dedupe skip"]
+  },
+  {
+   "name": "empty_no_baseline",
+   "title": "empty window with no registry history",
+   "layout": "n/a (no events)",
+   "window_hours": 24,
+   "outcome": "skip",
+   "covers": ["negative case for silence (no baseline)", "unknown db with no registry file"]
+  },
+  {
+   "name": "schema_drift_no_db_field",
+   "title": "events exist but carry no configured db field",
+   "layout": "unsupported (drifted)",
+   "window_hours": 24,
+   "outcome": "error",
+   "covers": ["UnsupportedSchemaError diagnostic naming index, tried fields, and seen fields", "no goldens (the case raises before a digest exists)"]
+  }
+ ]
+}

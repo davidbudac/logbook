@@ -1,0 +1,16 @@
+{"entries": [
+  {"entry": "tick", "cron": "15 */2 * * *", "command": "dbwiki run --lock-wait 3600", "node": "onprem",
+   "description": "main pipeline tick"},
+  {"entry": "consolidate", "cron": "30 23 * * *", "command": "dbwiki run --consolidate --lock-wait 3600", "node": "onprem", "description": "nightly consolidation"},
+  {"entry": "research-history", "cron": "45 23 * * *", "command": "dbwiki research --history --lock-wait 3600", "node": "onprem", "description": "daily past-fixes regeneration (no model, no web)"},
+  {"entry": "lint", "cron": "0 8 * * 1", "command": "dbwiki lint --lock-wait 3600", "node": "onprem", "description": "weekly wiki lint"},
+  {"entry": "research", "cron": "0 9 * * 1", "command": "dbwiki research --lock-wait 3600", "node": "onprem", "description": "weekly research"},
+  {"entry": "research-caveats", "cron": "30 9 * * 1", "command": "dbwiki research --caveats --lock-wait 3600", "node": "onprem", "description": "weekly practitioner caveats (claude, web)"},
+  {"entry": "research-sources", "cron": "0 9 1 * *", "command": "dbwiki research --sources-only --review-sources --lock-wait 3600", "node": "onprem", "description": "monthly source review"},
+  {"entry": "review", "cron": "0 10 * * 1", "command": "dbwiki review", "node": "onprem", "description": "weekly attention review"},
+  {"entry": "elk-derived", "cron": "*/30 * * * *", "command": "python3 elk/scripts/emit_derived.py", "node": "onprem", "description": "derived telemetry emitter"},
+  {"entry": "watchdog", "cron": "*/10 * * * *", "command": "python3 n8n/scripts/watchdog.py --fix", "node": "onprem", "description": "liveness watchdog; reloads a small-context model"},
+  {"entry": "langfuse-sync", "cron": "5 8 * * *", "command": "dbwiki langfuse sync", "node": "onprem", "description": "daily Langfuse prompt-version and model-price upsert (idempotent)"},
+  {"entry": "health", "cron": "5 * * * *", "command": "dbwiki health --alert", "node": "onprem", "description": "hourly health assessment + failure-only alerts"},
+  {"entry": "analyst", "cron": "*/15 * * * *", "command": "dbwiki analyst --once --lock-wait 600", "node": "analyst", "description": "analyst queue claim (only on a second, analyst node — ADR-0001; ignore on a single-machine install)"}
+]}

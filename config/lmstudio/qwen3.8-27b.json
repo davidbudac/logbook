@@ -1,0 +1,13 @@
+{
+  "preset": "",
+  "operation": {"fields": []},
+  "load": {
+    "fields": [
+      {"key": "llm.load.contextLength", "value": 32768},
+      {"key": "llm.load.numParallelSessions", "value": 1},
+      {"key": "llm.load.llama.flashAttention", "value": true},
+      {"key": "llm.load.llama.kCacheQuantizationType", "value": {"checked": true, "value": "q8_0"}},
+      {"key": "llm.load.llama.vCacheQuantizationType", "value": {"checked": true, "value": "q8_0"}}
+    ]
+  }
+}

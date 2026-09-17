@@ -1,0 +1,685 @@
+{
+ "content_hash": "5e1221b3c62f8def",
+ "db": "cdb1",
+ "explanation": "cdb1: wake (strong tier) \u2014 first_ever_code, new_client_program, notable_class, rate_anomaly.",
+ "model_tier": "strong",
+ "outcome": "wake",
+ "reasons": [
+  {
+   "code": "first_ever_code",
+   "evidence": {
+    "first_seen": "2025-11-21T14:35:52.772Z",
+    "source": "alert",
+    "type": "first_ever_code",
+    "value": "ORA-19815"
+   }
+  },
+  {
+   "code": "first_ever_code",
+   "evidence": {
+    "first_seen": "2025-11-21T21:33:16.370Z",
+    "source": "alert",
+    "type": "first_ever_code",
+    "value": "ORA-2097"
+   }
+  },
+  {
+   "code": "first_ever_code",
+   "evidence": {
+    "first_seen": "2025-11-21T21:33:16.370Z",
+    "source": "alert",
+    "type": "first_ever_code",
+    "value": "ORA-25530"
+   }
+  },
+  {
+   "code": "first_ever_code",
+   "evidence": {
+    "first_seen": "2025-11-21T10:56:49.407Z",
+    "source": "alert",
+    "type": "first_ever_code",
+    "value": "ORA-3137"
+   }
+  },
+  {
+   "code": "first_ever_code",
+   "evidence": {
+    "first_seen": "2025-11-21T10:56:49.407Z",
+    "source": "alert",
+    "type": "first_ever_code",
+    "value": "TNS-12599"
+   }
+  },
+  {
+   "code": "rate_anomaly",
+   "evidence": {
+    "baseline_median_per_hour": 0.4,
+    "count": 169,
+    "counter": "log_switch",
+    "rate_per_hour": 7.0,
+    "source": "alert",
+    "type": "rate_anomaly",
+    "window_hours": 24.0
+   }
+  },
+  {
+   "code": "rate_anomaly",
+   "evidence": {
+    "baseline_median_per_hour": 0.4,
+    "count": 175,
+    "counter": "archived_log",
+    "rate_per_hour": 7.3,
+    "source": "alert",
+    "type": "rate_anomaly",
+    "window_hours": 24.0
+   }
+  },
+  {
+   "code": "rate_anomaly",
+   "evidence": {
+    "baseline_median_per_hour": 0.0,
+    "count": 10,
+    "counter": "open_progress",
+    "rate_per_hour": 0.4,
+    "source": "alert",
+    "type": "rate_anomaly",
+    "window_hours": 24.0
+   }
+  },
+  {
+   "code": "new_client_program",
+   "evidence": {
+    "source": "listener",
+    "type": "new_client_program",
+    "value": "SQLcl"
+   }
+  },
+  {
+   "code": "first_ever_code",
+   "evidence": {
+    "first_seen": "2025-11-21T14:35:52.772Z",
+    "source": "dataguard",
+    "type": "first_ever_code",
+    "value": "ORA-19815"
+   }
+  },
+  {
+   "code": "first_ever_code",
+   "evidence": {
+    "first_seen": "2025-11-21T21:33:16.370Z",
+    "source": "dataguard",
+    "type": "first_ever_code",
+    "value": "ORA-2097"
+   }
+  },
+  {
+   "code": "first_ever_code",
+   "evidence": {
+    "first_seen": "2025-11-21T21:33:16.370Z",
+    "source": "dataguard",
+    "type": "first_ever_code",
+    "value": "ORA-25530"
+   }
+  },
+  {
+   "code": "first_ever_code",
+   "evidence": {
+    "first_seen": "2025-11-21T10:56:49.407Z",
+    "source": "dataguard",
+    "type": "first_ever_code",
+    "value": "ORA-3137"
+   }
+  },
+  {
+   "code": "first_ever_code",
+   "evidence": {
+    "first_seen": "2025-11-21T10:56:49.407Z",
+    "source": "dataguard",
+    "type": "first_ever_code",
+    "value": "TNS-12599"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "error",
+    "count": 2,
+    "rule": "ora_error"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "error",
+    "count": 2,
+    "rule": "ora_error"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "error",
+    "count": 1,
+    "rule": "ora_error"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "unmatched",
+    "count": 12,
+    "rule": "unmatched"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "unmatched",
+    "count": 1,
+    "rule": "unmatched"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "unmatched",
+    "count": 1,
+    "rule": "unmatched"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "unmatched",
+    "count": 1,
+    "rule": "unmatched"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "unmatched",
+    "count": 1,
+    "rule": "unmatched"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "unmatched",
+    "count": 4,
+    "rule": "unmatched"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "unmatched",
+    "count": 1,
+    "rule": "unmatched"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "unmatched",
+    "count": 4,
+    "rule": "unmatched"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "unmatched",
+    "count": 1,
+    "rule": "unmatched"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "lifecycle",
+    "count": 1,
+    "rule": "instance_startup"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "unmatched",
+    "count": 1,
+    "rule": "unmatched"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "unmatched",
+    "count": 1,
+    "rule": "unmatched"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "unmatched",
+    "count": 1,
+    "rule": "unmatched"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "unmatched",
+    "count": 1,
+    "rule": "unmatched"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "unmatched",
+    "count": 1,
+    "rule": "unmatched"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "warning",
+    "count": 1,
+    "rule": "archive_dest_degraded"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "unmatched",
+    "count": 1,
+    "rule": "unmatched"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "unmatched",
+    "count": 1,
+    "rule": "unmatched"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "unmatched",
+    "count": 1,
+    "rule": "unmatched"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "unmatched",
+    "count": 1,
+    "rule": "unmatched"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "unmatched",
+    "count": 1,
+    "rule": "unmatched"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "lifecycle",
+    "count": 1,
+    "rule": "db_mount_open"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "unmatched",
+    "count": 1,
+    "rule": "unmatched"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "unmatched",
+    "count": 1,
+    "rule": "unmatched"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "unmatched",
+    "count": 1,
+    "rule": "unmatched"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "unmatched",
+    "count": 1,
+    "rule": "unmatched"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "unmatched",
+    "count": 1,
+    "rule": "unmatched"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "lifecycle",
+    "count": 1,
+    "rule": "db_mount_open"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "lifecycle",
+    "count": 1,
+    "rule": "db_mount_open"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "unmatched",
+    "count": 1,
+    "rule": "unmatched"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "unmatched",
+    "count": 1,
+    "rule": "unmatched"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "unmatched",
+    "count": 1,
+    "rule": "unmatched"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "unmatched",
+    "count": 1,
+    "rule": "unmatched"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "unmatched",
+    "count": 1,
+    "rule": "unmatched"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "unmatched",
+    "count": 1,
+    "rule": "unmatched"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "unmatched",
+    "count": 1,
+    "rule": "unmatched"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "unmatched",
+    "count": 1,
+    "rule": "unmatched"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "unmatched",
+    "count": 1,
+    "rule": "unmatched"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "unmatched",
+    "count": 1,
+    "rule": "unmatched"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "unmatched",
+    "count": 1,
+    "rule": "unmatched"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "unmatched",
+    "count": 1,
+    "rule": "unmatched"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "unmatched",
+    "count": 1,
+    "rule": "unmatched"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "unmatched",
+    "count": 1,
+    "rule": "unmatched"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "unmatched",
+    "count": 1,
+    "rule": "unmatched"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "unmatched",
+    "count": 1,
+    "rule": "unmatched"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "unmatched",
+    "count": 1,
+    "rule": "unmatched"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "unmatched",
+    "count": 1,
+    "rule": "unmatched"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "unmatched",
+    "count": 1,
+    "rule": "unmatched"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "unmatched",
+    "count": 1,
+    "rule": "unmatched"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "unmatched",
+    "count": 1,
+    "rule": "unmatched"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "lifecycle",
+    "count": 2,
+    "rule": "parameter_change"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "unmatched",
+    "count": 1,
+    "rule": "unmatched"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "lifecycle",
+    "count": 1,
+    "rule": "parameter_change"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "unmatched",
+    "count": 1,
+    "rule": "unmatched"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "warning",
+    "count": 149,
+    "rule": "cannot_allocate_log"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "unmatched",
+    "count": 1,
+    "rule": "unmatched"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "unmatched",
+    "count": 2,
+    "rule": "unmatched"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "unmatched",
+    "count": 7,
+    "rule": "unmatched"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "lifecycle",
+    "count": 1,
+    "rule": "parameter_change"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "warning",
+    "count": 1,
+    "rule": "service_died"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "error",
+    "count": 1,
+    "rule": "connection_error"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "error",
+    "count": 29,
+    "rule": "broker_error"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "unmatched",
+    "count": 1,
+    "rule": "unmatched"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "dataguard",
+    "count": 1,
+    "rule": "role_change"
+   }
+  }
+ ],
+ "schema_version": 1,
+ "window": {
+  "day": "2025-11-21",
+  "from": "2025-11-21T00:00:00Z",
+  "to": "2025-11-22T00:00:00Z"
+ }
+}

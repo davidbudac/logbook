@@ -1,0 +1,11 @@
+{
+  "description": "One doc per attempted agent stage (source: .state/agent_runs.jsonl, written by health.record_agent_run at the orchestrator's telemetry choke point — success and failure paths alike). Token/cost fields arrive pre-flattened; usage_known=false marks runs whose adapter output carried no parseable usage. @timestamp = when the stage's telemetry was recorded.",
+  "processors": [
+    { "date": { "field": "at", "target_field": "@timestamp", "formats": ["ISO8601"], "if": "ctx.at != null", "ignore_failure": true } },
+    { "set": { "field": "event.module", "value": "dbwiki" } },
+    { "set": { "field": "event.dataset", "value": "dbwiki.agent_runs" } }
+  ],
+  "on_failure": [
+    { "append": { "field": "tags", "value": "dbwiki_pipeline_failure" } }
+  ]
+}

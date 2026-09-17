@@ -1,0 +1,159 @@
+{
+ "content_hash": "1a85632e4fba1355",
+ "db": "cdb1",
+ "explanation": "cdb1: wake (strong tier) \u2014 notable_class.",
+ "model_tier": "strong",
+ "outcome": "wake",
+ "reasons": [
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "error",
+    "count": 1753,
+    "rule": "tns_error"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "error",
+    "count": 129,
+    "rule": "ora_error"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "error",
+    "count": 1,
+    "rule": "ora_error"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "error",
+    "count": 2,
+    "rule": "ora_error"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "error",
+    "count": 43,
+    "rule": "ora_error"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "error",
+    "count": 2,
+    "rule": "tns_error"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "error",
+    "count": 1,
+    "rule": "tns_error"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "error",
+    "count": 2,
+    "rule": "tns_error"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "error",
+    "count": 2,
+    "rule": "tns_error"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "error",
+    "count": 2,
+    "rule": "tns_error"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "unmatched",
+    "count": 127,
+    "rule": "unmatched"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "unmatched",
+    "count": 2,
+    "rule": "unmatched"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "unmatched",
+    "count": 2,
+    "rule": "unmatched"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "unmatched",
+    "count": 1,
+    "rule": "unmatched"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "unmatched",
+    "count": 5,
+    "rule": "unmatched"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "unmatched",
+    "count": 5,
+    "rule": "unmatched"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "error",
+    "count": 673,
+    "rule": "transport_error"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "error",
+    "count": 337,
+    "rule": "connection_error"
+   }
+  }
+ ],
+ "schema_version": 1,
+ "window": {
+  "day": "2026-07-12",
+  "from": "2026-07-12T00:00:00Z",
+  "to": "2026-07-13T00:00:00Z"
+ }
+}

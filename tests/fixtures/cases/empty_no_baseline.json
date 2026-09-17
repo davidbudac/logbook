@@ -1,0 +1,10 @@
+{
+ "name": "empty_no_baseline",
+ "title": "empty window with no registry history: quiet, not silent (no delta, no wake)",
+ "layout": "n/a (no events)",
+ "db": "newdb",
+ "window": {"from": "2026-07-13T00:00:00Z", "to": "2026-07-14T00:00:00Z", "day": "2026-07-13"},
+ "registry": {},
+ "trigger": {"ledger_entry": null, "manual": false, "consolidation": false},
+ "hits": {"alert": [], "listener": [], "dataguard": []}
+}

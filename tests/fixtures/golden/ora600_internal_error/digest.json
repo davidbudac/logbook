@@ -1,0 +1,111 @@
+{
+ "changes": [],
+ "db": "cdb1",
+ "deltas": [
+  {
+   "first_seen": "2026-07-11T04:17:03Z",
+   "source": "alert",
+   "type": "first_ever_code",
+   "value": "ORA-600"
+  }
+ ],
+ "generated_by": "dbwiki-compactor/(fixture)",
+ "notable": true,
+ "pattern_versions": {
+  "alert": 2,
+  "dataguard": 1,
+  "listener": 1
+ },
+ "sources": {
+  "alert": {
+   "by_class": {
+    "error": 3,
+    "routine": 1
+   },
+   "dropped_notable_groups": {},
+   "notable": [
+    {
+     "class": "error",
+     "codes": [
+      "ORA-600"
+     ],
+     "count": 1,
+     "es_samples": [
+      {
+       "id": "o6-a1",
+       "index": "oracle-logs-alert-2026.07",
+       "ts": "2026-07-11T04:17:03Z"
+      }
+     ],
+     "first_ts": "2026-07-11T04:17:03Z",
+     "last_ts": "2026-07-11T04:17:03Z",
+     "message": "ORA-00600: internal error code, arguments: [kdsgrp1], [], [], [], [], [], [], []",
+     "rule": "internal_error",
+     "template": "ORA-00600: internal error code, arguments: [kdsgrp#], [], [], [], [], [], [], []"
+    },
+    {
+     "class": "error",
+     "codes": [],
+     "count": 1,
+     "es_samples": [
+      {
+       "id": "o6-a2",
+       "index": "oracle-logs-alert-2026.07",
+       "ts": "2026-07-11T04:17:03Z"
+      }
+     ],
+     "first_ts": "2026-07-11T04:17:03Z",
+     "last_ts": "2026-07-11T04:17:03Z",
+     "message": "Errors in file /u01/app/oracle/diag/rdbms/cdb1/cdb1/trace/cdb1_ora_28311.trc  (incident=48291):",
+     "rule": "errors_in_file",
+     "template": "Errors in file /u#/app/oracle/diag/rdbms/cdb#/cdb#/trace/cdb#_ora_#.trc (incident=#):"
+    },
+    {
+     "class": "error",
+     "codes": [],
+     "count": 1,
+     "es_samples": [
+      {
+       "id": "o6-a3",
+       "index": "oracle-logs-alert-2026.07",
+       "ts": "2026-07-11T04:17:05Z"
+      }
+     ],
+     "first_ts": "2026-07-11T04:17:05Z",
+     "last_ts": "2026-07-11T04:17:05Z",
+     "message": "Incident 48291 created, dump file: /u01/app/oracle/diag/rdbms/cdb1/cdb1/incident/incdir_48291/cdb1_ora_28311_i48291.trc",
+     "rule": "incident_error",
+     "template": "Incident # created, dump file: /u#/app/oracle/diag/rdbms/cdb#/cdb#/incident/incdir_#/cdb#_ora_#_i#.trc"
+    }
+   ],
+   "routine_counters": {
+    "log_switch": 1
+   },
+   "total_events": 4
+  },
+  "dataguard": {
+   "by_class": {},
+   "dropped_notable_groups": {},
+   "notable": [],
+   "routine_counters": {},
+   "total_events": 0
+  },
+  "listener": {
+   "by_class": {},
+   "dropped_notable_groups": {},
+   "notable": [],
+   "routine_counters": {},
+   "total_events": 0
+  }
+ },
+ "totals": {
+  "events": 4,
+  "notable_events": 3,
+  "notable_groups": 3
+ },
+ "window": {
+  "day": "2026-07-11",
+  "from": "2026-07-11T00:00:00Z",
+  "to": "2026-07-12T00:00:00Z"
+ }
+}

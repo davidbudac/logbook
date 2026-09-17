@@ -1,0 +1,191 @@
+{
+ "changes": [
+  {
+   "count": 1,
+   "day": "2026-07-19",
+   "message": "Starting ORACLE instance (normal) (OS id: 9134)",
+   "rule": "instance_startup",
+   "ts": "2026-07-19T02:14:05Z"
+  },
+  {
+   "count": 2,
+   "day": "2026-07-19",
+   "message": "ALTER SYSTEM SET log_archive_dest_state_2='ENABLE' SCOPE=BOTH;",
+   "rule": "parameter_change",
+   "ts": "2026-07-19T02:15:12Z"
+  },
+  {
+   "count": 1,
+   "day": "2026-07-19",
+   "message": "ALTER DATABASE DATAFILE '/u01/oradata/CDB1/users01.dbf' RESIZE 8G",
+   "rule": "datafile_change",
+   "ts": "2026-07-19T02:31:09Z"
+  },
+  {
+   "count": 1,
+   "day": "2026-07-19",
+   "message": "alter pluggable database all close immediate",
+   "rule": "db_mount_open",
+   "ts": "2026-07-19T04:05:33Z"
+  }
+ ],
+ "db": "cdb1",
+ "deltas": [
+  {
+   "change": "ALTER DATABASE DATAFILE '/u01/oradata/CDB1/users01.dbf' RESIZE 8G",
+   "change_rule": "datafile_change",
+   "change_ts": "2026-07-19T02:31:09Z",
+   "codes": [
+    "ORA-1555"
+   ],
+   "first_ts": "2026-07-19T03:41:22Z",
+   "gap_s": 4213,
+   "rule": "ora_error",
+   "source": "alert",
+   "type": "after_change"
+  }
+ ],
+ "generated_by": "dbwiki-compactor/(fixture)",
+ "notable": true,
+ "pattern_versions": {
+  "alert": 2,
+  "dataguard": 1,
+  "listener": 1
+ },
+ "sources": {
+  "alert": {
+   "by_class": {
+    "error": 1,
+    "lifecycle": 5,
+    "routine": 1
+   },
+   "dropped_notable_groups": {},
+   "notable": [
+    {
+     "class": "error",
+     "codes": [
+      "ORA-1555"
+     ],
+     "count": 1,
+     "es_samples": [
+      {
+       "id": "lc-a6",
+       "index": "oracle-logs-alert-2026.07",
+       "ts": "2026-07-19T03:41:22Z"
+      }
+     ],
+     "first_ts": "2026-07-19T03:41:22Z",
+     "last_ts": "2026-07-19T03:41:22Z",
+     "message": "ORA-01555: snapshot too old: rollback segment number 7 with name \"_SYSSMU7_3597175182$\" too small",
+     "rule": "ora_error",
+     "template": "ORA-01555: snapshot too old: rollback segment number # with name \"_SYSSMU#_#$\" too small"
+    },
+    {
+     "class": "lifecycle",
+     "codes": [],
+     "count": 1,
+     "es_samples": [
+      {
+       "id": "lc-a1",
+       "index": "oracle-logs-alert-2026.07",
+       "ts": "2026-07-19T02:14:05Z"
+      }
+     ],
+     "first_ts": "2026-07-19T02:14:05Z",
+     "headline": "Starting ORACLE instance (normal) (OS id: 9134)",
+     "last_ts": "2026-07-19T02:14:05Z",
+     "message": "Starting ORACLE instance (normal) (OS id: 9134)",
+     "rule": "instance_startup",
+     "template": "Starting ORACLE instance (normal) (OS id: #)"
+    },
+    {
+     "class": "lifecycle",
+     "codes": [],
+     "count": 2,
+     "es_samples": [
+      {
+       "id": "lc-a2",
+       "index": "oracle-logs-alert-2026.07",
+       "ts": "2026-07-19T02:15:12Z"
+      },
+      {
+       "id": "lc-a3",
+       "index": "oracle-logs-alert-2026.07",
+       "ts": "2026-07-19T02:16:48Z"
+      }
+     ],
+     "first_ts": "2026-07-19T02:15:12Z",
+     "headline": "ALTER SYSTEM SET log_archive_dest_state_2='ENABLE' SCOPE=BOTH;",
+     "last_ts": "2026-07-19T02:16:48Z",
+     "message": "ALTER SYSTEM SET log_archive_dest_state_2='ENABLE' SCOPE=BOTH;",
+     "rule": "parameter_change",
+     "template": "ALTER SYSTEM SET log_archive_dest_state_#='ENABLE' SCOPE=BOTH;"
+    },
+    {
+     "class": "lifecycle",
+     "codes": [],
+     "count": 1,
+     "es_samples": [
+      {
+       "id": "lc-a4",
+       "index": "oracle-logs-alert-2026.07",
+       "ts": "2026-07-19T02:31:09Z"
+      }
+     ],
+     "first_ts": "2026-07-19T02:31:09Z",
+     "headline": "ALTER DATABASE DATAFILE '/u01/oradata/CDB1/users01.dbf' RESIZE 8G",
+     "last_ts": "2026-07-19T02:31:09Z",
+     "message": "ALTER DATABASE DATAFILE '/u01/oradata/CDB1/users01.dbf' RESIZE 8G",
+     "rule": "datafile_change",
+     "template": "ALTER DATABASE DATAFILE '/u#/oradata/CDB#/users#.dbf' RESIZE #G"
+    },
+    {
+     "class": "lifecycle",
+     "codes": [],
+     "count": 1,
+     "es_samples": [
+      {
+       "id": "lc-a7",
+       "index": "oracle-logs-alert-2026.07",
+       "ts": "2026-07-19T04:05:33Z"
+      }
+     ],
+     "first_ts": "2026-07-19T04:05:33Z",
+     "headline": "alter pluggable database all close immediate",
+     "last_ts": "2026-07-19T04:05:33Z",
+     "message": "Stopping background process MMON\nalter pluggable database all close immediate",
+     "rule": "db_mount_open",
+     "template": "Stopping background process MMON alter pluggable database all close immediate"
+    }
+   ],
+   "routine_counters": {
+    "log_switch": 1
+   },
+   "total_events": 7
+  },
+  "dataguard": {
+   "by_class": {},
+   "dropped_notable_groups": {},
+   "notable": [],
+   "routine_counters": {},
+   "total_events": 0
+  },
+  "listener": {
+   "by_class": {},
+   "dropped_notable_groups": {},
+   "notable": [],
+   "routine_counters": {},
+   "total_events": 0
+  }
+ },
+ "totals": {
+  "events": 7,
+  "notable_events": 6,
+  "notable_groups": 5
+ },
+ "window": {
+  "day": "2026-07-19",
+  "from": "2026-07-19T00:00:00Z",
+  "to": "2026-07-20T00:00:00Z"
+ }
+}

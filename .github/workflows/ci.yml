@@ -1,0 +1,42 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+        with:
+          python-version: "3.13"
+      - run: uv run --frozen ruff check .
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+        with:
+          python-version: "3.13"
+      - run: uv run --frozen pytest tests/
+      # a test run must never rewrite a golden: DBWIKI_UPDATE_GOLDENS is
+      # opt-in for humans and is deliberately not set here
+      - run: git diff --exit-code -- tests/fixtures/golden
+      - run: git diff --check
+
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      # docs/site.html is generated from docs/*.md and committed; it must be current
+      - uses: astral-sh/setup-uv@v5
+        with:
+          python-version: "3.13"
+      - run: uv run --frozen python docs/build_site.py
+      - run: git diff --exit-code -- docs/site.html

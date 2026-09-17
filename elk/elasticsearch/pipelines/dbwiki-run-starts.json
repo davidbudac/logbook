@@ -1,0 +1,11 @@
+{
+  "description": "One doc appended at the start of every recorded command (source: .state/elk/run_starts.jsonl, written by run_recorder in src/dbwiki/health.py before yield). @timestamp = command start; the matching finish event lands in run_health.",
+  "processors": [
+    { "date": { "field": "started", "target_field": "@timestamp", "formats": ["ISO8601"], "if": "ctx.started != null", "ignore_failure": true } },
+    { "set": { "field": "event.module", "value": "dbwiki" } },
+    { "set": { "field": "event.dataset", "value": "dbwiki.run_starts" } }
+  ],
+  "on_failure": [
+    { "append": { "field": "tags", "value": "dbwiki_pipeline_failure" } }
+  ]
+}

@@ -1,0 +1,620 @@
+{
+ "name": "partial_window_anomaly",
+ "title": "partial 2h intra-day window: 30 log switches = 15/h against a 1/h full-day baseline (current rate_anomaly delta schema)",
+ "layout": "ecs",
+ "db": "cdb1",
+ "window": {
+  "from": "2026-07-12T00:00:00Z",
+  "to": "2026-07-12T02:00:00Z",
+  "day": "2026-07-12"
+ },
+ "registry": {
+  "daily_counts": [
+   {
+    "day": "2026-07-09",
+    "source": "alert",
+    "total": 24,
+    "counters": {
+     "log_switch": 24
+    }
+   },
+   {
+    "day": "2026-07-10",
+    "source": "alert",
+    "total": 24,
+    "counters": {
+     "log_switch": 24
+    }
+   },
+   {
+    "day": "2026-07-11",
+    "source": "alert",
+    "total": 24,
+    "counters": {
+     "log_switch": 24
+    }
+   }
+  ]
+ },
+ "trigger": {
+  "ledger_entry": null,
+  "manual": false,
+  "consolidation": false
+ },
+ "hits": {
+  "alert": [
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.12-000021",
+    "_id": "pw-a000",
+    "_source": {
+     "@timestamp": "2026-07-12T00:00:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "Thread 1 advanced to log sequence 5000 (LGWR switch)"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.12-000021",
+    "_id": "pw-a001",
+    "_source": {
+     "@timestamp": "2026-07-12T00:04:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "Thread 1 advanced to log sequence 5001 (LGWR switch)"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.12-000021",
+    "_id": "pw-a002",
+    "_source": {
+     "@timestamp": "2026-07-12T00:08:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "Thread 1 advanced to log sequence 5002 (LGWR switch)"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.12-000021",
+    "_id": "pw-a003",
+    "_source": {
+     "@timestamp": "2026-07-12T00:12:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "Thread 1 advanced to log sequence 5003 (LGWR switch)"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.12-000021",
+    "_id": "pw-a004",
+    "_source": {
+     "@timestamp": "2026-07-12T00:16:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "Thread 1 advanced to log sequence 5004 (LGWR switch)"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.12-000021",
+    "_id": "pw-a005",
+    "_source": {
+     "@timestamp": "2026-07-12T00:20:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "Thread 1 advanced to log sequence 5005 (LGWR switch)"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.12-000021",
+    "_id": "pw-a006",
+    "_source": {
+     "@timestamp": "2026-07-12T00:24:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "Thread 1 advanced to log sequence 5006 (LGWR switch)"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.12-000021",
+    "_id": "pw-a007",
+    "_source": {
+     "@timestamp": "2026-07-12T00:28:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "Thread 1 advanced to log sequence 5007 (LGWR switch)"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.12-000021",
+    "_id": "pw-a008",
+    "_source": {
+     "@timestamp": "2026-07-12T00:32:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "Thread 1 advanced to log sequence 5008 (LGWR switch)"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.12-000021",
+    "_id": "pw-a009",
+    "_source": {
+     "@timestamp": "2026-07-12T00:36:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "Thread 1 advanced to log sequence 5009 (LGWR switch)"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.12-000021",
+    "_id": "pw-a010",
+    "_source": {
+     "@timestamp": "2026-07-12T00:40:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "Thread 1 advanced to log sequence 5010 (LGWR switch)"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.12-000021",
+    "_id": "pw-a011",
+    "_source": {
+     "@timestamp": "2026-07-12T00:44:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "Thread 1 advanced to log sequence 5011 (LGWR switch)"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.12-000021",
+    "_id": "pw-a012",
+    "_source": {
+     "@timestamp": "2026-07-12T00:48:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "Thread 1 advanced to log sequence 5012 (LGWR switch)"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.12-000021",
+    "_id": "pw-a013",
+    "_source": {
+     "@timestamp": "2026-07-12T00:52:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "Thread 1 advanced to log sequence 5013 (LGWR switch)"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.12-000021",
+    "_id": "pw-a014",
+    "_source": {
+     "@timestamp": "2026-07-12T00:56:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "Thread 1 advanced to log sequence 5014 (LGWR switch)"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.12-000021",
+    "_id": "pw-a015",
+    "_source": {
+     "@timestamp": "2026-07-12T01:00:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "Thread 1 advanced to log sequence 5015 (LGWR switch)"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.12-000021",
+    "_id": "pw-a016",
+    "_source": {
+     "@timestamp": "2026-07-12T01:04:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "Thread 1 advanced to log sequence 5016 (LGWR switch)"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.12-000021",
+    "_id": "pw-a017",
+    "_source": {
+     "@timestamp": "2026-07-12T01:08:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "Thread 1 advanced to log sequence 5017 (LGWR switch)"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.12-000021",
+    "_id": "pw-a018",
+    "_source": {
+     "@timestamp": "2026-07-12T01:12:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "Thread 1 advanced to log sequence 5018 (LGWR switch)"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.12-000021",
+    "_id": "pw-a019",
+    "_source": {
+     "@timestamp": "2026-07-12T01:16:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "Thread 1 advanced to log sequence 5019 (LGWR switch)"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.12-000021",
+    "_id": "pw-a020",
+    "_source": {
+     "@timestamp": "2026-07-12T01:20:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "Thread 1 advanced to log sequence 5020 (LGWR switch)"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.12-000021",
+    "_id": "pw-a021",
+    "_source": {
+     "@timestamp": "2026-07-12T01:24:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "Thread 1 advanced to log sequence 5021 (LGWR switch)"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.12-000021",
+    "_id": "pw-a022",
+    "_source": {
+     "@timestamp": "2026-07-12T01:28:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "Thread 1 advanced to log sequence 5022 (LGWR switch)"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.12-000021",
+    "_id": "pw-a023",
+    "_source": {
+     "@timestamp": "2026-07-12T01:32:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "Thread 1 advanced to log sequence 5023 (LGWR switch)"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.12-000021",
+    "_id": "pw-a024",
+    "_source": {
+     "@timestamp": "2026-07-12T01:36:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "Thread 1 advanced to log sequence 5024 (LGWR switch)"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.12-000021",
+    "_id": "pw-a025",
+    "_source": {
+     "@timestamp": "2026-07-12T01:40:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "Thread 1 advanced to log sequence 5025 (LGWR switch)"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.12-000021",
+    "_id": "pw-a026",
+    "_source": {
+     "@timestamp": "2026-07-12T01:44:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "Thread 1 advanced to log sequence 5026 (LGWR switch)"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.12-000021",
+    "_id": "pw-a027",
+    "_source": {
+     "@timestamp": "2026-07-12T01:48:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "Thread 1 advanced to log sequence 5027 (LGWR switch)"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.12-000021",
+    "_id": "pw-a028",
+    "_source": {
+     "@timestamp": "2026-07-12T01:52:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "Thread 1 advanced to log sequence 5028 (LGWR switch)"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.12-000021",
+    "_id": "pw-a029",
+    "_source": {
+     "@timestamp": "2026-07-12T01:56:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "Thread 1 advanced to log sequence 5029 (LGWR switch)"
+    }
+   }
+  ],
+  "listener": [],
+  "dataguard": []
+ }
+}

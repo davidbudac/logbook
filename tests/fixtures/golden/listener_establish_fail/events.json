@@ -1,0 +1,58 @@
+[
+ {
+  "client_host": "",
+  "db": "cdb1",
+  "id": "lf-l1",
+  "index": ".ds-logs-oracle.listener-default-2026.07.11-000020",
+  "message": "11-JUL-2026 08:41:12 * (CONNECT_DATA=(SERVICE_NAME=payments.world)(CID=(PROGRAM=jdbcapp)(HOST=app07)(USER=appsvc))) * (ADDRESS=(PROTOCOL=tcp)(HOST=10.1.4.21)(PORT=44120)) * establish * payments.world * 12514",
+  "operation": "establish",
+  "os_user": "appsvc",
+  "program": "jdbcapp",
+  "return_code": 12514,
+  "service": "cdb1.world",
+  "source": "listener",
+  "ts": "2026-07-11T08:41:12Z"
+ },
+ {
+  "client_host": "",
+  "db": "cdb1",
+  "id": "lf-l2",
+  "index": ".ds-logs-oracle.listener-default-2026.07.11-000020",
+  "message": "11-JUL-2026 08:41:19 * (CONNECT_DATA=(SERVICE_NAME=payments.world)(CID=(PROGRAM=jdbcapp)(HOST=app07)(USER=appsvc))) * (ADDRESS=(PROTOCOL=tcp)(HOST=10.1.4.21)(PORT=44131)) * establish * payments.world * 12514",
+  "operation": "establish",
+  "os_user": "appsvc",
+  "program": "jdbcapp",
+  "return_code": 12514,
+  "service": "cdb1.world",
+  "source": "listener",
+  "ts": "2026-07-11T08:41:19Z"
+ },
+ {
+  "client_host": "",
+  "db": "cdb1",
+  "id": "lf-l3",
+  "index": ".ds-logs-oracle.listener-default-2026.07.11-000020",
+  "message": "11-JUL-2026 08:42:00 * service_died * payments.world * 12537",
+  "operation": "service_died",
+  "os_user": "",
+  "program": "",
+  "return_code": 12537,
+  "service": "cdb1.world",
+  "source": "listener",
+  "ts": "2026-07-11T08:42:00Z"
+ },
+ {
+  "client_host": "",
+  "db": "cdb1",
+  "id": "lf-l4",
+  "index": ".ds-logs-oracle.listener-default-2026.07.11-000020",
+  "message": "11-JUL-2026 09:00:00 * (CONNECT_DATA=(SERVICE_NAME=cdb1.world)(CID=(PROGRAM=emagent)(HOST=app01)(USER=oracle))) * (ADDRESS=(PROTOCOL=tcp)(HOST=10.1.1.9)(PORT=51902)) * establish * cdb1.world * 0",
+  "operation": "establish",
+  "os_user": "oracle",
+  "program": "emagent",
+  "return_code": 0,
+  "service": "cdb1.world",
+  "source": "listener",
+  "ts": "2026-07-11T09:00:00Z"
+ }
+]

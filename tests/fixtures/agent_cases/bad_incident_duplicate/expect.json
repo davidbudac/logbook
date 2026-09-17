@@ -1,0 +1,9 @@
+{
+ "title": "duplicate incident: opens a second page for cdb1 on 2026-07-13 while one already exists",
+ "outcome": "rollback",
+ "problems_contain": [
+  "second incident page for cdb1 2026-07-13",
+  "incidents/2026-07-13-cdb1-telemetry-blackout.md"
+ ],
+ "scored": ["incident_dedup"]
+}

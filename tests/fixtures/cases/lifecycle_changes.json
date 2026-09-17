@@ -1,0 +1,53 @@
+{
+ "name": "lifecycle_changes",
+ "title": "a maintenance night: instance restart, parameter and datafile changes beside an ORA-1555",
+ "layout": "legacy",
+ "db": "cdb1",
+ "window": {"from": "2026-07-19T00:00:00Z", "to": "2026-07-20T00:00:00Z", "day": "2026-07-19"},
+ "registry": {
+  "codes_by_source": {
+   "alert": {
+    "ORA-1555": {"first_seen": "2026-02-17T23:04:00Z", "last_seen": "2026-07-05T22:31:00Z"}
+   }
+  },
+  "daily_counts": [
+   {"day": "2026-07-17", "source": "alert", "total": 28, "counters": {"log_switch": 26}},
+   {"day": "2026-07-18", "source": "alert", "total": 27, "counters": {"log_switch": 25}}
+  ]
+ },
+ "trigger": {"ledger_entry": null, "manual": false, "consolidation": false},
+ "hits": {
+  "alert": [
+   {"_index": "oracle-logs-alert-2026.07", "_id": "lc-a1",
+    "_source": {"@timestamp": "2026-07-19T02:14:05Z", "db_name": "cdb1",
+     "oracle": {"alert_message": "Starting ORACLE instance (normal) (OS id: 9134)",
+      "msg_type": "NOTIFICATION", "msg_id": "", "msg_level": 16, "con_id": "0"}}},
+   {"_index": "oracle-logs-alert-2026.07", "_id": "lc-a2",
+    "_source": {"@timestamp": "2026-07-19T02:15:12Z", "db_name": "cdb1",
+     "oracle": {"alert_message": "ALTER SYSTEM SET log_archive_dest_state_2='ENABLE' SCOPE=BOTH;",
+      "msg_type": "NOTIFICATION", "msg_id": "", "msg_level": 16, "con_id": "0"}}},
+   {"_index": "oracle-logs-alert-2026.07", "_id": "lc-a3",
+    "_source": {"@timestamp": "2026-07-19T02:16:48Z", "db_name": "cdb1",
+     "oracle": {"alert_message": "ALTER SYSTEM SET log_archive_dest_state_3='ENABLE' SCOPE=BOTH;",
+      "msg_type": "NOTIFICATION", "msg_id": "", "msg_level": 16, "con_id": "0"}}},
+   {"_index": "oracle-logs-alert-2026.07", "_id": "lc-a4",
+    "_source": {"@timestamp": "2026-07-19T02:31:09Z", "db_name": "cdb1",
+     "oracle": {"alert_message": "ALTER DATABASE DATAFILE '/u01/oradata/CDB1/users01.dbf' RESIZE 8G",
+      "msg_type": "NOTIFICATION", "msg_id": "", "msg_level": 16, "con_id": "0"}}},
+   {"_index": "oracle-logs-alert-2026.07", "_id": "lc-a5",
+    "_source": {"@timestamp": "2026-07-19T03:00:00Z", "db_name": "cdb1",
+     "oracle": {"alert_message": "Thread 1 advanced to log sequence 5188 (LGWR switch)",
+      "msg_type": "NOTIFICATION", "msg_id": "", "msg_level": 16, "con_id": "0"}}},
+   {"_index": "oracle-logs-alert-2026.07", "_id": "lc-a6",
+    "_source": {"@timestamp": "2026-07-19T03:41:22Z", "db_name": "cdb1",
+     "oracle": {"alert_message": "ORA-01555: snapshot too old: rollback segment number 7 with name \"_SYSSMU7_3597175182$\" too small",
+      "msg_type": "ERROR", "msg_id": "", "msg_level": 1, "con_id": "3"}}},
+   {"_index": "oracle-logs-alert-2026.07", "_id": "lc-a7",
+    "_source": {"@timestamp": "2026-07-19T04:05:33Z", "db_name": "cdb1",
+     "oracle": {"alert_message": "Stopping background process MMON\nalter pluggable database all close immediate",
+      "msg_type": "NOTIFICATION", "msg_id": "", "msg_level": 16, "con_id": "0"}}}
+  ],
+  "listener": [],
+  "dataguard": []
+ }
+}

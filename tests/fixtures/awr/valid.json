@@ -1,0 +1,32 @@
+{
+ "awr_schema_version": 1,
+ "db": "cdb1",
+ "instance": "cdb1",
+ "snapshot": {
+  "begin_id": 4711,
+  "end_id": 4712,
+  "begin_time": "2026-07-12T10:00:00Z",
+  "end_time": "2026-07-12T11:00:00Z"
+ },
+ "db_time_s": 1832.4,
+ "elapsed_s": 3600.0,
+ "load_profile": {
+  "db_time_per_s": 0.51,
+  "executes_per_s": 120.4,
+  "redo_bytes_per_s": 184320.0,
+  "user_calls_per_s": 44.2
+ },
+ "top_waits": [
+  {"event": "db file sequential read", "time_s": 812.0, "pct_db_time": 44.3, "waits": 91234},
+  {"event": "log file sync", "time_s": 190.5, "pct_db_time": 10.4, "waits": 20411},
+  {"event": "DB CPU", "time_s": 168.2, "pct_db_time": 9.2}
+ ],
+ "top_sql": [
+  {"sql_id": "9babjv8yq8ru3", "elapsed_s": 402.1, "execs": 1200},
+  {"sql_id": "b7k2m9x4nq1pz", "elapsed_s": 118.0, "execs": 3}
+ ],
+ "collected": {
+  "tool": "awr-extract.sh",
+  "collected_at": "2026-07-12T11:05:00Z"
+ }
+}

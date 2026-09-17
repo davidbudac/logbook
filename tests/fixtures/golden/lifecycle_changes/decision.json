@@ -1,0 +1,71 @@
+{
+ "content_hash": "3154e0c2e21120d2",
+ "db": "cdb1",
+ "explanation": "cdb1: wake (strong tier) \u2014 after_change, notable_class.",
+ "model_tier": "strong",
+ "outcome": "wake",
+ "reasons": [
+  {
+   "code": "after_change",
+   "evidence": {
+    "change": "ALTER DATABASE DATAFILE '/u01/oradata/CDB1/users01.dbf' RESIZE 8G",
+    "change_rule": "datafile_change",
+    "change_ts": "2026-07-19T02:31:09Z",
+    "codes": [
+     "ORA-1555"
+    ],
+    "first_ts": "2026-07-19T03:41:22Z",
+    "gap_s": 4213,
+    "rule": "ora_error",
+    "source": "alert",
+    "type": "after_change"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "error",
+    "count": 1,
+    "rule": "ora_error"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "lifecycle",
+    "count": 1,
+    "rule": "instance_startup"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "lifecycle",
+    "count": 2,
+    "rule": "parameter_change"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "lifecycle",
+    "count": 1,
+    "rule": "datafile_change"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "lifecycle",
+    "count": 1,
+    "rule": "db_mount_open"
+   }
+  }
+ ],
+ "schema_version": 1,
+ "window": {
+  "day": "2026-07-19",
+  "from": "2026-07-19T00:00:00Z",
+  "to": "2026-07-20T00:00:00Z"
+ }
+}

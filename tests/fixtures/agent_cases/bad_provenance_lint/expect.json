@@ -1,0 +1,10 @@
+{
+ "title": "provenance defects on a touched page: a digest that was never written and a wikilink to a missing error page",
+ "outcome": "rollback",
+ "problems_contain": [
+  "digest-missing",
+  "digests/cdb1/2026-07-99.md",
+  "wikilink-broken"
+ ],
+ "scored": ["provenance_lint"]
+}

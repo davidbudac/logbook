@@ -1,0 +1,10 @@
+{
+  "preset": "",
+  "operation": {"fields": []},
+  "load": {
+    "fields": [
+      {"key": "llm.load.contextLength", "value": 32768},
+      {"key": "llm.load.llama.flashAttention", "value": true}
+    ]
+  }
+}

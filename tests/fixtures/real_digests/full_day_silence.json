@@ -1,0 +1,60 @@
+{
+ "db": "cdb1",
+ "window": {
+  "from": "2026-06-24T00:00:00Z",
+  "to": "2026-06-25T00:00:00Z",
+  "day": "2026-06-24"
+ },
+ "generated_by": "dbwiki-compactor/0.1.0",
+ "pattern_versions": {
+  "alert": 1,
+  "listener": 1,
+  "dataguard": 1
+ },
+ "sources": {
+  "alert": {
+   "total_events": 0,
+   "by_class": {},
+   "routine_counters": {},
+   "notable": [],
+   "dropped_notable_groups": {}
+  },
+  "listener": {
+   "total_events": 0,
+   "by_class": {},
+   "routine_counters": {},
+   "notable": [],
+   "dropped_notable_groups": {}
+  },
+  "dataguard": {
+   "total_events": 0,
+   "by_class": {},
+   "routine_counters": {},
+   "notable": [],
+   "dropped_notable_groups": {}
+  }
+ },
+ "deltas": [
+  {
+   "type": "silence",
+   "source": "alert",
+   "detail": "no alert events from cdb1 in window"
+  },
+  {
+   "type": "silence",
+   "source": "listener",
+   "detail": "no listener events from cdb1 in window"
+  },
+  {
+   "type": "silence",
+   "source": "dataguard",
+   "detail": "no dataguard events from cdb1 in window"
+  }
+ ],
+ "totals": {
+  "events": 0,
+  "notable_events": 0,
+  "notable_groups": 0
+ },
+ "notable": true
+}

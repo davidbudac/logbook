@@ -1,0 +1,62 @@
+[
+ {
+  "con_id": "3",
+  "db": "cdb1",
+  "id": "tc-a1",
+  "index": ".ds-logs-oracle.alert-default-2026.07.11-000001",
+  "level": 1,
+  "message": "ORA-00600: internal error code, arguments: [kdsgrp1], [], [], [], [], [], [], []",
+  "msg_id": "opiexe:4183:2939367799",
+  "msg_type": "INCIDENT_ERROR",
+  "source": "alert",
+  "ts": "2026-07-11T04:17:03Z"
+ },
+ {
+  "con_id": "3",
+  "db": "cdb1",
+  "id": "tc-a2",
+  "index": ".ds-logs-oracle.alert-default-2026.07.11-000001",
+  "level": 1,
+  "message": "Errors in file /u01/app/oracle/diag/rdbms/cdb1/cdb1/trace/cdb1_ora_7903.trc  (incident=48291):",
+  "msg_id": "",
+  "msg_type": "ERROR",
+  "source": "alert",
+  "ts": "2026-07-11T04:17:03Z"
+ },
+ {
+  "con_id": "3",
+  "db": "cdb1",
+  "id": "tc-a3",
+  "index": ".ds-logs-oracle.alert-default-2026.07.11-000001",
+  "level": 1,
+  "message": "Incident 48291 created, dump file: /u01/app/oracle/diag/rdbms/cdb1/cdb1/incident/incdir_48291/cdb1_ora_7903_i48291.trc",
+  "msg_id": "",
+  "msg_type": "INCIDENT_ERROR",
+  "source": "alert",
+  "ts": "2026-07-11T04:17:05Z"
+ },
+ {
+  "con_id": "3",
+  "db": "cdb1",
+  "id": "tc-a4",
+  "index": ".ds-logs-oracle.alert-default-2026.07.11-000001",
+  "level": 1,
+  "message": "Errors in file /u01/app/oracle/diag/rdbms/cdb1/cdb1/trace/cdb1_ora_7903.trc:",
+  "msg_id": "",
+  "msg_type": "ERROR",
+  "source": "alert",
+  "ts": "2026-07-11T06:02:11Z"
+ },
+ {
+  "con_id": "0",
+  "db": "cdb1",
+  "id": "tc-a5",
+  "index": ".ds-logs-oracle.alert-default-2026.07.11-000001",
+  "level": 16,
+  "message": "Thread 1 advanced to log sequence 4720 (LGWR switch)",
+  "msg_id": "",
+  "msg_type": "NOTIFICATION",
+  "source": "alert",
+  "ts": "2026-07-11T07:00:00Z"
+ }
+]

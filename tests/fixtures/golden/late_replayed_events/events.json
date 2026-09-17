@@ -1,0 +1,50 @@
+[
+ {
+  "con_id": "",
+  "db": "cdb1",
+  "id": "lr-a1",
+  "index": ".ds-logs-oracle.alert-default-2026.07.12-000021",
+  "level": null,
+  "message": "Thread 1 advanced to log sequence 4800 (LGWR switch)",
+  "msg_id": "",
+  "msg_type": "NOTIFICATION",
+  "source": "alert",
+  "ts": "2026-07-12T01:00:00Z"
+ },
+ {
+  "con_id": "",
+  "db": "cdb1",
+  "id": "lr-a2",
+  "index": ".ds-logs-oracle.alert-default-2026.07.12-000021",
+  "level": null,
+  "message": "ORA-03113: end-of-file on communication channel",
+  "msg_id": "",
+  "msg_type": "ERROR",
+  "source": "alert",
+  "ts": "2026-07-12T03:00:00Z"
+ },
+ {
+  "con_id": "",
+  "db": "cdb1",
+  "id": "lr-a2",
+  "index": ".ds-logs-oracle.alert-default-2026.07.12-000021",
+  "level": null,
+  "message": "ORA-03113: end-of-file on communication channel",
+  "msg_id": "",
+  "msg_type": "ERROR",
+  "source": "alert",
+  "ts": "2026-07-12T03:00:00Z"
+ },
+ {
+  "con_id": "",
+  "db": "cdb1",
+  "id": "lr-a3",
+  "index": ".ds-logs-oracle.alert-default-2026.07.12-000021",
+  "level": null,
+  "message": "Thread 1 advanced to log sequence 4801 (LGWR switch)",
+  "msg_id": "",
+  "msg_type": "NOTIFICATION",
+  "source": "alert",
+  "ts": "2026-07-12T04:00:00Z"
+ }
+]

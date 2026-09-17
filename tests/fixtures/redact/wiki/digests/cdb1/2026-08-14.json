@@ -1,0 +1,13 @@
+{"db": "cdb1", "window": {"from": "2026-08-14T00:00:00Z", "to": "2026-08-14T22:15:00Z"}, "notable": true,
+ "sources": {"dataguard": {"total_events": 328, "notable": [
+   {"rule": "connection_error", "class": "error", "count": 44, "first_ts": "2026-08-14T11:51:04.959Z", "last_ts": "2026-08-14T13:22:57.708Z",
+    "codes": ["ORA-12154", "ORA-16607", "ORA-16782"],
+    "message": "Failed to connect to remote database cdb1_stby. Error is ORA-12154\nData Guard Broker Status Summary:\n  Primary Database            cdb1   Error  ORA-16782: instance not open for read and write access\n  Physical Standby Database   cdb1_stby   Error  ORA-12154: TNS:could not resolve the connect identifier specified",
+    "template": "Failed to connect to remote database cdb#_stby. Error is ORA-12154 Data Guard Broker Status Summary",
+    "es_samples": [{"index": ".ds-logs-oracle.dataguard-default-2026.08.12-000007", "id": "AZ__xhOhbgO2j5V9hM5G", "ts": "2026-08-14T11:51:04.959Z"}]}]},
+  "alert": {"total_events": 3799, "notable": [
+   {"rule": "ora_error", "class": "error", "count": 2, "first_ts": "2026-08-14T10:16:56.047Z", "last_ts": "2026-08-14T10:16:56.047Z",
+    "codes": ["ORA-12154"],
+    "message": "Errors in file /u01/app/oracle/diag/rdbms/cdb1/cdb1/trace/cdb1_tt00_2614.trc:\nORA-12154: TNS:could not resolve the connect identifier specified",
+    "template": "Errors in file /u#/app/oracle/diag/rdbms/cdb#/cdb#/trace/cdb#_tt#_#.trc: ORA-12154: TNS:could not resolve the connect identifier specified",
+    "es_samples": []}]}}}

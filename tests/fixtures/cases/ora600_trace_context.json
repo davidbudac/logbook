@@ -1,0 +1,74 @@
+{
+ "name": "ora600_trace_context",
+ "title": "ORA-00600 whose trace file is in the trace stream, excerpted into the digest",
+ "layout": "ecs",
+ "db": "cdb1",
+ "window": {"from": "2026-07-11T00:00:00Z", "to": "2026-07-12T00:00:00Z", "day": "2026-07-11"},
+ "registry": {
+  "codes_by_source": {
+   "alert": {"ORA-600": {"first_seen": "2026-05-02T08:00:00Z", "last_seen": "2026-07-01T08:00:00Z"}}
+  },
+  "daily_counts": [
+   {"day": "2026-07-09", "source": "alert", "total": 27, "counters": {"log_switch": 25}},
+   {"day": "2026-07-10", "source": "alert", "total": 26, "counters": {"log_switch": 24}}
+  ]
+ },
+ "trigger": {"ledger_entry": null, "manual": false, "consolidation": false},
+ "hits": {
+  "alert": [
+   {"_index": ".ds-logs-oracle.alert-default-2026.07.11-000001", "_id": "tc-a1",
+    "_source": {"@timestamp": "2026-07-11T04:17:03Z",
+     "oracle": {"database": {"name": "cdb1"},
+      "alert_message": "ORA-00600: internal error code, arguments: [kdsgrp1], [], [], [], [], [], [], []",
+      "msg_type": "INCIDENT_ERROR", "msg_id": "opiexe:4183:2939367799", "msg_level": 1, "con_id": "3"}}},
+   {"_index": ".ds-logs-oracle.alert-default-2026.07.11-000001", "_id": "tc-a2",
+    "_source": {"@timestamp": "2026-07-11T04:17:03Z",
+     "oracle": {"database": {"name": "cdb1"},
+      "alert_message": "Errors in file /u01/app/oracle/diag/rdbms/cdb1/cdb1/trace/cdb1_ora_7903.trc  (incident=48291):",
+      "msg_type": "ERROR", "msg_id": "", "msg_level": 1, "con_id": "3"}}},
+   {"_index": ".ds-logs-oracle.alert-default-2026.07.11-000001", "_id": "tc-a3",
+    "_source": {"@timestamp": "2026-07-11T04:17:05Z",
+     "oracle": {"database": {"name": "cdb1"},
+      "alert_message": "Incident 48291 created, dump file: /u01/app/oracle/diag/rdbms/cdb1/cdb1/incident/incdir_48291/cdb1_ora_7903_i48291.trc",
+      "msg_type": "INCIDENT_ERROR", "msg_id": "", "msg_level": 1, "con_id": "3"}}},
+   {"_index": ".ds-logs-oracle.alert-default-2026.07.11-000001", "_id": "tc-a4",
+    "_source": {"@timestamp": "2026-07-11T06:02:11Z",
+     "oracle": {"database": {"name": "cdb1"},
+      "alert_message": "Errors in file /u01/app/oracle/diag/rdbms/cdb1/cdb1/trace/cdb1_ora_7903.trc:",
+      "msg_type": "ERROR", "msg_id": "", "msg_level": 1, "con_id": "3"}}},
+   {"_index": ".ds-logs-oracle.alert-default-2026.07.11-000001", "_id": "tc-a5",
+    "_source": {"@timestamp": "2026-07-11T07:00:00Z",
+     "oracle": {"database": {"name": "cdb1"},
+      "alert_message": "Thread 1 advanced to log sequence 4720 (LGWR switch)",
+      "msg_type": "NOTIFICATION", "msg_id": "", "msg_level": 16, "con_id": "0"}}}
+  ],
+  "listener": [],
+  "dataguard": [],
+  "trace": [
+   {"_index": ".ds-logs-oracle.trace-default-2026.07.11-000001", "_id": "tc-t1",
+    "_source": {"@timestamp": "2026-07-11T04:17:04Z",
+     "log": {"offset": 1},
+     "oracle": {"database": {"name": "cdb1"},
+      "trace": {"file": "/u01/app/oracle/diag/rdbms/cdb1/cdb1/trace/cdb1_ora_7903.trc"}},
+     "message": "Trace file /u01/app/oracle/diag/rdbms/cdb1/cdb1/trace/cdb1_ora_7903.trc\nOracle Database 19c Enterprise Edition Release 19.0.0.0.0 - Production\nVersion 19.27.0.0.0\nORACLE_HOME:    /u01/app/oracle/product/19.0.0/dbhome_1\nNode name:\tol9-19-dg1.localdomain\nInstance name: cdb1\nDatabase name: cdb1\nRedo thread mounted by this instance: 1\nUnix process pid: 7903, image: oracle@ol9-19-dg1.localdomain (TNS V1-V3)"}},
+   {"_index": ".ds-logs-oracle.trace-default-2026.07.11-000001", "_id": "tc-t2",
+    "_source": {"@timestamp": "2026-07-11T04:17:06Z",
+     "log": {"offset": 1204},
+     "oracle": {"database": {"name": "cdb1"},
+      "trace": {"file": "/u01/app/oracle/diag/rdbms/cdb1/cdb1/trace/cdb1_ora_7903.trc"}},
+     "message": "*** 2026-07-11T04:17:04.118000+00:00 (CDB$ROOT(1))\n*** SESSION ID:(296.32736) 2026-07-11T04:17:04.118210+00:00\n*** SERVICE NAME:(SYS$USERS) 2026-07-11T04:17:04.118220+00:00\nDDE: Problem Key 'ORA 600 [kdsgrp1]' was flood controlled (0x2) (incident: 48291)\nORA-00600: internal error code, arguments: [kdsgrp1], [], [], [], [], [], [], []\nCurrent SQL statement for this session:\nSELECT /*+ FULL(t) */ COUNT(*) FROM soe.orders t\n----- Call Stack Trace -----\nkdsgrp1 <- kdsgrp <- qertbFetchByRowID <- opifch2 <- opiefn0\n----- End of Call Stack Trace -----"}},
+   {"_index": ".ds-logs-oracle.trace-default-2026.07.11-000001", "_id": "tc-t3",
+    "_source": {"@timestamp": "2026-07-11T06:02:12Z",
+     "log": {"offset": 4402},
+     "oracle": {"database": {"name": "cdb1"},
+      "trace": {"file": "/u01/app/oracle/diag/rdbms/cdb1/cdb1/trace/cdb1_ora_7903.trc"}},
+     "message": "*** 2026-07-11T06:02:11.900000+00:00 (CDB$ROOT(1))\nblock corruption check reported no further problems\nsession closed"}},
+   {"_index": ".ds-logs-oracle.trace-default-2026.07.11-000001", "_id": "tc-t4",
+    "_source": {"@timestamp": "2026-07-11T09:41:00Z",
+     "log": {"offset": 512},
+     "oracle": {"database": {"name": "cdb1"},
+      "trace": {"file": "/u01/app/oracle/diag/rdbms/cdb1/cdb1/trace/cdb1_m000_8112.trc"}},
+     "message": "Trace file /u01/app/oracle/diag/rdbms/cdb1/cdb1/trace/cdb1_m000_8112.trc\nAutomatic Workload Repository snapshot taken"}}
+  ]
+ }
+}
