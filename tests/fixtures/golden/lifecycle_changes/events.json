@@ -1,0 +1,86 @@
+[
+ {
+  "con_id": "0",
+  "db": "cdb1",
+  "id": "lc-a1",
+  "index": "oracle-logs-alert-2026.07",
+  "level": 16,
+  "message": "Starting ORACLE instance (normal) (OS id: 9134)",
+  "msg_id": "",
+  "msg_type": "NOTIFICATION",
+  "source": "alert",
+  "ts": "2026-07-19T02:14:05Z"
+ },
+ {
+  "con_id": "0",
+  "db": "cdb1",
+  "id": "lc-a2",
+  "index": "oracle-logs-alert-2026.07",
+  "level": 16,
+  "message": "ALTER SYSTEM SET log_archive_dest_state_2='ENABLE' SCOPE=BOTH;",
+  "msg_id": "",
+  "msg_type": "NOTIFICATION",
+  "source": "alert",
+  "ts": "2026-07-19T02:15:12Z"
+ },
+ {
+  "con_id": "0",
+  "db": "cdb1",
+  "id": "lc-a3",
+  "index": "oracle-logs-alert-2026.07",
+  "level": 16,
+  "message": "ALTER SYSTEM SET log_archive_dest_state_3='ENABLE' SCOPE=BOTH;",
+  "msg_id": "",
+  "msg_type": "NOTIFICATION",
+  "source": "alert",
+  "ts": "2026-07-19T02:16:48Z"
+ },
+ {
+  "con_id": "0",
+  "db": "cdb1",
+  "id": "lc-a4",
+  "index": "oracle-logs-alert-2026.07",
+  "level": 16,
+  "message": "ALTER DATABASE DATAFILE '/u01/oradata/CDB1/users01.dbf' RESIZE 8G",
+  "msg_id": "",
+  "msg_type": "NOTIFICATION",
+  "source": "alert",
+  "ts": "2026-07-19T02:31:09Z"
+ },
+ {
+  "con_id": "0",
+  "db": "cdb1",
+  "id": "lc-a5",
+  "index": "oracle-logs-alert-2026.07",
+  "level": 16,
+  "message": "Thread 1 advanced to log sequence 5188 (LGWR switch)",
+  "msg_id": "",
+  "msg_type": "NOTIFICATION",
+  "source": "alert",
+  "ts": "2026-07-19T03:00:00Z"
+ },
+ {
+  "con_id": "3",
+  "db": "cdb1",
+  "id": "lc-a6",
+  "index": "oracle-logs-alert-2026.07",
+  "level": 1,
+  "message": "ORA-01555: snapshot too old: rollback segment number 7 with name \"_SYSSMU7_3597175182$\" too small",
+  "msg_id": "",
+  "msg_type": "ERROR",
+  "source": "alert",
+  "ts": "2026-07-19T03:41:22Z"
+ },
+ {
+  "con_id": "0",
+  "db": "cdb1",
+  "id": "lc-a7",
+  "index": "oracle-logs-alert-2026.07",
+  "level": 16,
+  "message": "Stopping background process MMON\nalter pluggable database all close immediate",
+  "msg_id": "",
+  "msg_type": "NOTIFICATION",
+  "source": "alert",
+  "ts": "2026-07-19T04:05:33Z"
+ }
+]

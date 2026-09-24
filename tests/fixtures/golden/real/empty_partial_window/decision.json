@@ -1,0 +1,19 @@
+{
+ "content_hash": "f9b51dff3a984239",
+ "db": "awrwh",
+ "explanation": "awrwh: skip \u2014 routine_only.",
+ "model_tier": "cheap",
+ "outcome": "skip",
+ "reasons": [
+  {
+   "code": "routine_only",
+   "evidence": {}
+  }
+ ],
+ "schema_version": 1,
+ "window": {
+  "day": "2026-07-27",
+  "from": "2026-07-27T00:00:00Z",
+  "to": "2026-07-27T22:15:00Z"
+ }
+}

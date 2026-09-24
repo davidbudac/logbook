@@ -1,0 +1,50 @@
+{
+ "name": "late_replayed_events",
+ "title": "late arrival + a replayed duplicate doc id; already ingested with the same content hash",
+ "layout": "ecs",
+ "db": "cdb1",
+ "window": {"from": "2026-07-12T00:00:00Z", "to": "2026-07-13T00:00:00Z", "day": "2026-07-12"},
+ "registry": {
+  "codes_by_source": {
+   "alert": {
+    "ORA-3113": {"first_seen": "2026-05-02T08:00:00Z", "last_seen": "2026-07-11T08:00:00Z"}
+   }
+  },
+  "daily_counts": [
+   {"day": "2026-07-10", "source": "alert", "total": 26, "counters": {"log_switch": 24}},
+   {"day": "2026-07-11", "source": "alert", "total": 25, "counters": {"log_switch": 23}}
+  ]
+ },
+ "trigger": {
+  "ledger_entry": {"status": "ingested", "window_to": "2026-07-12T18:00:00Z",
+                   "content_hash": "@content_hash"},
+  "manual": false,
+  "consolidation": false
+ },
+ "hits": {
+  "alert": [
+   {"_index": ".ds-logs-oracle.alert-default-2026.07.12-000021", "_id": "lr-a2",
+    "_source": {"@timestamp": "2026-07-12T03:00:00Z",
+     "oracle": {"database": {"name": "cdb1"}, "instance": {"name": "cdb1"}},
+     "log": {"level": "ERROR"},
+     "message": "ORA-03113: end-of-file on communication channel"}},
+   {"_index": ".ds-logs-oracle.alert-default-2026.07.12-000021", "_id": "lr-a2",
+    "_source": {"@timestamp": "2026-07-12T03:00:00Z",
+     "oracle": {"database": {"name": "cdb1"}, "instance": {"name": "cdb1"}},
+     "log": {"level": "ERROR"},
+     "message": "ORA-03113: end-of-file on communication channel"}},
+   {"_index": ".ds-logs-oracle.alert-default-2026.07.12-000021", "_id": "lr-a3",
+    "_source": {"@timestamp": "2026-07-12T04:00:00Z",
+     "oracle": {"database": {"name": "cdb1"}, "instance": {"name": "cdb1"}},
+     "log": {"level": "NOTIFICATION"},
+     "message": "Thread 1 advanced to log sequence 4801 (LGWR switch)"}},
+   {"_index": ".ds-logs-oracle.alert-default-2026.07.12-000021", "_id": "lr-a1",
+    "_source": {"@timestamp": "2026-07-12T01:00:00Z",
+     "oracle": {"database": {"name": "cdb1"}, "instance": {"name": "cdb1"}},
+     "log": {"level": "NOTIFICATION"},
+     "message": "Thread 1 advanced to log sequence 4800 (LGWR switch)"}}
+  ],
+  "listener": [],
+  "dataguard": []
+ }
+}

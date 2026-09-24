@@ -1,0 +1,700 @@
+{
+ "name": "storm_caps",
+ "title": "establish-failure storm: 23 distinct groups for one rule against max_groups_per_rule=20, 6 events per group against max_samples_per_group=5",
+ "layout": "ecs",
+ "db": "cdb1",
+ "window": {
+  "from": "2026-07-11T00:00:00Z",
+  "to": "2026-07-12T00:00:00Z",
+  "day": "2026-07-11"
+ },
+ "registry": {
+  "services": {
+   "cdb1.world": {
+    "first_seen": "2026-06-01T00:00:00Z",
+    "last_seen": "2026-07-10T23:00:00Z"
+   }
+  },
+  "programs": {
+   "jdbcapp": {
+    "first_seen": "2026-06-01T00:00:00Z",
+    "last_seen": "2026-07-10T23:00:00Z"
+   }
+  },
+  "daily_counts": [
+   {
+    "day": "2026-07-09",
+    "source": "listener",
+    "total": 41,
+    "counters": {
+     "establish cdb1.world emagent": 41
+    }
+   },
+   {
+    "day": "2026-07-10",
+    "source": "listener",
+    "total": 44,
+    "counters": {
+     "establish cdb1.world emagent": 44
+    }
+   }
+  ]
+ },
+ "trigger": {
+  "ledger_entry": null,
+  "manual": false,
+  "consolidation": false
+ },
+ "hits": {
+  "alert": [],
+  "listener": [
+   {
+    "_index": ".ds-logs-oracle.listener-default-2026.07.11-000020",
+    "_id": "st-l001",
+    "_source": {
+     "@timestamp": "2026-07-11T08:00:00Z",
+     "service": {
+      "name": "cdb1.world"
+     },
+     "oracle": {
+      "listener": {
+       "command": "establish",
+       "return_code": 12514
+      }
+     },
+     "message": "11-JUL-2026 08:00:00 * (CONNECT_DATA=(SERVICE_NAME=alpha.world)(CID=(PROGRAM=jdbcapp)(HOST=app07)(USER=appsvc))) * (ADDRESS=(PROTOCOL=tcp)(HOST=10.1.4.21)(PORT=44001)) * establish * alpha.world * 12514"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.listener-default-2026.07.11-000020",
+    "_id": "st-l002",
+    "_source": {
+     "@timestamp": "2026-07-11T08:00:07Z",
+     "service": {
+      "name": "cdb1.world"
+     },
+     "oracle": {
+      "listener": {
+       "command": "establish",
+       "return_code": 12514
+      }
+     },
+     "message": "11-JUL-2026 08:00:07 * (CONNECT_DATA=(SERVICE_NAME=alpha.world)(CID=(PROGRAM=jdbcapp)(HOST=app07)(USER=appsvc))) * (ADDRESS=(PROTOCOL=tcp)(HOST=10.1.4.21)(PORT=44002)) * establish * alpha.world * 12514"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.listener-default-2026.07.11-000020",
+    "_id": "st-l003",
+    "_source": {
+     "@timestamp": "2026-07-11T08:00:14Z",
+     "service": {
+      "name": "cdb1.world"
+     },
+     "oracle": {
+      "listener": {
+       "command": "establish",
+       "return_code": 12514
+      }
+     },
+     "message": "11-JUL-2026 08:00:14 * (CONNECT_DATA=(SERVICE_NAME=alpha.world)(CID=(PROGRAM=jdbcapp)(HOST=app07)(USER=appsvc))) * (ADDRESS=(PROTOCOL=tcp)(HOST=10.1.4.21)(PORT=44003)) * establish * alpha.world * 12514"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.listener-default-2026.07.11-000020",
+    "_id": "st-l004",
+    "_source": {
+     "@timestamp": "2026-07-11T08:00:21Z",
+     "service": {
+      "name": "cdb1.world"
+     },
+     "oracle": {
+      "listener": {
+       "command": "establish",
+       "return_code": 12514
+      }
+     },
+     "message": "11-JUL-2026 08:00:21 * (CONNECT_DATA=(SERVICE_NAME=alpha.world)(CID=(PROGRAM=jdbcapp)(HOST=app07)(USER=appsvc))) * (ADDRESS=(PROTOCOL=tcp)(HOST=10.1.4.21)(PORT=44004)) * establish * alpha.world * 12514"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.listener-default-2026.07.11-000020",
+    "_id": "st-l005",
+    "_source": {
+     "@timestamp": "2026-07-11T08:00:28Z",
+     "service": {
+      "name": "cdb1.world"
+     },
+     "oracle": {
+      "listener": {
+       "command": "establish",
+       "return_code": 12514
+      }
+     },
+     "message": "11-JUL-2026 08:00:28 * (CONNECT_DATA=(SERVICE_NAME=alpha.world)(CID=(PROGRAM=jdbcapp)(HOST=app07)(USER=appsvc))) * (ADDRESS=(PROTOCOL=tcp)(HOST=10.1.4.21)(PORT=44005)) * establish * alpha.world * 12514"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.listener-default-2026.07.11-000020",
+    "_id": "st-l006",
+    "_source": {
+     "@timestamp": "2026-07-11T08:00:35Z",
+     "service": {
+      "name": "cdb1.world"
+     },
+     "oracle": {
+      "listener": {
+       "command": "establish",
+       "return_code": 12514
+      }
+     },
+     "message": "11-JUL-2026 08:00:35 * (CONNECT_DATA=(SERVICE_NAME=alpha.world)(CID=(PROGRAM=jdbcapp)(HOST=app07)(USER=appsvc))) * (ADDRESS=(PROTOCOL=tcp)(HOST=10.1.4.21)(PORT=44006)) * establish * alpha.world * 12514"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.listener-default-2026.07.11-000020",
+    "_id": "st-l007",
+    "_source": {
+     "@timestamp": "2026-07-11T08:01:00Z",
+     "service": {
+      "name": "cdb1.world"
+     },
+     "oracle": {
+      "listener": {
+       "command": "establish",
+       "return_code": 12514
+      }
+     },
+     "message": "11-JUL-2026 08:01:00 * (CONNECT_DATA=(SERVICE_NAME=bravo.world)(CID=(PROGRAM=jdbcapp)(HOST=app07)(USER=appsvc))) * (ADDRESS=(PROTOCOL=tcp)(HOST=10.1.4.21)(PORT=44007)) * establish * bravo.world * 12514"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.listener-default-2026.07.11-000020",
+    "_id": "st-l008",
+    "_source": {
+     "@timestamp": "2026-07-11T08:01:07Z",
+     "service": {
+      "name": "cdb1.world"
+     },
+     "oracle": {
+      "listener": {
+       "command": "establish",
+       "return_code": 12514
+      }
+     },
+     "message": "11-JUL-2026 08:01:07 * (CONNECT_DATA=(SERVICE_NAME=bravo.world)(CID=(PROGRAM=jdbcapp)(HOST=app07)(USER=appsvc))) * (ADDRESS=(PROTOCOL=tcp)(HOST=10.1.4.21)(PORT=44008)) * establish * bravo.world * 12514"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.listener-default-2026.07.11-000020",
+    "_id": "st-l009",
+    "_source": {
+     "@timestamp": "2026-07-11T08:01:14Z",
+     "service": {
+      "name": "cdb1.world"
+     },
+     "oracle": {
+      "listener": {
+       "command": "establish",
+       "return_code": 12514
+      }
+     },
+     "message": "11-JUL-2026 08:01:14 * (CONNECT_DATA=(SERVICE_NAME=bravo.world)(CID=(PROGRAM=jdbcapp)(HOST=app07)(USER=appsvc))) * (ADDRESS=(PROTOCOL=tcp)(HOST=10.1.4.21)(PORT=44009)) * establish * bravo.world * 12514"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.listener-default-2026.07.11-000020",
+    "_id": "st-l010",
+    "_source": {
+     "@timestamp": "2026-07-11T08:01:21Z",
+     "service": {
+      "name": "cdb1.world"
+     },
+     "oracle": {
+      "listener": {
+       "command": "establish",
+       "return_code": 12514
+      }
+     },
+     "message": "11-JUL-2026 08:01:21 * (CONNECT_DATA=(SERVICE_NAME=bravo.world)(CID=(PROGRAM=jdbcapp)(HOST=app07)(USER=appsvc))) * (ADDRESS=(PROTOCOL=tcp)(HOST=10.1.4.21)(PORT=44010)) * establish * bravo.world * 12514"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.listener-default-2026.07.11-000020",
+    "_id": "st-l011",
+    "_source": {
+     "@timestamp": "2026-07-11T08:01:28Z",
+     "service": {
+      "name": "cdb1.world"
+     },
+     "oracle": {
+      "listener": {
+       "command": "establish",
+       "return_code": 12514
+      }
+     },
+     "message": "11-JUL-2026 08:01:28 * (CONNECT_DATA=(SERVICE_NAME=bravo.world)(CID=(PROGRAM=jdbcapp)(HOST=app07)(USER=appsvc))) * (ADDRESS=(PROTOCOL=tcp)(HOST=10.1.4.21)(PORT=44011)) * establish * bravo.world * 12514"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.listener-default-2026.07.11-000020",
+    "_id": "st-l012",
+    "_source": {
+     "@timestamp": "2026-07-11T08:01:35Z",
+     "service": {
+      "name": "cdb1.world"
+     },
+     "oracle": {
+      "listener": {
+       "command": "establish",
+       "return_code": 12514
+      }
+     },
+     "message": "11-JUL-2026 08:01:35 * (CONNECT_DATA=(SERVICE_NAME=bravo.world)(CID=(PROGRAM=jdbcapp)(HOST=app07)(USER=appsvc))) * (ADDRESS=(PROTOCOL=tcp)(HOST=10.1.4.21)(PORT=44012)) * establish * bravo.world * 12514"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.listener-default-2026.07.11-000020",
+    "_id": "st-l013",
+    "_source": {
+     "@timestamp": "2026-07-11T08:02:00Z",
+     "service": {
+      "name": "cdb1.world"
+     },
+     "oracle": {
+      "listener": {
+       "command": "establish",
+       "return_code": 12514
+      }
+     },
+     "message": "11-JUL-2026 08:02:00 * (CONNECT_DATA=(SERVICE_NAME=charlie.world)(CID=(PROGRAM=jdbcapp)(HOST=app07)(USER=appsvc))) * (ADDRESS=(PROTOCOL=tcp)(HOST=10.1.4.21)(PORT=44013)) * establish * charlie.world * 12514"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.listener-default-2026.07.11-000020",
+    "_id": "st-l014",
+    "_source": {
+     "@timestamp": "2026-07-11T08:02:07Z",
+     "service": {
+      "name": "cdb1.world"
+     },
+     "oracle": {
+      "listener": {
+       "command": "establish",
+       "return_code": 12514
+      }
+     },
+     "message": "11-JUL-2026 08:02:07 * (CONNECT_DATA=(SERVICE_NAME=charlie.world)(CID=(PROGRAM=jdbcapp)(HOST=app07)(USER=appsvc))) * (ADDRESS=(PROTOCOL=tcp)(HOST=10.1.4.21)(PORT=44014)) * establish * charlie.world * 12514"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.listener-default-2026.07.11-000020",
+    "_id": "st-l015",
+    "_source": {
+     "@timestamp": "2026-07-11T08:02:14Z",
+     "service": {
+      "name": "cdb1.world"
+     },
+     "oracle": {
+      "listener": {
+       "command": "establish",
+       "return_code": 12514
+      }
+     },
+     "message": "11-JUL-2026 08:02:14 * (CONNECT_DATA=(SERVICE_NAME=charlie.world)(CID=(PROGRAM=jdbcapp)(HOST=app07)(USER=appsvc))) * (ADDRESS=(PROTOCOL=tcp)(HOST=10.1.4.21)(PORT=44015)) * establish * charlie.world * 12514"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.listener-default-2026.07.11-000020",
+    "_id": "st-l016",
+    "_source": {
+     "@timestamp": "2026-07-11T08:02:21Z",
+     "service": {
+      "name": "cdb1.world"
+     },
+     "oracle": {
+      "listener": {
+       "command": "establish",
+       "return_code": 12514
+      }
+     },
+     "message": "11-JUL-2026 08:02:21 * (CONNECT_DATA=(SERVICE_NAME=charlie.world)(CID=(PROGRAM=jdbcapp)(HOST=app07)(USER=appsvc))) * (ADDRESS=(PROTOCOL=tcp)(HOST=10.1.4.21)(PORT=44016)) * establish * charlie.world * 12514"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.listener-default-2026.07.11-000020",
+    "_id": "st-l017",
+    "_source": {
+     "@timestamp": "2026-07-11T08:02:28Z",
+     "service": {
+      "name": "cdb1.world"
+     },
+     "oracle": {
+      "listener": {
+       "command": "establish",
+       "return_code": 12514
+      }
+     },
+     "message": "11-JUL-2026 08:02:28 * (CONNECT_DATA=(SERVICE_NAME=charlie.world)(CID=(PROGRAM=jdbcapp)(HOST=app07)(USER=appsvc))) * (ADDRESS=(PROTOCOL=tcp)(HOST=10.1.4.21)(PORT=44017)) * establish * charlie.world * 12514"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.listener-default-2026.07.11-000020",
+    "_id": "st-l018",
+    "_source": {
+     "@timestamp": "2026-07-11T08:02:35Z",
+     "service": {
+      "name": "cdb1.world"
+     },
+     "oracle": {
+      "listener": {
+       "command": "establish",
+       "return_code": 12514
+      }
+     },
+     "message": "11-JUL-2026 08:02:35 * (CONNECT_DATA=(SERVICE_NAME=charlie.world)(CID=(PROGRAM=jdbcapp)(HOST=app07)(USER=appsvc))) * (ADDRESS=(PROTOCOL=tcp)(HOST=10.1.4.21)(PORT=44018)) * establish * charlie.world * 12514"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.listener-default-2026.07.11-000020",
+    "_id": "st-l019",
+    "_source": {
+     "@timestamp": "2026-07-11T09:00:00Z",
+     "service": {
+      "name": "cdb1.world"
+     },
+     "oracle": {
+      "listener": {
+       "command": "establish",
+       "return_code": 12514
+      }
+     },
+     "message": "11-JUL-2026 09:00:00 * (CONNECT_DATA=(SERVICE_NAME=delta.world)(CID=(PROGRAM=jdbcapp)(HOST=app07)(USER=appsvc))) * (ADDRESS=(PROTOCOL=tcp)(HOST=10.1.4.21)(PORT=45019)) * establish * delta.world * 12514"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.listener-default-2026.07.11-000020",
+    "_id": "st-l020",
+    "_source": {
+     "@timestamp": "2026-07-11T09:01:00Z",
+     "service": {
+      "name": "cdb1.world"
+     },
+     "oracle": {
+      "listener": {
+       "command": "establish",
+       "return_code": 12514
+      }
+     },
+     "message": "11-JUL-2026 09:01:00 * (CONNECT_DATA=(SERVICE_NAME=echo.world)(CID=(PROGRAM=jdbcapp)(HOST=app07)(USER=appsvc))) * (ADDRESS=(PROTOCOL=tcp)(HOST=10.1.4.21)(PORT=45020)) * establish * echo.world * 12514"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.listener-default-2026.07.11-000020",
+    "_id": "st-l021",
+    "_source": {
+     "@timestamp": "2026-07-11T09:02:00Z",
+     "service": {
+      "name": "cdb1.world"
+     },
+     "oracle": {
+      "listener": {
+       "command": "establish",
+       "return_code": 12514
+      }
+     },
+     "message": "11-JUL-2026 09:02:00 * (CONNECT_DATA=(SERVICE_NAME=foxtrot.world)(CID=(PROGRAM=jdbcapp)(HOST=app07)(USER=appsvc))) * (ADDRESS=(PROTOCOL=tcp)(HOST=10.1.4.21)(PORT=45021)) * establish * foxtrot.world * 12514"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.listener-default-2026.07.11-000020",
+    "_id": "st-l022",
+    "_source": {
+     "@timestamp": "2026-07-11T09:03:00Z",
+     "service": {
+      "name": "cdb1.world"
+     },
+     "oracle": {
+      "listener": {
+       "command": "establish",
+       "return_code": 12514
+      }
+     },
+     "message": "11-JUL-2026 09:03:00 * (CONNECT_DATA=(SERVICE_NAME=golf.world)(CID=(PROGRAM=jdbcapp)(HOST=app07)(USER=appsvc))) * (ADDRESS=(PROTOCOL=tcp)(HOST=10.1.4.21)(PORT=45022)) * establish * golf.world * 12514"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.listener-default-2026.07.11-000020",
+    "_id": "st-l023",
+    "_source": {
+     "@timestamp": "2026-07-11T09:04:00Z",
+     "service": {
+      "name": "cdb1.world"
+     },
+     "oracle": {
+      "listener": {
+       "command": "establish",
+       "return_code": 12514
+      }
+     },
+     "message": "11-JUL-2026 09:04:00 * (CONNECT_DATA=(SERVICE_NAME=hotel.world)(CID=(PROGRAM=jdbcapp)(HOST=app07)(USER=appsvc))) * (ADDRESS=(PROTOCOL=tcp)(HOST=10.1.4.21)(PORT=45023)) * establish * hotel.world * 12514"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.listener-default-2026.07.11-000020",
+    "_id": "st-l024",
+    "_source": {
+     "@timestamp": "2026-07-11T09:05:00Z",
+     "service": {
+      "name": "cdb1.world"
+     },
+     "oracle": {
+      "listener": {
+       "command": "establish",
+       "return_code": 12514
+      }
+     },
+     "message": "11-JUL-2026 09:05:00 * (CONNECT_DATA=(SERVICE_NAME=india.world)(CID=(PROGRAM=jdbcapp)(HOST=app07)(USER=appsvc))) * (ADDRESS=(PROTOCOL=tcp)(HOST=10.1.4.21)(PORT=45024)) * establish * india.world * 12514"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.listener-default-2026.07.11-000020",
+    "_id": "st-l025",
+    "_source": {
+     "@timestamp": "2026-07-11T09:06:00Z",
+     "service": {
+      "name": "cdb1.world"
+     },
+     "oracle": {
+      "listener": {
+       "command": "establish",
+       "return_code": 12514
+      }
+     },
+     "message": "11-JUL-2026 09:06:00 * (CONNECT_DATA=(SERVICE_NAME=juliet.world)(CID=(PROGRAM=jdbcapp)(HOST=app07)(USER=appsvc))) * (ADDRESS=(PROTOCOL=tcp)(HOST=10.1.4.21)(PORT=45025)) * establish * juliet.world * 12514"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.listener-default-2026.07.11-000020",
+    "_id": "st-l026",
+    "_source": {
+     "@timestamp": "2026-07-11T09:07:00Z",
+     "service": {
+      "name": "cdb1.world"
+     },
+     "oracle": {
+      "listener": {
+       "command": "establish",
+       "return_code": 12514
+      }
+     },
+     "message": "11-JUL-2026 09:07:00 * (CONNECT_DATA=(SERVICE_NAME=kilo.world)(CID=(PROGRAM=jdbcapp)(HOST=app07)(USER=appsvc))) * (ADDRESS=(PROTOCOL=tcp)(HOST=10.1.4.21)(PORT=45026)) * establish * kilo.world * 12514"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.listener-default-2026.07.11-000020",
+    "_id": "st-l027",
+    "_source": {
+     "@timestamp": "2026-07-11T09:08:00Z",
+     "service": {
+      "name": "cdb1.world"
+     },
+     "oracle": {
+      "listener": {
+       "command": "establish",
+       "return_code": 12514
+      }
+     },
+     "message": "11-JUL-2026 09:08:00 * (CONNECT_DATA=(SERVICE_NAME=lima.world)(CID=(PROGRAM=jdbcapp)(HOST=app07)(USER=appsvc))) * (ADDRESS=(PROTOCOL=tcp)(HOST=10.1.4.21)(PORT=45027)) * establish * lima.world * 12514"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.listener-default-2026.07.11-000020",
+    "_id": "st-l028",
+    "_source": {
+     "@timestamp": "2026-07-11T09:09:00Z",
+     "service": {
+      "name": "cdb1.world"
+     },
+     "oracle": {
+      "listener": {
+       "command": "establish",
+       "return_code": 12514
+      }
+     },
+     "message": "11-JUL-2026 09:09:00 * (CONNECT_DATA=(SERVICE_NAME=mike.world)(CID=(PROGRAM=jdbcapp)(HOST=app07)(USER=appsvc))) * (ADDRESS=(PROTOCOL=tcp)(HOST=10.1.4.21)(PORT=45028)) * establish * mike.world * 12514"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.listener-default-2026.07.11-000020",
+    "_id": "st-l029",
+    "_source": {
+     "@timestamp": "2026-07-11T09:10:00Z",
+     "service": {
+      "name": "cdb1.world"
+     },
+     "oracle": {
+      "listener": {
+       "command": "establish",
+       "return_code": 12514
+      }
+     },
+     "message": "11-JUL-2026 09:10:00 * (CONNECT_DATA=(SERVICE_NAME=november.world)(CID=(PROGRAM=jdbcapp)(HOST=app07)(USER=appsvc))) * (ADDRESS=(PROTOCOL=tcp)(HOST=10.1.4.21)(PORT=45029)) * establish * november.world * 12514"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.listener-default-2026.07.11-000020",
+    "_id": "st-l030",
+    "_source": {
+     "@timestamp": "2026-07-11T09:11:00Z",
+     "service": {
+      "name": "cdb1.world"
+     },
+     "oracle": {
+      "listener": {
+       "command": "establish",
+       "return_code": 12514
+      }
+     },
+     "message": "11-JUL-2026 09:11:00 * (CONNECT_DATA=(SERVICE_NAME=oscar.world)(CID=(PROGRAM=jdbcapp)(HOST=app07)(USER=appsvc))) * (ADDRESS=(PROTOCOL=tcp)(HOST=10.1.4.21)(PORT=45030)) * establish * oscar.world * 12514"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.listener-default-2026.07.11-000020",
+    "_id": "st-l031",
+    "_source": {
+     "@timestamp": "2026-07-11T09:12:00Z",
+     "service": {
+      "name": "cdb1.world"
+     },
+     "oracle": {
+      "listener": {
+       "command": "establish",
+       "return_code": 12514
+      }
+     },
+     "message": "11-JUL-2026 09:12:00 * (CONNECT_DATA=(SERVICE_NAME=papa.world)(CID=(PROGRAM=jdbcapp)(HOST=app07)(USER=appsvc))) * (ADDRESS=(PROTOCOL=tcp)(HOST=10.1.4.21)(PORT=45031)) * establish * papa.world * 12514"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.listener-default-2026.07.11-000020",
+    "_id": "st-l032",
+    "_source": {
+     "@timestamp": "2026-07-11T09:13:00Z",
+     "service": {
+      "name": "cdb1.world"
+     },
+     "oracle": {
+      "listener": {
+       "command": "establish",
+       "return_code": 12514
+      }
+     },
+     "message": "11-JUL-2026 09:13:00 * (CONNECT_DATA=(SERVICE_NAME=quebec.world)(CID=(PROGRAM=jdbcapp)(HOST=app07)(USER=appsvc))) * (ADDRESS=(PROTOCOL=tcp)(HOST=10.1.4.21)(PORT=45032)) * establish * quebec.world * 12514"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.listener-default-2026.07.11-000020",
+    "_id": "st-l033",
+    "_source": {
+     "@timestamp": "2026-07-11T09:14:00Z",
+     "service": {
+      "name": "cdb1.world"
+     },
+     "oracle": {
+      "listener": {
+       "command": "establish",
+       "return_code": 12514
+      }
+     },
+     "message": "11-JUL-2026 09:14:00 * (CONNECT_DATA=(SERVICE_NAME=romeo.world)(CID=(PROGRAM=jdbcapp)(HOST=app07)(USER=appsvc))) * (ADDRESS=(PROTOCOL=tcp)(HOST=10.1.4.21)(PORT=45033)) * establish * romeo.world * 12514"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.listener-default-2026.07.11-000020",
+    "_id": "st-l034",
+    "_source": {
+     "@timestamp": "2026-07-11T09:15:00Z",
+     "service": {
+      "name": "cdb1.world"
+     },
+     "oracle": {
+      "listener": {
+       "command": "establish",
+       "return_code": 12514
+      }
+     },
+     "message": "11-JUL-2026 09:15:00 * (CONNECT_DATA=(SERVICE_NAME=sierra.world)(CID=(PROGRAM=jdbcapp)(HOST=app07)(USER=appsvc))) * (ADDRESS=(PROTOCOL=tcp)(HOST=10.1.4.21)(PORT=45034)) * establish * sierra.world * 12514"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.listener-default-2026.07.11-000020",
+    "_id": "st-l035",
+    "_source": {
+     "@timestamp": "2026-07-11T09:16:00Z",
+     "service": {
+      "name": "cdb1.world"
+     },
+     "oracle": {
+      "listener": {
+       "command": "establish",
+       "return_code": 12514
+      }
+     },
+     "message": "11-JUL-2026 09:16:00 * (CONNECT_DATA=(SERVICE_NAME=tango.world)(CID=(PROGRAM=jdbcapp)(HOST=app07)(USER=appsvc))) * (ADDRESS=(PROTOCOL=tcp)(HOST=10.1.4.21)(PORT=45035)) * establish * tango.world * 12514"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.listener-default-2026.07.11-000020",
+    "_id": "st-l036",
+    "_source": {
+     "@timestamp": "2026-07-11T09:17:00Z",
+     "service": {
+      "name": "cdb1.world"
+     },
+     "oracle": {
+      "listener": {
+       "command": "establish",
+       "return_code": 12514
+      }
+     },
+     "message": "11-JUL-2026 09:17:00 * (CONNECT_DATA=(SERVICE_NAME=uniform.world)(CID=(PROGRAM=jdbcapp)(HOST=app07)(USER=appsvc))) * (ADDRESS=(PROTOCOL=tcp)(HOST=10.1.4.21)(PORT=45036)) * establish * uniform.world * 12514"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.listener-default-2026.07.11-000020",
+    "_id": "st-l037",
+    "_source": {
+     "@timestamp": "2026-07-11T09:18:00Z",
+     "service": {
+      "name": "cdb1.world"
+     },
+     "oracle": {
+      "listener": {
+       "command": "establish",
+       "return_code": 12514
+      }
+     },
+     "message": "11-JUL-2026 09:18:00 * (CONNECT_DATA=(SERVICE_NAME=victor.world)(CID=(PROGRAM=jdbcapp)(HOST=app07)(USER=appsvc))) * (ADDRESS=(PROTOCOL=tcp)(HOST=10.1.4.21)(PORT=45037)) * establish * victor.world * 12514"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.listener-default-2026.07.11-000020",
+    "_id": "st-l038",
+    "_source": {
+     "@timestamp": "2026-07-11T09:19:00Z",
+     "service": {
+      "name": "cdb1.world"
+     },
+     "oracle": {
+      "listener": {
+       "command": "establish",
+       "return_code": 12514
+      }
+     },
+     "message": "11-JUL-2026 09:19:00 * (CONNECT_DATA=(SERVICE_NAME=whiskey.world)(CID=(PROGRAM=jdbcapp)(HOST=app07)(USER=appsvc))) * (ADDRESS=(PROTOCOL=tcp)(HOST=10.1.4.21)(PORT=45038)) * establish * whiskey.world * 12514"
+    }
+   }
+  ],
+  "dataguard": []
+ }
+}

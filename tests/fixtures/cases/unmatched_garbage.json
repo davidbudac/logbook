@@ -1,0 +1,1049 @@
+{
+ "name": "unmatched_garbage",
+ "title": "53 distinct unclassifiable alert lines against max_unmatched_groups=50",
+ "layout": "ecs",
+ "db": "cdb1",
+ "window": {
+  "from": "2026-07-11T00:00:00Z",
+  "to": "2026-07-12T00:00:00Z",
+  "day": "2026-07-11"
+ },
+ "registry": {
+  "daily_counts": [
+   {
+    "day": "2026-07-09",
+    "source": "alert",
+    "total": 27,
+    "counters": {
+     "log_switch": 25
+    }
+   },
+   {
+    "day": "2026-07-10",
+    "source": "alert",
+    "total": 26,
+    "counters": {
+     "log_switch": 24
+    }
+   }
+  ]
+ },
+ "trigger": {
+  "ledger_entry": null,
+  "manual": false,
+  "consolidation": false
+ },
+ "hits": {
+  "alert": [
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.11-000020",
+    "_id": "ug-a000",
+    "_source": {
+     "@timestamp": "2026-07-11T10:00:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "zzz unparsed vendor payload ah segment 3"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.11-000020",
+    "_id": "ug-a001",
+    "_source": {
+     "@timestamp": "2026-07-11T10:01:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "zzz unparsed vendor payload ai segment 3"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.11-000020",
+    "_id": "ug-a002",
+    "_source": {
+     "@timestamp": "2026-07-11T10:02:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "zzz unparsed vendor payload aj segment 3"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.11-000020",
+    "_id": "ug-a003",
+    "_source": {
+     "@timestamp": "2026-07-11T10:03:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "zzz unparsed vendor payload ak segment 3"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.11-000020",
+    "_id": "ug-a004",
+    "_source": {
+     "@timestamp": "2026-07-11T10:04:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "zzz unparsed vendor payload al segment 3"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.11-000020",
+    "_id": "ug-a005",
+    "_source": {
+     "@timestamp": "2026-07-11T10:05:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "zzz unparsed vendor payload am segment 3"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.11-000020",
+    "_id": "ug-a006",
+    "_source": {
+     "@timestamp": "2026-07-11T10:06:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "zzz unparsed vendor payload an segment 3"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.11-000020",
+    "_id": "ug-a007",
+    "_source": {
+     "@timestamp": "2026-07-11T10:07:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "zzz unparsed vendor payload ao segment 3"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.11-000020",
+    "_id": "ug-a008",
+    "_source": {
+     "@timestamp": "2026-07-11T10:08:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "zzz unparsed vendor payload bh segment 3"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.11-000020",
+    "_id": "ug-a009",
+    "_source": {
+     "@timestamp": "2026-07-11T10:09:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "zzz unparsed vendor payload bi segment 3"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.11-000020",
+    "_id": "ug-a010",
+    "_source": {
+     "@timestamp": "2026-07-11T10:10:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "zzz unparsed vendor payload bj segment 3"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.11-000020",
+    "_id": "ug-a011",
+    "_source": {
+     "@timestamp": "2026-07-11T10:11:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "zzz unparsed vendor payload bk segment 3"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.11-000020",
+    "_id": "ug-a012",
+    "_source": {
+     "@timestamp": "2026-07-11T10:12:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "zzz unparsed vendor payload bl segment 3"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.11-000020",
+    "_id": "ug-a013",
+    "_source": {
+     "@timestamp": "2026-07-11T10:13:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "zzz unparsed vendor payload bm segment 3"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.11-000020",
+    "_id": "ug-a014",
+    "_source": {
+     "@timestamp": "2026-07-11T10:14:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "zzz unparsed vendor payload bn segment 3"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.11-000020",
+    "_id": "ug-a015",
+    "_source": {
+     "@timestamp": "2026-07-11T10:15:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "zzz unparsed vendor payload bo segment 3"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.11-000020",
+    "_id": "ug-a016",
+    "_source": {
+     "@timestamp": "2026-07-11T10:16:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "zzz unparsed vendor payload ch segment 3"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.11-000020",
+    "_id": "ug-a017",
+    "_source": {
+     "@timestamp": "2026-07-11T10:17:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "zzz unparsed vendor payload ci segment 3"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.11-000020",
+    "_id": "ug-a018",
+    "_source": {
+     "@timestamp": "2026-07-11T10:18:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "zzz unparsed vendor payload cj segment 3"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.11-000020",
+    "_id": "ug-a019",
+    "_source": {
+     "@timestamp": "2026-07-11T10:19:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "zzz unparsed vendor payload ck segment 3"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.11-000020",
+    "_id": "ug-a020",
+    "_source": {
+     "@timestamp": "2026-07-11T10:20:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "zzz unparsed vendor payload cl segment 3"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.11-000020",
+    "_id": "ug-a021",
+    "_source": {
+     "@timestamp": "2026-07-11T10:21:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "zzz unparsed vendor payload cm segment 3"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.11-000020",
+    "_id": "ug-a022",
+    "_source": {
+     "@timestamp": "2026-07-11T10:22:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "zzz unparsed vendor payload cn segment 3"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.11-000020",
+    "_id": "ug-a023",
+    "_source": {
+     "@timestamp": "2026-07-11T10:23:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "zzz unparsed vendor payload co segment 3"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.11-000020",
+    "_id": "ug-a024",
+    "_source": {
+     "@timestamp": "2026-07-11T10:24:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "zzz unparsed vendor payload dh segment 3"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.11-000020",
+    "_id": "ug-a025",
+    "_source": {
+     "@timestamp": "2026-07-11T10:25:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "zzz unparsed vendor payload di segment 3"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.11-000020",
+    "_id": "ug-a026",
+    "_source": {
+     "@timestamp": "2026-07-11T10:26:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "zzz unparsed vendor payload dj segment 3"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.11-000020",
+    "_id": "ug-a027",
+    "_source": {
+     "@timestamp": "2026-07-11T10:27:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "zzz unparsed vendor payload dk segment 3"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.11-000020",
+    "_id": "ug-a028",
+    "_source": {
+     "@timestamp": "2026-07-11T10:28:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "zzz unparsed vendor payload dl segment 3"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.11-000020",
+    "_id": "ug-a029",
+    "_source": {
+     "@timestamp": "2026-07-11T10:29:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "zzz unparsed vendor payload dm segment 3"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.11-000020",
+    "_id": "ug-a030",
+    "_source": {
+     "@timestamp": "2026-07-11T10:30:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "zzz unparsed vendor payload dn segment 3"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.11-000020",
+    "_id": "ug-a031",
+    "_source": {
+     "@timestamp": "2026-07-11T10:31:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "zzz unparsed vendor payload do segment 3"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.11-000020",
+    "_id": "ug-a032",
+    "_source": {
+     "@timestamp": "2026-07-11T10:32:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "zzz unparsed vendor payload eh segment 3"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.11-000020",
+    "_id": "ug-a033",
+    "_source": {
+     "@timestamp": "2026-07-11T10:33:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "zzz unparsed vendor payload ei segment 3"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.11-000020",
+    "_id": "ug-a034",
+    "_source": {
+     "@timestamp": "2026-07-11T10:34:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "zzz unparsed vendor payload ej segment 3"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.11-000020",
+    "_id": "ug-a035",
+    "_source": {
+     "@timestamp": "2026-07-11T10:35:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "zzz unparsed vendor payload ek segment 3"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.11-000020",
+    "_id": "ug-a036",
+    "_source": {
+     "@timestamp": "2026-07-11T10:36:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "zzz unparsed vendor payload el segment 3"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.11-000020",
+    "_id": "ug-a037",
+    "_source": {
+     "@timestamp": "2026-07-11T10:37:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "zzz unparsed vendor payload em segment 3"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.11-000020",
+    "_id": "ug-a038",
+    "_source": {
+     "@timestamp": "2026-07-11T10:38:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "zzz unparsed vendor payload en segment 3"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.11-000020",
+    "_id": "ug-a039",
+    "_source": {
+     "@timestamp": "2026-07-11T10:39:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "zzz unparsed vendor payload eo segment 3"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.11-000020",
+    "_id": "ug-a040",
+    "_source": {
+     "@timestamp": "2026-07-11T10:40:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "zzz unparsed vendor payload fh segment 3"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.11-000020",
+    "_id": "ug-a041",
+    "_source": {
+     "@timestamp": "2026-07-11T10:41:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "zzz unparsed vendor payload fi segment 3"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.11-000020",
+    "_id": "ug-a042",
+    "_source": {
+     "@timestamp": "2026-07-11T10:42:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "zzz unparsed vendor payload fj segment 3"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.11-000020",
+    "_id": "ug-a043",
+    "_source": {
+     "@timestamp": "2026-07-11T10:43:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "zzz unparsed vendor payload fk segment 3"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.11-000020",
+    "_id": "ug-a044",
+    "_source": {
+     "@timestamp": "2026-07-11T10:44:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "zzz unparsed vendor payload fl segment 3"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.11-000020",
+    "_id": "ug-a045",
+    "_source": {
+     "@timestamp": "2026-07-11T10:45:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "zzz unparsed vendor payload fm segment 3"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.11-000020",
+    "_id": "ug-a046",
+    "_source": {
+     "@timestamp": "2026-07-11T10:46:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "zzz unparsed vendor payload fn segment 3"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.11-000020",
+    "_id": "ug-a047",
+    "_source": {
+     "@timestamp": "2026-07-11T10:47:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "zzz unparsed vendor payload fo segment 3"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.11-000020",
+    "_id": "ug-a048",
+    "_source": {
+     "@timestamp": "2026-07-11T10:48:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "zzz unparsed vendor payload gh segment 3"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.11-000020",
+    "_id": "ug-a049",
+    "_source": {
+     "@timestamp": "2026-07-11T10:49:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "zzz unparsed vendor payload gi segment 3"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.11-000020",
+    "_id": "ug-a050",
+    "_source": {
+     "@timestamp": "2026-07-11T10:50:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "zzz unparsed vendor payload gj segment 3"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.11-000020",
+    "_id": "ug-a051",
+    "_source": {
+     "@timestamp": "2026-07-11T10:51:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "zzz unparsed vendor payload gk segment 3"
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.alert-default-2026.07.11-000020",
+    "_id": "ug-a052",
+    "_source": {
+     "@timestamp": "2026-07-11T10:52:00Z",
+     "oracle": {
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "name": "cdb1"
+      }
+     },
+     "log": {
+      "level": "NOTIFICATION"
+     },
+     "message": "zzz unparsed vendor payload gl segment 3"
+    }
+   }
+  ],
+  "listener": [],
+  "dataguard": []
+ }
+}

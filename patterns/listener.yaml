@@ -1,0 +1,54 @@
+# Listener-log classification rules. Evaluated in order; first match wins.
+# Normalized fields: operation, return_code (int), service, program, client_host, message.
+version: 1
+rules:
+  # lines the upstream parser reduced to a bare timestamp -> no signal
+  - name: timestamp_only
+    class: noise
+    regex: '^\d{4}-\d{2}-\d{2}T[\d:.+]+\s*$'
+
+  - name: node_down_subscription
+    class: routine
+    regex: 'Subscription for node down event still pending'
+    counter: node_down_subscription_warning
+
+  - name: establish_ok
+    class: routine
+    where: { operation: establish, return_code: 0 }
+    counter: 'establish {service} {program}'
+
+  # no return code parsed (missing, or not a number upstream): the
+  # listener line itself ends in "* <code>", so a success still reads as one
+  - name: establish_ok_text
+    class: routine
+    where: { operation: establish, return_code: null }
+    regex: '\*\s*0\s*$'
+    counter: 'establish {service} {program}'
+
+  - name: establish_fail
+    class: error
+    where: { operation: establish }
+    where_not: { return_code: 0 }
+
+  - name: service_died
+    class: warning
+    where: { operation: service_died }
+
+  - name: listener_stop
+    class: lifecycle
+    where: { operation: stop }
+
+  - name: listener_reload
+    class: lifecycle
+    where: { operation: reload }
+
+  - name: service_register
+    class: routine
+    where: { operation: service_register }
+    counter: 'service_register {service}'
+
+  - name: routine_ops
+    class: routine
+    field: operation
+    regex: '^(status|service_update|ping|services|version|oracle_home)$'
+    counter: 'op {operation}'

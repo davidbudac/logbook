@@ -1,0 +1,45 @@
+{
+ "changes": [],
+ "db": "newdb",
+ "deltas": [],
+ "generated_by": "dbwiki-compactor/(fixture)",
+ "notable": false,
+ "pattern_versions": {
+  "alert": 2,
+  "dataguard": 1,
+  "listener": 1
+ },
+ "sources": {
+  "alert": {
+   "by_class": {},
+   "dropped_notable_groups": {},
+   "notable": [],
+   "routine_counters": {},
+   "total_events": 0
+  },
+  "dataguard": {
+   "by_class": {},
+   "dropped_notable_groups": {},
+   "notable": [],
+   "routine_counters": {},
+   "total_events": 0
+  },
+  "listener": {
+   "by_class": {},
+   "dropped_notable_groups": {},
+   "notable": [],
+   "routine_counters": {},
+   "total_events": 0
+  }
+ },
+ "totals": {
+  "events": 0,
+  "notable_events": 0,
+  "notable_groups": 0
+ },
+ "window": {
+  "day": "2026-07-13",
+  "from": "2026-07-13T00:00:00Z",
+  "to": "2026-07-14T00:00:00Z"
+ }
+}

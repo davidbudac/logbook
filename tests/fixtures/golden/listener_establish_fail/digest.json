@@ -1,0 +1,91 @@
+{
+ "changes": [],
+ "db": "cdb1",
+ "deltas": [],
+ "generated_by": "dbwiki-compactor/(fixture)",
+ "notable": true,
+ "pattern_versions": {
+  "alert": 2,
+  "dataguard": 1,
+  "listener": 1
+ },
+ "sources": {
+  "alert": {
+   "by_class": {},
+   "dropped_notable_groups": {},
+   "notable": [],
+   "routine_counters": {},
+   "total_events": 0
+  },
+  "dataguard": {
+   "by_class": {},
+   "dropped_notable_groups": {},
+   "notable": [],
+   "routine_counters": {},
+   "total_events": 0
+  },
+  "listener": {
+   "by_class": {
+    "error": 2,
+    "routine": 1,
+    "warning": 1
+   },
+   "dropped_notable_groups": {},
+   "notable": [
+    {
+     "class": "error",
+     "codes": [],
+     "count": 2,
+     "es_samples": [
+      {
+       "id": "lf-l1",
+       "index": ".ds-logs-oracle.listener-default-2026.07.11-000020",
+       "ts": "2026-07-11T08:41:12Z"
+      },
+      {
+       "id": "lf-l2",
+       "index": ".ds-logs-oracle.listener-default-2026.07.11-000020",
+       "ts": "2026-07-11T08:41:19Z"
+      }
+     ],
+     "first_ts": "2026-07-11T08:41:12Z",
+     "last_ts": "2026-07-11T08:41:19Z",
+     "message": "11-JUL-2026 08:41:12 * (CONNECT_DATA=(SERVICE_NAME=payments.world)(CID=(PROGRAM=jdbcapp)(HOST=app07)(USER=appsvc))) * (ADDRESS=(PROTOCOL=tcp)(HOST=10.1.4.21)(PORT=44120)) * establish * payments.world * 12514",
+     "rule": "establish_fail",
+     "template": "#-JUL-2026 #:#:# * (CONNECT_DATA=(SERVICE_NAME=payments.world)(CID=(PROGRAM=jdbcapp)(HOST=app#)(USER=appsvc))) * (ADDRESS=(PROTOCOL=tcp)(HOST=#.#.#.#)(PORT=#)) "
+    },
+    {
+     "class": "warning",
+     "codes": [],
+     "count": 1,
+     "es_samples": [
+      {
+       "id": "lf-l3",
+       "index": ".ds-logs-oracle.listener-default-2026.07.11-000020",
+       "ts": "2026-07-11T08:42:00Z"
+      }
+     ],
+     "first_ts": "2026-07-11T08:42:00Z",
+     "last_ts": "2026-07-11T08:42:00Z",
+     "message": "11-JUL-2026 08:42:00 * service_died * payments.world * 12537",
+     "rule": "service_died",
+     "template": "#-JUL-2026 #:#:# * service_died * payments.world * #"
+    }
+   ],
+   "routine_counters": {
+    "establish cdb1.world emagent": 1
+   },
+   "total_events": 4
+  }
+ },
+ "totals": {
+  "events": 4,
+  "notable_events": 3,
+  "notable_groups": 2
+ },
+ "window": {
+  "day": "2026-07-11",
+  "from": "2026-07-11T00:00:00Z",
+  "to": "2026-07-12T00:00:00Z"
+ }
+}

@@ -1,0 +1,1 @@
+The "Database history" block is context from earlier days: use it to judge whether today is new, recurring, or follows a recorded change, and never cite it as evidence for today.

@@ -1,0 +1,13 @@
+You are drafting the summary line of an action record on an operations wiki, for incident {slug} on {db}: {title}.
+
+Reply with ONE line of plain prose and NOTHING else: no preamble, no bullet, no markdown, no quotation marks.
+
+Write it the way the operator would: past tense, at most {max_answer_chars} characters. Say what happened and what was done about it.
+
+Rules:
+- State only what the Material below shows. Never claim a cause, a fix or a recovery it does not show.
+- Events stopping is not recovery: say the errors stopped, never that the problem is solved.
+- You may name at most one path from the Material, spelled exactly as the Material spells it, when it is the evidence for the claim.
+- No [[wikilinks]], no headings, no URLs.
+
+Material (assembled deterministically; every path in it is a page the wiki holds at this revision):

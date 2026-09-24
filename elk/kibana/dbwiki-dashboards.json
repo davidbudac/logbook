@@ -1,0 +1,3448 @@
+[
+ {
+  "attributes": {
+   "name": "dbwiki run health",
+   "timeFieldName": "@timestamp",
+   "title": "logs-dbwiki.run_health*"
+  },
+  "id": "dbwiki-dv-run-health",
+  "references": [],
+  "type": "index-pattern"
+ },
+ {
+  "attributes": {
+   "name": "dbwiki agent runs",
+   "timeFieldName": "@timestamp",
+   "title": "logs-dbwiki.agent_runs*"
+  },
+  "id": "dbwiki-dv-agent-runs",
+  "references": [],
+  "type": "index-pattern"
+ },
+ {
+  "attributes": {
+   "name": "dbwiki per-db runs",
+   "timeFieldName": "@timestamp",
+   "title": "logs-dbwiki.db_runs*"
+  },
+  "id": "dbwiki-dv-db-runs",
+  "references": [],
+  "type": "index-pattern"
+ },
+ {
+  "attributes": {
+   "name": "dbwiki ledger",
+   "timeFieldName": "@timestamp",
+   "title": "logs-dbwiki.ledger*"
+  },
+  "id": "dbwiki-dv-ledger",
+  "references": [],
+  "type": "index-pattern"
+ },
+ {
+  "attributes": {
+   "name": "dbwiki cron output",
+   "timeFieldName": "@timestamp",
+   "title": "logs-dbwiki.cron*"
+  },
+  "id": "dbwiki-dv-cron",
+  "references": [],
+  "type": "index-pattern"
+ },
+ {
+  "attributes": {
+   "name": "dbwiki agent audit",
+   "timeFieldName": "@timestamp",
+   "title": "logs-dbwiki.audit*"
+  },
+  "id": "dbwiki-dv-audit",
+  "references": [],
+  "type": "index-pattern"
+ },
+ {
+  "attributes": {
+   "name": "dbwiki run starts",
+   "timeFieldName": "@timestamp",
+   "title": "logs-dbwiki.run_starts*"
+  },
+  "id": "dbwiki-dv-run-starts",
+  "references": [],
+  "type": "index-pattern"
+ },
+ {
+  "attributes": {
+   "name": "dbwiki schedule",
+   "timeFieldName": "@timestamp",
+   "title": "logs-dbwiki.schedule*"
+  },
+  "id": "dbwiki-dv-schedule",
+  "references": [],
+  "type": "index-pattern"
+ },
+ {
+  "attributes": {
+   "name": "dbwiki queue state",
+   "timeFieldName": "@timestamp",
+   "title": "logs-dbwiki.queue_state*"
+  },
+  "id": "dbwiki-dv-queue-state",
+  "references": [],
+  "type": "index-pattern"
+ },
+ {
+  "attributes": {
+   "name": "dbwiki alerts",
+   "timeFieldName": "@timestamp",
+   "title": "logs-dbwiki.alerts*"
+  },
+  "id": "dbwiki-dv-alerts",
+  "references": [],
+  "type": "index-pattern"
+ },
+ {
+  "attributes": {
+   "name": "dbwiki all streams",
+   "timeFieldName": "@timestamp",
+   "title": "logs-dbwiki.*"
+  },
+  "id": "dbwiki-dv-all",
+  "references": [],
+  "type": "index-pattern"
+ },
+ {
+  "attributes": {
+   "description": "",
+   "state": {
+    "datasourceStates": {
+     "formBased": {
+      "layers": {
+       "layer1": {
+        "columnOrder": [
+         "m1"
+        ],
+        "columns": {
+         "m1": {
+          "dataType": "number",
+          "isBucketed": false,
+          "label": "Runs",
+          "operationType": "count",
+          "params": {
+           "emptyAsNull": false
+          },
+          "scale": "ratio",
+          "sourceField": "___records___"
+         }
+        },
+        "incompleteColumns": {}
+       }
+      }
+     }
+    },
+    "filters": [],
+    "query": {
+     "language": "kuery",
+     "query": ""
+    },
+    "visualization": {
+     "layerId": "layer1",
+     "layerType": "data",
+     "metricAccessor": "m1"
+    }
+   },
+   "title": "Command runs",
+   "visualizationType": "lnsMetric"
+  },
+  "id": "dbwiki-lens-runs-total",
+  "references": [
+   {
+    "id": "dbwiki-dv-run-health",
+    "name": "indexpattern-datasource-layer-layer1",
+    "type": "index-pattern"
+   }
+  ],
+  "type": "lens"
+ },
+ {
+  "attributes": {
+   "description": "",
+   "state": {
+    "datasourceStates": {
+     "formBased": {
+      "layers": {
+       "layer1": {
+        "columnOrder": [
+         "m1"
+        ],
+        "columns": {
+         "m1": {
+          "dataType": "number",
+          "filter": {
+           "language": "kuery",
+           "query": "outcome : \"failed\""
+          },
+          "isBucketed": false,
+          "label": "Failed runs",
+          "operationType": "count",
+          "params": {
+           "emptyAsNull": false
+          },
+          "scale": "ratio",
+          "sourceField": "___records___"
+         }
+        },
+        "incompleteColumns": {}
+       }
+      }
+     }
+    },
+    "filters": [],
+    "query": {
+     "language": "kuery",
+     "query": ""
+    },
+    "visualization": {
+     "layerId": "layer1",
+     "layerType": "data",
+     "metricAccessor": "m1"
+    }
+   },
+   "title": "Failed runs",
+   "visualizationType": "lnsMetric"
+  },
+  "id": "dbwiki-lens-runs-failed",
+  "references": [
+   {
+    "id": "dbwiki-dv-run-health",
+    "name": "indexpattern-datasource-layer-layer1",
+    "type": "index-pattern"
+   }
+  ],
+  "type": "lens"
+ },
+ {
+  "attributes": {
+   "description": "",
+   "state": {
+    "datasourceStates": {
+     "formBased": {
+      "layers": {
+       "layer1": {
+        "columnOrder": [
+         "b1",
+         "m1"
+        ],
+        "columns": {
+         "b1": {
+          "dataType": "string",
+          "isBucketed": true,
+          "label": "outcome",
+          "operationType": "terms",
+          "params": {
+           "missingBucket": false,
+           "orderBy": {
+            "columnId": "m1",
+            "type": "column"
+           },
+           "orderDirection": "desc",
+           "otherBucket": false,
+           "parentFormat": {
+            "id": "terms"
+           },
+           "size": 6
+          },
+          "scale": "ordinal",
+          "sourceField": "outcome"
+         },
+         "m1": {
+          "dataType": "number",
+          "isBucketed": false,
+          "label": "Count",
+          "operationType": "count",
+          "params": {
+           "emptyAsNull": false
+          },
+          "scale": "ratio",
+          "sourceField": "___records___"
+         }
+        },
+        "incompleteColumns": {}
+       }
+      }
+     }
+    },
+    "filters": [],
+    "query": {
+     "language": "kuery",
+     "query": ""
+    },
+    "visualization": {
+     "layers": [
+      {
+       "categoryDisplay": "default",
+       "layerId": "layer1",
+       "layerType": "data",
+       "legendDisplay": "default",
+       "metrics": [
+        "m1"
+       ],
+       "nestedLegend": false,
+       "numberDisplay": "value",
+       "primaryGroups": [
+        "b1"
+       ]
+      }
+     ],
+     "shape": "donut"
+    }
+   },
+   "title": "Run outcomes",
+   "visualizationType": "lnsPie"
+  },
+  "id": "dbwiki-lens-outcomes",
+  "references": [
+   {
+    "id": "dbwiki-dv-run-health",
+    "name": "indexpattern-datasource-layer-layer1",
+    "type": "index-pattern"
+   }
+  ],
+  "type": "lens"
+ },
+ {
+  "attributes": {
+   "description": "",
+   "state": {
+    "datasourceStates": {
+     "formBased": {
+      "layers": {
+       "layer1": {
+        "columnOrder": [
+         "b1",
+         "m1"
+        ],
+        "columns": {
+         "b1": {
+          "dataType": "string",
+          "isBucketed": true,
+          "label": "error_category",
+          "operationType": "terms",
+          "params": {
+           "missingBucket": false,
+           "orderBy": {
+            "columnId": "m1",
+            "type": "column"
+           },
+           "orderDirection": "desc",
+           "otherBucket": false,
+           "parentFormat": {
+            "id": "terms"
+           },
+           "size": 10
+          },
+          "scale": "ordinal",
+          "sourceField": "error_category"
+         },
+         "m1": {
+          "dataType": "number",
+          "isBucketed": false,
+          "label": "Count",
+          "operationType": "count",
+          "params": {
+           "emptyAsNull": false
+          },
+          "scale": "ratio",
+          "sourceField": "___records___"
+         }
+        },
+        "incompleteColumns": {}
+       }
+      }
+     }
+    },
+    "filters": [],
+    "query": {
+     "language": "kuery",
+     "query": ""
+    },
+    "visualization": {
+     "layers": [
+      {
+       "categoryDisplay": "default",
+       "layerId": "layer1",
+       "layerType": "data",
+       "legendDisplay": "default",
+       "metrics": [
+        "m1"
+       ],
+       "nestedLegend": false,
+       "numberDisplay": "value",
+       "primaryGroups": [
+        "b1"
+       ]
+      }
+     ],
+     "shape": "donut"
+    }
+   },
+   "title": "Error categories",
+   "visualizationType": "lnsPie"
+  },
+  "id": "dbwiki-lens-error-categories",
+  "references": [
+   {
+    "id": "dbwiki-dv-run-health",
+    "name": "indexpattern-datasource-layer-layer1",
+    "type": "index-pattern"
+   }
+  ],
+  "type": "lens"
+ },
+ {
+  "attributes": {
+   "description": "",
+   "state": {
+    "datasourceStates": {
+     "formBased": {
+      "layers": {
+       "layer1": {
+        "columnOrder": [
+         "x1",
+         "s1",
+         "m1"
+        ],
+        "columns": {
+         "m1": {
+          "dataType": "number",
+          "isBucketed": false,
+          "label": "Runs",
+          "operationType": "count",
+          "params": {
+           "emptyAsNull": false
+          },
+          "scale": "ratio",
+          "sourceField": "___records___"
+         },
+         "s1": {
+          "dataType": "string",
+          "isBucketed": true,
+          "label": "outcome",
+          "operationType": "terms",
+          "params": {
+           "missingBucket": false,
+           "orderBy": {
+            "columnId": "m1",
+            "type": "column"
+           },
+           "orderDirection": "desc",
+           "otherBucket": false,
+           "parentFormat": {
+            "id": "terms"
+           },
+           "size": 6
+          },
+          "scale": "ordinal",
+          "sourceField": "outcome"
+         },
+         "x1": {
+          "dataType": "date",
+          "isBucketed": true,
+          "label": "@timestamp",
+          "operationType": "date_histogram",
+          "params": {
+           "dropPartials": false,
+           "includeEmptyRows": true,
+           "interval": "auto"
+          },
+          "scale": "interval",
+          "sourceField": "@timestamp"
+         }
+        },
+        "incompleteColumns": {}
+       }
+      }
+     }
+    },
+    "filters": [],
+    "query": {
+     "language": "kuery",
+     "query": ""
+    },
+    "visualization": {
+     "fittingFunction": "None",
+     "layers": [
+      {
+       "accessors": [
+        "m1"
+       ],
+       "layerId": "layer1",
+       "layerType": "data",
+       "position": "top",
+       "seriesType": "bar_stacked",
+       "showGridlines": false,
+       "splitAccessor": "s1",
+       "xAccessor": "x1"
+      }
+     ],
+     "legend": {
+      "isVisible": true,
+      "position": "right"
+     },
+     "preferredSeriesType": "bar_stacked",
+     "valueLabels": "hide"
+    }
+   },
+   "title": "Runs over time by outcome",
+   "visualizationType": "lnsXY"
+  },
+  "id": "dbwiki-lens-runs-over-time",
+  "references": [
+   {
+    "id": "dbwiki-dv-run-health",
+    "name": "indexpattern-datasource-layer-layer1",
+    "type": "index-pattern"
+   }
+  ],
+  "type": "lens"
+ },
+ {
+  "attributes": {
+   "description": "",
+   "state": {
+    "datasourceStates": {
+     "formBased": {
+      "layers": {
+       "layer1": {
+        "columnOrder": [
+         "x1",
+         "s1",
+         "m1"
+        ],
+        "columns": {
+         "m1": {
+          "dataType": "number",
+          "isBucketed": false,
+          "label": "avg duration (s)",
+          "operationType": "average",
+          "params": {
+           "emptyAsNull": false
+          },
+          "scale": "ratio",
+          "sourceField": "duration_s"
+         },
+         "s1": {
+          "dataType": "string",
+          "isBucketed": true,
+          "label": "command",
+          "operationType": "terms",
+          "params": {
+           "missingBucket": false,
+           "orderBy": {
+            "columnId": "m1",
+            "type": "column"
+           },
+           "orderDirection": "desc",
+           "otherBucket": false,
+           "parentFormat": {
+            "id": "terms"
+           },
+           "size": 8
+          },
+          "scale": "ordinal",
+          "sourceField": "command"
+         },
+         "x1": {
+          "dataType": "date",
+          "isBucketed": true,
+          "label": "@timestamp",
+          "operationType": "date_histogram",
+          "params": {
+           "dropPartials": false,
+           "includeEmptyRows": true,
+           "interval": "auto"
+          },
+          "scale": "interval",
+          "sourceField": "@timestamp"
+         }
+        },
+        "incompleteColumns": {}
+       }
+      }
+     }
+    },
+    "filters": [],
+    "query": {
+     "language": "kuery",
+     "query": ""
+    },
+    "visualization": {
+     "fittingFunction": "None",
+     "layers": [
+      {
+       "accessors": [
+        "m1"
+       ],
+       "layerId": "layer1",
+       "layerType": "data",
+       "position": "top",
+       "seriesType": "line",
+       "showGridlines": false,
+       "splitAccessor": "s1",
+       "xAccessor": "x1"
+      }
+     ],
+     "legend": {
+      "isVisible": true,
+      "position": "right"
+     },
+     "preferredSeriesType": "line",
+     "valueLabels": "hide"
+    }
+   },
+   "title": "Run duration by command (avg s)",
+   "visualizationType": "lnsXY"
+  },
+  "id": "dbwiki-lens-run-duration",
+  "references": [
+   {
+    "id": "dbwiki-dv-run-health",
+    "name": "indexpattern-datasource-layer-layer1",
+    "type": "index-pattern"
+   }
+  ],
+  "type": "lens"
+ },
+ {
+  "attributes": {
+   "description": "",
+   "state": {
+    "datasourceStates": {
+     "formBased": {
+      "layers": {
+       "layer1": {
+        "columnOrder": [
+         "x1",
+         "s1",
+         "m1"
+        ],
+        "columns": {
+         "m1": {
+          "dataType": "number",
+          "isBucketed": false,
+          "label": "Ticks",
+          "operationType": "count",
+          "params": {
+           "emptyAsNull": false
+          },
+          "scale": "ratio",
+          "sourceField": "___records___"
+         },
+         "s1": {
+          "dataType": "string",
+          "isBucketed": true,
+          "label": "decision",
+          "operationType": "terms",
+          "params": {
+           "missingBucket": false,
+           "orderBy": {
+            "columnId": "m1",
+            "type": "column"
+           },
+           "orderDirection": "desc",
+           "otherBucket": false,
+           "parentFormat": {
+            "id": "terms"
+           },
+           "size": 4
+          },
+          "scale": "ordinal",
+          "sourceField": "decision"
+         },
+         "x1": {
+          "dataType": "string",
+          "isBucketed": true,
+          "label": "database",
+          "operationType": "terms",
+          "params": {
+           "missingBucket": false,
+           "orderBy": {
+            "columnId": "m1",
+            "type": "column"
+           },
+           "orderDirection": "desc",
+           "otherBucket": false,
+           "parentFormat": {
+            "id": "terms"
+           },
+           "size": 20
+          },
+          "scale": "ordinal",
+          "sourceField": "db"
+         }
+        },
+        "incompleteColumns": {}
+       }
+      }
+     }
+    },
+    "filters": [],
+    "query": {
+     "language": "kuery",
+     "query": ""
+    },
+    "visualization": {
+     "fittingFunction": "None",
+     "layers": [
+      {
+       "accessors": [
+        "m1"
+       ],
+       "layerId": "layer1",
+       "layerType": "data",
+       "position": "top",
+       "seriesType": "bar_horizontal_stacked",
+       "showGridlines": false,
+       "splitAccessor": "s1",
+       "xAccessor": "x1"
+      }
+     ],
+     "legend": {
+      "isVisible": true,
+      "position": "right"
+     },
+     "preferredSeriesType": "bar_horizontal_stacked",
+     "valueLabels": "hide"
+    }
+   },
+   "title": "Wake vs skip per database",
+   "visualizationType": "lnsXY"
+  },
+  "id": "dbwiki-lens-decisions-per-db",
+  "references": [
+   {
+    "id": "dbwiki-dv-db-runs",
+    "name": "indexpattern-datasource-layer-layer1",
+    "type": "index-pattern"
+   }
+  ],
+  "type": "lens"
+ },
+ {
+  "attributes": {
+   "description": "",
+   "state": {
+    "datasourceStates": {
+     "formBased": {
+      "layers": {
+       "layer1": {
+        "columnOrder": [
+         "b1",
+         "m1"
+        ],
+        "columns": {
+         "b1": {
+          "dataType": "string",
+          "isBucketed": true,
+          "label": "decision_reasons",
+          "operationType": "terms",
+          "params": {
+           "missingBucket": false,
+           "orderBy": {
+            "columnId": "m1",
+            "type": "column"
+           },
+           "orderDirection": "desc",
+           "otherBucket": false,
+           "parentFormat": {
+            "id": "terms"
+           },
+           "size": 10
+          },
+          "scale": "ordinal",
+          "sourceField": "decision_reasons"
+         },
+         "m1": {
+          "dataType": "number",
+          "isBucketed": false,
+          "label": "Count",
+          "operationType": "count",
+          "params": {
+           "emptyAsNull": false
+          },
+          "scale": "ratio",
+          "sourceField": "___records___"
+         }
+        },
+        "incompleteColumns": {}
+       }
+      }
+     }
+    },
+    "filters": [],
+    "query": {
+     "language": "kuery",
+     "query": ""
+    },
+    "visualization": {
+     "layers": [
+      {
+       "categoryDisplay": "default",
+       "layerId": "layer1",
+       "layerType": "data",
+       "legendDisplay": "default",
+       "metrics": [
+        "m1"
+       ],
+       "nestedLegend": false,
+       "numberDisplay": "value",
+       "primaryGroups": [
+        "b1"
+       ]
+      }
+     ],
+     "shape": "donut"
+    }
+   },
+   "title": "Decision reasons",
+   "visualizationType": "lnsPie"
+  },
+  "id": "dbwiki-lens-decision-reasons",
+  "references": [
+   {
+    "id": "dbwiki-dv-db-runs",
+    "name": "indexpattern-datasource-layer-layer1",
+    "type": "index-pattern"
+   }
+  ],
+  "type": "lens"
+ },
+ {
+  "attributes": {
+   "description": "",
+   "state": {
+    "datasourceStates": {
+     "formBased": {
+      "layers": {
+       "layer1": {
+        "columnOrder": [
+         "x1",
+         "m1",
+         "m2"
+        ],
+        "columns": {
+         "m1": {
+          "dataType": "number",
+          "isBucketed": false,
+          "label": "events",
+          "operationType": "sum",
+          "params": {
+           "emptyAsNull": false
+          },
+          "scale": "ratio",
+          "sourceField": "events"
+         },
+         "m2": {
+          "dataType": "number",
+          "isBucketed": false,
+          "label": "notable events",
+          "operationType": "sum",
+          "params": {
+           "emptyAsNull": false
+          },
+          "scale": "ratio",
+          "sourceField": "notable_events"
+         },
+         "x1": {
+          "dataType": "date",
+          "isBucketed": true,
+          "label": "@timestamp",
+          "operationType": "date_histogram",
+          "params": {
+           "dropPartials": false,
+           "includeEmptyRows": true,
+           "interval": "auto"
+          },
+          "scale": "interval",
+          "sourceField": "@timestamp"
+         }
+        },
+        "incompleteColumns": {}
+       }
+      }
+     }
+    },
+    "filters": [],
+    "query": {
+     "language": "kuery",
+     "query": ""
+    },
+    "visualization": {
+     "fittingFunction": "None",
+     "layers": [
+      {
+       "accessors": [
+        "m1",
+        "m2"
+       ],
+       "layerId": "layer1",
+       "layerType": "data",
+       "position": "top",
+       "seriesType": "area",
+       "showGridlines": false,
+       "xAccessor": "x1"
+      }
+     ],
+     "legend": {
+      "isVisible": true,
+      "position": "right"
+     },
+     "preferredSeriesType": "area",
+     "valueLabels": "hide"
+    }
+   },
+   "title": "Events vs notable events",
+   "visualizationType": "lnsXY"
+  },
+  "id": "dbwiki-lens-events-over-time",
+  "references": [
+   {
+    "id": "dbwiki-dv-db-runs",
+    "name": "indexpattern-datasource-layer-layer1",
+    "type": "index-pattern"
+   }
+  ],
+  "type": "lens"
+ },
+ {
+  "attributes": {
+   "description": "",
+   "state": {
+    "datasourceStates": {
+     "formBased": {
+      "layers": {
+       "layer1": {
+        "columnOrder": [
+         "x1",
+         "m1"
+        ],
+        "columns": {
+         "m1": {
+          "dataType": "number",
+          "isBucketed": false,
+          "label": "avg duration (s)",
+          "operationType": "average",
+          "params": {
+           "emptyAsNull": false
+          },
+          "scale": "ratio",
+          "sourceField": "telemetry.duration_s"
+         },
+         "x1": {
+          "dataType": "string",
+          "isBucketed": true,
+          "label": "task",
+          "operationType": "terms",
+          "params": {
+           "missingBucket": false,
+           "orderBy": {
+            "columnId": "m1",
+            "type": "column"
+           },
+           "orderDirection": "desc",
+           "otherBucket": false,
+           "parentFormat": {
+            "id": "terms"
+           },
+           "size": 8
+          },
+          "scale": "ordinal",
+          "sourceField": "telemetry.task"
+         }
+        },
+        "incompleteColumns": {}
+       }
+      }
+     }
+    },
+    "filters": [],
+    "query": {
+     "language": "kuery",
+     "query": ""
+    },
+    "visualization": {
+     "fittingFunction": "None",
+     "layers": [
+      {
+       "accessors": [
+        "m1"
+       ],
+       "layerId": "layer1",
+       "layerType": "data",
+       "position": "top",
+       "seriesType": "bar",
+       "showGridlines": false,
+       "xAccessor": "x1"
+      }
+     ],
+     "legend": {
+      "isVisible": true,
+      "position": "right"
+     },
+     "preferredSeriesType": "bar",
+     "valueLabels": "hide"
+    }
+   },
+   "title": "Agent stage duration (avg s)",
+   "visualizationType": "lnsXY"
+  },
+  "id": "dbwiki-lens-agent-durations",
+  "references": [
+   {
+    "id": "dbwiki-dv-db-runs",
+    "name": "indexpattern-datasource-layer-layer1",
+    "type": "index-pattern"
+   }
+  ],
+  "type": "lens"
+ },
+ {
+  "attributes": {
+   "description": "",
+   "state": {
+    "datasourceStates": {
+     "formBased": {
+      "layers": {
+       "layer1": {
+        "columnOrder": [
+         "b1",
+         "m1"
+        ],
+        "columns": {
+         "b1": {
+          "dataType": "string",
+          "isBucketed": true,
+          "label": "status",
+          "operationType": "terms",
+          "params": {
+           "missingBucket": false,
+           "orderBy": {
+            "columnId": "m1",
+            "type": "column"
+           },
+           "orderDirection": "desc",
+           "otherBucket": false,
+           "parentFormat": {
+            "id": "terms"
+           },
+           "size": 8
+          },
+          "scale": "ordinal",
+          "sourceField": "status"
+         },
+         "m1": {
+          "dataType": "number",
+          "isBucketed": false,
+          "label": "Count",
+          "operationType": "count",
+          "params": {
+           "emptyAsNull": false
+          },
+          "scale": "ratio",
+          "sourceField": "___records___"
+         }
+        },
+        "incompleteColumns": {}
+       }
+      }
+     }
+    },
+    "filters": [],
+    "query": {
+     "language": "kuery",
+     "query": ""
+    },
+    "visualization": {
+     "layers": [
+      {
+       "categoryDisplay": "default",
+       "layerId": "layer1",
+       "layerType": "data",
+       "legendDisplay": "default",
+       "metrics": [
+        "m1"
+       ],
+       "nestedLegend": false,
+       "numberDisplay": "value",
+       "primaryGroups": [
+        "b1"
+       ]
+      }
+     ],
+     "shape": "donut"
+    }
+   },
+   "title": "Ledger: digest statuses",
+   "visualizationType": "lnsPie"
+  },
+  "id": "dbwiki-lens-ledger-status",
+  "references": [
+   {
+    "id": "dbwiki-dv-ledger",
+    "name": "indexpattern-datasource-layer-layer1",
+    "type": "index-pattern"
+   }
+  ],
+  "type": "lens"
+ },
+ {
+  "attributes": {
+   "description": "",
+   "state": {
+    "datasourceStates": {
+     "formBased": {
+      "layers": {
+       "layer1": {
+        "columnOrder": [
+         "b1",
+         "b2",
+         "m1"
+        ],
+        "columns": {
+         "b1": {
+          "dataType": "string",
+          "isBucketed": true,
+          "label": "digest",
+          "operationType": "terms",
+          "params": {
+           "missingBucket": false,
+           "orderBy": {
+            "columnId": "m1",
+            "type": "column"
+           },
+           "orderDirection": "desc",
+           "otherBucket": false,
+           "parentFormat": {
+            "id": "terms"
+           },
+           "size": 15
+          },
+          "scale": "ordinal",
+          "sourceField": "digest_path"
+         },
+         "b2": {
+          "dataType": "string",
+          "isBucketed": true,
+          "label": "status",
+          "operationType": "terms",
+          "params": {
+           "missingBucket": false,
+           "orderBy": {
+            "columnId": "m1",
+            "type": "column"
+           },
+           "orderDirection": "desc",
+           "otherBucket": false,
+           "parentFormat": {
+            "id": "terms"
+           },
+           "size": 4
+          },
+          "scale": "ordinal",
+          "sourceField": "status"
+         },
+         "m1": {
+          "dataType": "number",
+          "isBucketed": false,
+          "label": "events",
+          "operationType": "count",
+          "params": {
+           "emptyAsNull": false
+          },
+          "scale": "ratio",
+          "sourceField": "___records___"
+         }
+        },
+        "incompleteColumns": {}
+       }
+      }
+     }
+    },
+    "filters": [],
+    "query": {
+     "language": "kuery",
+     "query": ""
+    },
+    "visualization": {
+     "columns": [
+      {
+       "columnId": "b1",
+       "isTransposed": false
+      },
+      {
+       "columnId": "b2",
+       "isTransposed": false
+      },
+      {
+       "columnId": "m1",
+       "isTransposed": false
+      }
+     ],
+     "layerId": "layer1",
+     "layerType": "data"
+    }
+   },
+   "title": "Ledger: events per digest",
+   "visualizationType": "lnsDatatable"
+  },
+  "id": "dbwiki-lens-ledger-table",
+  "references": [
+   {
+    "id": "dbwiki-dv-ledger",
+    "name": "indexpattern-datasource-layer-layer1",
+    "type": "index-pattern"
+   }
+  ],
+  "type": "lens"
+ },
+ {
+  "attributes": {
+   "columns": [
+    "log.level",
+    "dbwiki.db",
+    "dbwiki.decision",
+    "dbwiki.reason",
+    "message"
+   ],
+   "description": "",
+   "kibanaSavedObjectMeta": {
+    "searchSourceJSON": "{\"query\": {\"query\": \"\", \"language\": \"kuery\"}, \"filter\": [], \"indexRefName\": \"kibanaSavedObjectMeta.searchSourceJSON.index\"}"
+   },
+   "sort": [
+    [
+     "@timestamp",
+     "desc"
+    ]
+   ],
+   "title": "Cron log (raw)"
+  },
+  "id": "dbwiki-search-cron",
+  "references": [
+   {
+    "id": "dbwiki-dv-cron",
+    "name": "kibanaSavedObjectMeta.searchSourceJSON.index",
+    "type": "index-pattern"
+   }
+  ],
+  "type": "search"
+ },
+ {
+  "attributes": {
+   "columns": [
+    "dbwiki.task",
+    "dbwiki.summary"
+   ],
+   "description": "",
+   "kibanaSavedObjectMeta": {
+    "searchSourceJSON": "{\"query\": {\"query\": \"\", \"language\": \"kuery\"}, \"filter\": [], \"indexRefName\": \"kibanaSavedObjectMeta.searchSourceJSON.index\"}"
+   },
+   "sort": [
+    [
+     "@timestamp",
+     "desc"
+    ]
+   ],
+   "title": "Agent audit trail"
+  },
+  "id": "dbwiki-search-audit",
+  "references": [
+   {
+    "id": "dbwiki-dv-audit",
+    "name": "kibanaSavedObjectMeta.searchSourceJSON.index",
+    "type": "index-pattern"
+   }
+  ],
+  "type": "search"
+ },
+ {
+  "attributes": {
+   "description": "",
+   "state": {
+    "datasourceStates": {
+     "formBased": {
+      "layers": {
+       "layer1": {
+        "columnOrder": [
+         "m1"
+        ],
+        "columns": {
+         "m1": {
+          "dataType": "number",
+          "isBucketed": false,
+          "label": "Agent runs",
+          "operationType": "count",
+          "params": {
+           "emptyAsNull": false
+          },
+          "scale": "ratio",
+          "sourceField": "___records___"
+         }
+        },
+        "incompleteColumns": {}
+       }
+      }
+     }
+    },
+    "filters": [],
+    "query": {
+     "language": "kuery",
+     "query": ""
+    },
+    "visualization": {
+     "layerId": "layer1",
+     "layerType": "data",
+     "metricAccessor": "m1"
+    }
+   },
+   "title": "Agent runs",
+   "visualizationType": "lnsMetric"
+  },
+  "id": "dbwiki-lens-ar-total",
+  "references": [
+   {
+    "id": "dbwiki-dv-agent-runs",
+    "name": "indexpattern-datasource-layer-layer1",
+    "type": "index-pattern"
+   }
+  ],
+  "type": "lens"
+ },
+ {
+  "attributes": {
+   "description": "",
+   "state": {
+    "datasourceStates": {
+     "formBased": {
+      "layers": {
+       "layer1": {
+        "columnOrder": [
+         "m1"
+        ],
+        "columns": {
+         "m1": {
+          "dataType": "number",
+          "isBucketed": false,
+          "label": "input tokens",
+          "operationType": "sum",
+          "params": {
+           "emptyAsNull": false
+          },
+          "scale": "ratio",
+          "sourceField": "input_tokens"
+         }
+        },
+        "incompleteColumns": {}
+       }
+      }
+     }
+    },
+    "filters": [],
+    "query": {
+     "language": "kuery",
+     "query": ""
+    },
+    "visualization": {
+     "layerId": "layer1",
+     "layerType": "data",
+     "metricAccessor": "m1"
+    }
+   },
+   "title": "Input tokens",
+   "visualizationType": "lnsMetric"
+  },
+  "id": "dbwiki-lens-ar-input-tokens",
+  "references": [
+   {
+    "id": "dbwiki-dv-agent-runs",
+    "name": "indexpattern-datasource-layer-layer1",
+    "type": "index-pattern"
+   }
+  ],
+  "type": "lens"
+ },
+ {
+  "attributes": {
+   "description": "",
+   "state": {
+    "datasourceStates": {
+     "formBased": {
+      "layers": {
+       "layer1": {
+        "columnOrder": [
+         "m1"
+        ],
+        "columns": {
+         "m1": {
+          "dataType": "number",
+          "isBucketed": false,
+          "label": "output tokens",
+          "operationType": "sum",
+          "params": {
+           "emptyAsNull": false
+          },
+          "scale": "ratio",
+          "sourceField": "output_tokens"
+         }
+        },
+        "incompleteColumns": {}
+       }
+      }
+     }
+    },
+    "filters": [],
+    "query": {
+     "language": "kuery",
+     "query": ""
+    },
+    "visualization": {
+     "layerId": "layer1",
+     "layerType": "data",
+     "metricAccessor": "m1"
+    }
+   },
+   "title": "Output tokens",
+   "visualizationType": "lnsMetric"
+  },
+  "id": "dbwiki-lens-ar-output-tokens",
+  "references": [
+   {
+    "id": "dbwiki-dv-agent-runs",
+    "name": "indexpattern-datasource-layer-layer1",
+    "type": "index-pattern"
+   }
+  ],
+  "type": "lens"
+ },
+ {
+  "attributes": {
+   "description": "",
+   "state": {
+    "datasourceStates": {
+     "formBased": {
+      "layers": {
+       "layer1": {
+        "columnOrder": [
+         "m1"
+        ],
+        "columns": {
+         "m1": {
+          "dataType": "number",
+          "isBucketed": false,
+          "label": "cost USD",
+          "operationType": "sum",
+          "params": {
+           "emptyAsNull": false
+          },
+          "scale": "ratio",
+          "sourceField": "cost_usd"
+         }
+        },
+        "incompleteColumns": {}
+       }
+      }
+     }
+    },
+    "filters": [],
+    "query": {
+     "language": "kuery",
+     "query": ""
+    },
+    "visualization": {
+     "layerId": "layer1",
+     "layerType": "data",
+     "metricAccessor": "m1"
+    }
+   },
+   "title": "Cost (USD)",
+   "visualizationType": "lnsMetric"
+  },
+  "id": "dbwiki-lens-ar-cost",
+  "references": [
+   {
+    "id": "dbwiki-dv-agent-runs",
+    "name": "indexpattern-datasource-layer-layer1",
+    "type": "index-pattern"
+   }
+  ],
+  "type": "lens"
+ },
+ {
+  "attributes": {
+   "description": "",
+   "state": {
+    "datasourceStates": {
+     "formBased": {
+      "layers": {
+       "layer1": {
+        "columnOrder": [
+         "m1"
+        ],
+        "columns": {
+         "m1": {
+          "dataType": "number",
+          "filter": {
+           "language": "kuery",
+           "query": "validation_ok : false or timed_out : true or rolled_back : true"
+          },
+          "isBucketed": false,
+          "label": "Problem runs",
+          "operationType": "count",
+          "params": {
+           "emptyAsNull": false
+          },
+          "scale": "ratio",
+          "sourceField": "___records___"
+         }
+        },
+        "incompleteColumns": {}
+       }
+      }
+     }
+    },
+    "filters": [],
+    "query": {
+     "language": "kuery",
+     "query": ""
+    },
+    "visualization": {
+     "layerId": "layer1",
+     "layerType": "data",
+     "metricAccessor": "m1"
+    }
+   },
+   "title": "Problem runs",
+   "visualizationType": "lnsMetric"
+  },
+  "id": "dbwiki-lens-ar-problems",
+  "references": [
+   {
+    "id": "dbwiki-dv-agent-runs",
+    "name": "indexpattern-datasource-layer-layer1",
+    "type": "index-pattern"
+   }
+  ],
+  "type": "lens"
+ },
+ {
+  "attributes": {
+   "description": "",
+   "state": {
+    "datasourceStates": {
+     "formBased": {
+      "layers": {
+       "layer1": {
+        "columnOrder": [
+         "x1",
+         "s1",
+         "m1"
+        ],
+        "columns": {
+         "m1": {
+          "dataType": "number",
+          "isBucketed": false,
+          "label": "Runs",
+          "operationType": "count",
+          "params": {
+           "emptyAsNull": false
+          },
+          "scale": "ratio",
+          "sourceField": "___records___"
+         },
+         "s1": {
+          "dataType": "string",
+          "isBucketed": true,
+          "label": "task",
+          "operationType": "terms",
+          "params": {
+           "missingBucket": false,
+           "orderBy": {
+            "columnId": "m1",
+            "type": "column"
+           },
+           "orderDirection": "desc",
+           "otherBucket": false,
+           "parentFormat": {
+            "id": "terms"
+           },
+           "size": 6
+          },
+          "scale": "ordinal",
+          "sourceField": "task"
+         },
+         "x1": {
+          "dataType": "date",
+          "isBucketed": true,
+          "label": "@timestamp",
+          "operationType": "date_histogram",
+          "params": {
+           "dropPartials": false,
+           "includeEmptyRows": true,
+           "interval": "auto"
+          },
+          "scale": "interval",
+          "sourceField": "@timestamp"
+         }
+        },
+        "incompleteColumns": {}
+       }
+      }
+     }
+    },
+    "filters": [],
+    "query": {
+     "language": "kuery",
+     "query": ""
+    },
+    "visualization": {
+     "fittingFunction": "None",
+     "layers": [
+      {
+       "accessors": [
+        "m1"
+       ],
+       "layerId": "layer1",
+       "layerType": "data",
+       "position": "top",
+       "seriesType": "bar_stacked",
+       "showGridlines": false,
+       "splitAccessor": "s1",
+       "xAccessor": "x1"
+      }
+     ],
+     "legend": {
+      "isVisible": true,
+      "position": "right"
+     },
+     "preferredSeriesType": "bar_stacked",
+     "valueLabels": "hide"
+    }
+   },
+   "title": "Agent runs over time by task",
+   "visualizationType": "lnsXY"
+  },
+  "id": "dbwiki-lens-ar-over-time",
+  "references": [
+   {
+    "id": "dbwiki-dv-agent-runs",
+    "name": "indexpattern-datasource-layer-layer1",
+    "type": "index-pattern"
+   }
+  ],
+  "type": "lens"
+ },
+ {
+  "attributes": {
+   "description": "",
+   "state": {
+    "datasourceStates": {
+     "formBased": {
+      "layers": {
+       "layer1": {
+        "columnOrder": [
+         "x1",
+         "s1",
+         "m1"
+        ],
+        "columns": {
+         "m1": {
+          "dataType": "number",
+          "isBucketed": false,
+          "label": "avg duration (s)",
+          "operationType": "average",
+          "params": {
+           "emptyAsNull": false
+          },
+          "scale": "ratio",
+          "sourceField": "duration_s"
+         },
+         "s1": {
+          "dataType": "string",
+          "isBucketed": true,
+          "label": "task",
+          "operationType": "terms",
+          "params": {
+           "missingBucket": false,
+           "orderBy": {
+            "columnId": "m1",
+            "type": "column"
+           },
+           "orderDirection": "desc",
+           "otherBucket": false,
+           "parentFormat": {
+            "id": "terms"
+           },
+           "size": 6
+          },
+          "scale": "ordinal",
+          "sourceField": "task"
+         },
+         "x1": {
+          "dataType": "date",
+          "isBucketed": true,
+          "label": "@timestamp",
+          "operationType": "date_histogram",
+          "params": {
+           "dropPartials": false,
+           "includeEmptyRows": true,
+           "interval": "auto"
+          },
+          "scale": "interval",
+          "sourceField": "@timestamp"
+         }
+        },
+        "incompleteColumns": {}
+       }
+      }
+     }
+    },
+    "filters": [],
+    "query": {
+     "language": "kuery",
+     "query": ""
+    },
+    "visualization": {
+     "fittingFunction": "None",
+     "layers": [
+      {
+       "accessors": [
+        "m1"
+       ],
+       "layerId": "layer1",
+       "layerType": "data",
+       "position": "top",
+       "seriesType": "line",
+       "showGridlines": false,
+       "splitAccessor": "s1",
+       "xAccessor": "x1"
+      }
+     ],
+     "legend": {
+      "isVisible": true,
+      "position": "right"
+     },
+     "preferredSeriesType": "line",
+     "valueLabels": "hide"
+    }
+   },
+   "title": "Stage duration over time (avg s)",
+   "visualizationType": "lnsXY"
+  },
+  "id": "dbwiki-lens-ar-duration",
+  "references": [
+   {
+    "id": "dbwiki-dv-agent-runs",
+    "name": "indexpattern-datasource-layer-layer1",
+    "type": "index-pattern"
+   }
+  ],
+  "type": "lens"
+ },
+ {
+  "attributes": {
+   "description": "",
+   "state": {
+    "datasourceStates": {
+     "formBased": {
+      "layers": {
+       "layer1": {
+        "columnOrder": [
+         "x1",
+         "m1",
+         "m2"
+        ],
+        "columns": {
+         "m1": {
+          "dataType": "number",
+          "isBucketed": false,
+          "label": "input tokens",
+          "operationType": "sum",
+          "params": {
+           "emptyAsNull": false
+          },
+          "scale": "ratio",
+          "sourceField": "input_tokens"
+         },
+         "m2": {
+          "dataType": "number",
+          "isBucketed": false,
+          "label": "output tokens",
+          "operationType": "sum",
+          "params": {
+           "emptyAsNull": false
+          },
+          "scale": "ratio",
+          "sourceField": "output_tokens"
+         },
+         "x1": {
+          "dataType": "date",
+          "isBucketed": true,
+          "label": "@timestamp",
+          "operationType": "date_histogram",
+          "params": {
+           "dropPartials": false,
+           "includeEmptyRows": true,
+           "interval": "auto"
+          },
+          "scale": "interval",
+          "sourceField": "@timestamp"
+         }
+        },
+        "incompleteColumns": {}
+       }
+      }
+     }
+    },
+    "filters": [],
+    "query": {
+     "language": "kuery",
+     "query": ""
+    },
+    "visualization": {
+     "fittingFunction": "None",
+     "layers": [
+      {
+       "accessors": [
+        "m1",
+        "m2"
+       ],
+       "layerId": "layer1",
+       "layerType": "data",
+       "position": "top",
+       "seriesType": "area",
+       "showGridlines": false,
+       "xAccessor": "x1"
+      }
+     ],
+     "legend": {
+      "isVisible": true,
+      "position": "right"
+     },
+     "preferredSeriesType": "area",
+     "valueLabels": "hide"
+    }
+   },
+   "title": "Tokens over time",
+   "visualizationType": "lnsXY"
+  },
+  "id": "dbwiki-lens-ar-tokens-time",
+  "references": [
+   {
+    "id": "dbwiki-dv-agent-runs",
+    "name": "indexpattern-datasource-layer-layer1",
+    "type": "index-pattern"
+   }
+  ],
+  "type": "lens"
+ },
+ {
+  "attributes": {
+   "description": "",
+   "state": {
+    "datasourceStates": {
+     "formBased": {
+      "layers": {
+       "layer1": {
+        "columnOrder": [
+         "b1",
+         "b2",
+         "m1",
+         "m2",
+         "m3",
+         "m4",
+         "m5"
+        ],
+        "columns": {
+         "b1": {
+          "dataType": "string",
+          "isBucketed": true,
+          "label": "model",
+          "operationType": "terms",
+          "params": {
+           "missingBucket": false,
+           "orderBy": {
+            "columnId": "m1",
+            "type": "column"
+           },
+           "orderDirection": "desc",
+           "otherBucket": false,
+           "parentFormat": {
+            "id": "terms"
+           },
+           "size": 10
+          },
+          "scale": "ordinal",
+          "sourceField": "model"
+         },
+         "b2": {
+          "dataType": "string",
+          "isBucketed": true,
+          "label": "tier",
+          "operationType": "terms",
+          "params": {
+           "missingBucket": false,
+           "orderBy": {
+            "columnId": "m1",
+            "type": "column"
+           },
+           "orderDirection": "desc",
+           "otherBucket": false,
+           "parentFormat": {
+            "id": "terms"
+           },
+           "size": 4
+          },
+          "scale": "ordinal",
+          "sourceField": "model_tier"
+         },
+         "m1": {
+          "dataType": "number",
+          "isBucketed": false,
+          "label": "runs",
+          "operationType": "count",
+          "params": {
+           "emptyAsNull": false
+          },
+          "scale": "ratio",
+          "sourceField": "___records___"
+         },
+         "m2": {
+          "dataType": "number",
+          "isBucketed": false,
+          "label": "avg s",
+          "operationType": "average",
+          "params": {
+           "emptyAsNull": false
+          },
+          "scale": "ratio",
+          "sourceField": "duration_s"
+         },
+         "m3": {
+          "dataType": "number",
+          "isBucketed": false,
+          "label": "input tokens",
+          "operationType": "sum",
+          "params": {
+           "emptyAsNull": false
+          },
+          "scale": "ratio",
+          "sourceField": "input_tokens"
+         },
+         "m4": {
+          "dataType": "number",
+          "isBucketed": false,
+          "label": "output tokens",
+          "operationType": "sum",
+          "params": {
+           "emptyAsNull": false
+          },
+          "scale": "ratio",
+          "sourceField": "output_tokens"
+         },
+         "m5": {
+          "dataType": "number",
+          "isBucketed": false,
+          "label": "cost USD",
+          "operationType": "sum",
+          "params": {
+           "emptyAsNull": false
+          },
+          "scale": "ratio",
+          "sourceField": "cost_usd"
+         }
+        },
+        "incompleteColumns": {}
+       }
+      }
+     }
+    },
+    "filters": [],
+    "query": {
+     "language": "kuery",
+     "query": ""
+    },
+    "visualization": {
+     "columns": [
+      {
+       "columnId": "b1",
+       "isTransposed": false
+      },
+      {
+       "columnId": "b2",
+       "isTransposed": false
+      },
+      {
+       "columnId": "m1",
+       "isTransposed": false
+      },
+      {
+       "columnId": "m2",
+       "isTransposed": false
+      },
+      {
+       "columnId": "m3",
+       "isTransposed": false
+      },
+      {
+       "columnId": "m4",
+       "isTransposed": false
+      },
+      {
+       "columnId": "m5",
+       "isTransposed": false
+      }
+     ],
+     "layerId": "layer1",
+     "layerType": "data"
+    }
+   },
+   "title": "Per model: runs, timings, tokens, cost",
+   "visualizationType": "lnsDatatable"
+  },
+  "id": "dbwiki-lens-ar-by-model",
+  "references": [
+   {
+    "id": "dbwiki-dv-agent-runs",
+    "name": "indexpattern-datasource-layer-layer1",
+    "type": "index-pattern"
+   }
+  ],
+  "type": "lens"
+ },
+ {
+  "attributes": {
+   "description": "",
+   "state": {
+    "datasourceStates": {
+     "formBased": {
+      "layers": {
+       "layer1": {
+        "columnOrder": [
+         "b1",
+         "m1"
+        ],
+        "columns": {
+         "b1": {
+          "dataType": "string",
+          "isBucketed": true,
+          "label": "adapter",
+          "operationType": "terms",
+          "params": {
+           "missingBucket": false,
+           "orderBy": {
+            "columnId": "m1",
+            "type": "column"
+           },
+           "orderDirection": "desc",
+           "otherBucket": false,
+           "parentFormat": {
+            "id": "terms"
+           },
+           "size": 6
+          },
+          "scale": "ordinal",
+          "sourceField": "adapter"
+         },
+         "m1": {
+          "dataType": "number",
+          "isBucketed": false,
+          "label": "Count",
+          "operationType": "count",
+          "params": {
+           "emptyAsNull": false
+          },
+          "scale": "ratio",
+          "sourceField": "___records___"
+         }
+        },
+        "incompleteColumns": {}
+       }
+      }
+     }
+    },
+    "filters": [],
+    "query": {
+     "language": "kuery",
+     "query": ""
+    },
+    "visualization": {
+     "layers": [
+      {
+       "categoryDisplay": "default",
+       "layerId": "layer1",
+       "layerType": "data",
+       "legendDisplay": "default",
+       "metrics": [
+        "m1"
+       ],
+       "nestedLegend": false,
+       "numberDisplay": "value",
+       "primaryGroups": [
+        "b1"
+       ]
+      }
+     ],
+     "shape": "donut"
+    }
+   },
+   "title": "Runs by adapter",
+   "visualizationType": "lnsPie"
+  },
+  "id": "dbwiki-lens-ar-adapter",
+  "references": [
+   {
+    "id": "dbwiki-dv-agent-runs",
+    "name": "indexpattern-datasource-layer-layer1",
+    "type": "index-pattern"
+   }
+  ],
+  "type": "lens"
+ },
+ {
+  "attributes": {
+   "description": "",
+   "state": {
+    "datasourceStates": {
+     "formBased": {
+      "layers": {
+       "layer1": {
+        "columnOrder": [
+         "x1",
+         "m1",
+         "m2",
+         "m3"
+        ],
+        "columns": {
+         "m1": {
+          "dataType": "number",
+          "filter": {
+           "language": "kuery",
+           "query": "validation_ok : false"
+          },
+          "isBucketed": false,
+          "label": "validation failed",
+          "operationType": "count",
+          "params": {
+           "emptyAsNull": false
+          },
+          "scale": "ratio",
+          "sourceField": "___records___"
+         },
+         "m2": {
+          "dataType": "number",
+          "filter": {
+           "language": "kuery",
+           "query": "rolled_back : true"
+          },
+          "isBucketed": false,
+          "label": "rolled back",
+          "operationType": "count",
+          "params": {
+           "emptyAsNull": false
+          },
+          "scale": "ratio",
+          "sourceField": "___records___"
+         },
+         "m3": {
+          "dataType": "number",
+          "filter": {
+           "language": "kuery",
+           "query": "timed_out : true"
+          },
+          "isBucketed": false,
+          "label": "timed out",
+          "operationType": "count",
+          "params": {
+           "emptyAsNull": false
+          },
+          "scale": "ratio",
+          "sourceField": "___records___"
+         },
+         "x1": {
+          "dataType": "string",
+          "isBucketed": true,
+          "label": "task",
+          "operationType": "terms",
+          "params": {
+           "missingBucket": false,
+           "orderBy": {
+            "columnId": "m1",
+            "type": "column"
+           },
+           "orderDirection": "desc",
+           "otherBucket": false,
+           "parentFormat": {
+            "id": "terms"
+           },
+           "size": 6
+          },
+          "scale": "ordinal",
+          "sourceField": "task"
+         }
+        },
+        "incompleteColumns": {}
+       }
+      }
+     }
+    },
+    "filters": [],
+    "query": {
+     "language": "kuery",
+     "query": ""
+    },
+    "visualization": {
+     "fittingFunction": "None",
+     "layers": [
+      {
+       "accessors": [
+        "m1",
+        "m2",
+        "m3"
+       ],
+       "layerId": "layer1",
+       "layerType": "data",
+       "position": "top",
+       "seriesType": "bar",
+       "showGridlines": false,
+       "xAccessor": "x1"
+      }
+     ],
+     "legend": {
+      "isVisible": true,
+      "position": "right"
+     },
+     "preferredSeriesType": "bar",
+     "valueLabels": "hide"
+    }
+   },
+   "title": "Problems by task",
+   "visualizationType": "lnsXY"
+  },
+  "id": "dbwiki-lens-ar-outcomes",
+  "references": [
+   {
+    "id": "dbwiki-dv-agent-runs",
+    "name": "indexpattern-datasource-layer-layer1",
+    "type": "index-pattern"
+   }
+  ],
+  "type": "lens"
+ },
+ {
+  "attributes": {
+   "description": "",
+   "state": {
+    "datasourceStates": {
+     "formBased": {
+      "layers": {
+       "layer1": {
+        "columnOrder": [
+         "x1",
+         "s1",
+         "m1"
+        ],
+        "columns": {
+         "m1": {
+          "dataType": "number",
+          "isBucketed": false,
+          "label": "Runs",
+          "operationType": "count",
+          "params": {
+           "emptyAsNull": false
+          },
+          "scale": "ratio",
+          "sourceField": "___records___"
+         },
+         "s1": {
+          "dataType": "string",
+          "isBucketed": true,
+          "label": "model_tier",
+          "operationType": "terms",
+          "params": {
+           "missingBucket": false,
+           "orderBy": {
+            "columnId": "m1",
+            "type": "column"
+           },
+           "orderDirection": "desc",
+           "otherBucket": false,
+           "parentFormat": {
+            "id": "terms"
+           },
+           "size": 4
+          },
+          "scale": "ordinal",
+          "sourceField": "model_tier"
+         },
+         "x1": {
+          "dataType": "string",
+          "isBucketed": true,
+          "label": "database",
+          "operationType": "terms",
+          "params": {
+           "missingBucket": false,
+           "orderBy": {
+            "columnId": "m1",
+            "type": "column"
+           },
+           "orderDirection": "desc",
+           "otherBucket": false,
+           "parentFormat": {
+            "id": "terms"
+           },
+           "size": 20
+          },
+          "scale": "ordinal",
+          "sourceField": "db"
+         }
+        },
+        "incompleteColumns": {}
+       }
+      }
+     }
+    },
+    "filters": [],
+    "query": {
+     "language": "kuery",
+     "query": ""
+    },
+    "visualization": {
+     "fittingFunction": "None",
+     "layers": [
+      {
+       "accessors": [
+        "m1"
+       ],
+       "layerId": "layer1",
+       "layerType": "data",
+       "position": "top",
+       "seriesType": "bar_horizontal_stacked",
+       "showGridlines": false,
+       "splitAccessor": "s1",
+       "xAccessor": "x1"
+      }
+     ],
+     "legend": {
+      "isVisible": true,
+      "position": "right"
+     },
+     "preferredSeriesType": "bar_horizontal_stacked",
+     "valueLabels": "hide"
+    }
+   },
+   "title": "Ingest runs per database",
+   "visualizationType": "lnsXY"
+  },
+  "id": "dbwiki-lens-ar-db",
+  "references": [
+   {
+    "id": "dbwiki-dv-agent-runs",
+    "name": "indexpattern-datasource-layer-layer1",
+    "type": "index-pattern"
+   }
+  ],
+  "type": "lens"
+ },
+ {
+  "attributes": {
+   "columns": [
+    "task",
+    "db",
+    "mode",
+    "adapter",
+    "model",
+    "model_tier",
+    "duration_s",
+    "input_tokens",
+    "output_tokens",
+    "cost_usd",
+    "validation_ok",
+    "rolled_back",
+    "run_id"
+   ],
+   "description": "",
+   "kibanaSavedObjectMeta": {
+    "searchSourceJSON": "{\"query\": {\"query\": \"\", \"language\": \"kuery\"}, \"filter\": [], \"indexRefName\": \"kibanaSavedObjectMeta.searchSourceJSON.index\"}"
+   },
+   "sort": [
+    [
+     "@timestamp",
+     "desc"
+    ]
+   ],
+   "title": "Agent runs (raw)"
+  },
+  "id": "dbwiki-search-agent-runs",
+  "references": [
+   {
+    "id": "dbwiki-dv-agent-runs",
+    "name": "kibanaSavedObjectMeta.searchSourceJSON.index",
+    "type": "index-pattern"
+   }
+  ],
+  "type": "search"
+ },
+ {
+  "attributes": {
+   "description": "Every LLM stage attempt (ingest/report/lint/research) with duration, input/output tokens and cost, by task, model, tier and database. Source: .state/agent_runs.jsonl via elk/; recreate with elk/setup.sh.",
+   "kibanaSavedObjectMeta": {
+    "searchSourceJSON": "{\"query\": {\"query\": \"\", \"language\": \"kuery\"}, \"filter\": []}"
+   },
+   "optionsJSON": "{\"useMargins\": true, \"syncColors\": false, \"syncCursor\": true, \"syncTooltips\": false, \"hidePanelTitles\": false}",
+   "panelsJSON": "[{\"type\": \"lens\", \"gridData\": {\"x\": 0, \"y\": 0, \"w\": 8, \"h\": 8, \"i\": \"ar0\"}, \"panelIndex\": \"ar0\", \"embeddableConfig\": {\"enhancements\": {}}, \"panelRefName\": \"panel_0\"}, {\"type\": \"lens\", \"gridData\": {\"x\": 8, \"y\": 0, \"w\": 10, \"h\": 8, \"i\": \"ar1\"}, \"panelIndex\": \"ar1\", \"embeddableConfig\": {\"enhancements\": {}}, \"panelRefName\": \"panel_1\"}, {\"type\": \"lens\", \"gridData\": {\"x\": 18, \"y\": 0, \"w\": 10, \"h\": 8, \"i\": \"ar2\"}, \"panelIndex\": \"ar2\", \"embeddableConfig\": {\"enhancements\": {}}, \"panelRefName\": \"panel_2\"}, {\"type\": \"lens\", \"gridData\": {\"x\": 28, \"y\": 0, \"w\": 10, \"h\": 8, \"i\": \"ar3\"}, \"panelIndex\": \"ar3\", \"embeddableConfig\": {\"enhancements\": {}}, \"panelRefName\": \"panel_3\"}, {\"type\": \"lens\", \"gridData\": {\"x\": 38, \"y\": 0, \"w\": 10, \"h\": 8, \"i\": \"ar4\"}, \"panelIndex\": \"ar4\", \"embeddableConfig\": {\"enhancements\": {}}, \"panelRefName\": \"panel_4\"}, {\"type\": \"lens\", \"gridData\": {\"x\": 0, \"y\": 8, \"w\": 16, \"h\": 12, \"i\": \"ar5\"}, \"panelIndex\": \"ar5\", \"embeddableConfig\": {\"enhancements\": {}}, \"panelRefName\": \"panel_5\"}, {\"type\": \"lens\", \"gridData\": {\"x\": 16, \"y\": 8, \"w\": 16, \"h\": 12, \"i\": \"ar6\"}, \"panelIndex\": \"ar6\", \"embeddableConfig\": {\"enhancements\": {}}, \"panelRefName\": \"panel_6\"}, {\"type\": \"lens\", \"gridData\": {\"x\": 32, \"y\": 8, \"w\": 16, \"h\": 12, \"i\": \"ar7\"}, \"panelIndex\": \"ar7\", \"embeddableConfig\": {\"enhancements\": {}}, \"panelRefName\": \"panel_7\"}, {\"type\": \"lens\", \"gridData\": {\"x\": 0, \"y\": 20, \"w\": 26, \"h\": 12, \"i\": \"ar8\"}, \"panelIndex\": \"ar8\", \"embeddableConfig\": {\"enhancements\": {}}, \"panelRefName\": \"panel_8\"}, {\"type\": \"lens\", \"gridData\": {\"x\": 26, \"y\": 20, \"w\": 10, \"h\": 12, \"i\": \"ar9\"}, \"panelIndex\": \"ar9\", \"embeddableConfig\": {\"enhancements\": {}}, \"panelRefName\": \"panel_9\"}, {\"type\": \"lens\", \"gridData\": {\"x\": 36, \"y\": 20, \"w\": 12, \"h\": 12, \"i\": \"ar10\"}, \"panelIndex\": \"ar10\", \"embeddableConfig\": {\"enhancements\": {}}, \"panelRefName\": \"panel_10\"}, {\"type\": \"lens\", \"gridData\": {\"x\": 0, \"y\": 32, \"w\": 16, \"h\": 13, \"i\": \"ar11\"}, \"panelIndex\": \"ar11\", \"embeddableConfig\": {\"enhancements\": {}}, \"panelRefName\": \"panel_11\"}, {\"type\": \"search\", \"gridData\": {\"x\": 16, \"y\": 32, \"w\": 32, \"h\": 13, \"i\": \"ar12\"}, \"panelIndex\": \"ar12\", \"embeddableConfig\": {\"enhancements\": {}}, \"panelRefName\": \"panel_12\"}]",
+   "timeRestore": false,
+   "title": "dbwiki \u2014 agent runs"
+  },
+  "id": "dbwiki-agent-runs",
+  "references": [
+   {
+    "id": "dbwiki-lens-ar-total",
+    "name": "panel_0",
+    "type": "lens"
+   },
+   {
+    "id": "dbwiki-lens-ar-input-tokens",
+    "name": "panel_1",
+    "type": "lens"
+   },
+   {
+    "id": "dbwiki-lens-ar-output-tokens",
+    "name": "panel_2",
+    "type": "lens"
+   },
+   {
+    "id": "dbwiki-lens-ar-cost",
+    "name": "panel_3",
+    "type": "lens"
+   },
+   {
+    "id": "dbwiki-lens-ar-problems",
+    "name": "panel_4",
+    "type": "lens"
+   },
+   {
+    "id": "dbwiki-lens-ar-over-time",
+    "name": "panel_5",
+    "type": "lens"
+   },
+   {
+    "id": "dbwiki-lens-ar-duration",
+    "name": "panel_6",
+    "type": "lens"
+   },
+   {
+    "id": "dbwiki-lens-ar-tokens-time",
+    "name": "panel_7",
+    "type": "lens"
+   },
+   {
+    "id": "dbwiki-lens-ar-by-model",
+    "name": "panel_8",
+    "type": "lens"
+   },
+   {
+    "id": "dbwiki-lens-ar-adapter",
+    "name": "panel_9",
+    "type": "lens"
+   },
+   {
+    "id": "dbwiki-lens-ar-outcomes",
+    "name": "panel_10",
+    "type": "lens"
+   },
+   {
+    "id": "dbwiki-lens-ar-db",
+    "name": "panel_11",
+    "type": "lens"
+   },
+   {
+    "id": "dbwiki-search-agent-runs",
+    "name": "panel_12",
+    "type": "search"
+   }
+  ],
+  "type": "dashboard"
+ },
+ {
+  "attributes": {
+   "description": "",
+   "state": {
+    "datasourceStates": {
+     "formBased": {
+      "layers": {
+       "layer1": {
+        "columnOrder": [
+         "b1",
+         "m1",
+         "m2",
+         "m3",
+         "m4",
+         "m5"
+        ],
+        "columns": {
+         "b1": {
+          "dataType": "string",
+          "isBucketed": true,
+          "label": "loop",
+          "operationType": "terms",
+          "params": {
+           "missingBucket": false,
+           "orderBy": {
+            "columnId": "m1",
+            "type": "column"
+           },
+           "orderDirection": "desc",
+           "otherBucket": false,
+           "parentFormat": {
+            "id": "terms"
+           },
+           "size": 8
+          },
+          "scale": "ordinal",
+          "sourceField": "command"
+         },
+         "m1": {
+          "dataType": "date",
+          "isBucketed": false,
+          "label": "last run",
+          "operationType": "last_value",
+          "params": {
+           "sortField": "@timestamp"
+          },
+          "scale": "ordinal",
+          "sourceField": "started"
+         },
+         "m2": {
+          "dataType": "string",
+          "isBucketed": false,
+          "label": "last outcome",
+          "operationType": "last_value",
+          "params": {
+           "sortField": "@timestamp"
+          },
+          "scale": "ordinal",
+          "sourceField": "outcome"
+         },
+         "m3": {
+          "dataType": "number",
+          "isBucketed": false,
+          "label": "runs",
+          "operationType": "count",
+          "params": {
+           "emptyAsNull": false
+          },
+          "scale": "ratio",
+          "sourceField": "___records___"
+         },
+         "m4": {
+          "dataType": "number",
+          "filter": {
+           "language": "kuery",
+           "query": "outcome : \"failed\""
+          },
+          "isBucketed": false,
+          "label": "failed",
+          "operationType": "count",
+          "params": {
+           "emptyAsNull": false
+          },
+          "scale": "ratio",
+          "sourceField": "___records___"
+         },
+         "m5": {
+          "dataType": "number",
+          "isBucketed": false,
+          "label": "median s",
+          "operationType": "median",
+          "params": {
+           "emptyAsNull": false
+          },
+          "scale": "ratio",
+          "sourceField": "duration_s"
+         }
+        },
+        "incompleteColumns": {}
+       }
+      }
+     }
+    },
+    "filters": [],
+    "query": {
+     "language": "kuery",
+     "query": ""
+    },
+    "visualization": {
+     "columns": [
+      {
+       "columnId": "b1",
+       "isTransposed": false
+      },
+      {
+       "columnId": "m1",
+       "isTransposed": false
+      },
+      {
+       "columnId": "m2",
+       "isTransposed": false
+      },
+      {
+       "columnId": "m3",
+       "isTransposed": false
+      },
+      {
+       "columnId": "m4",
+       "isTransposed": false
+      },
+      {
+       "columnId": "m5",
+       "isTransposed": false
+      }
+     ],
+     "layerId": "layer1",
+     "layerType": "data"
+    }
+   },
+   "title": "Loops at a glance",
+   "visualizationType": "lnsDatatable"
+  },
+  "id": "dbwiki-lens-lo-loop-status",
+  "references": [
+   {
+    "id": "dbwiki-dv-run-health",
+    "name": "indexpattern-datasource-layer-layer1",
+    "type": "index-pattern"
+   }
+  ],
+  "type": "lens"
+ },
+ {
+  "attributes": {
+   "description": "",
+   "state": {
+    "datasourceStates": {
+     "formBased": {
+      "layers": {
+       "layer1": {
+        "columnOrder": [
+         "b1",
+         "m1",
+         "m2",
+         "m3",
+         "m4"
+        ],
+        "columns": {
+         "b1": {
+          "dataType": "string",
+          "isBucketed": true,
+          "label": "entry",
+          "operationType": "terms",
+          "params": {
+           "missingBucket": false,
+           "orderBy": {
+            "columnId": "m1",
+            "type": "column"
+           },
+           "orderDirection": "asc",
+           "otherBucket": false,
+           "parentFormat": {
+            "id": "terms"
+           },
+           "size": 15
+          },
+          "scale": "ordinal",
+          "sourceField": "entry"
+         },
+         "m1": {
+          "dataType": "date",
+          "isBucketed": false,
+          "label": "next run",
+          "operationType": "last_value",
+          "params": {
+           "sortField": "@timestamp"
+          },
+          "scale": "ordinal",
+          "sourceField": "next_run_at"
+         },
+         "m2": {
+          "dataType": "string",
+          "isBucketed": false,
+          "label": "cron",
+          "operationType": "last_value",
+          "params": {
+           "sortField": "@timestamp"
+          },
+          "scale": "ordinal",
+          "sourceField": "cron_expr"
+         },
+         "m3": {
+          "dataType": "string",
+          "isBucketed": false,
+          "label": "command",
+          "operationType": "last_value",
+          "params": {
+           "sortField": "@timestamp"
+          },
+          "scale": "ordinal",
+          "sourceField": "command"
+         },
+         "m4": {
+          "dataType": "string",
+          "isBucketed": false,
+          "label": "node",
+          "operationType": "last_value",
+          "params": {
+           "sortField": "@timestamp"
+          },
+          "scale": "ordinal",
+          "sourceField": "node"
+         }
+        },
+        "incompleteColumns": {}
+       }
+      }
+     }
+    },
+    "filters": [],
+    "query": {
+     "language": "kuery",
+     "query": ""
+    },
+    "visualization": {
+     "columns": [
+      {
+       "columnId": "b1",
+       "isTransposed": false
+      },
+      {
+       "columnId": "m1",
+       "isTransposed": false
+      },
+      {
+       "columnId": "m2",
+       "isTransposed": false
+      },
+      {
+       "columnId": "m3",
+       "isTransposed": false
+      },
+      {
+       "columnId": "m4",
+       "isTransposed": false
+      }
+     ],
+     "layerId": "layer1",
+     "layerType": "data"
+    }
+   },
+   "title": "What will run next",
+   "visualizationType": "lnsDatatable"
+  },
+  "id": "dbwiki-lens-lo-schedule",
+  "references": [
+   {
+    "id": "dbwiki-dv-schedule",
+    "name": "indexpattern-datasource-layer-layer1",
+    "type": "index-pattern"
+   }
+  ],
+  "type": "lens"
+ },
+ {
+  "attributes": {
+   "description": "",
+   "state": {
+    "datasourceStates": {
+     "formBased": {
+      "layers": {
+       "layer1": {
+        "columnOrder": [
+         "x1",
+         "s1",
+         "m1"
+        ],
+        "columns": {
+         "m1": {
+          "dataType": "number",
+          "isBucketed": false,
+          "label": "rounds",
+          "operationType": "count",
+          "params": {
+           "emptyAsNull": false
+          },
+          "scale": "ratio",
+          "sourceField": "___records___"
+         },
+         "s1": {
+          "dataType": "string",
+          "isBucketed": true,
+          "label": "loop",
+          "operationType": "terms",
+          "params": {
+           "missingBucket": false,
+           "orderBy": {
+            "columnId": "m1",
+            "type": "column"
+           },
+           "orderDirection": "desc",
+           "otherBucket": false,
+           "parentFormat": {
+            "id": "terms"
+           },
+           "size": 8
+          },
+          "scale": "ordinal",
+          "sourceField": "command"
+         },
+         "x1": {
+          "dataType": "date",
+          "isBucketed": true,
+          "label": "@timestamp",
+          "operationType": "date_histogram",
+          "params": {
+           "dropPartials": false,
+           "includeEmptyRows": true,
+           "interval": "auto"
+          },
+          "scale": "interval",
+          "sourceField": "@timestamp"
+         }
+        },
+        "incompleteColumns": {}
+       }
+      }
+     }
+    },
+    "filters": [],
+    "query": {
+     "language": "kuery",
+     "query": ""
+    },
+    "visualization": {
+     "fittingFunction": "None",
+     "layers": [
+      {
+       "accessors": [
+        "m1"
+       ],
+       "layerId": "layer1",
+       "layerType": "data",
+       "position": "top",
+       "seriesType": "bar_stacked",
+       "showGridlines": false,
+       "splitAccessor": "s1",
+       "xAccessor": "x1"
+      }
+     ],
+     "legend": {
+      "isVisible": true,
+      "position": "right"
+     },
+     "preferredSeriesType": "bar_stacked",
+     "valueLabels": "hide"
+    }
+   },
+   "title": "Rounds over time by loop",
+   "visualizationType": "lnsXY"
+  },
+  "id": "dbwiki-lens-lo-rounds-by-loop",
+  "references": [
+   {
+    "id": "dbwiki-dv-run-health",
+    "name": "indexpattern-datasource-layer-layer1",
+    "type": "index-pattern"
+   }
+  ],
+  "type": "lens"
+ },
+ {
+  "attributes": {
+   "description": "",
+   "state": {
+    "datasourceStates": {
+     "formBased": {
+      "layers": {
+       "layer1": {
+        "columnOrder": [
+         "x1",
+         "s1",
+         "m1"
+        ],
+        "columns": {
+         "m1": {
+          "dataType": "number",
+          "filter": {
+           "language": "kuery",
+           "query": "outcome : \"failed\""
+          },
+          "isBucketed": false,
+          "label": "failed rounds",
+          "operationType": "count",
+          "params": {
+           "emptyAsNull": false
+          },
+          "scale": "ratio",
+          "sourceField": "___records___"
+         },
+         "s1": {
+          "dataType": "string",
+          "isBucketed": true,
+          "label": "error category",
+          "operationType": "terms",
+          "params": {
+           "missingBucket": false,
+           "orderBy": {
+            "columnId": "m1",
+            "type": "column"
+           },
+           "orderDirection": "desc",
+           "otherBucket": false,
+           "parentFormat": {
+            "id": "terms"
+           },
+           "size": 8
+          },
+          "scale": "ordinal",
+          "sourceField": "error_category"
+         },
+         "x1": {
+          "dataType": "date",
+          "isBucketed": true,
+          "label": "@timestamp",
+          "operationType": "date_histogram",
+          "params": {
+           "dropPartials": false,
+           "includeEmptyRows": true,
+           "interval": "auto"
+          },
+          "scale": "interval",
+          "sourceField": "@timestamp"
+         }
+        },
+        "incompleteColumns": {}
+       }
+      }
+     }
+    },
+    "filters": [],
+    "query": {
+     "language": "kuery",
+     "query": ""
+    },
+    "visualization": {
+     "fittingFunction": "None",
+     "layers": [
+      {
+       "accessors": [
+        "m1"
+       ],
+       "layerId": "layer1",
+       "layerType": "data",
+       "position": "top",
+       "seriesType": "bar_stacked",
+       "showGridlines": false,
+       "splitAccessor": "s1",
+       "xAccessor": "x1"
+      }
+     ],
+     "legend": {
+      "isVisible": true,
+      "position": "right"
+     },
+     "preferredSeriesType": "bar_stacked",
+     "valueLabels": "hide"
+    }
+   },
+   "title": "Failed rounds by error category",
+   "visualizationType": "lnsXY"
+  },
+  "id": "dbwiki-lens-lo-how-rounds-ended",
+  "references": [
+   {
+    "id": "dbwiki-dv-run-health",
+    "name": "indexpattern-datasource-layer-layer1",
+    "type": "index-pattern"
+   }
+  ],
+  "type": "lens"
+ },
+ {
+  "attributes": {
+   "columns": [
+    "started",
+    "command",
+    "outcome",
+    "duration_s",
+    "error_category",
+    "run_id"
+   ],
+   "description": "",
+   "kibanaSavedObjectMeta": {
+    "searchSourceJSON": "{\"query\": {\"query\": \"\", \"language\": \"kuery\"}, \"filter\": [], \"indexRefName\": \"kibanaSavedObjectMeta.searchSourceJSON.index\"}"
+   },
+   "sort": [
+    [
+     "@timestamp",
+     "desc"
+    ]
+   ],
+   "title": "Rounds \u2014 every recorded run"
+  },
+  "id": "dbwiki-search-lo-recent-runs",
+  "references": [
+   {
+    "id": "dbwiki-dv-run-health",
+    "name": "kibanaSavedObjectMeta.searchSourceJSON.index",
+    "type": "index-pattern"
+   }
+  ],
+  "type": "search"
+ },
+ {
+  "attributes": {
+   "columns": [
+    "task",
+    "db",
+    "mode",
+    "model",
+    "duration_s",
+    "validation_ok",
+    "timed_out",
+    "rolled_back",
+    "run_id"
+   ],
+   "description": "",
+   "kibanaSavedObjectMeta": {
+    "searchSourceJSON": "{\"query\": {\"query\": \"\", \"language\": \"kuery\"}, \"filter\": [], \"indexRefName\": \"kibanaSavedObjectMeta.searchSourceJSON.index\"}"
+   },
+   "sort": [
+    [
+     "@timestamp",
+     "desc"
+    ]
+   ],
+   "title": "Agent stages within each round"
+  },
+  "id": "dbwiki-search-lo-agent-stages",
+  "references": [
+   {
+    "id": "dbwiki-dv-agent-runs",
+    "name": "kibanaSavedObjectMeta.searchSourceJSON.index",
+    "type": "index-pattern"
+   }
+  ],
+  "type": "search"
+ },
+ {
+  "attributes": {
+   "columns": [
+    "started",
+    "command",
+    "run_host",
+    "run_id"
+   ],
+   "description": "",
+   "kibanaSavedObjectMeta": {
+    "searchSourceJSON": "{\"query\": {\"query\": \"\", \"language\": \"kuery\"}, \"filter\": [], \"indexRefName\": \"kibanaSavedObjectMeta.searchSourceJSON.index\"}"
+   },
+   "sort": [
+    [
+     "@timestamp",
+     "desc"
+    ]
+   ],
+   "title": "Recently started (in flight?)"
+  },
+  "id": "dbwiki-search-lo-run-starts",
+  "references": [
+   {
+    "id": "dbwiki-dv-run-starts",
+    "name": "kibanaSavedObjectMeta.searchSourceJSON.index",
+    "type": "index-pattern"
+   }
+  ],
+  "type": "search"
+ },
+ {
+  "attributes": {
+   "description": "",
+   "state": {
+    "datasourceStates": {
+     "formBased": {
+      "layers": {
+       "layer1": {
+        "columnOrder": [
+         "m1",
+         "m2",
+         "m3",
+         "m4",
+         "m5"
+        ],
+        "columns": {
+         "m1": {
+          "dataType": "number",
+          "isBucketed": false,
+          "label": "pending",
+          "operationType": "last_value",
+          "params": {
+           "sortField": "@timestamp"
+          },
+          "scale": "ratio",
+          "sourceField": "pending_count"
+         },
+         "m2": {
+          "dataType": "number",
+          "isBucketed": false,
+          "label": "claimed",
+          "operationType": "last_value",
+          "params": {
+           "sortField": "@timestamp"
+          },
+          "scale": "ratio",
+          "sourceField": "claimed_count"
+         },
+         "m3": {
+          "dataType": "number",
+          "isBucketed": false,
+          "label": "failed",
+          "operationType": "last_value",
+          "params": {
+           "sortField": "@timestamp"
+          },
+          "scale": "ratio",
+          "sourceField": "failed_count"
+         },
+         "m4": {
+          "dataType": "number",
+          "isBucketed": false,
+          "label": "oldest pending (h)",
+          "operationType": "last_value",
+          "params": {
+           "sortField": "@timestamp"
+          },
+          "scale": "ratio",
+          "sourceField": "oldest_pending_hours"
+         },
+         "m5": {
+          "dataType": "number",
+          "isBucketed": false,
+          "label": "stale claims",
+          "operationType": "last_value",
+          "params": {
+           "sortField": "@timestamp"
+          },
+          "scale": "ratio",
+          "sourceField": "stale_claimed_count"
+         }
+        },
+        "incompleteColumns": {}
+       }
+      }
+     }
+    },
+    "filters": [],
+    "query": {
+     "language": "kuery",
+     "query": ""
+    },
+    "visualization": {
+     "columns": [
+      {
+       "columnId": "m1",
+       "isTransposed": false
+      },
+      {
+       "columnId": "m2",
+       "isTransposed": false
+      },
+      {
+       "columnId": "m3",
+       "isTransposed": false
+      },
+      {
+       "columnId": "m4",
+       "isTransposed": false
+      },
+      {
+       "columnId": "m5",
+       "isTransposed": false
+      }
+     ],
+     "layerId": "layer1",
+     "layerType": "data"
+    }
+   },
+   "title": "Queue snapshot (last)",
+   "visualizationType": "lnsDatatable"
+  },
+  "id": "dbwiki-lens-lo-queue-snapshot",
+  "references": [
+   {
+    "id": "dbwiki-dv-queue-state",
+    "name": "indexpattern-datasource-layer-layer1",
+    "type": "index-pattern"
+   }
+  ],
+  "type": "lens"
+ },
+ {
+  "attributes": {
+   "description": "",
+   "state": {
+    "datasourceStates": {
+     "formBased": {
+      "layers": {
+       "layer1": {
+        "columnOrder": [
+         "x1",
+         "s1",
+         "m1"
+        ],
+        "columns": {
+         "m1": {
+          "dataType": "number",
+          "isBucketed": false,
+          "label": "Alerts",
+          "operationType": "count",
+          "params": {
+           "emptyAsNull": false
+          },
+          "scale": "ratio",
+          "sourceField": "___records___"
+         },
+         "s1": {
+          "dataType": "string",
+          "isBucketed": true,
+          "label": "category",
+          "operationType": "terms",
+          "params": {
+           "missingBucket": false,
+           "orderBy": {
+            "columnId": "m1",
+            "type": "column"
+           },
+           "orderDirection": "desc",
+           "otherBucket": false,
+           "parentFormat": {
+            "id": "terms"
+           },
+           "size": 10
+          },
+          "scale": "ordinal",
+          "sourceField": "category"
+         },
+         "x1": {
+          "dataType": "date",
+          "isBucketed": true,
+          "label": "@timestamp",
+          "operationType": "date_histogram",
+          "params": {
+           "dropPartials": false,
+           "includeEmptyRows": true,
+           "interval": "auto"
+          },
+          "scale": "interval",
+          "sourceField": "@timestamp"
+         }
+        },
+        "incompleteColumns": {}
+       }
+      }
+     }
+    },
+    "filters": [],
+    "query": {
+     "language": "kuery",
+     "query": ""
+    },
+    "visualization": {
+     "fittingFunction": "None",
+     "layers": [
+      {
+       "accessors": [
+        "m1"
+       ],
+       "layerId": "layer1",
+       "layerType": "data",
+       "position": "top",
+       "seriesType": "bar_stacked",
+       "showGridlines": false,
+       "splitAccessor": "s1",
+       "xAccessor": "x1"
+      }
+     ],
+     "legend": {
+      "isVisible": true,
+      "position": "right"
+     },
+     "preferredSeriesType": "bar_stacked",
+     "valueLabels": "hide"
+    }
+   },
+   "title": "Alerts over time by category",
+   "visualizationType": "lnsXY"
+  },
+  "id": "dbwiki-lens-lo-alerts-time",
+  "references": [
+   {
+    "id": "dbwiki-dv-alerts",
+    "name": "indexpattern-datasource-layer-layer1",
+    "type": "index-pattern"
+   }
+  ],
+  "type": "lens"
+ },
+ {
+  "attributes": {
+   "description": "The agent loops, round by round: per-loop last run/outcome/median duration, what runs next, rounds over time by loop, failed rounds by error category, every recorded round and the agent stages inside it, plus a queue/starts/alerts strip. Detail lives on 'dbwiki \u2014 pipeline observability' and 'dbwiki \u2014 agent runs'; recreate with elk/setup.sh.",
+   "kibanaSavedObjectMeta": {
+    "searchSourceJSON": "{\"query\": {\"query\": \"\", \"language\": \"kuery\"}, \"filter\": []}"
+   },
+   "optionsJSON": "{\"useMargins\": true, \"syncColors\": false, \"syncCursor\": true, \"syncTooltips\": false, \"hidePanelTitles\": false}",
+   "panelsJSON": "[{\"type\": \"lens\", \"gridData\": {\"x\": 0, \"y\": 0, \"w\": 28, \"h\": 10, \"i\": \"lo0\"}, \"panelIndex\": \"lo0\", \"embeddableConfig\": {\"enhancements\": {}}, \"panelRefName\": \"panel_0\"}, {\"type\": \"lens\", \"gridData\": {\"x\": 28, \"y\": 0, \"w\": 20, \"h\": 10, \"i\": \"lo1\"}, \"panelIndex\": \"lo1\", \"embeddableConfig\": {\"enhancements\": {}}, \"panelRefName\": \"panel_1\"}, {\"type\": \"lens\", \"gridData\": {\"x\": 0, \"y\": 10, \"w\": 24, \"h\": 12, \"i\": \"lo2\"}, \"panelIndex\": \"lo2\", \"embeddableConfig\": {\"enhancements\": {}}, \"panelRefName\": \"panel_2\"}, {\"type\": \"lens\", \"gridData\": {\"x\": 24, \"y\": 10, \"w\": 24, \"h\": 12, \"i\": \"lo3\"}, \"panelIndex\": \"lo3\", \"embeddableConfig\": {\"enhancements\": {}}, \"panelRefName\": \"panel_3\"}, {\"type\": \"search\", \"gridData\": {\"x\": 0, \"y\": 22, \"w\": 48, \"h\": 12, \"i\": \"lo4\"}, \"panelIndex\": \"lo4\", \"embeddableConfig\": {\"enhancements\": {}}, \"panelRefName\": \"panel_4\"}, {\"type\": \"search\", \"gridData\": {\"x\": 0, \"y\": 34, \"w\": 48, \"h\": 12, \"i\": \"lo5\"}, \"panelIndex\": \"lo5\", \"embeddableConfig\": {\"enhancements\": {}}, \"panelRefName\": \"panel_5\"}, {\"type\": \"search\", \"gridData\": {\"x\": 0, \"y\": 46, \"w\": 16, \"h\": 10, \"i\": \"lo6\"}, \"panelIndex\": \"lo6\", \"embeddableConfig\": {\"enhancements\": {}}, \"panelRefName\": \"panel_6\"}, {\"type\": \"lens\", \"gridData\": {\"x\": 16, \"y\": 46, \"w\": 12, \"h\": 10, \"i\": \"lo7\"}, \"panelIndex\": \"lo7\", \"embeddableConfig\": {\"enhancements\": {}}, \"panelRefName\": \"panel_7\"}, {\"type\": \"lens\", \"gridData\": {\"x\": 28, \"y\": 46, \"w\": 20, \"h\": 10, \"i\": \"lo8\"}, \"panelIndex\": \"lo8\", \"embeddableConfig\": {\"enhancements\": {}}, \"panelRefName\": \"panel_8\"}]",
+   "timeRestore": false,
+   "title": "dbwiki \u2014 loop overview"
+  },
+  "id": "dbwiki-loop-overview",
+  "references": [
+   {
+    "id": "dbwiki-lens-lo-loop-status",
+    "name": "panel_0",
+    "type": "lens"
+   },
+   {
+    "id": "dbwiki-lens-lo-schedule",
+    "name": "panel_1",
+    "type": "lens"
+   },
+   {
+    "id": "dbwiki-lens-lo-rounds-by-loop",
+    "name": "panel_2",
+    "type": "lens"
+   },
+   {
+    "id": "dbwiki-lens-lo-how-rounds-ended",
+    "name": "panel_3",
+    "type": "lens"
+   },
+   {
+    "id": "dbwiki-search-lo-recent-runs",
+    "name": "panel_4",
+    "type": "search"
+   },
+   {
+    "id": "dbwiki-search-lo-agent-stages",
+    "name": "panel_5",
+    "type": "search"
+   },
+   {
+    "id": "dbwiki-search-lo-run-starts",
+    "name": "panel_6",
+    "type": "search"
+   },
+   {
+    "id": "dbwiki-lens-lo-queue-snapshot",
+    "name": "panel_7",
+    "type": "lens"
+   },
+   {
+    "id": "dbwiki-lens-lo-alerts-time",
+    "name": "panel_8",
+    "type": "lens"
+   }
+  ],
+  "type": "dashboard"
+ },
+ {
+  "attributes": {
+   "description": "What the dbwiki pipeline is doing: command outcomes and failures, wake/skip decisions per database, agent stage timings, per-digest ledger events, and the raw cron + agent audit streams. Fed by elk/ (filebeat + emit_derived.py); recreate with elk/setup.sh.",
+   "kibanaSavedObjectMeta": {
+    "searchSourceJSON": "{\"query\": {\"query\": \"\", \"language\": \"kuery\"}, \"filter\": []}"
+   },
+   "optionsJSON": "{\"useMargins\": true, \"syncColors\": false, \"syncCursor\": true, \"syncTooltips\": false, \"hidePanelTitles\": false}",
+   "panelsJSON": "[{\"type\": \"lens\", \"gridData\": {\"x\": 0, \"y\": 0, \"w\": 8, \"h\": 8, \"i\": \"0\"}, \"panelIndex\": \"0\", \"embeddableConfig\": {\"enhancements\": {}}, \"panelRefName\": \"panel_0\"}, {\"type\": \"lens\", \"gridData\": {\"x\": 8, \"y\": 0, \"w\": 8, \"h\": 8, \"i\": \"1\"}, \"panelIndex\": \"1\", \"embeddableConfig\": {\"enhancements\": {}}, \"panelRefName\": \"panel_1\"}, {\"type\": \"lens\", \"gridData\": {\"x\": 16, \"y\": 0, \"w\": 16, \"h\": 8, \"i\": \"2\"}, \"panelIndex\": \"2\", \"embeddableConfig\": {\"enhancements\": {}}, \"panelRefName\": \"panel_2\"}, {\"type\": \"lens\", \"gridData\": {\"x\": 32, \"y\": 0, \"w\": 16, \"h\": 8, \"i\": \"3\"}, \"panelIndex\": \"3\", \"embeddableConfig\": {\"enhancements\": {}}, \"panelRefName\": \"panel_3\"}, {\"type\": \"lens\", \"gridData\": {\"x\": 0, \"y\": 8, \"w\": 24, \"h\": 12, \"i\": \"4\"}, \"panelIndex\": \"4\", \"embeddableConfig\": {\"enhancements\": {}}, \"panelRefName\": \"panel_4\"}, {\"type\": \"lens\", \"gridData\": {\"x\": 24, \"y\": 8, \"w\": 24, \"h\": 12, \"i\": \"5\"}, \"panelIndex\": \"5\", \"embeddableConfig\": {\"enhancements\": {}}, \"panelRefName\": \"panel_5\"}, {\"type\": \"lens\", \"gridData\": {\"x\": 0, \"y\": 20, \"w\": 16, \"h\": 12, \"i\": \"6\"}, \"panelIndex\": \"6\", \"embeddableConfig\": {\"enhancements\": {}}, \"panelRefName\": \"panel_6\"}, {\"type\": \"lens\", \"gridData\": {\"x\": 16, \"y\": 20, \"w\": 16, \"h\": 12, \"i\": \"7\"}, \"panelIndex\": \"7\", \"embeddableConfig\": {\"enhancements\": {}}, \"panelRefName\": \"panel_7\"}, {\"type\": \"lens\", \"gridData\": {\"x\": 32, \"y\": 20, \"w\": 16, \"h\": 12, \"i\": \"8\"}, \"panelIndex\": \"8\", \"embeddableConfig\": {\"enhancements\": {}}, \"panelRefName\": \"panel_8\"}, {\"type\": \"lens\", \"gridData\": {\"x\": 0, \"y\": 32, \"w\": 16, \"h\": 12, \"i\": \"9\"}, \"panelIndex\": \"9\", \"embeddableConfig\": {\"enhancements\": {}}, \"panelRefName\": \"panel_9\"}, {\"type\": \"lens\", \"gridData\": {\"x\": 16, \"y\": 32, \"w\": 12, \"h\": 12, \"i\": \"10\"}, \"panelIndex\": \"10\", \"embeddableConfig\": {\"enhancements\": {}}, \"panelRefName\": \"panel_10\"}, {\"type\": \"lens\", \"gridData\": {\"x\": 28, \"y\": 32, \"w\": 20, \"h\": 12, \"i\": \"11\"}, \"panelIndex\": \"11\", \"embeddableConfig\": {\"enhancements\": {}}, \"panelRefName\": \"panel_11\"}, {\"type\": \"search\", \"gridData\": {\"x\": 0, \"y\": 44, \"w\": 28, \"h\": 15, \"i\": \"12\"}, \"panelIndex\": \"12\", \"embeddableConfig\": {\"enhancements\": {}}, \"panelRefName\": \"panel_12\"}, {\"type\": \"search\", \"gridData\": {\"x\": 28, \"y\": 44, \"w\": 20, \"h\": 15, \"i\": \"13\"}, \"panelIndex\": \"13\", \"embeddableConfig\": {\"enhancements\": {}}, \"panelRefName\": \"panel_13\"}]",
+   "timeRestore": false,
+   "title": "dbwiki \u2014 pipeline observability"
+  },
+  "id": "dbwiki-pipeline",
+  "references": [
+   {
+    "id": "dbwiki-lens-runs-total",
+    "name": "panel_0",
+    "type": "lens"
+   },
+   {
+    "id": "dbwiki-lens-runs-failed",
+    "name": "panel_1",
+    "type": "lens"
+   },
+   {
+    "id": "dbwiki-lens-outcomes",
+    "name": "panel_2",
+    "type": "lens"
+   },
+   {
+    "id": "dbwiki-lens-error-categories",
+    "name": "panel_3",
+    "type": "lens"
+   },
+   {
+    "id": "dbwiki-lens-runs-over-time",
+    "name": "panel_4",
+    "type": "lens"
+   },
+   {
+    "id": "dbwiki-lens-run-duration",
+    "name": "panel_5",
+    "type": "lens"
+   },
+   {
+    "id": "dbwiki-lens-decisions-per-db",
+    "name": "panel_6",
+    "type": "lens"
+   },
+   {
+    "id": "dbwiki-lens-decision-reasons",
+    "name": "panel_7",
+    "type": "lens"
+   },
+   {
+    "id": "dbwiki-lens-events-over-time",
+    "name": "panel_8",
+    "type": "lens"
+   },
+   {
+    "id": "dbwiki-lens-agent-durations",
+    "name": "panel_9",
+    "type": "lens"
+   },
+   {
+    "id": "dbwiki-lens-ledger-status",
+    "name": "panel_10",
+    "type": "lens"
+   },
+   {
+    "id": "dbwiki-lens-ledger-table",
+    "name": "panel_11",
+    "type": "lens"
+   },
+   {
+    "id": "dbwiki-search-cron",
+    "name": "panel_12",
+    "type": "search"
+   },
+   {
+    "id": "dbwiki-search-audit",
+    "name": "panel_13",
+    "type": "search"
+   }
+  ],
+  "type": "dashboard"
+ }
+]

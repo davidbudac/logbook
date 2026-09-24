@@ -1,0 +1,14 @@
+{
+  "description": "One doc per dbwiki command invocation (source: .state/run_health.jsonl). The ndjson parser consumed run_id as _id, so it is restored as a queryable field; @timestamp = run start.",
+  "processors": [
+    { "set": { "field": "run_id", "value": "{{{_id}}}", "if": "ctx.run_id == null" } },
+    { "date": { "field": "started", "target_field": "@timestamp", "formats": ["ISO8601"], "if": "ctx.started != null", "ignore_failure": true } },
+    { "convert": { "field": "duration_s", "type": "double", "ignore_missing": true, "ignore_failure": true } },
+    { "script": { "lang": "painless", "source": "if (ctx.dbs instanceof List) { ctx.db_count = ctx.dbs.size(); }", "ignore_failure": true } },
+    { "set": { "field": "event.module", "value": "dbwiki" } },
+    { "set": { "field": "event.dataset", "value": "dbwiki.run_health" } }
+  ],
+  "on_failure": [
+    { "append": { "field": "tags", "value": "dbwiki_pipeline_failure" } }
+  ]
+}

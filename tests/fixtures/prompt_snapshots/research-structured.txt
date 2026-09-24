@@ -1,0 +1,19 @@
+You are summarizing an Oracle documentation page about error ORA-00600 for an operations wiki.
+Reply with ONE JSON object and NOTHING else: no prose
+before or after it, no markdown code fences, no explanation.
+
+{
+  "cause": "plain factual prose: what causes this error, distilled only from the page text below",
+  "action": "plain factual prose: what to do about it; a short '- ' bullet list in one string is fine"
+}
+
+Rules:
+- State only what the page text below supports. Never invent a cause or an action step the text does not show.
+- No URLs and no markdown headings in either field.
+- Plain factual prose; "action" may be a short "- " bulleted list written as one string.
+
+Page text for ORA-00600:
+---
+ORA-00600: internal error code.
+Cause: a bug.
+---

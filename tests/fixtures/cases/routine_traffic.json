@@ -1,0 +1,90 @@
+{
+ "name": "routine_traffic",
+ "title": "routine alert+listener+dataguard traffic, mixed legacy/ECS layouts",
+ "layout": "mixed",
+ "db": "cdb1",
+ "window": {"from": "2026-07-10T00:00:00Z", "to": "2026-07-11T00:00:00Z", "day": "2026-07-10"},
+ "registry": {
+  "codes": {},
+  "services": {"cdb1.world": {"first_seen": "2026-06-01T00:00:00Z", "last_seen": "2026-07-09T23:50:00Z"}},
+  "programs": {
+   "emagent": {"first_seen": "2026-06-01T00:00:00Z", "last_seen": "2026-07-09T23:50:00Z"},
+   "sqlplus": {"first_seen": "2026-06-01T00:00:00Z", "last_seen": "2026-07-09T23:50:00Z"}
+  },
+  "daily_counts": [
+   {"day": "2026-07-07", "source": "alert", "total": 26, "counters": {"log_switch": 24, "checkpoint": 2}},
+   {"day": "2026-07-08", "source": "alert", "total": 25, "counters": {"log_switch": 23, "checkpoint": 2}},
+   {"day": "2026-07-09", "source": "alert", "total": 27, "counters": {"log_switch": 25, "checkpoint": 2}},
+   {"day": "2026-07-07", "source": "listener", "total": 40, "counters": {"establish cdb1.world emagent": 40}},
+   {"day": "2026-07-08", "source": "listener", "total": 44, "counters": {"establish cdb1.world emagent": 44}},
+   {"day": "2026-07-09", "source": "listener", "total": 41, "counters": {"establish cdb1.world emagent": 41}},
+   {"day": "2026-07-07", "source": "dataguard", "total": 12, "counters": {"dg_info": 12}},
+   {"day": "2026-07-08", "source": "dataguard", "total": 11, "counters": {"dg_info": 11}},
+   {"day": "2026-07-09", "source": "dataguard", "total": 13, "counters": {"dg_info": 13}}
+  ]
+ },
+ "trigger": {"ledger_entry": null, "manual": false, "consolidation": false},
+ "hits": {
+  "alert": [
+   {"_index": "oracle-logs-alert-2026.07", "_id": "rt-a1",
+    "_source": {"@timestamp": "2026-07-10T01:05:11Z", "db_name": "cdb1",
+     "oracle": {"alert_message": "Thread 1 advanced to log sequence 4711 (LGWR switch)",
+      "msg_type": "NOTIFICATION", "msg_id": "", "msg_level": 16, "con_id": "0"}}},
+   {"_index": "oracle-logs-alert-2026.07", "_id": "rt-a2",
+    "_source": {"@timestamp": "2026-07-10T01:05:14Z", "db_name": "cdb1",
+     "oracle": {"alert_message": "Archived Log entry 91 added for thread 1 sequence 4711 ID 0x5b8e2a1 dest 1:",
+      "msg_type": "NOTIFICATION", "msg_id": "", "msg_level": 16, "con_id": "0"}}},
+   {"_index": "oracle-logs-alert-2026.07", "_id": "rt-a3",
+    "_source": {"@timestamp": "2026-07-10T06:30:02Z", "db_name": "cdb1",
+     "oracle": {"alert_message": "Completed checkpoint up to RBA [4711.2.10], SCN: 21540991",
+      "msg_type": "NOTIFICATION", "msg_id": "", "msg_level": 16, "con_id": "0"}}},
+   {"_index": ".ds-logs-oracle.alert-default-2026.07.10-000019", "_id": "rt-a4",
+    "_source": {"@timestamp": "2026-07-10T18:12:40Z",
+     "oracle": {"database": {"name": "cdb1"}, "instance": {"name": "cdb1"}},
+     "log": {"level": "NOTIFICATION"},
+     "message": "Private strand flush not complete"}}
+  ],
+  "listener": [
+   {"_index": ".ds-logs-oracle.listener-default-2026.07.10-000019", "_id": "rt-l1",
+    "_source": {"@timestamp": "2026-07-10T02:00:01Z",
+     "service": {"name": "cdb1.world"},
+     "oracle": {"listener": {"command": "establish", "return_code": 0}},
+     "message": "10-JUL-2026 02:00:01 * (CONNECT_DATA=(SERVICE_NAME=cdb1.world)(CID=(PROGRAM=emagent)(HOST=app01)(USER=oracle))) * (ADDRESS=(PROTOCOL=tcp)(HOST=10.1.1.9)(PORT=51422)) * establish * cdb1.world * 0"}},
+   {"_index": ".ds-logs-oracle.listener-default-2026.07.10-000019", "_id": "rt-l2",
+    "_source": {"@timestamp": "2026-07-10T02:00:09Z",
+     "service": {"name": "cdb1.world"},
+     "oracle": {"listener": {"command": "establish", "return_code": 0}},
+     "message": "10-JUL-2026 02:00:09 * (CONNECT_DATA=(SERVICE_NAME=cdb1.world)(CID=(PROGRAM=sqlplus)(HOST=app02)(USER=appsvc))) * (ADDRESS=(PROTOCOL=tcp)(HOST=10.1.1.11)(PORT=51598)) * establish * cdb1.world * 0"}},
+   {"_index": ".ds-logs-oracle.listener-default-2026.07.10-000019", "_id": "rt-l3",
+    "_source": {"@timestamp": "2026-07-10T02:14:00Z",
+     "service": {"name": "cdb1.world"},
+     "oracle": {"listener": {"command": "service_register", "return_code": 0}},
+     "message": "10-JUL-2026 02:14:00 * service_register * cdb1.world * 0"}},
+   {"_index": ".ds-logs-oracle.listener-default-2026.07.10-000019", "_id": "rt-l4",
+    "_source": {"@timestamp": "2026-07-10T02:30:00Z",
+     "service": {"name": "cdb1.world"},
+     "oracle": {"listener": {"command": "status", "return_code": 0}},
+     "message": "10-JUL-2026 02:30:00 * status * 0"}}
+  ],
+  "dataguard": [
+   {"_index": ".ds-logs-oracle.dataguard-default-2026.07.10-000019", "_id": "rt-d1",
+    "_source": {"@timestamp": "2026-07-10T03:00:00Z",
+     "oracle": {"database": {"name": "cdb1"},
+      "dataguard": {"event_type": "info", "member": "cdb1_stby"}},
+     "log": {"level": "INFO"},
+     "message": "Data Guard Broker: configuration status is SUCCESS"}},
+   {"_index": ".ds-logs-oracle.dataguard-default-2026.07.10-000019", "_id": "rt-d2",
+    "_source": {"@timestamp": "2026-07-10T09:00:00Z",
+     "oracle": {"database": {"name": "cdb1"},
+      "dataguard": {"event_type": "broker_status", "member": "cdb1_stby"}},
+     "log": {"level": "INFO"},
+     "message": "Apply lag 0 seconds, transport lag 0 seconds"}},
+   {"_index": ".ds-logs-oracle.dataguard-default-2026.07.10-000019", "_id": "rt-d3",
+    "_source": {"@timestamp": "2026-07-10T15:00:00Z",
+     "oracle": {"database": {"name": "cdb1"},
+      "dataguard": {"event_type": "info", "member": "cdb1_stby"}},
+     "log": {"level": "INFO"},
+     "message": "Data Guard Broker: configuration status is SUCCESS"}}
+  ]
+ }
+}

@@ -1,0 +1,11 @@
+{
+  "description": "One doc per (run, database) from run_health's dbs[] array, fanned out by scripts/emit_derived.py so Kibana can aggregate wake/skip decisions per db. @timestamp = run start.",
+  "processors": [
+    { "date": { "field": "started", "target_field": "@timestamp", "formats": ["ISO8601"], "if": "ctx.started != null", "ignore_failure": true } },
+    { "set": { "field": "event.module", "value": "dbwiki" } },
+    { "set": { "field": "event.dataset", "value": "dbwiki.db_runs" } }
+  ],
+  "on_failure": [
+    { "append": { "field": "tags", "value": "dbwiki_pipeline_failure" } }
+  ]
+}

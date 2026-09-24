@@ -1,0 +1,372 @@
+# Logbook configuration.
+# Secrets: password may be overridden with DBWIKI_ES_PASSWORD env var.
+
+elasticsearch:
+  url: http://localhost:9200
+  username: elastic
+  password: changeme
+
+wiki_repo: wiki          # path to the wiki git repo (relative to project root)
+state_dir: .state        # watermarks + per-db registries (machinery state, not wiki content)
+
+# Where digests are written. They live inside the wiki: they are its "raw sources".
+digest_dir: wiki/digests
+
+# db_fields: exact ES fields that may carry the database name, tried in
+# order. List both the ECS field and the legacy one so mixed windows keep
+# working. (The single legacy spelling `db_field: "db_name"` is still
+# accepted and implies `db_name.keyword`.)
+sources:
+  alert:
+    index_patterns: ["oracle-logs-alert-*", ".ds-logs-oracle.alert-*"]
+    timestamp_field: "@timestamp"
+    db_fields: ["oracle.database.name", "db_name.keyword"]
+    patterns_file: patterns/alert.yaml
+  listener:
+    index_patterns: ["oracle-logs-listener-*", ".ds-logs-oracle.listener-*"]
+    timestamp_field: "@timestamp"
+    db_fields: ["oracle.database.name", "db_name.keyword"]
+    # ECS listener docs carry no db field at all; events are attributed to a
+    # known db via its TNS service-name variants (cdb1, cdb1.world,
+    # CDB1_DGMGRL.world, ...). Optional: db_service_domains (default [world]).
+    db_service_field: "service.name"
+    patterns_file: patterns/listener.yaml
+  dataguard:
+    index_patterns: ["oracle-logs-dataguard-*", ".ds-logs-oracle.dataguard-*"]
+    timestamp_field: "@timestamp"
+    db_fields: ["oracle.database.name", "db_name.keyword"]
+    patterns_file: patterns/dataguard.yaml
+
+# Optional fleet-metric sources (numeric samples, not text events). Same
+# per-source shape as `sources:` plus `enabled:`; disabled by default, so an
+# untouched config behaves exactly as before. An enabled metric source is
+# merged into `sources` with `kind: metric` and then rides the normal
+# pipeline: same watermarks, same digest, same deltas, same replay semantics.
+# Layout below matches `.ds-logs-oracle.metrics-*` as probed 2026-07-27
+# (ECS-only: `oracle.database.name`, `oracle.metric.{type,name,unit,value}`,
+# `oracle.{tablespace,fra,metrics,dataguard}.*`; no legacy flat layout exists
+# for metrics).
+#metric_sources:
+#  metrics:
+#    enabled: false
+#    index_patterns: [".ds-logs-oracle.metrics-*"]
+#    timestamp_field: "@timestamp"
+#    db_fields: ["oracle.database.name"]
+#    patterns_file: patterns/metrics.yaml
+
+# Optional trace-file lookup. When the alert log says "Errors in file
+# .../cdb1_ora_7903.trc", the compactor pulls that file's ingested chunks out
+# of the trace data stream and puts a bounded excerpt in the digest, so every
+# consumer (structured ingest, escalated reports, agentic mode) sees the same
+# evidence. Not a `sources:` entry: this is a lookup keyed by path, with no
+# watermark, no deltas and no health probe — the stream is bursty by nature.
+# Absent block (or enabled: false) = the feature is fully off and digests are
+# byte-identical to before it existed. Needs filebeat shipping trace files
+# with `oracle.trace.file` keyword-mapped to the full path (see elk/).
+#trace_lookup:
+#  enabled: false
+#  index_patterns: [".ds-logs-oracle.trace-*"]
+#  timestamp_field: "@timestamp"
+#  path_field: "oracle.trace.file"   # keyword-mapped; the join key with the alert log
+#  # filebeat ships a trace file minutes after the alert line that names it,
+#  # so the lookup window is widened by this many hours on both sides
+#  slack_hours: 1
+#  # budgets: distinct trace paths per (db, window), docs pulled per path,
+#  # excerpt characters per path, and excerpt characters per digest
+#  max_paths: 6
+#  max_docs_per_path: 5
+#  max_excerpt_chars: 1500
+#  max_total_chars: 6000
+
+compactor:
+  page_size: 2000
+  # collapse repeated notable events: max distinct groups kept per rule,
+  # max sample ES doc ids kept per group
+  max_groups_per_rule: 20
+  max_samples_per_group: 5
+  max_unmatched_groups: 50
+  # rate anomaly: window's per-hour rate for a routine counter > factor x
+  # median per-hour rate of the last N days (windows under 1h are skipped,
+  # as are counters below min_count in the window)
+  rate_anomaly_factor: 10
+  rate_anomaly_min_count: 10
+  rate_baseline_days: 7
+  # the same rate is also measured over the trailing N hours of the window,
+  # so a burst late in the day is not diluted over midnight -> now; the
+  # higher rate that fires wins, and the strongest anomaly of the day is
+  # restated by that day's later digests. 24 or more = whole window only
+  # (optional, default 3)
+  #rate_anomaly_window_hours: 3
+  # silence: no events although the source logged in each of the last N days;
+  # only evaluated for windows of at least silence_min_hours, so short
+  # intra-day ticks never flag a quiet night as an outage
+  silence_windows: 3
+  silence_min_hours: 20
+  # after a change: flag an error or dataguard group whose first occurrence
+  # falls within this many hours of a lifecycle change on the same database
+  # (0 = off)
+  after_change_hours: 2
+  # context rows: log lines kept either side of each notable group's first
+  # occurrence, so the model can judge cause and effect (0 = off). Excluded
+  # from the content hash, so a growing day-so-far window never re-ingests
+  # just because a group picked up more neighbours.
+  context_lines: 3
+  # only the first N groups in digest order (error class first, then
+  # by time) keep their context: each block costs ~900 prompt chars
+  # and a storm of unmatched groups must not crowd out the rest
+  context_max_groups: 6
+
+agents:
+  # harness adapter used for LLM stages: codex | claude | pi
+  adapter: codex
+  # agent mode: agentic (default — the model reads AGENTS.md and edits the
+  # wiki itself) | structured (the model returns one JSON proposal and
+  # deterministic Python writes every file). Use structured with small local
+  # models, whose judgment is fine but whose file mechanics are not.
+  # structured covers ingest and routine reports; a report on a window with a
+  # notable item stays agentic (see escalated_report below), and lint always
+  # runs agentic.
+  #mode: structured
+  # escalated (notable) windows normally use the agentic adapter for their
+  # report — the historical-context step is the report's whole value.
+  # structured renders them through the deterministic writer instead, with a
+  # capped "Material" context pack (digests, prior report, open incidents,
+  # error pages) standing in for that step, and the strong `pi` tier instead
+  # of the agentic strong tier. Default when absent: agentic.
+  #escalated_report: structured
+  # when the agentic escalated report dies in the harness itself (nonzero
+  # exit, timeout, quota refusal, unknown adapter), run the structured
+  # escalated path once instead, so the window still gets a report. An
+  # agentic answer that merely fails validation never falls back.
+  # structured | none. Default when absent: structured.
+  #escalated_report_fallback: structured
+  # days of this database's own history — administrative changes, journal
+  # headlines, incidents, operator actions and past fixes for today's codes —
+  # packed into the ingest prompt as context for judging the day. 0 leaves the
+  # block out entirely. Default when absent: 90.
+  #history_days: 90
+  # per-adapter model tiers (cheap = bulk ingestion, strong = incident-grade)
+  codex:
+    cheap: null       # null = adapter default model
+    strong: null
+  claude:
+    cheap: sonnet
+    strong: opus
+  # pi (https://github.com/badlogic/pi) runs any provider it knows, including
+  # local OpenAI-compatible servers; no web tools, so not usable for research
+  pi:
+    provider: unsloth              # any provider from `pi --list-models`
+    cheap: unsloth/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-GGUF
+    strong: unsloth/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-GGUF
+    # Where the local model server listens, and the *name* of an env var
+    # holding its API key (unsloth studio requires one; LM Studio does not).
+    # Both are used ONLY by the `dbwiki health` probe (server up, models
+    # present, loaded context large enough), which runs whenever a configured
+    # route uses pi. Leave them unset and the probe reads pi's own provider
+    # table (`~/.pi/agent/models.json`) — the same place pi resolves the
+    # server from, so the probe follows a repointed provider by itself.
+    # Setting base_url here does NOT move where the structured stages talk to.
+    #base_url: http://127.0.0.1:8888/v1
+    #api_key_env: DBWIKI_PI_API_KEY
+  timeout_seconds: 900
+  # on validation failure the agent is re-run once with the problem list appended; 0 disables
+  feedback_retries: 1
+
+report:
+  # git push after commit (set false when the wiki repo has no remote yet)
+  push: false
+  # Base URL the daily HTML summary (wiki/html/<day>.html) links wiki pages
+  # against; `<link_base>/<page>.md` is what gets emitted. Wiki pages are
+  # markdown, so a local file:// link would show raw text — point this where
+  # markdown renders, i.e. at the wiki's remote.
+  link_base: https://github.com/<you>/<wiki-repo>/blob/main
+
+health:
+  # `dbwiki health`: a watermark or a source with no events for longer than
+  # this is stale (one daily cycle plus slack)
+  stale_hours: 26
+  # per-stage staleness budgets: how long a stage that has succeeded before
+  # may go without succeeding again. run/report are daily, lint and research
+  # weekly. A stage that has never succeeded is never flagged.
+  #stage_stale_hours:
+  #  run: 26
+  #  report: 26
+  #  lint: 192
+  #  research: 192
+  # smallest served context the model-server probe accepts
+  # (docs/scheduling.md: at 8k the reasoning models stop before writing an
+  # answer)
+  #min_context: 32768
+
+# Failure-only alerts (README, "Failure-only alerts"). Off by default: a new
+# deployment must be silent until someone chooses a transport. When enabled,
+# `dbwiki run` (and `dbwiki health --alert`) evaluate the health assessment
+# against `.state/alerts.json` and send one alert per new failure fingerprint
+# — never a success alert, never a repeat while it persists.
+alerts:
+  enabled: false
+  # one sink: stderr (one JSON line, visible in cron mail) | file (JSONL at
+  # `file`) | webhook
+  sink: stderr
+  #file: .state/alerts.jsonl
+  # or several at once — this list wins over `sink:` when present. One dead
+  # sink never blocks the others; every delivery failure is counted in the
+  # run-health event, and none of them can fail the run.
+  #sinks: [file, webhook]
+  # POST target for the webhook sink (one JSON object per alert, no retries).
+  # The DBWIKI_ALERT_WEBHOOK_URL environment variable overrides this — prefer
+  # it when the URL carries a token.
+  #webhook_url: https://hooks.example.invalid/dbwiki
+  #webhook_timeout_seconds: 5
+
+# ADR-0001 (docs/adr/0001-onprem-analyst-split.md): split the pipeline into
+# an on-prem node (this config, with ES credentials, no cloud-LLM
+# credentials) and an analyst node (a workstation with cloud-LLM credentials,
+# no ES credentials, running `dbwiki analyst --once`). Both sides run the
+# same repo and config; only this block's meaning differs by machine.
+#analyst:
+#  # on-prem: true = an escalated window writes the structured placeholder
+#  # report immediately and enqueues an agentic analysis request instead of
+#  # running the agentic adapter locally (which this node has no
+#  # credentials for anyway). false (default): unchanged, today's behavior —
+#  # a notable window's report runs agentic (or structured, per
+#  # agents.escalated_report) right here. With report.push on, true also
+#  # makes every `dbwiki run` pull the wiki remote before the fold-in (the
+#  # analyst's pushed report wins a conflict; a failed pull is undone).
+#  enabled: false
+#  # A claimed request older than this belongs to a crashed analyst: dbwiki
+#  # health flags it, and the next `dbwiki analyst` puts it back in
+#  # queue/pending/ (attempts + 1; to queue/failed/ once attempts run out).
+#  # Failed requests (queue/failed/) are always flagged regardless of age.
+#  stale_hours: 26
+
+# Optional Langfuse trace export (docs/langfuse.md): every attempted agent
+# stage — agentic and structured, success and failure — becomes one Langfuse
+# trace with a generation observation (prompt as input, result JSON as
+# output, token usage/cost), plus scores (validation_ok, rolled_back,
+# lint_findings, duration_s) and the ledger's counts as metadata. Unlike the
+# ledger/ELK telemetry this carries content — prompts embed digest excerpts
+# with real alert-log lines — so point `host` somewhere you trust with them.
+# Needs `uv sync --extra langfuse`. Disabled (or absent) = inert, package
+# not required.
+#langfuse:
+#  enabled: false
+#  # Langfuse host: your self-hosted instance, or https://cloud.langfuse.com
+#  host: http://localhost:3000
+#  # API keys: prefer the LANGFUSE_PUBLIC_KEY / LANGFUSE_SECRET_KEY env vars
+#  # (the SDK reads them itself when these are absent) over keys in this file
+#  #public_key: pk-lf-...
+#  #secret_key: sk-lf-...
+#  # optional Langfuse environment label (e.g. onprem | analyst)
+#  #environment: onprem
+#  # `dbwiki health` warns (never red) when queued human-feedback scores
+#  # (.state/pending_scores.jsonl) wait longer than this for `dbwiki scores
+#  # send`; default 24
+#  #score_backlog_hours: 24
+#  # Price rows `dbwiki langfuse sync` upserts through /api/public/models, so
+#  # generations get a cost instead of a blank: Langfuse ships ~100 built-in
+#  # rows and none of them match a local or a self-hosted model. `match` is a
+#  # regex against the generation's model name; prices are USD per million
+#  # tokens (0 for a model that costs nothing per token, e.g. a local one).
+#  #models:
+#  #  - name: unsloth/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-GGUF
+#  #    match: "(?i)^unsloth/"      # every local unsloth build
+#  #    input_per_million: 0        # runs on your own hardware
+#  #    output_per_million: 0
+#  #  - name: gpt-5.6-luna
+#  #    match: "(?i)^gpt-5\\.6-luna$"
+#  #    # PLACEHOLDER: fill in the vendor's list price before trusting a cost
+#  #    # chart. 0 here means "not priced yet", not "free".
+#  #    input_per_million: 0
+#  #    output_per_million: 0
+
+research:
+  limit: 3                # error pages researched per run
+  # agentic (default when absent): a web-capable agent browses and cites.
+  # offload: ADR-0002 — anonymized requests to the researcher via the
+  # exchange repo (see `exchange:` below); no agent, no web egress here.
+  # structured: no agent at all — deterministic code fetches from an
+  # approved+fetchable source (sources/oracle-docs) and a local text model
+  # only summarizes the fetched page into cause/action JSON. Source-page
+  # review always stays agentic regardless of this setting (see DESIGN.md 2d).
+  mode: agentic
+  # override agents.adapter for research (needs web access): claude | codex |
+  # pi. pi needs the pi-web-access extension installed
+  # (`pi install npm:pi-web-access`); web_search/fetch_content are then
+  # granted automatically — no other config or code change needed.
+  adapter: null
+  # optional model override, applied on top of whichever adapter is chosen
+  # above. This is per-adapter: flipping adapter to pi while leaving a model
+  # meant for another adapter passes a nonexistent model to pi — leave this
+  # null (or set a pi model) so pi falls through to the agents.pi tiers.
+  model: null
+  # practitioner caveats (dbwiki research --caveats): the ONE stage that
+  # talks to the web from this box. It runs the claude adapter with
+  # WebSearch/WebFetch only, in a throwaway temp directory, so it can read
+  # no file of the wiki at all. What leaves the box: the error code, the
+  # Oracle cause/action text already published on the page, and the list of
+  # approved source domains. Never a database name, a hostname or an IP.
+  caveats:
+    enabled: false
+    limit: 2                # error pages reviewed per run
+    model: sonnet
+  # past fixes (dbwiki research --history): the opposite of caveats — no
+  # model, no web, nothing leaves the box. Each error page's `## Past fixes`
+  # table is regenerated from our own incident corpus on every run.
+  history:
+    enabled: true
+    held_after_days: 14     # quiet days before a fix is called held
+  # ADR-0002 (research.mode: offload, rollout in progress): static estate
+  # facts sent with every anonymized research request. Product/version/
+  # platform/feature facts are deliberately NOT sensitive — they are what
+  # makes research effective. Never put a hostname, IP or db name here.
+  # ADR-0002 offload: `mode: offload` runs no agent here at all. Each
+  # `dbwiki research` run folds results the researcher pushed to the
+  # exchange (validated, de-mapped, written through the deterministic
+  # writer + rails, one wiki commit per result), then enqueues one redacted
+  # request per candidate page / due source. Needs a clone of the exchange
+  # repo (only queue state ever lives there; never wiki content).
+  exchange:
+    path: exchange          # relative to the project root, or absolute
+    push: true              # false = commit locally only (tests, air-gapped dry runs)
+    # a claim older than this is a dead researcher's: dbwiki health flags
+    # it and the next research run (or researcher claim) puts it back in
+    # requests/pending/ (attempts + 1; to requests/failed/ once they run out)
+    #stale_hours: 26
+  estate:
+    product: Oracle Database
+    version: 19c
+    platform: Linux x86-64
+    features: [Data Guard broker, physical standby, multitenant]
+
+# ADR-0002: deterministic redaction of everything that leaves the box.
+# `dbwiki redact --show errors/<CODE>.md` prints exactly what would be sent.
+# The vocabulary is built per run from wiki db/host/service pages, registries
+# (including every host name the compactor saw on an ES document: host.name,
+# agent.hostname, diag paths, (HOST=…) descriptors, listener client hosts)
+# and the ES config; this block only adds to it.
+redact:
+  # extra identifying terms the pipeline has never observed (a host no ES
+  # document names, DNS domains, site names, …); names seen by the pipeline
+  # are learned automatically. Substring, case-insensitive.
+  terms: []
+  # domain suffixes that make a dotted token a hostname rather than a
+  # filename; the built-in list covers localdomain/local/lan/corp/world/com/…
+  #domain_suffixes: [localdomain, world, com]
+
+# The incident workbench, installed as the user unit deploy/dbwiki-portal.service
+# (2026-09-08). Naming it here makes `dbwiki health` probe it.
+portal:
+  bind: 127.0.0.1:8765
+  # The Host (and Origin) names the workbench answers to beyond the bind and
+  # its loopback spellings; compared without regard to case. Leave it empty
+  # on loopback. With `--bind 0.0.0.0:8765`, a LAN name or a reverse proxy,
+  # list the names browsers use: a bare name matches on any port, name:port
+  # on that port only (a TLS proxy's Origin `https://wiki.example.com` is
+  # wiki.example.com:443). No `*`: every name nobody listed stays refused,
+  # which is the DNS-rebinding protection.
+  #allowed_hosts: [dbhost, "wiki.example.com:443"]
+  # Proxies (IP addresses) whose X-Forwarded-Host is checked in place of
+  # Host, for a proxy that rewrites Host to 127.0.0.1:8765. Ignored from any
+  # other peer. The proxy must still authenticate: the portal does not.
+  #trusted_proxies: [127.0.0.1]

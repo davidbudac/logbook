@@ -1,0 +1,19 @@
+{
+ "content_hash": "39cfacfe8a4a4ea9",
+ "db": "cdb1",
+ "explanation": "cdb1: skip \u2014 routine_only.",
+ "model_tier": "cheap",
+ "outcome": "skip",
+ "reasons": [
+  {
+   "code": "routine_only",
+   "evidence": {}
+  }
+ ],
+ "schema_version": 1,
+ "window": {
+  "day": "2026-01-28",
+  "from": "2026-01-28T00:00:00Z",
+  "to": "2026-01-29T00:00:00Z"
+ }
+}

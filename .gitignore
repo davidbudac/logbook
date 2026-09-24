@@ -1,0 +1,22 @@
+/wiki/
+.venv/
+.venv
+__pycache__/
+*.egg-info/
+.state/
+.agent-result.json
+.pytest_cache/
+.claude/settings.local.json
+.claude/worktrees/
+/reports/
+*.tmp
+.env
+.DS_Store
+config/researcher.yaml
+*.pem
+*.key
+/output/
+
+# live deployment config: copy from the .example, never commit
+config/dbwiki.yaml
+config/links.yaml

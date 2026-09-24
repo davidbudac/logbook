@@ -1,0 +1,38 @@
+[
+ {
+  "con_id": "0",
+  "db": "cdb1",
+  "id": "ebc-a1",
+  "index": "oracle-logs-alert-2026.08",
+  "level": 16,
+  "message": "Thread 1 advanced to log sequence 5291 (LGWR switch)",
+  "msg_id": "",
+  "msg_type": "NOTIFICATION",
+  "source": "alert",
+  "ts": "2026-08-02T04:00:00Z"
+ },
+ {
+  "con_id": "3",
+  "db": "cdb1",
+  "id": "ebc-a2",
+  "index": "oracle-logs-alert-2026.08",
+  "level": 1,
+  "message": "ORA-01653: unable to extend table SOE.ORDERS by 128 in tablespace USERS",
+  "msg_id": "",
+  "msg_type": "ERROR",
+  "source": "alert",
+  "ts": "2026-08-02T05:00:00Z"
+ },
+ {
+  "con_id": "0",
+  "db": "cdb1",
+  "id": "ebc-a3",
+  "index": "oracle-logs-alert-2026.08",
+  "level": 16,
+  "message": "ALTER SYSTEM SET db_cache_size=6G SCOPE=BOTH;",
+  "msg_id": "",
+  "msg_type": "NOTIFICATION",
+  "source": "alert",
+  "ts": "2026-08-02T05:30:00Z"
+ }
+]

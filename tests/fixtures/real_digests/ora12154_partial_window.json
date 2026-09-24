@@ -1,0 +1,346 @@
+{
+ "db": "cdb1",
+ "window": {
+  "from": "2026-07-27T00:00:00Z",
+  "to": "2026-07-27T22:15:00Z",
+  "day": "2026-07-27"
+ },
+ "generated_by": "dbwiki-compactor/0.1.0",
+ "pattern_versions": {
+  "alert": 1,
+  "listener": 1,
+  "dataguard": 1
+ },
+ "sources": {
+  "alert": {
+   "total_events": 81,
+   "by_class": {
+    "unmatched": 71,
+    "routine": 10
+   },
+   "routine_counters": {
+    "log_switch": 3,
+    "archived_log": 3,
+    "log_switch_detail": 3,
+    "open_progress": 1
+   },
+   "notable": [
+    {
+     "rule": "unmatched",
+     "class": "unmatched",
+     "count": 64,
+     "first_ts": "2026-07-27T16:51:50.249Z",
+     "last_ts": "2026-07-27T22:11:26.792Z",
+     "codes": [],
+     "message": "TT00 (PID:2507): Error 12154 received logging on to the standby",
+     "template": "TT# (PID:#): Error # received logging on to the standby",
+     "es_samples": [
+      {
+       "index": ".ds-logs-oracle.alert-default-2026.07.14-000003",
+       "id": "AZ-kfR2LFbU6umacu6T1",
+       "ts": "2026-07-27T16:51:50.249Z"
+      },
+      {
+       "index": ".ds-logs-oracle.alert-default-2026.07.14-000003",
+       "id": "AZ-kgh2LFbU6umYdvOZV",
+       "ts": "2026-07-27T16:56:45.382Z"
+      },
+      {
+       "index": ".ds-logs-oracle.alert-default-2026.07.27-000004",
+       "id": "AZ-khh2LFbU6umbFvJy0",
+       "ts": "2026-07-27T17:01:50.558Z"
+      },
+      {
+       "index": ".ds-logs-oracle.alert-default-2026.07.27-000004",
+       "id": "AZ-kix2LFbU6umZdvV8P",
+       "ts": "2026-07-27T17:06:55.698Z"
+      },
+      {
+       "index": ".ds-logs-oracle.alert-default-2026.07.27-000004",
+       "id": "AZ-kkB2LFbU6umYVvZV1",
+       "ts": "2026-07-27T17:12:00.845Z"
+      }
+     ]
+    },
+    {
+     "rule": "unmatched",
+     "class": "unmatched",
+     "count": 3,
+     "first_ts": "2026-07-27T19:00:54.381Z",
+     "last_ts": "2026-07-27T22:00:21.620Z",
+     "codes": [],
+     "message": "LGWR (PID:2421): RT_PMODE: PRIMARY            changing to   mode MAXIMUM AVAILABILITY level UNSYNCHRONIZED",
+     "template": "LGWR (PID:#): RT_PMODE: PRIMARY changing to mode MAXIMUM AVAILABILITY level UNSYNCHRONIZED",
+     "es_samples": [
+      {
+       "index": ".ds-logs-oracle.alert-default-2026.07.27-000004",
+       "id": "AZ-k8x2LFbU6uma7xXSI",
+       "ts": "2026-07-27T19:00:54.381Z"
+      },
+      {
+       "index": ".ds-logs-oracle.alert-default-2026.07.27-000004",
+       "id": "AZ-lbh2LFbU6umacz657",
+       "ts": "2026-07-27T21:15:07.445Z"
+      },
+      {
+       "index": ".ds-logs-oracle.alert-default-2026.07.27-000004",
+       "id": "AZ-lmB2LFbU6umYG0u_k",
+       "ts": "2026-07-27T22:00:21.620Z"
+      }
+     ]
+    },
+    {
+     "rule": "unmatched",
+     "class": "unmatched",
+     "count": 1,
+     "first_ts": "2026-07-27T22:00:03.617Z",
+     "last_ts": "2026-07-27T22:00:03.617Z",
+     "codes": [],
+     "message": "Begin automatic SQL Tuning Advisor run for special tuning task  \"SYS_AUTO_SQL_TUNING_TASK\"",
+     "template": "Begin automatic SQL Tuning Advisor run for special tuning task \"SYS_AUTO_SQL_TUNING_TASK\"",
+     "es_samples": [
+      {
+       "index": ".ds-logs-oracle.alert-default-2026.07.27-000004",
+       "id": "AZ-llx2LFbU6umbM0lPc",
+       "ts": "2026-07-27T22:00:03.617Z"
+      }
+     ]
+    },
+    {
+     "rule": "unmatched",
+     "class": "unmatched",
+     "count": 1,
+     "first_ts": "2026-07-27T22:00:06.619Z",
+     "last_ts": "2026-07-27T22:00:06.619Z",
+     "codes": [],
+     "message": "TABLE SYS.WRI$_OPTSTAT_HISTGRM_HISTORY: ADDED INTERVAL PARTITION SYS_P3186 (46229) VALUES LESS THAN (TO_DATE(' 2026-07-28 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))",
+     "template": "TABLE SYS.WRI$_OPTSTAT_HISTGRM_HISTORY: ADDED INTERVAL PARTITION SYS_P# (#) VALUES LESS THAN (TO_DATE(' #-#-# #:#:#', 'SYYYY-MM-DD HH#:MI:SS', 'NLS_CALENDAR=GRE",
+     "es_samples": [
+      {
+       "index": ".ds-logs-oracle.alert-default-2026.07.27-000004",
+       "id": "AZ-llx2LFbU6umbM0lPb",
+       "ts": "2026-07-27T22:00:06.619Z"
+      }
+     ]
+    },
+    {
+     "rule": "unmatched",
+     "class": "unmatched",
+     "count": 1,
+     "first_ts": "2026-07-27T22:00:06.619Z",
+     "last_ts": "2026-07-27T22:00:06.619Z",
+     "codes": [],
+     "message": "End automatic SQL Tuning Advisor run for special tuning task  \"SYS_AUTO_SQL_TUNING_TASK\"",
+     "template": "End automatic SQL Tuning Advisor run for special tuning task \"SYS_AUTO_SQL_TUNING_TASK\"",
+     "es_samples": [
+      {
+       "index": ".ds-logs-oracle.alert-default-2026.07.27-000004",
+       "id": "AZ-llx2LFbU6umbM0lPa",
+       "ts": "2026-07-27T22:00:06.619Z"
+      }
+     ]
+    },
+    {
+     "rule": "unmatched",
+     "class": "unmatched",
+     "count": 1,
+     "first_ts": "2026-07-27T22:00:06.619Z",
+     "last_ts": "2026-07-27T22:00:06.619Z",
+     "codes": [],
+     "message": "TABLE SYS.WRI$_OPTSTAT_HISTHEAD_HISTORY: ADDED INTERVAL PARTITION SYS_P3183 (46229) VALUES LESS THAN (TO_DATE(' 2026-07-28 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))",
+     "template": "TABLE SYS.WRI$_OPTSTAT_HISTHEAD_HISTORY: ADDED INTERVAL PARTITION SYS_P# (#) VALUES LESS THAN (TO_DATE(' #-#-# #:#:#', 'SYYYY-MM-DD HH#:MI:SS', 'NLS_CALENDAR=GR",
+     "es_samples": [
+      {
+       "index": ".ds-logs-oracle.alert-default-2026.07.27-000004",
+       "id": "AZ-llx2LFbU6umbM0lPd",
+       "ts": "2026-07-27T22:00:06.619Z"
+      }
+     ]
+    }
+   ],
+   "dropped_notable_groups": {}
+  },
+  "listener": {
+   "total_events": 5661,
+   "by_class": {
+    "routine": 2947,
+    "noise": 2714
+   },
+   "routine_counters": {
+    "establish cdb1.world emagent": 2614,
+    "op service_update": 121,
+    "node_down_subscription_warning": 94,
+    "op status": 93,
+    "op services": 23,
+    "op version": 1,
+    "op oracle_home": 1
+   },
+   "notable": [],
+   "dropped_notable_groups": {}
+  },
+  "dataguard": {
+   "total_events": 481,
+   "by_class": {
+    "error": 481
+   },
+   "routine_counters": {},
+   "notable": [
+    {
+     "rule": "connection_error",
+     "class": "error",
+     "count": 12,
+     "first_ts": "2026-07-27T16:48:29.138Z",
+     "last_ts": "2026-07-27T20:52:34.119Z",
+     "codes": [
+      "ORA-12154",
+      "ORA-16607",
+      "ORA-16810"
+     ],
+     "message": "Error: The actual protection level 'Resynchronization' is different from the configured protection mode 'MaxAvailability'.\nRedo transport problem detected: redo transport to database cdb1_stby has the following error:\n  ORA-12154: TNS:could not resolve the connect identifier specified\nFailed to connect to remote database cdb1_stby. Error is ORA-12154\nFailed to send message to member cdb1_stby. Error code is ORA-12154.\nData Guard Broker Status Summary:\n  Type                        Name                             Severity  Status\n  Configuration               my_dg_config                      Warning  ORA-16607: one or more members have failed\n  Primary Database            cdb1                                Error  ORA-16810: multiple errors or warnings detected for the member\n  Physical S",
+     "template": "Error: The actual protection level 'Resynchronization' is different from the configured protection mode 'MaxAvailability'. Redo transport problem detected: redo",
+     "es_samples": [
+      {
+       "index": ".ds-logs-oracle.dataguard-default-2026.07.14-000003",
+       "id": "AZ-keh2LFbU6umZvu_ex",
+       "ts": "2026-07-27T16:48:29.138Z"
+      },
+      {
+       "index": ".ds-logs-oracle.dataguard-default-2026.07.27-000004",
+       "id": "AZ-kfB2LFbU6umZFuzLV",
+       "ts": "2026-07-27T16:50:29.176Z"
+      },
+      {
+       "index": ".ds-logs-oracle.dataguard-default-2026.07.27-000004",
+       "id": "AZ-kfh2LFbU6umYau2P6",
+       "ts": "2026-07-27T16:52:29.215Z"
+      },
+      {
+       "index": ".ds-logs-oracle.dataguard-default-2026.07.27-000004",
+       "id": "AZ-kgR2LFbU6umbnvJZN",
+       "ts": "2026-07-27T16:56:29.287Z"
+      },
+      {
+       "index": ".ds-logs-oracle.dataguard-default-2026.07.27-000004",
+       "id": "AZ-kgx2LFbU6uma8vGFy",
+       "ts": "2026-07-27T16:58:29.366Z"
+      }
+     ]
+    },
+    {
+     "rule": "transport_error",
+     "class": "error",
+     "count": 315,
+     "first_ts": "2026-07-27T16:49:29.148Z",
+     "last_ts": "2026-07-27T22:14:35.500Z",
+     "codes": [
+      "ORA-12154",
+      "ORA-16607",
+      "ORA-16810"
+     ],
+     "message": "Error: The actual protection level 'Resynchronization' is different from the configured protection mode 'MaxAvailability'.\nRedo transport problem detected: redo transport to database cdb1_stby has the following error:\n  ORA-12154: TNS:could not resolve the connect identifier specified\nData Guard Broker Status Summary:\n  Type                        Name                             Severity  Status\n  Configuration               my_dg_config                      Warning  ORA-16607: one or more members have failed\n  Primary Database            cdb1                                Error  ORA-16810: multiple errors or warnings detected for the member\n  Physical Standby Database   cdb1_stby                           Error  ORA-12154: TNS:could not resolve the connect identifier specified",
+     "template": "Error: The actual protection level 'Resynchronization' is different from the configured protection mode 'MaxAvailability'. Redo transport problem detected: redo",
+     "es_samples": [
+      {
+       "index": ".ds-logs-oracle.dataguard-default-2026.07.14-000003",
+       "id": "AZ-kex2LFbU6umaRuxXG",
+       "ts": "2026-07-27T16:49:29.148Z"
+      },
+      {
+       "index": ".ds-logs-oracle.dataguard-default-2026.07.27-000004",
+       "id": "AZ-kfR2LFbU6umZmux3v",
+       "ts": "2026-07-27T16:51:29.209Z"
+      },
+      {
+       "index": ".ds-logs-oracle.dataguard-default-2026.07.27-000004",
+       "id": "AZ-kfx2LFbU6umY7vEEQ",
+       "ts": "2026-07-27T16:53:29.218Z"
+      },
+      {
+       "index": ".ds-logs-oracle.dataguard-default-2026.07.27-000004",
+       "id": "AZ-kfx2LFbU6umbwvCUg",
+       "ts": "2026-07-27T16:54:29.253Z"
+      },
+      {
+       "index": ".ds-logs-oracle.dataguard-default-2026.07.27-000004",
+       "id": "AZ-kgR2LFbU6umYQvII1",
+       "ts": "2026-07-27T16:55:29.271Z"
+      }
+     ]
+    },
+    {
+     "rule": "connection_error",
+     "class": "error",
+     "count": 152,
+     "first_ts": "2026-07-27T16:54:30.531Z",
+     "last_ts": "2026-07-27T22:14:41.117Z",
+     "codes": [
+      "ORA-12154",
+      "ORA-16607",
+      "ORA-16810"
+     ],
+     "message": "Failed to connect to remote database cdb1_stby. Error is ORA-12154\nFailed to send message to member cdb1_stby. Error code is ORA-12154.\nData Guard Broker Status Summary:\n  Type                        Name                             Severity  Status\n  Configuration               my_dg_config                      Warning  ORA-16607: one or more members have failed\n  Primary Database            cdb1                                Error  ORA-16810: multiple errors or warnings detected for the member\n  Physical Standby Database   cdb1_stby                           Error  ORA-12154: TNS:could not resolve the connect identifier specified",
+     "template": "Failed to connect to remote database cdb#_stby. Error is ORA-12154 Failed to send message to member cdb#_stby. Error code is ORA-12154. Data Guard Broker Status",
+     "es_samples": [
+      {
+       "index": ".ds-logs-oracle.dataguard-default-2026.07.27-000004",
+       "id": "AZ-kfx2LFbU6umbwvCUf",
+       "ts": "2026-07-27T16:54:30.531Z"
+      },
+      {
+       "index": ".ds-logs-oracle.dataguard-default-2026.07.27-000004",
+       "id": "AZ-khR2LFbU6umaqvLqd",
+       "ts": "2026-07-27T17:00:35.103Z"
+      },
+      {
+       "index": ".ds-logs-oracle.dataguard-default-2026.07.27-000004",
+       "id": "AZ-khx2LFbU6umZ1vOTA",
+       "ts": "2026-07-27T17:02:35.000Z"
+      },
+      {
+       "index": ".ds-logs-oracle.dataguard-default-2026.07.27-000004",
+       "id": "AZ-kiR2LFbU6umZKvPHk",
+       "ts": "2026-07-27T17:04:35.160Z"
+      },
+      {
+       "index": ".ds-logs-oracle.dataguard-default-2026.07.27-000004",
+       "id": "AZ-kix2LFbU6umYWvesL",
+       "ts": "2026-07-27T17:06:35.147Z"
+      }
+     ]
+    },
+    {
+     "rule": "connection_error",
+     "class": "error",
+     "count": 2,
+     "first_ts": "2026-07-27T20:29:19.511Z",
+     "last_ts": "2026-07-27T20:35:07.742Z",
+     "codes": [
+      "ORA-12154"
+     ],
+     "message": "Failed to connect to remote database cdb1_stby. Error is ORA-12154\nFailed to send message to member cdb1_stby. Error code is ORA-12154.",
+     "template": "Failed to connect to remote database cdb#_stby. Error is ORA-12154 Failed to send message to member cdb#_stby. Error code is ORA-12154.",
+     "es_samples": [
+      {
+       "index": ".ds-logs-oracle.dataguard-default-2026.07.27-000004",
+       "id": "AZ-lRB2LFbU6umbEzH4e",
+       "ts": "2026-07-27T20:29:19.511Z"
+      },
+      {
+       "index": ".ds-logs-oracle.dataguard-default-2026.07.27-000004",
+       "id": "AZ-lSh2LFbU6umYBzDCL",
+       "ts": "2026-07-27T20:35:07.742Z"
+      }
+     ]
+    }
+   ],
+   "dropped_notable_groups": {}
+  }
+ },
+ "deltas": [],
+ "totals": {
+  "events": 6223,
+  "notable_events": 552,
+  "notable_groups": 10
+ },
+ "notable": true
+}

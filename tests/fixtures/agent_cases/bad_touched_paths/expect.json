@@ -1,0 +1,9 @@
+{
+ "title": "declared vs actual mismatch in both directions: claims an untouched error page, hides a new concept page",
+ "outcome": "rollback",
+ "problems_contain": [
+  "pages_touched declares a page it did not change: errors/ORA-12543.md",
+  "changed a page without declaring it: concepts/telemetry-collection.md"
+ ],
+ "scored": ["result_schema", "touched_paths"]
+}

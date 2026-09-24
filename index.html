@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f5f4ef" />
+    <meta
+      name="description"
+      content="Logbook turns database logs into an evolving knowledge base. Remember incidents, keep the evidence, and give your next investigation a head start."
+    />
+    <title>Logbook — Every database has a story.</title>
+    <link rel="stylesheet" href="website/style.css" />
+    <script src="website/script.js" defer></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="shell header">
+      <a class="brand" href="#" aria-label="Logbook home"
+        ><span class="logo-crop"
+          ><img src="logo-transparent.png" alt="Logbook" width="1774" height="887" /></span
+      ></a>
+      <nav aria-label="Main navigation">
+        <a href="#idea">The idea</a
+        ><a href="docs/site.html"
+          >Documentation <span aria-hidden="true">↗</span></a
+        ><a href="https://github.com/davidbudac/logbook"
+          >GitHub <span aria-hidden="true">↗</span></a
+        >
+      </nav>
+    </header>
+    <main id="main">
+      <section class="shell hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">
+            <span class="status-dot"></span> DATABASE LOGS. LASTING KNOWLEDGE.
+          </p>
+          <h1 id="hero-title">
+            Every database<br />has a story.<br /><span>Keep the plot.</span>
+          </h1>
+          <p class="intro">
+            An evolving knowledge base built from database logs.
+          </p>
+          <p class="description">
+            Turn the everyday noise into a shared memory of what happened, what
+            mattered, and what to look at next.
+          </p>
+          <div class="actions">
+            <a class="button" href="docs/site.html"
+              >Meet Logbook <span aria-hidden="true">↗</span></a
+            ><a class="text-link" href="#in-action"
+              >See the idea in action <span aria-hidden="true">↓</span></a
+            >
+          </div>
+          <p class="hero-note">Built for database people. Made to remember.</p>
+        </div>
+        <div
+          class="story-art"
+          aria-label="Illustration: database log events become a connected, evidence-backed knowledge base"
+        >
+          <div class="art-grid"></div>
+          <div class="source-label">
+            <span class="tiny-square"></span> THE EVERYDAY STREAM
+          </div>
+          <div class="log-slip slip-one">
+            <span>09:41:02</span> Listener connection established <b>↵</b>
+          </div>
+          <div class="log-slip slip-two">
+            <span>09:41:08</span> ORA-12514 · service unknown <b>↵</b>
+          </div>
+          <div class="log-slip slip-three">
+            <span>09:42:16</span> Service registration updated <b>↵</b>
+          </div>
+          <div class="thread" aria-hidden="true"></div>
+          <div class="book">
+            <div class="book-top">
+              <span class="book-symbol" aria-hidden="true">↳</span
+              ><span>A LITTLE MORE UNDERSTOOD</span><span>01</span>
+            </div>
+            <div class="book-content">
+              <p class="eyebrow">FROM LOGS TO CONTEXT</p>
+              <h2>A familiar error.<br />A useful memory.</h2>
+              <p>The event. The evidence.<br />The context for next time.</p>
+              <div class="book-rule"></div>
+              <div class="book-bottom">
+                <span><i></i> Connected to the source</span
+                ><span aria-hidden="true">↗</span>
+              </div>
+            </div>
+          </div>
+          <span class="margin-note"
+            >Less searching.<br />More understanding.</span
+          >
+          <div class="art-caption">
+            <span>LOG → CONTEXT → KNOWLEDGE</span><span>ALWAYS EVOLVING ↗</span>
+          </div>
+        </div>
+      </section>
+      <div class="principles shell">
+        <span>A memory for your database fleet</span
+        ><span>Evidence stays connected</span
+        ><span>Knowledge grows over time</span>
+      </div>
+      <section class="shell idea" id="idea" aria-labelledby="idea-title">
+        <div>
+          <p class="eyebrow">01 / THE IDEA</p>
+          <h2 id="idea-title">Logs move on.<br />Understanding should stay.</h2>
+        </div>
+        <div class="idea-copy">
+          <p>
+            The next incident shouldn’t mean starting from zero. Logbook reads
+            Oracle database logs and maintains a wiki that brings events,
+            incidents, and database history together.
+          </p>
+          <p>
+            So the next time something looks familiar, there’s a place to start.
+          </p>
+        </div>
+      </section>
+      <section class="shell demo" id="in-action" aria-labelledby="demo-title">
+        <div class="demo-heading">
+          <div>
+            <p class="eyebrow">02 / A SMALL EXAMPLE</p>
+            <h2 id="demo-title">
+              From “what happened?”<br />to “we’ve seen this before.”
+            </h2>
+          </div>
+          <span class="example-label">ILLUSTRATIVE EXAMPLE</span>
+        </div>
+        <div class="demo-layout">
+          <div
+            class="steps"
+            role="tablist"
+            aria-label="From logs to knowledge"
+            aria-orientation="vertical"
+          >
+            <button
+              id="tab-events"
+              role="tab"
+              aria-selected="true"
+              aria-controls="example-panel"
+              data-step="events"
+            >
+              <span class="step-number">01</span
+              ><span
+                ><strong>Read the signals</strong
+                ><small>Start with what the logs actually say.</small></span
+              ><span class="step-arrow" aria-hidden="true">↗</span>
+            </button>
+            <button
+              id="tab-context"
+              role="tab"
+              aria-selected="false"
+              aria-controls="example-panel"
+              tabindex="-1"
+              data-step="context"
+            >
+              <span class="step-number">02</span
+              ><span
+                ><strong>Make the connections</strong
+                ><small>Bring repeated events into focus.</small></span
+              ><span class="step-arrow" aria-hidden="true">↗</span>
+            </button>
+            <button
+              id="tab-knowledge"
+              role="tab"
+              aria-selected="false"
+              aria-controls="example-panel"
+              tabindex="-1"
+              data-step="knowledge"
+            >
+              <span class="step-number">03</span
+              ><span
+                ><strong>Keep the knowledge</strong
+                ><small>Give the next investigation a head start.</small></span
+              ><span class="step-arrow" aria-hidden="true">↗</span>
+            </button>
+          </div>
+          <div
+            class="example-panel"
+            id="example-panel"
+            role="tabpanel"
+            aria-labelledby="tab-events"
+            tabindex="0"
+          >
+            <div class="panel-chrome">
+              <span id="panel-label">INPUT / LISTENER LOG</span
+              ><span class="panel-dots" aria-hidden="true">•••</span>
+            </div>
+            <div id="panel-content">
+              <p class="panel-kicker">Three events. One starting point.</p>
+              <div class="code-line">
+                <time>09:41:02</time><span>Connection established</span>
+              </div>
+              <div class="code-line highlighted">
+                <time>09:41:08</time><span>ORA-12514: service unknown</span>
+              </div>
+              <div class="code-line">
+                <time>09:42:16</time><span>Service registration updated</span>
+              </div>
+              <p class="panel-footnote">
+                The original events are the evidence.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="shell closing">
+        <p class="eyebrow">YOUR LOGS HAVE MORE TO TELL YOU.</p>
+        <h2>Start building<br />your database’s memory.</h2>
+        <a class="button" href="docs/site.html"
+          >Explore the documentation <span aria-hidden="true">↗</span></a
+        >
+      </section>
+    </main>
+    <footer class="shell footer">
+      <a class="brand" href="#" aria-label="Logbook home"
+        ><span class="logo-crop"
+          ><img
+            src="logo-transparent.png"
+            alt="Logbook"
+            width="1774"
+            height="887"
+            loading="lazy" /></span
+      ></a>
+      <p>A little less noise. A little more knowledge.</p>
+      <a href="docs/site.html">Read the docs ↗</a>
+      <a href="https://github.com/davidbudac/logbook">Get the code on GitHub ↗</a>
+      <p>MIT licensed. Built by David Budac.</p>
+    </footer>
+  </body>
+</html>

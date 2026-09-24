@@ -1,0 +1,50 @@
+[
+ {
+  "file": "errors/ORA-12543.md",
+  "hint": "make the frontmatter self-consistent: no date before `added:`, and `status: approved` needs `domains:`",
+  "message": "researched: 2026-06-01 is earlier than added: 2026-07-01",
+  "rule": "frontmatter-contradictory",
+  "severity": "error",
+  "suppressed": false
+ },
+ {
+  "file": "errors/ORA-12543.md",
+  "hint": "create the target page or fix the link target",
+  "message": "[[errors/ORA-99999]] matches no page",
+  "rule": "wikilink-broken",
+  "severity": "error",
+  "suppressed": false
+ },
+ {
+  "file": "errors/ORA-12543.md",
+  "hint": "cite a digest that exists under digests/<db>/",
+  "message": "referenced digest does not exist: digests/cdb1/2026-07-99.md",
+  "rule": "digest-missing",
+  "severity": "error",
+  "suppressed": false
+ },
+ {
+  "file": "incidents/2026-07-13-cdb1-telemetry-blackout.md",
+  "hint": "cite as `(source: sources/<name>; url: <url>; accessed: YYYY-MM-DD)` against an approved source page",
+  "message": "cites sources/random-blog, which is not a source page",
+  "rule": "citation-malformed",
+  "severity": "error",
+  "suppressed": false
+ },
+ {
+  "file": "incidents/2026-07-13-cdb1-telemetry-blackout.md",
+  "hint": "cite as `(source: sources/<name>; url: <url>; accessed: YYYY-MM-DD)` against an approved source page",
+  "message": "cites https://blogs.oracle.com/dataguard/anecdote, whose host is not on an approved source's domains",
+  "rule": "citation-malformed",
+  "severity": "error",
+  "suppressed": false
+ },
+ {
+  "file": "incidents/2026-07-13-cdb1-telemetry-blackout.md",
+  "hint": "cite as `(source: sources/<name>; url: <url>; accessed: YYYY-MM-DD)` against an approved source page",
+  "message": "cites https://example.invalid/collector-post, whose host is not on an approved source's domains",
+  "rule": "citation-malformed",
+  "severity": "error",
+  "suppressed": false
+ }
+]

@@ -1,0 +1,36 @@
+{
+ "name": "ora600_internal_error",
+ "title": "ORA-00600 internal error with incident dump (legacy layout)",
+ "layout": "legacy",
+ "db": "cdb1",
+ "window": {"from": "2026-07-11T00:00:00Z", "to": "2026-07-12T00:00:00Z", "day": "2026-07-11"},
+ "registry": {
+  "daily_counts": [
+   {"day": "2026-07-09", "source": "alert", "total": 27, "counters": {"log_switch": 25}},
+   {"day": "2026-07-10", "source": "alert", "total": 26, "counters": {"log_switch": 24}}
+  ]
+ },
+ "trigger": {"ledger_entry": null, "manual": false, "consolidation": false},
+ "hits": {
+  "alert": [
+   {"_index": "oracle-logs-alert-2026.07", "_id": "o6-a1",
+    "_source": {"@timestamp": "2026-07-11T04:17:03Z", "db_name": "cdb1",
+     "oracle": {"alert_message": "ORA-00600: internal error code, arguments: [kdsgrp1], [], [], [], [], [], [], []",
+      "msg_type": "INCIDENT_ERROR", "msg_id": "opiexe:4183:2939367799", "msg_level": 1, "con_id": "3"}}},
+   {"_index": "oracle-logs-alert-2026.07", "_id": "o6-a2",
+    "_source": {"@timestamp": "2026-07-11T04:17:03Z", "db_name": "cdb1",
+     "oracle": {"alert_message": "Errors in file /u01/app/oracle/diag/rdbms/cdb1/cdb1/trace/cdb1_ora_28311.trc  (incident=48291):",
+      "msg_type": "ERROR", "msg_id": "", "msg_level": 1, "con_id": "3"}}},
+   {"_index": "oracle-logs-alert-2026.07", "_id": "o6-a3",
+    "_source": {"@timestamp": "2026-07-11T04:17:05Z", "db_name": "cdb1",
+     "oracle": {"alert_message": "Incident 48291 created, dump file: /u01/app/oracle/diag/rdbms/cdb1/cdb1/incident/incdir_48291/cdb1_ora_28311_i48291.trc",
+      "msg_type": "INCIDENT_ERROR", "msg_id": "", "msg_level": 1, "con_id": "3"}}},
+   {"_index": "oracle-logs-alert-2026.07", "_id": "o6-a4",
+    "_source": {"@timestamp": "2026-07-11T05:00:00Z", "db_name": "cdb1",
+     "oracle": {"alert_message": "Thread 1 advanced to log sequence 4720 (LGWR switch)",
+      "msg_type": "NOTIFICATION", "msg_id": "", "msg_level": 16, "con_id": "0"}}}
+  ],
+  "listener": [],
+  "dataguard": []
+ }
+}

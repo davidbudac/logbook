@@ -1,0 +1,40 @@
+You are writing the fleet report for the Oracle log wiki, covering 2026-07-12T00:00:00Z -> 2026-07-12T20:19:00Z (day 2026-07-12).
+Judge the window. Do NOT write files and do NOT name file paths — a program renders your answer into the report page.
+
+Reply with ONE JSON object and NOTHING else: no prose
+before or after it, no markdown code fences, no explanation.
+
+{
+  "schema_version": 1,
+  "summary": "one line, at most 200 characters",
+  "overview": "2-5 sentences of plain prose about this window; no headings, no bullets",
+  "items": [{"db": "<database>", "status_line": "one line: what this database did"}],
+  "open_incident_notes": [{"incident": 1, "note": "one line: what this window adds"}],
+  "notable_analysis": [{"db": "<database>", "analysis": "3-10 sentences of markdown prose"}],
+  "flags": ["anything a human should look at"]
+}
+
+Rules:
+- "items": exactly one entry per database listed below (none — leave the list empty). Any other database is dropped.
+- "open_incident_notes": refer to an open incident by its number below, never by name or path; note only what this window says about it. Leave the list empty when this window says nothing about any of them. Never propose closing or resolving an incident — events stopping is not recovery.
+- "overview": no database is in trouble unless the items below say so; describe the window, do not speculate about causes.
+- "flags": short strings; use [] when there is nothing to flag.
+- Never state a fact this prompt does not show, and never turn a collection gap into a database outage.
+
+Databases ingested in this window:
+- (none ingested)
+
+Open incidents (any database):
+- (none)
+
+Escalated-window rules (in addition to the rules above):
+- "notable_analysis": exactly one entry per NOTABLE database listed above, and no other database.
+- Compare this window against the Material only: prior occurrences of the same codes/groups, open incidents, error-class history. State only facts the Material shows.
+- You may cite a wiki page in "analysis" only as a [[...]] wikilink that appears verbatim in the Material below; never invent one, and never link a page the Material does not show.
+- Never declare recovery or a root cause the Material does not show — events stopping is not recovery.
+- A "Database history" section is what that database did on earlier days: use it to say whether this window is new, recurring, or follows a recorded change; never cite it as evidence for this window.
+
+
+Material (assembled deterministically; you may cite a page only as a [[...]] wikilink that appears verbatim below):
+
+_(nothing to show — no notable digest, database history, prior report, open incident or error-class page was found)_

@@ -1,0 +1,201 @@
+# Alert-log classification rules. Evaluated in order; first match wins.
+# class: noise | routine | lifecycle | dataguard | warning | error
+#   noise/routine are never notable; lifecycle/dataguard/warning/error are.
+# field: normalized event field the regex runs against (default: message).
+# counter: routine counter name; {placeholders} filled from event fields.
+version: 2
+rules:
+  - name: blank
+    class: noise
+    regex: '^\s*$'
+
+  # -- parameter dump at instance startup (hundreds of NOTIFICATION lines) --
+  - name: startup_param_dump
+    class: routine
+    field: msg_id
+    regex: '^kspdmp'
+    counter: startup_param_dump
+
+  # -- critical errors first --
+  - name: internal_error
+    class: error
+    # anchored: ORA-06000..06009 (NETASY) are not ORA-600
+    regex: 'ORA-0*600\b|ORA-0*7445\b'
+
+  - name: incident_error
+    class: error
+    field: msg_type
+    regex: '^INCIDENT_ERROR$'
+
+  - name: deadlock
+    class: error
+    regex: 'ORA-00060\b|Global Enqueue Services Deadlock|DEADLOCK DETECTED'
+
+  - name: process_exception
+    class: error
+    regex: '^(?:\w+\(\d+\):)?Exception \[type: '
+
+  # -- data guard signal inside the alert log --
+  - name: dg_role_transition
+    class: dataguard
+    regex: 'SWITCHOVER|FAILOVER|Terminal Recovery|COMMIT TO SWITCHOVER|Role Change|Becoming the primary|standby became primary'
+
+  - name: dg_mrp_lifecycle
+    class: dataguard
+    regex: 'MRP0: Background Media Recovery (terminated|started)|Managed Standby Recovery (Canceled|not using Real Time Apply|starting Real Time Apply)|Attempt to (start|shut down) background Managed Standby Recovery'
+
+  - name: dg_gap
+    class: dataguard
+    regex: 'Fetching gap sequence|FAL: Failed|gap sequence|GAP -'
+
+  - name: dg_mrp_progress
+    class: routine
+    regex: 'Media Recovery Waiting|Media Recovery Log|Recovery of Online Redo Log'
+    counter: mrp_progress
+
+  - name: dg_rfs_progress
+    class: routine
+    regex: '^\s*RFS\[\d+\]|Primary database is in MAXIMUM|krsr_rfs'
+    counter: rfs_progress
+
+  # -- generic errors --
+  - name: cannot_allocate_log
+    class: warning
+    regex: 'cannot allocate new log|Checkpoint not complete'
+
+  - name: ora_error
+    class: error
+    regex: 'ORA-\d{3,5}'
+
+  - name: tns_error
+    class: error
+    regex: 'TNS-\d{3,5}'
+
+  - name: errors_in_file
+    class: error
+    regex: '^Errors in file'
+
+  - name: process_death
+    class: error
+    regex: 'Process \w+ died|PMON failed|Fatal internal error|terminating the instance'
+
+  # -- lifecycle --
+  - name: instance_startup
+    class: lifecycle
+    regex: 'Starting ORACLE instance'
+
+  - name: instance_shutdown
+    class: lifecycle
+    regex: 'Shutting down (ORACLE )?instance|Instance shutdown complete|shutting down instance'
+
+  - name: db_mount_open
+    class: lifecycle
+    regex: '^ALTER DATABASE\s+(MOUNT|OPEN|CLOSE|DISMOUNT)|Database mounted|^Open of pluggable|ALTER PLUGGABLE DATABASE|alter pluggable database'
+
+  - name: parameter_change
+    class: lifecycle
+    regex: '^ALTER SYSTEM SET '
+
+  - name: tablespace_ddl
+    class: lifecycle
+    regex: '(?i)^(create|drop|alter) (bigfile |smallfile )?tablespace'
+
+  - name: redo_config_change
+    class: lifecycle
+    regex: 'ALTER DATABASE (ADD|DROP) (STANDBY )?LOGFILE'
+
+  - name: datafile_change
+    class: lifecycle
+    regex: '(?i)^ALTER (DATABASE|TABLESPACE) .*(DATAFILE|TEMPFILE)'
+
+  - name: dg_role_change
+    class: lifecycle
+    # switchover and failover lines never reach here: dg_role_transition above
+    # claims them for the dataguard class.
+    regex: '^ALTER DATABASE (RECOVER MANAGED STANDBY|ACTIVATE (PHYSICAL |LOGICAL )?STANDBY|CONVERT TO)'
+
+  - name: restricted_session
+    class: lifecycle
+    regex: '^ALTER SYSTEM (ENABLE|DISABLE) RESTRICTED SESSION'
+
+  # -- routine bulk --
+  - name: manual_archive
+    class: routine
+    regex: '^ALTER SYSTEM (ARCHIVE LOG|SWITCH LOGFILE)'
+    counter: manual_archive
+
+  - name: archived_log
+    class: routine
+    regex: '^Archived Log entry|^ARC\d|^TT\d+: '
+    counter: archived_log
+
+  - name: log_switch
+    class: routine
+    regex: 'Thread \d+ advanced to log sequence'
+    counter: log_switch
+
+  - name: log_switch_detail
+    class: routine
+    regex: '^Beginning log switch|^Current log#|^Next log#|LGWR switch'
+    counter: log_switch_detail
+
+  - name: checkpoint_progress
+    class: routine
+    regex: 'Completed checkpoint|Beginning (global |local )?checkpoint'
+    counter: checkpoint
+
+  - name: strand_flush
+    class: routine
+    regex: 'Private strand flush not complete'
+    counter: strand_flush
+
+  - name: fatal_ni
+    class: routine
+    regex: '^Fatal NI connect error|^Tns error struct:|^Tracing not turned on|^VERSION INFORMATION:|^\s*Version \d+\.\d|^\s*Time: \d|^n[st] (main|secondary) err code:|^TNS for Linux'
+    counter: fatal_ni
+
+  - name: archive_dest_degraded
+    class: warning
+    regex: 'Fewer destinations available than specified|LOG_ARCHIVE_MIN_SUCCEED_DEST'
+
+  - name: dbwriter_progress
+    class: routine
+    regex: '^minact-scn|^SMCO |Resize operation completed|active txn'
+    counter: background_maintenance
+
+  # -- scheduled maintenance window chatter --
+  - name: interval_partition_added
+    class: routine
+    regex: '^(?:\w+\(\d+\):)?TABLE \S+: ADDED INTERVAL PARTITION '
+    counter: interval_partition
+
+  - name: scheduler_window
+    class: routine
+    regex: '^(?:\w+\(\d+\):)?(?:(?:Opening|Closing) scheduler window|(?:Setting|Closing) Resource Manager plan .*via scheduler window)'
+    counter: scheduler_window
+
+  - name: sql_tuning_advisor
+    class: routine
+    regex: '^(?:\w+\(\d+\):)?(?:Begin|End) automatic SQL Tuning Advisor run'
+    counter: sql_tuning_advisor
+
+  - name: rfs_selected_lno
+    class: routine
+    regex: '^(?:\w+\(\d+\):)?rfs \(PID:\d+\): Selected LNO:'
+    counter: rfs_selected_lno
+
+  # -- instance-startup banner chatter (only appears around startups) --
+  - name: process_lifecycle
+    class: routine
+    regex: '^(Starting|Stopping) background process|^\w{3,8} started with pid=|^All processes have exited|^PSP0|Process termination requested'
+    counter: process_lifecycle
+
+  - name: startup_banner
+    class: routine
+    regex: '^(LICENSE_|Using LOG_ARCHIVE_DEST|Autotune of undo retention|SYS auditing is|Sys-V shared memory|Supported system pagesize|PAGESIZE\s|Number of processor|Initial number of CPU|IMODE=|ILAT ?=|LDFLAGS|CLI Flags|Domain name:|System name:|Node name:|Release:|Version:|Machine:|Using parameter settings|System parameters with non-default|Deprecated system parameters|Oracle instance running|ORACLE_HOME\b|\*{4,}|={4,}|-{4,}|NOTE: |RECOMMENDATION|Per process system memlock|Expected per process|capabilities requested|of pages for every supported|instance MAX SHARED GLOBAL AREA|instance restart operation|Large Pages|TIME_STATISTICS|Windowing|Dumping )'
+    counter: startup_banner
+
+  - name: db_open_progress
+    class: routine
+    regex: '^(Ping without log force|Buffer Cache|Redo log|Undo initialization|Database Characterset|replication_dependency|Verifying|Sml idle|joxcsys|QPI|CJQ0|Setting Resource Manager|Using default pga|PDB\$SEED|Opening pdb|Autotune of|clause needed|Endian type|Assigning activation ID|LGWR: |Thread \d+ opened|Successful (open|mount)|Undo tablespace|\[\d+\] Successfully onlined|Deleting old|Clearing Resource Manager|Global Resource Directory|Post SMON to start|SMON: |ORACLE_BASE|Creating new|db_recovery_file_dest|Crash Recovery excluded|stored in server-side|spfile|Starting ORACLE instance \(restrict)'
+    counter: open_progress

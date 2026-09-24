@@ -1,0 +1,105 @@
+{
+ "content_hash": "cc997ce2a40908d4",
+ "db": "testcdb_s",
+ "explanation": "testcdb_s: wake (strong tier) \u2014 first_ever_code, new_client_program, new_service, notable_class.",
+ "model_tier": "strong",
+ "outcome": "wake",
+ "reasons": [
+  {
+   "code": "first_ever_code",
+   "evidence": {
+    "first_seen": "2026-01-15T09:31:39.327Z",
+    "source": "alert",
+    "type": "first_ever_code",
+    "value": "ORA-16024"
+   }
+  },
+  {
+   "code": "new_service",
+   "evidence": {
+    "source": "listener",
+    "type": "new_service",
+    "value": "testcdb_s"
+   }
+  },
+  {
+   "code": "new_client_program",
+   "evidence": {
+    "source": "listener",
+    "type": "new_client_program",
+    "value": "sqlplus"
+   }
+  },
+  {
+   "code": "first_ever_code",
+   "evidence": {
+    "first_seen": "2026-01-15T09:31:39.327Z",
+    "source": "dataguard",
+    "type": "first_ever_code",
+    "value": "ORA-16024"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "error",
+    "count": 1,
+    "rule": "ora_error"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "lifecycle",
+    "count": 1,
+    "rule": "instance_startup"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "unmatched",
+    "count": 1,
+    "rule": "unmatched"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "unmatched",
+    "count": 1,
+    "rule": "unmatched"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "unmatched",
+    "count": 1,
+    "rule": "unmatched"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "unmatched",
+    "count": 1,
+    "rule": "unmatched"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "unmatched",
+    "count": 1,
+    "rule": "unmatched"
+   }
+  }
+ ],
+ "schema_version": 1,
+ "window": {
+  "day": "2026-01-15",
+  "from": "2026-01-15T00:00:00Z",
+  "to": "2026-01-16T00:00:00Z"
+ }
+}

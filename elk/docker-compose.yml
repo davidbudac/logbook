@@ -1,0 +1,35 @@
+# Filebeat shipper: dbwiki telemetry -> the local docker-elk stack.
+#
+# Self-contained: does not touch the docker-elk compose project. Filebeat runs
+# with host networking so ES_HOST can stay "http://localhost:9200" — the same
+# address the operator uses — regardless of what the ELK compose network is
+# called on this machine.
+#
+# Run `./setup.sh` once BEFORE `docker compose up -d`: it installs the index
+# template + ingest pipelines. If filebeat writes first, the docs land without
+# parsing under the stack's default logs template.
+name: dbwiki-elk
+
+services:
+  filebeat:
+    image: docker.elastic.co/beats/filebeat:${ELASTIC_VERSION:-9.4.2}
+    container_name: dbwiki-filebeat
+    user: root
+    network_mode: host
+    # --strict.perms=false: the config is bind-mounted and owned by the host
+    # user, not root, which filebeat would otherwise refuse.
+    command: filebeat -e --strict.perms=false
+    volumes:
+      - ./filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
+      - ../.state:/logs/state:ro
+      - ../wiki:/logs/wiki:ro
+      - filebeat-data:/usr/share/filebeat/data
+    environment:
+      ES_HOST: ${ES_HOST:-http://localhost:9200}
+      ES_USER: ${ES_USER:-elastic}
+      ES_PASSWORD: ${ES_PASSWORD:-changeme}
+    restart: unless-stopped
+
+volumes:
+  # Filebeat registry (read offsets). Named volume so restarts don't re-ship.
+  filebeat-data:

@@ -1,0 +1,28 @@
+{
+  "description": "Agent audit trail from wiki/log.md: '[UTC] task — summary' per LLM stage (contract enforced by orchestrate.py). Timestamps come with and without seconds; the em dash separator is part of the contract.",
+  "processors": [
+    {
+      "grok": {
+        "field": "message",
+        "patterns": [
+          "^\\[%{NOTSPACE:dbwiki.ts}\\] %{WORD:dbwiki.task} — %{GREEDYDATA:dbwiki.summary}$"
+        ],
+        "ignore_failure": true
+      }
+    },
+    {
+      "date": {
+        "field": "dbwiki.ts",
+        "target_field": "@timestamp",
+        "formats": ["ISO8601", "yyyy-MM-dd'T'HH:mmX", "yyyy-MM-dd'T'HH:mm:ssX"],
+        "if": "ctx.dbwiki?.ts != null",
+        "ignore_failure": true
+      }
+    },
+    { "set": { "field": "event.module", "value": "dbwiki" } },
+    { "set": { "field": "event.dataset", "value": "dbwiki.audit" } }
+  ],
+  "on_failure": [
+    { "append": { "field": "tags", "value": "dbwiki_pipeline_failure" } }
+  ]
+}

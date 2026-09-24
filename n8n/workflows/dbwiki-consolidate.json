@@ -1,0 +1,160 @@
+{
+ "id": "dbwiki-consolidate",
+ "name": "dbwiki consolidate [dry] \u2014 nightly consolidation",
+ "active": false,
+ "nodes": [
+  {
+   "parameters": {
+    "rule": {
+     "interval": [
+      {
+       "field": "cronExpression",
+       "expression": "30 23 * * *"
+      }
+     ]
+    }
+   },
+   "name": "Schedule",
+   "type": "n8n-nodes-base.scheduleTrigger",
+   "typeVersion": 1.2,
+   "position": [
+    0,
+    0
+   ]
+  },
+  {
+   "parameters": {
+    "authentication": "privateKey",
+    "command": "export PATH=/usr/local/bin:/usr/bin:/bin; cd /opt/logbook && uv run dbwiki run --explain --consolidate </dev/null",
+    "cwd": "/opt/logbook"
+   },
+   "name": "Run on host",
+   "type": "n8n-nodes-base.ssh",
+   "typeVersion": 1,
+   "position": [
+    240,
+    0
+   ],
+   "credentials": {
+    "sshPrivateKey": {
+     "id": "dbwiki-host-ssh",
+     "name": "dbwiki host (ssh)"
+    }
+   }
+  },
+  {
+   "parameters": {
+    "conditions": {
+     "options": {
+      "caseSensitive": true,
+      "leftValue": "",
+      "typeValidation": "loose",
+      "version": 2
+     },
+     "conditions": [
+      {
+       "id": "exit-code",
+       "leftValue": "={{ $json.code }}",
+       "rightValue": 0,
+       "operator": {
+        "type": "number",
+        "operation": "notEquals"
+       }
+      }
+     ],
+     "combinator": "and"
+    },
+    "options": {}
+   },
+   "name": "Exit != 0?",
+   "type": "n8n-nodes-base.if",
+   "typeVersion": 2.2,
+   "position": [
+    480,
+    0
+   ]
+  },
+  {
+   "parameters": {
+    "errorMessage": "=dbwiki consolidate exited {{ $json.code }}: {{ String($json.stderr || $json.stdout || '').slice(-800) }}"
+   },
+   "name": "Fail the round",
+   "type": "n8n-nodes-base.stopAndError",
+   "typeVersion": 1,
+   "position": [
+    720,
+    -120
+   ]
+  },
+  {
+   "parameters": {},
+   "name": "Round OK",
+   "type": "n8n-nodes-base.noOp",
+   "typeVersion": 1,
+   "position": [
+    720,
+    120
+   ]
+  }
+ ],
+ "connections": {
+  "Schedule": {
+   "main": [
+    [
+     {
+      "node": "Run on host",
+      "type": "main",
+      "index": 0
+     }
+    ]
+   ]
+  },
+  "Run on host": {
+   "main": [
+    [
+     {
+      "node": "Exit != 0?",
+      "type": "main",
+      "index": 0
+     }
+    ]
+   ]
+  },
+  "Exit != 0?": {
+   "main": [
+    [
+     {
+      "node": "Fail the round",
+      "type": "main",
+      "index": 0
+     }
+    ],
+    [
+     {
+      "node": "Round OK",
+      "type": "main",
+      "index": 0
+     }
+    ]
+   ]
+  }
+ },
+ "settings": {
+  "executionOrder": "v1",
+  "timezone": "Europe/Berlin",
+  "saveManualExecutions": true,
+  "saveDataErrorExecution": "all",
+  "saveDataSuccessExecution": "all",
+  "executionTimeout": 10800,
+  "errorWorkflow": "dbwiki-errors"
+ },
+ "tags": [
+  {
+   "id": "dbwiki",
+   "name": "dbwiki"
+  }
+ ],
+ "meta": {
+  "templateCredsSetupCompleted": true
+ }
+}

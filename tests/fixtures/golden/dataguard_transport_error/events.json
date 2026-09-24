@@ -1,0 +1,50 @@
+[
+ {
+  "db": "cdb1",
+  "error_code": "ORA-16198",
+  "event_type": "transport_error",
+  "id": "dg-d1",
+  "index": ".ds-logs-oracle.dataguard-default-2026.07.11-000020",
+  "member": "cdb1_stby",
+  "message": "Error ORA-16198 received from LGWR while transporting redo to standby cdb1_stby",
+  "severity": "ERROR",
+  "source": "dataguard",
+  "ts": "2026-07-11T22:14:07Z"
+ },
+ {
+  "db": "cdb1",
+  "error_code": "ORA-12543",
+  "event_type": "connection_error",
+  "id": "dg-d2",
+  "index": ".ds-logs-oracle.dataguard-default-2026.07.11-000020",
+  "member": "cdb1_stby",
+  "message": "Failed to connect to remote database cdb1_stby. Error is ORA-12543.",
+  "severity": "ERROR",
+  "source": "dataguard",
+  "ts": "2026-07-11T22:14:39Z"
+ },
+ {
+  "db": "cdb1",
+  "error_code": "ORA-12543",
+  "event_type": "connection_error",
+  "id": "dg-d3",
+  "index": ".ds-logs-oracle.dataguard-default-2026.07.11-000020",
+  "member": "cdb1_stby",
+  "message": "Failed to connect to remote database cdb1_stby. Error is ORA-12543.",
+  "severity": "ERROR",
+  "source": "dataguard",
+  "ts": "2026-07-11T22:16:00Z"
+ },
+ {
+  "db": "cdb1",
+  "error_code": "",
+  "event_type": "info",
+  "id": "dg-d4",
+  "index": ".ds-logs-oracle.dataguard-default-2026.07.11-000020",
+  "member": "cdb1_stby",
+  "message": "Data Guard Broker: configuration status is SUCCESS",
+  "severity": "INFO",
+  "source": "dataguard",
+  "ts": "2026-07-11T23:05:00Z"
+ }
+]

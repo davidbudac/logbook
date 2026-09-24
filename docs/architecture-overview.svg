@@ -1,0 +1,268 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1744.7099166666667 2207.306" width="1744.7099166666667" height="2207.306" style="--bg:#ffffff;--fg:#1f2328;--line:#d1d9e0;--accent:#0969da;--muted:#59636e;background:var(--bg)">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap');
+  text { font-family: 'Inter', system-ui, sans-serif; }
+  svg {
+    /* Derived from --bg and --fg (overridable via --line, --accent, etc.) */
+    --_text:          var(--fg);
+    --_text-sec:      var(--muted, color-mix(in srgb, var(--fg) 60%, var(--bg)));
+    --_text-muted:    var(--muted, color-mix(in srgb, var(--fg) 40%, var(--bg)));
+    --_text-faint:    color-mix(in srgb, var(--fg) 25%, var(--bg));
+    --_line:          var(--line, color-mix(in srgb, var(--fg) 50%, var(--bg)));
+    --_arrow:         var(--accent, color-mix(in srgb, var(--fg) 85%, var(--bg)));
+    --_node-fill:     var(--surface, color-mix(in srgb, var(--fg) 3%, var(--bg)));
+    --_node-stroke:   var(--border, color-mix(in srgb, var(--fg) 20%, var(--bg)));
+    --_group-fill:    var(--bg);
+    --_group-hdr:     color-mix(in srgb, var(--fg) 5%, var(--bg));
+    --_inner-stroke:  color-mix(in srgb, var(--fg) 12%, var(--bg));
+    --_key-badge:     color-mix(in srgb, var(--fg) 10%, var(--bg));
+  }
+</style>
+<defs>
+  <marker id="arrowhead" markerWidth="8" markerHeight="5" refX="7" refY="2.5" orient="auto">
+    <polygon points="0 0, 8 2.5, 0 5" fill="var(--_arrow)" stroke="var(--_arrow)" stroke-width="0.75" stroke-linejoin="round" />
+  </marker>
+  <marker id="arrowhead-start" markerWidth="8" markerHeight="5" refX="1" refY="2.5" orient="auto-start-reverse">
+    <polygon points="8 0, 0 2.5, 8 5" fill="var(--_arrow)" stroke="var(--_arrow)" stroke-width="0.75" stroke-linejoin="round" />
+  </marker>
+</defs>
+<polyline class="edge" data-from="ORA" data-to="ES" data-style="solid" data-arrow-start="false" data-arrow-end="true" data-label="existing collection pipeline" points="155.082,93.80000000000001 155.082,197.65" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="TRIGGER" data-to="CLI" data-style="solid" data-arrow-start="false" data-arrow-end="true" points="505.44525000000016,135.20000000000002 505.44525000000016,197.65" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="CLI" data-to="COMP" data-style="solid" data-arrow-start="false" data-arrow-end="true" data-label="window and database" points="545.5349166666668,268.35 545.5349166666668,289.90000000000003 591.7018333333335,289.90000000000003 591.7018333333335,346.20000000000005 671.8021666666668,346.20000000000005 671.8021666666668,370.20000000000005" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="ES" data-to="COMP" data-style="solid" data-arrow-start="false" data-arrow-end="true" data-label="read-only time-window search" points="155.082,265.45000000000005 155.08199999999994,358.20000000000005 620.2270000000001,358.20000000000005 620.2270000000001,370.20000000000005" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="CFG" data-to="COMP" data-style="solid" data-arrow-start="false" data-arrow-end="true" data-label="fields, paths, policies" points="757.3107500000001,268.35 757.3107500000001,358.20000000000005 723.3773333333335,358.20000000000005 723.3773333333335,370.20000000000005" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="PAT" data-to="COMP" data-style="solid" data-arrow-start="false" data-arrow-end="true" data-label="ordered classification rules" points="1032.5177500000002,251.45000000000005 1032.5177500000002,346.20000000000005 774.9525000000001,346.20000000000005 774.9525000000001,370.20000000000005" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="STATE" data-to="COMP" data-style="solid" data-arrow-start="false" data-arrow-end="true" data-label="registry and watermarks" points="1277.3915833333335,282.35 1277.3915833333335,358.20000000000005 826.5276666666667,358.20000000000005 826.5276666666667,370.20000000000005" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="COMP" data-to="DIGEST" data-style="solid" data-arrow-start="false" data-arrow-end="true" data-label="always emits" points="723.3773333333335,440.90000000000003 723.3773333333335,557.2" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="DIGEST" data-to="GATE" data-style="solid" data-arrow-start="false" data-arrow-end="true" points="682.2996666666668,641.9000000000001 682.2996666666668,677.9000000000001 571.5001916666668,677.9000000000001 571.5001916666668,689.9000000000001" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="GATE" data-to="ORCH" data-style="solid" data-arrow-start="false" data-arrow-end="true" data-label="yes: wake an agent" points="604.4748583333334,854.7733333333334 604.4748583333334,923.748 650.2874416666667,923.748 650.2874416666667,980.048 750.9511500000001,980.048 750.9511500000001,1023.248" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="GATE" data-to="WIKI" data-style="dotted" data-arrow-start="false" data-arrow-end="true" data-label="no: digest remains stored; stop" points="538.525525,854.7733333333333 538.525525,980.048 541.2501916666668,980.048 541.2501916666668,1836.106 841.4960833333333,1836.106 841.4960833333333,1848.106" fill="none" stroke="var(--_line)" stroke-width="1" stroke-dasharray="4 4" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="CLI" data-to="ORCH" data-style="solid" data-arrow-start="false" data-arrow-end="true" data-label="report · lint · research commands" points="465.3555833333335,268.35 465.3555833333335,346.20000000000005 296.1886666666667,346.20000000000005 296.1886666666667,992.048 677.6639,992.048 677.6639,1023.248" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="STATE" data-to="ORCH" data-style="solid" data-arrow-start="false" data-arrow-end="true" data-label="ledger and content hash" points="1350.6549166666668,282.35 1350.6549166666668,947.748 1643.7939166666667,947.748 1643.7939166666667,992.048 824.2384000000001,992.048 824.2384000000001,1023.248" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="ORCH" data-to="HARNESS" data-style="solid" data-arrow-start="false" data-arrow-end="true" points="750.9511500000001,1093.948 750.9511500000001,1122.748" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="HARNESS" data-to="AGENTS" data-style="solid" data-arrow-start="false" data-arrow-end="true" points="750.9511500000001,1193.448 750.9511500000001,1205.448 954.2125333333335,1205.448 954.2125333333335,1217.448" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="SCHEMA" data-to="AGENTS" data-style="solid" data-arrow-start="false" data-arrow-end="true" data-label="instructions" points="1047.64715,1093.948 1047.64715,1181.448 1000.5417333333335,1181.448 1000.5417333333335,1217.448" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="RESEARCH" data-to="AGENTS" data-style="solid" data-arrow-start="false" data-arrow-end="true" data-label="approved-source citations" points="1363.23865,1093.948 1363.23865,1193.448 1046.8709333333334,1193.448 1046.8709333333334,1217.448" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="DIGEST" data-to="AGENTS" data-style="solid" data-arrow-start="false" data-arrow-end="true" data-label="ingest reads digest, not raw logs" points="764.4550000000002,641.9000000000001 764.4550000000002,947.748 1323.0386666666666,947.748 1323.0386666666666,1030.448 1538.7086499999998,1030.448 1538.7086499999998,1205.448 1093.2001333333333,1205.448 1093.2001333333333,1217.448" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="AGENTS" data-to="VALIDATE" data-style="solid" data-arrow-start="false" data-arrow-end="true" data-label="wiki edits plus result JSON" points="1023.7063333333334,1288.1480000000001 1023.7063333333334,1404.448" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="VALIDATE" data-to="WIKI" data-style="solid" data-arrow-start="false" data-arrow-end="true" data-label="valid: commit" points="989.4966666666667,1575.4963333333333 989.4966666666667,1767.806 967.3670333333334,1767.806 967.3670333333334,1836.106 925.7130833333333,1836.106 925.7130833333333,1848.106" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="VALIDATE" data-to="INVALID" data-style="solid" data-arrow-start="false" data-arrow-end="true" data-label="invalid" points="1057.9160000000002,1575.4963333333333 1057.9160000000002,1621.7060000000001 1163.3535333333334,1621.7060000000001 1163.3535333333334,1702.006" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="INVALID" data-to="WIKI" data-style="dotted" data-arrow-start="false" data-arrow-end="true" data-label="rollback; no commit" points="1163.3535333333334,1755.806 1163.3535333333334,1836.106 1009.9300833333333,1836.106 1009.9300833333333,1848.106" fill="none" stroke="var(--_line)" stroke-width="1" stroke-dasharray="4 4" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="WIKI" data-to="USE" data-style="solid" data-arrow-start="false" data-arrow-end="true" points="841.4960833333333,1932.806 841.4960833333333,1968.806 753.1739666666668,1968.806 753.1739666666668,1980.806" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="WIKI" data-to="REMOTE" data-style="solid" data-arrow-start="false" data-arrow-end="true" data-label="optional push" points="925.7130833333333,1932.806 925.7130833333333,1968.806 988.7014666666668,1968.806 988.7014666666669,2099.506" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="WIKI" data-to="FUTURE" data-style="dotted" data-arrow-start="false" data-arrow-end="true" points="1009.9300833333333,1932.806 1009.9300833333333,1968.806 1177.3069666666668,1968.806 1177.3069666666668,1980.806" fill="none" stroke="var(--_line)" stroke-width="1" stroke-dasharray="4 4" marker-end="url(#arrowhead)" />
+<g class="edge-label" data-from="ORA" data-to="ES" data-label="existing collection pipeline">
+  <rect x="84.58199999999994" y="136.8" width="140.014" height="30.3" rx="2" ry="2" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="1" />
+  <text x="154.58899999999994" y="151.95000000000002" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)" dy="3.8499999999999996">existing collection pipeline</text>
+</g>
+<g class="edge-label" data-from="CLI" data-to="COMP" data-label="window and database">
+  <rect x="532.7018333333335" y="296.90000000000003" width="117.44200000000002" height="30.3" rx="2" ry="2" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="1" />
+  <text x="591.4228333333335" y="312.05" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)" dy="3.8499999999999996">window and database</text>
+</g>
+<g class="edge-label" data-from="ES" data-to="COMP" data-label="read-only time-window search">
+  <rect x="76.58199999999995" y="320.90000000000003" width="156.64600000000004" height="30.3" rx="2" ry="2" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="1" />
+  <text x="154.90499999999997" y="336.05" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)" dy="3.8499999999999996">read-only time-window search</text>
+</g>
+<g class="edge-label" data-from="CFG" data-to="COMP" data-label="fields, paths, policies">
+  <rect x="700.3107500000001" y="296.90000000000003" width="113.87800000000004" height="30.3" rx="2" ry="2" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="1" />
+  <text x="757.2497500000002" y="312.05" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)" dy="3.8499999999999996">fields, paths, policies</text>
+</g>
+<g class="edge-label" data-from="PAT" data-to="COMP" data-label="ordered classification rules">
+  <rect x="958.5177500000001" y="308.90000000000003" width="147.14200000000002" height="30.3" rx="2" ry="2" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="1" />
+  <text x="1032.0887500000001" y="324.05" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)" dy="3.8499999999999996">ordered classification rules</text>
+</g>
+<g class="edge-label" data-from="STATE" data-to="COMP" data-label="registry and watermarks">
+  <rect x="1210.8915833333335" y="320.90000000000003" width="132.88600000000002" height="30.3" rx="2" ry="2" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="1" />
+  <text x="1277.3345833333335" y="336.05" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)" dy="3.8499999999999996">registry and watermarks</text>
+</g>
+<g class="edge-label" data-from="COMP" data-to="DIGEST" data-label="always emits">
+  <rect x="684.8773333333335" y="483.90000000000003" width="76.456" height="30.3" rx="2" ry="2" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="1" />
+  <text x="723.1053333333334" y="499.05" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)" dy="3.8499999999999996">always emits</text>
+</g>
+<g class="edge-label" data-from="GATE" data-to="ORCH" data-label="yes: wake an agent">
+  <rect x="596.7874416666667" y="930.748" width="106.15600000000002" height="30.3" rx="2" ry="2" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="1" />
+  <text x="649.8654416666667" y="945.898" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)" dy="3.8499999999999996">yes: wake an agent</text>
+</g>
+<g class="edge-label" data-from="GATE" data-to="WIKI" data-label="no: digest remains stored; stop">
+  <rect x="461.25019166666675" y="1798.806" width="159.022" height="30.3" rx="2" ry="2" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="1" />
+  <text x="540.7611916666667" y="1813.9560000000001" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)" dy="3.8499999999999996">no: digest remains stored; stop</text>
+</g>
+<g class="edge-label" data-from="CLI" data-to="ORCH" data-label="report · lint · research commands">
+  <rect x="207.68866666666668" y="954.748" width="176.24800000000005" height="30.3" rx="2" ry="2" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="1" />
+  <text x="295.8126666666667" y="969.898" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)" dy="3.8499999999999996">report · lint · research commands</text>
+</g>
+<g class="edge-label" data-from="STATE" data-to="ORCH" data-label="ledger and content hash">
+  <rect x="1578.7939166666667" y="954.748" width="129.91600000000003" height="30.3" rx="2" ry="2" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="1" />
+  <text x="1643.7519166666668" y="969.898" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)" dy="3.8499999999999996">ledger and content hash</text>
+</g>
+<g class="edge-label" data-from="SCHEMA" data-to="AGENTS" data-label="instructions">
+  <rect x="1010.6471499999999" y="1144.1480000000001" width="73.486" height="30.3" rx="2" ry="2" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="1" />
+  <text x="1047.39015" y="1159.2980000000002" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)" dy="3.8499999999999996">instructions</text>
+</g>
+<g class="edge-label" data-from="RESEARCH" data-to="AGENTS" data-label="approved-source citations">
+  <rect x="1291.73865" y="1156.1480000000001" width="142.39000000000001" height="30.3" rx="2" ry="2" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="1" />
+  <text x="1362.93365" y="1171.2980000000002" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)" dy="3.8499999999999996">approved-source citations</text>
+</g>
+<g class="edge-label" data-from="DIGEST" data-to="AGENTS" data-label="ingest reads digest, not raw logs">
+  <rect x="1239.5386666666666" y="954.748" width="166.74400000000003" height="30.3" rx="2" ry="2" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="1" />
+  <text x="1322.9106666666667" y="969.898" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)" dy="3.8499999999999996">ingest reads digest, not raw logs</text>
+</g>
+<g class="edge-label" data-from="AGENTS" data-to="VALIDATE" data-label="wiki edits plus result JSON">
+  <rect x="952.7063333333333" y="1331.1480000000001" width="141.20200000000003" height="30.3" rx="2" ry="2" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="1" />
+  <text x="1023.3073333333333" y="1346.2980000000002" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)" dy="3.8499999999999996">wiki edits plus result JSON</text>
+</g>
+<g class="edge-label" data-from="VALIDATE" data-to="WIKI" data-label="valid: commit">
+  <rect x="929.3670333333334" y="1774.806" width="75.26800000000001" height="30.3" rx="2" ry="2" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="1" />
+  <text x="967.0010333333335" y="1789.9560000000001" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)" dy="3.8499999999999996">valid: commit</text>
+</g>
+<g class="edge-label" data-from="VALIDATE" data-to="INVALID" data-label="invalid">
+  <rect x="1138.8535333333334" y="1628.7060000000001" width="48.538000000000004" height="30.3" rx="2" ry="2" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="1" />
+  <text x="1163.1225333333334" y="1643.8560000000002" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)" dy="3.8499999999999996">invalid</text>
+</g>
+<g class="edge-label" data-from="INVALID" data-to="WIKI" data-label="rollback; no commit">
+  <rect x="1110.3535333333334" y="1798.806" width="105.56200000000001" height="30.3" rx="2" ry="2" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="1" />
+  <text x="1163.1345333333334" y="1813.9560000000001" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)" dy="3.8499999999999996">rollback; no commit</text>
+</g>
+<g class="edge-label" data-from="WIKI" data-to="REMOTE" data-label="optional push">
+  <rect x="948.2014666666668" y="2026.2060000000001" width="80.02000000000001" height="30.3" rx="2" ry="2" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="1" />
+  <text x="988.2114666666668" y="2041.3560000000002" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)" dy="3.8499999999999996">optional push</text>
+</g>
+<g class="node" data-id="ORA" data-label="Oracle estate
+alert · listener · Data Guard logs" data-shape="rectangle">
+  <rect x="40" y="40" width="230.164" height="53.800000000000004" rx="0" ry="0" fill="#e0f2fe" stroke="#0284c7" stroke-width="0.75" />
+  <text x="155.082" y="66.9" text-anchor="middle" font-size="13" font-weight="500" fill="#0c4a6e"><tspan x="155.082" dy="-3.9000000000000012">Oracle estate</tspan><tspan x="155.082" dy="16.900000000000002">alert · listener · Data Guard logs</tspan></text>
+</g>
+<g class="node" data-id="ES" data-label="Elasticsearch
+immutable raw evidence" data-shape="cylinder">
+  <rect x="65.19399999999999" y="204.65" width="179.77599999999998" height="53.80000000000001" fill="#e0f2fe" stroke="none" />
+  <line x1="65.19399999999999" y1="204.65" x2="65.19399999999999" y2="258.45000000000005" stroke="#0284c7" stroke-width="0.75" />
+  <line x1="244.96999999999997" y1="204.65" x2="244.96999999999997" y2="258.45000000000005" stroke="#0284c7" stroke-width="0.75" />
+  <ellipse cx="155.082" cy="258.45000000000005" rx="89.88799999999999" ry="7" fill="#e0f2fe" stroke="#0284c7" stroke-width="0.75" />
+  <ellipse cx="155.082" cy="204.65" rx="89.88799999999999" ry="7" fill="#e0f2fe" stroke="#0284c7" stroke-width="0.75" />
+  <text x="155.082" y="231.55" text-anchor="middle" font-size="13" font-weight="500" fill="#0c4a6e"><tspan x="155.082" dy="-3.9000000000000012">Elasticsearch</tspan><tspan x="155.082" dy="16.900000000000002">immutable raw evidence</tspan></text>
+</g>
+<g class="node" data-id="TRIGGER" data-label="cron or operator
+2h · daily · weekly · ad hoc" data-shape="rectangle">
+  <rect x="404.81275000000016" y="81.40000000000002" width="201.265" height="53.800000000000004" rx="0" ry="0" fill="#e0f2fe" stroke="#0284c7" stroke-width="0.75" />
+  <text x="505.44525000000016" y="108.30000000000003" text-anchor="middle" font-size="13" font-weight="500" fill="#0c4a6e"><tspan x="505.44525000000016" dy="-3.9000000000000012">cron or operator</tspan><tspan x="505.44525000000016" dy="16.900000000000002">2h · daily · weekly · ad hoc</tspan></text>
+</g>
+<g class="node" data-id="CLI" data-label="dbwiki CLI
+compact · backfill · ingest · report
+lint · research · run · es" data-shape="rectangle">
+  <rect x="385.1762500000002" y="197.65" width="240.53799999999998" height="70.7" rx="0" ry="0" fill="#ecfdf5" stroke="#059669" stroke-width="0.75" />
+  <text x="505.4452500000002" y="233" text-anchor="middle" font-size="13" font-weight="500" fill="#064e3b"><tspan x="505.4452500000002" dy="-12.350000000000001">dbwiki CLI</tspan><tspan x="505.4452500000002" dy="16.900000000000002">compact · backfill · ingest · report</tspan><tspan x="505.4452500000002" dy="16.900000000000002">lint · research · run · es</tspan></text>
+</g>
+<g class="node" data-id="COMP" data-label="Deterministic compactor
+read-only ES pagination → normalize → classify
+routine counters · notable clusters · deltas" data-shape="rectangle">
+  <rect x="568.6518333333335" y="370.20000000000005" width="309.45099999999996" height="70.7" rx="0" ry="0" fill="#ecfdf5" stroke="#059669" stroke-width="0.75" />
+  <text x="723.3773333333335" y="405.55000000000007" text-anchor="middle" font-size="13" font-weight="500" fill="#064e3b"><tspan x="723.3773333333335" dy="-12.350000000000001">Deterministic compactor</tspan><tspan x="723.3773333333335" dy="16.900000000000002">read-only ES pagination → normalize → classify</tspan><tspan x="723.3773333333335" dy="16.900000000000002">routine counters · notable clusters · deltas</tspan></text>
+</g>
+<g class="node" data-id="DIGEST" data-label="Digest JSON + Markdown
+wiki/digests/db/date
+raw evidence summary for the LLM" data-shape="cylinder">
+  <rect x="600.1443333333335" y="564.2" width="246.46599999999995" height="70.7" fill="#fff7ed" stroke="none" />
+  <line x1="600.1443333333335" y1="564.2" x2="600.1443333333335" y2="634.9000000000001" stroke="#ea580c" stroke-width="0.75" />
+  <line x1="846.6103333333335" y1="564.2" x2="846.6103333333335" y2="634.9000000000001" stroke="#ea580c" stroke-width="0.75" />
+  <ellipse cx="723.3773333333335" cy="634.9000000000001" rx="123.23299999999998" ry="7" fill="#fff7ed" stroke="#ea580c" stroke-width="0.75" />
+  <ellipse cx="723.3773333333335" cy="564.2" rx="123.23299999999998" ry="7" fill="#fff7ed" stroke="#ea580c" stroke-width="0.75" />
+  <text x="723.3773333333335" y="599.5500000000001" text-anchor="middle" font-size="13" font-weight="500" fill="#7c2d12"><tspan x="723.3773333333335" dy="-12.350000000000001">Digest JSON + Markdown</tspan><tspan x="723.3773333333335" dy="16.900000000000002">wiki/digests/db/date</tspan><tspan x="723.3773333333335" dy="16.900000000000002">raw evidence summary for the LLM</tspan></text>
+</g>
+<g class="node" data-id="GATE" data-label="Notable digest
+or daily consolidation?" data-shape="diamond">
+  <polygon points="571.5001916666668,689.9000000000001 670.4241916666667,788.8240000000001 571.5001916666668,887.748 472.5761916666668,788.8240000000001" fill="#fef3c7" stroke="#d97706" stroke-width="0.75" />
+  <text x="571.5001916666668" y="788.8240000000001" text-anchor="middle" font-size="13" font-weight="500" fill="#78350f"><tspan x="571.5001916666668" dy="-3.9000000000000012">Notable digest</tspan><tspan x="571.5001916666668" dy="16.900000000000002">or daily consolidation?</tspan></text>
+</g>
+<g class="node" data-id="ORCH" data-label="Orchestrator
+idempotence · clean-tree guard · model tier
+task prompt · validation · rollback · commit" data-shape="rectangle">
+  <rect x="604.37665" y="1023.248" width="293.149" height="70.7" rx="0" ry="0" fill="#ecfdf5" stroke="#059669" stroke-width="0.75" />
+  <text x="750.9511500000001" y="1058.598" text-anchor="middle" font-size="13" font-weight="500" fill="#064e3b"><tspan x="750.9511500000001" dy="-12.350000000000001">Orchestrator</tspan><tspan x="750.9511500000001" dy="16.900000000000002">idempotence · clean-tree guard · model tier</tspan><tspan x="750.9511500000001" dy="16.900000000000002">task prompt · validation · rollback · commit</tspan></text>
+</g>
+<g class="node" data-id="HARNESS" data-label="Agent harness and adapters
+Codex · Claude · pi
+shared .agent-result.json contract" data-shape="rectangle">
+  <rect x="631.0526500000001" y="1122.748" width="239.79699999999994" height="70.7" rx="0" ry="0" fill="#f3e8ff" stroke="#9333ea" stroke-width="0.75" />
+  <text x="750.9511500000001" y="1158.098" text-anchor="middle" font-size="13" font-weight="500" fill="#581c87"><tspan x="750.9511500000001" dy="-12.350000000000001">Agent harness and adapters</tspan><tspan x="750.9511500000001" dy="16.900000000000002">Codex · Claude · pi</tspan><tspan x="750.9511500000001" dy="16.900000000000002">shared .agent-result.json contract</tspan></text>
+</g>
+<g class="node" data-id="AGENTS" data-label="Agent workflows in wiki checkout
+ingest · report · lint · research
+guided by wiki/AGENTS.md" data-shape="rectangle">
+  <rect x="907.8833333333334" y="1217.448" width="231.64599999999996" height="70.7" rx="0" ry="0" fill="#f3e8ff" stroke="#9333ea" stroke-width="0.75" />
+  <text x="1023.7063333333334" y="1252.798" text-anchor="middle" font-size="13" font-weight="500" fill="#581c87"><tspan x="1023.7063333333334" dy="-12.350000000000001">Agent workflows in wiki checkout</tspan><tspan x="1023.7063333333334" dy="16.900000000000002">ingest · report · lint · research</tspan><tspan x="1023.7063333333334" dy="16.900000000000002">guided by wiki/AGENTS.md</tspan></text>
+</g>
+<g class="node" data-id="WIKI" data-label="Independent wiki/ Git repository
+databases · journals · incidents · errors
+hosts · services · concepts · reports · index · log" data-shape="cylinder">
+  <rect x="757.2790833333333" y="1855.106" width="336.86799999999994" height="70.7" fill="#fff7ed" stroke="none" />
+  <line x1="757.2790833333333" y1="1855.106" x2="757.2790833333333" y2="1925.806" stroke="#ea580c" stroke-width="0.75" />
+  <line x1="1094.1470833333333" y1="1855.106" x2="1094.1470833333333" y2="1925.806" stroke="#ea580c" stroke-width="0.75" />
+  <ellipse cx="925.7130833333333" cy="1925.806" rx="168.43399999999997" ry="7" fill="#fff7ed" stroke="#ea580c" stroke-width="0.75" />
+  <ellipse cx="925.7130833333333" cy="1855.106" rx="168.43399999999997" ry="7" fill="#fff7ed" stroke="#ea580c" stroke-width="0.75" />
+  <text x="925.7130833333333" y="1890.456" text-anchor="middle" font-size="13" font-weight="500" fill="#7c2d12"><tspan x="925.7130833333333" dy="-12.350000000000001">Independent wiki/ Git repository</tspan><tspan x="925.7130833333333" dy="16.900000000000002">databases · journals · incidents · errors</tspan><tspan x="925.7130833333333" dy="16.900000000000002">hosts · services · concepts · reports · index · log</tspan></text>
+</g>
+<g class="node" data-id="USE" data-label="DBA and operator use
+fleet reports · incident history · Q&amp;A
+Obsidian or plain Markdown · optional ES drill-down" data-shape="rectangle">
+  <rect x="582.1464666666668" y="1980.806" width="342.0549999999999" height="70.7" rx="0" ry="0" fill="#f8fafc" stroke="#475569" stroke-width="0.75" />
+  <text x="753.1739666666667" y="2016.156" text-anchor="middle" font-size="13" font-weight="500" fill="#0f172a"><tspan x="753.1739666666667" dy="-12.350000000000001">DBA and operator use</tspan><tspan x="753.1739666666667" dy="16.900000000000002">fleet reports · incident history · Q&amp;A</tspan><tspan x="753.1739666666667" dy="16.900000000000002">Obsidian or plain Markdown · optional ES drill-down</tspan></text>
+</g>
+<g class="node" data-id="REMOTE" data-label="Optional Git remote
+push when enabled" data-shape="cylinder">
+  <rect x="911.4104666666668" y="2106.506" width="154.582" height="53.80000000000001" fill="#fff7ed" stroke="none" />
+  <line x1="911.4104666666668" y1="2106.506" x2="911.4104666666668" y2="2160.306" stroke="#ea580c" stroke-width="0.75" />
+  <line x1="1065.9924666666668" y1="2106.506" x2="1065.9924666666668" y2="2160.306" stroke="#ea580c" stroke-width="0.75" />
+  <ellipse cx="988.7014666666669" cy="2160.306" rx="77.291" ry="7" fill="#fff7ed" stroke="#ea580c" stroke-width="0.75" />
+  <ellipse cx="988.7014666666669" cy="2106.506" rx="77.291" ry="7" fill="#fff7ed" stroke="#ea580c" stroke-width="0.75" />
+  <text x="988.7014666666669" y="2133.406" text-anchor="middle" font-size="13" font-weight="500" fill="#7c2d12"><tspan x="988.7014666666669" dy="-3.9000000000000012">Optional Git remote</tspan><tspan x="988.7014666666669" dy="16.900000000000002">push when enabled</tspan></text>
+</g>
+<g class="node" data-id="CFG" data-label="config/dbwiki.yaml
+ES fields and indices · paths
+model tiers · push policy" data-shape="rectangle">
+  <rect x="653.7142500000001" y="197.65" width="207.19299999999998" height="70.7" rx="0" ry="0" fill="#ecfdf5" stroke="#059669" stroke-width="0.75" />
+  <text x="757.3107500000001" y="233" text-anchor="middle" font-size="13" font-weight="500" fill="#064e3b"><tspan x="757.3107500000001" dy="-12.350000000000001">config/dbwiki.yaml</tspan><tspan x="757.3107500000001" dy="16.900000000000002">ES fields and indices · paths</tspan><tspan x="757.3107500000001" dy="16.900000000000002">model tiers · push policy</tspan></text>
+</g>
+<g class="node" data-id="PAT" data-label="patterns/*.yaml
+ordered alert · listener · Data Guard rules" data-shape="rectangle">
+  <rect x="888.9072500000002" y="197.65" width="287.221" height="53.800000000000004" rx="0" ry="0" fill="#ecfdf5" stroke="#059669" stroke-width="0.75" />
+  <text x="1032.5177500000002" y="224.55" text-anchor="middle" font-size="13" font-weight="500" fill="#064e3b"><tspan x="1032.5177500000002" dy="-3.9000000000000012">patterns/*.yaml</tspan><tspan x="1032.5177500000002" dy="16.900000000000002">ordered alert · listener · Data Guard rules</tspan></text>
+</g>
+<g class="node" data-id="STATE" data-label=".state JSON
+per-DB registry · watermarks
+content hashes · ingest ledger" data-shape="cylinder">
+  <rect x="1204.1282500000002" y="204.65" width="219.78999999999996" height="70.7" fill="#ecfdf5" stroke="none" />
+  <line x1="1204.1282500000002" y1="204.65" x2="1204.1282500000002" y2="275.35" stroke="#059669" stroke-width="0.75" />
+  <line x1="1423.9182500000002" y1="204.65" x2="1423.9182500000002" y2="275.35" stroke="#059669" stroke-width="0.75" />
+  <ellipse cx="1314.0232500000002" cy="275.35" rx="109.89499999999998" ry="7" fill="#ecfdf5" stroke="#059669" stroke-width="0.75" />
+  <ellipse cx="1314.0232500000002" cy="204.65" rx="109.89499999999998" ry="7" fill="#ecfdf5" stroke="#059669" stroke-width="0.75" />
+  <text x="1314.0232500000002" y="240" text-anchor="middle" font-size="13" font-weight="500" fill="#064e3b"><tspan x="1314.0232500000002" dy="-12.350000000000001">.state JSON</tspan><tspan x="1314.0232500000002" dy="16.900000000000002">per-DB registry · watermarks</tspan><tspan x="1314.0232500000002" dy="16.900000000000002">content hashes · ingest ledger</tspan></text>
+</g>
+<g class="node" data-id="SCHEMA" data-label="wiki/AGENTS.md
+page templates · judgment rules
+provenance and workflow contract" data-shape="rectangle">
+  <rect x="925.52565" y="1023.248" width="244.24299999999997" height="70.7" rx="0" ry="0" fill="#f3e8ff" stroke="#9333ea" stroke-width="0.75" />
+  <text x="1047.64715" y="1058.598" text-anchor="middle" font-size="13" font-weight="500" fill="#581c87"><tspan x="1047.64715" dy="-12.350000000000001">wiki/AGENTS.md</tspan><tspan x="1047.64715" dy="16.900000000000002">page templates · judgment rules</tspan><tspan x="1047.64715" dy="16.900000000000002">provenance and workflow contract</tspan></text>
+</g>
+<g class="node" data-id="RESEARCH" data-label="Research side path
+select stale or unresearched error pages
+web only through approved wiki/sources domains" data-shape="rectangle">
+  <rect x="1197.76865" y="1023.248" width="330.93999999999994" height="70.7" rx="0" ry="0" fill="#f3e8ff" stroke="#9333ea" stroke-width="0.75" />
+  <text x="1363.23865" y="1058.598" text-anchor="middle" font-size="13" font-weight="500" fill="#581c87"><tspan x="1363.23865" dy="-12.350000000000001">Research side path</tspan><tspan x="1363.23865" dy="16.900000000000002">select stale or unresearched error pages</tspan><tspan x="1363.23865" dy="16.900000000000002">web only through approved wiki/sources domains</tspan></text>
+</g>
+<g class="node" data-id="INVALID" data-label="Invalid agent result
+restore working tree and record failure" data-shape="rectangle">
+  <rect x="1028.6350333333335" y="1702.006" width="269.437" height="53.800000000000004" rx="0" ry="0" fill="#ecfdf5" stroke="#059669" stroke-width="0.75" />
+  <text x="1163.3535333333334" y="1728.9060000000002" text-anchor="middle" font-size="13" font-weight="500" fill="#064e3b"><tspan x="1163.3535333333334" dy="-3.9000000000000012">Invalid agent result</tspan><tspan x="1163.3535333333334" dy="16.900000000000002">restore working tree and record failure</tspan></text>
+</g>
+<g class="node" data-id="FUTURE" data-label="Future extensions
+email delivery · AWR or fleet metrics
+large-fleet local search" data-shape="rectangle">
+  <rect x="1052.2214666666669" y="1980.806" width="250.17099999999994" height="70.7" rx="0" ry="0" fill="#f1f5f9" stroke="#94a3b8" stroke-width="0.75" />
+  <text x="1177.3069666666668" y="2016.156" text-anchor="middle" font-size="13" font-weight="500" fill="#64748b"><tspan x="1177.3069666666668" dy="-12.350000000000001">Future extensions</tspan><tspan x="1177.3069666666668" dy="16.900000000000002">email delivery · AWR or fleet metrics</tspan><tspan x="1177.3069666666668" dy="16.900000000000002">large-fleet local search</tspan></text>
+</g>
+<g class="node" data-id="VALIDATE" data-label="Orchestrator validation
+paths · result · citations" data-shape="diamond">
+  <polygon points="1023.7063333333334,1404.448 1126.3353333333334,1507.077 1023.7063333333334,1609.706 921.0773333333334,1507.077" fill="#fef3c7" stroke="#d97706" stroke-width="0.75" />
+  <text x="1023.7063333333334" y="1507.077" text-anchor="middle" font-size="13" font-weight="500" fill="#78350f"><tspan x="1023.7063333333334" dy="-3.9000000000000012">Orchestrator validation</tspan><tspan x="1023.7063333333334" dy="16.900000000000002">paths · result · citations</tspan></text>
+</g>
+</svg>

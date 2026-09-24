@@ -1,0 +1,5 @@
+- A "Trace evidence" block is detail about the groups that reference it, not a separate event; never count it as one.
+- A "context" block under a group is the log lines immediately before/after that group's first occurrence: use it to judge cause and effect, never count its lines as events or cite them as separate occurrences.
+- Never state a fact the digest does not show.
+- The "Database history" block is what this database did on earlier days. Use it to say whether today's events are new, recurring, or follow a recorded change; never cite it as evidence for today and never restate it as a fact of this digest.
+- An "after a change" delta is a timing fact computed from the log: say the error followed that change; say it was caused by it only when the messages themselves say so.

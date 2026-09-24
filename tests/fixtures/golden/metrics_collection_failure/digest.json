@@ -1,0 +1,68 @@
+{
+ "changes": [],
+ "db": "cdb1",
+ "deltas": [],
+ "generated_by": "dbwiki-compactor/(fixture)",
+ "notable": true,
+ "pattern_versions": {
+  "metrics": 1
+ },
+ "sources": {
+  "metrics": {
+   "by_class": {
+    "error": 3,
+    "routine": 14
+   },
+   "dropped_notable_groups": {},
+   "notable": [
+    {
+     "class": "error",
+     "codes": [],
+     "count": 3,
+     "es_samples": [
+      {
+       "id": "fail0",
+       "index": ".ds-logs-oracle.metrics-default-2026.07.12-000002",
+       "ts": "2026-07-12T08:50:24.000Z"
+      },
+      {
+       "id": "fail1",
+       "index": ".ds-logs-oracle.metrics-default-2026.07.12-000002",
+       "ts": "2026-07-12T08:51:24.000Z"
+      },
+      {
+       "id": "fail2",
+       "index": ".ds-logs-oracle.metrics-default-2026.07.12-000002",
+       "ts": "2026-07-12T08:52:24.000Z"
+      }
+     ],
+     "first_ts": "2026-07-12T08:50:24.000Z",
+     "last_ts": "2026-07-12T08:52:24.000Z",
+     "message": "database connection or metrics query failed",
+     "rule": "metric_collection_failure",
+     "template": "database connection or metrics query failed"
+    }
+   ],
+   "routine_counters": {
+    "fra_utilization": 2,
+    "health:PRIMARY": 2,
+    "sysmetric:Database Wait Time Ratio": 2,
+    "sysmetric:Executions Per Sec": 2,
+    "sysmetric:Host CPU Utilization (%)": 2,
+    "tablespace:SYSTEM": 2,
+    "tablespace:USERS": 2
+   },
+   "total_events": 17
+  }
+ },
+ "totals": {
+  "events": 17,
+  "notable_events": 3,
+  "notable_groups": 1
+ },
+ "window": {
+  "day": "2026-07-12",
+  "from": "2026-07-12T00:00:00Z",
+  "to": "2026-07-13T00:00:00Z"
+ }
+}

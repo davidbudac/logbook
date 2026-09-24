@@ -1,0 +1,25 @@
+# User unit. Install it at ~/.config/systemd/user/dbwiki-html.service.
+# Serves wiki/html read-only on the tailscale address, port 8766, through
+# deploy/serve_wiki_html.sh. Not installed by default; see deploy/README.md.
+
+[Unit]
+Description=Logbook daily pages (wiki/html over tailscale)
+Documentation=file:///opt/logbook/deploy/README.md
+# tailscaled has to be up before `tailscale ip` can answer, but a user unit
+# cannot order itself after the system's network-online.target (the user
+# manager has no such unit, so an After= on it waits for nothing). The script
+# waits for a tailscale address itself and exits 1 if none comes; the
+# Restart= below then tries again rather than serving on 127.0.0.1 forever.
+# Its wait (30 x 2 s) keeps restarts well inside the default start limit.
+
+[Service]
+Type=exec
+WorkingDirectory=/opt/logbook
+Environment=PATH=/usr/local/bin:/usr/bin:/bin
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/opt/logbook/deploy/serve_wiki_html.sh
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target

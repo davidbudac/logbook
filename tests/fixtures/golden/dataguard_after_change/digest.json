@@ -1,0 +1,160 @@
+{
+ "changes": [
+  {
+   "count": 1,
+   "day": "2026-08-05",
+   "message": "ALTER SYSTEM SET log_archive_dest_2='SERVICE=cdb1_stby ASYNC VALID_FOR=(ONLINE_LOGFILES,PRIMARY_ROLE) DB_UNIQUE_NAME=cdb1_stby' SCOPE=BOTH;",
+   "rule": "parameter_change",
+   "ts": "2026-08-05T01:00:00Z"
+  },
+  {
+   "count": 1,
+   "day": "2026-08-05",
+   "message": "DGMGRL> SWITCHOVER TO cdb1_stby",
+   "rule": "cli_command",
+   "ts": "2026-08-05T03:00:00Z"
+  }
+ ],
+ "db": "cdb1",
+ "deltas": [
+  {
+   "change": "ALTER SYSTEM SET log_archive_dest_2='SERVICE=cdb1_stby ASYNC VALID_FOR=(ONLINE_LOGFILES,PRIMARY_ROLE) DB_UNIQUE_NAME=cdb1_stby' SCOPE=BOTH;",
+   "change_rule": "parameter_change",
+   "change_ts": "2026-08-05T01:00:00Z",
+   "codes": [],
+   "first_ts": "2026-08-05T01:12:00Z",
+   "gap_s": 720,
+   "rule": "dg_gap",
+   "source": "alert",
+   "type": "after_change"
+  },
+  {
+   "change": "DGMGRL> SWITCHOVER TO cdb1_stby",
+   "change_rule": "cli_command",
+   "change_ts": "2026-08-05T03:00:00Z",
+   "codes": [],
+   "first_ts": "2026-08-05T03:02:30Z",
+   "gap_s": 150,
+   "rule": "role_change",
+   "source": "dataguard",
+   "type": "after_change"
+  }
+ ],
+ "generated_by": "dbwiki-compactor/(fixture)",
+ "notable": true,
+ "pattern_versions": {
+  "alert": 2,
+  "dataguard": 1,
+  "listener": 1
+ },
+ "sources": {
+  "alert": {
+   "by_class": {
+    "dataguard": 1,
+    "lifecycle": 1
+   },
+   "dropped_notable_groups": {},
+   "notable": [
+    {
+     "class": "lifecycle",
+     "codes": [],
+     "count": 1,
+     "es_samples": [
+      {
+       "id": "dac-a1",
+       "index": ".ds-logs-oracle.alert-default-2026.08.05-000021",
+       "ts": "2026-08-05T01:00:00Z"
+      }
+     ],
+     "first_ts": "2026-08-05T01:00:00Z",
+     "headline": "ALTER SYSTEM SET log_archive_dest_2='SERVICE=cdb1_stby ASYNC VALID_FOR=(ONLINE_LOGFILES,PRIMARY_ROLE) DB_UNIQUE_NAME=cdb1_stby' SCOPE=BOTH;",
+     "last_ts": "2026-08-05T01:00:00Z",
+     "message": "ALTER SYSTEM SET log_archive_dest_2='SERVICE=cdb1_stby ASYNC VALID_FOR=(ONLINE_LOGFILES,PRIMARY_ROLE) DB_UNIQUE_NAME=cdb1_stby' SCOPE=BOTH;",
+     "rule": "parameter_change",
+     "template": "ALTER SYSTEM SET log_archive_dest_#='SERVICE=cdb#_stby ASYNC VALID_FOR=(ONLINE_LOGFILES,PRIMARY_ROLE) DB_UNIQUE_NAME=cdb#_stby' SCOPE=BOTH;"
+    },
+    {
+     "class": "dataguard",
+     "codes": [],
+     "count": 1,
+     "es_samples": [
+      {
+       "id": "dac-a2",
+       "index": ".ds-logs-oracle.alert-default-2026.08.05-000021",
+       "ts": "2026-08-05T01:12:00Z"
+      }
+     ],
+     "first_ts": "2026-08-05T01:12:00Z",
+     "last_ts": "2026-08-05T01:12:00Z",
+     "message": "FAL: Failed to request gap sequence",
+     "rule": "dg_gap",
+     "template": "FAL: Failed to request gap sequence"
+    }
+   ],
+   "routine_counters": {},
+   "total_events": 2
+  },
+  "dataguard": {
+   "by_class": {
+    "dataguard": 1,
+    "lifecycle": 1
+   },
+   "dropped_notable_groups": {},
+   "notable": [
+    {
+     "class": "lifecycle",
+     "codes": [],
+     "count": 1,
+     "es_samples": [
+      {
+       "id": "dac-d1",
+       "index": ".ds-logs-oracle.dataguard-default-2026.08.05-000021",
+       "ts": "2026-08-05T03:00:00Z"
+      }
+     ],
+     "first_ts": "2026-08-05T03:00:00Z",
+     "last_ts": "2026-08-05T03:00:00Z",
+     "message": "DGMGRL> SWITCHOVER TO cdb1_stby",
+     "rule": "cli_command",
+     "template": "DGMGRL> SWITCHOVER TO cdb#_stby"
+    },
+    {
+     "class": "dataguard",
+     "codes": [],
+     "count": 1,
+     "es_samples": [
+      {
+       "id": "dac-d2",
+       "index": ".ds-logs-oracle.dataguard-default-2026.08.05-000021",
+       "ts": "2026-08-05T03:02:30Z"
+      }
+     ],
+     "first_ts": "2026-08-05T03:02:30Z",
+     "last_ts": "2026-08-05T03:02:30Z",
+     "message": "Switchover succeeded, new primary is \"cdb1_stby\"",
+     "rule": "role_change",
+     "template": "Switchover succeeded, new primary is \"cdb#_stby\""
+    }
+   ],
+   "routine_counters": {},
+   "total_events": 2
+  },
+  "listener": {
+   "by_class": {},
+   "dropped_notable_groups": {},
+   "notable": [],
+   "routine_counters": {},
+   "total_events": 0
+  }
+ },
+ "totals": {
+  "events": 4,
+  "notable_events": 4,
+  "notable_groups": 4
+ },
+ "window": {
+  "day": "2026-08-05",
+  "from": "2026-08-05T00:00:00Z",
+  "to": "2026-08-06T00:00:00Z"
+ }
+}

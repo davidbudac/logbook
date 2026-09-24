@@ -1,0 +1,37 @@
+# Data Guard broker log classification rules. Evaluated in order; first match wins.
+# Normalized fields: event_type, severity, error_code, member, message.
+version: 1
+rules:
+  - name: role_change
+    class: dataguard
+    where: { event_type: role_change }
+
+  - name: cli_command
+    class: lifecycle
+    where: { event_type: cli_command }
+
+  - name: transport_error
+    class: error
+    where: { event_type: transport_error }
+
+  - name: connection_error
+    class: error
+    where: { event_type: connection_error }
+
+  - name: broker_error
+    class: error
+    where: { severity: ERROR }
+
+  - name: broker_warning
+    class: warning
+    where: { severity: WARNING }
+
+  - name: dg_info
+    class: routine
+    where: { event_type: info }
+    counter: dg_info
+
+  - name: broker_status_ok
+    class: routine
+    where: { event_type: broker_status }
+    counter: broker_status

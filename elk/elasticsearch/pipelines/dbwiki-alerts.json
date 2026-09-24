@@ -1,0 +1,11 @@
+{
+  "description": "Alert records (source: .state/alerts.jsonl, see alerts.Alert.to_dict; no Python changes). @timestamp = alert time.",
+  "processors": [
+    { "date": { "field": "at", "target_field": "@timestamp", "formats": ["ISO8601"], "if": "ctx.at != null", "ignore_failure": true } },
+    { "set": { "field": "event.module", "value": "dbwiki" } },
+    { "set": { "field": "event.dataset", "value": "dbwiki.alerts" } }
+  ],
+  "on_failure": [
+    { "append": { "field": "tags", "value": "dbwiki_pipeline_failure" } }
+  ]
+}

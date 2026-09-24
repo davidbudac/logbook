@@ -1,0 +1,95 @@
+{
+ "content_hash": "18a9dc090e3ed161",
+ "db": "cdb1",
+ "explanation": "cdb1: wake (strong tier) \u2014 notable_class.",
+ "model_tier": "strong",
+ "outcome": "wake",
+ "reasons": [
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "unmatched",
+    "count": 64,
+    "rule": "unmatched"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "unmatched",
+    "count": 3,
+    "rule": "unmatched"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "unmatched",
+    "count": 1,
+    "rule": "unmatched"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "unmatched",
+    "count": 1,
+    "rule": "unmatched"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "unmatched",
+    "count": 1,
+    "rule": "unmatched"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "unmatched",
+    "count": 1,
+    "rule": "unmatched"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "error",
+    "count": 12,
+    "rule": "connection_error"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "error",
+    "count": 315,
+    "rule": "transport_error"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "error",
+    "count": 152,
+    "rule": "connection_error"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "error",
+    "count": 2,
+    "rule": "connection_error"
+   }
+  }
+ ],
+ "schema_version": 1,
+ "window": {
+  "day": "2026-07-27",
+  "from": "2026-07-27T00:00:00Z",
+  "to": "2026-07-27T22:15:00Z"
+ }
+}

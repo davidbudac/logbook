@@ -1,0 +1,13 @@
+{
+ "task": "ingest",
+ "db": "cdb1",
+ "notable": true,
+ "summary": "cdb1 2026-07-13: all sources silent, opened an incident",
+ "pages_touched": [
+  "incidents/2026-07-13-cdb1-blackout-take-two.md",
+  "log.md"
+ ],
+ "incidents_opened": ["incidents/2026-07-13-cdb1-blackout-take-two.md"],
+ "incidents_updated": [],
+ "flags": []
+}

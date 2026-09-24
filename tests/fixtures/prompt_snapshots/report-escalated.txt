@@ -1,0 +1,96 @@
+You are writing the fleet report for the Oracle log wiki, covering 2026-07-12T00:00:00Z -> 2026-07-12T20:19:00Z (day 2026-07-12).
+Judge the window. Do NOT write files and do NOT name file paths — a program renders your answer into the report page.
+
+Reply with ONE JSON object and NOTHING else: no prose
+before or after it, no markdown code fences, no explanation.
+
+{
+  "schema_version": 1,
+  "summary": "one line, at most 200 characters",
+  "overview": "2-5 sentences of plain prose about this window; no headings, no bullets",
+  "items": [{"db": "<database>", "status_line": "one line: what this database did"}],
+  "open_incident_notes": [{"incident": 1, "note": "one line: what this window adds"}],
+  "notable_analysis": [{"db": "<database>", "analysis": "3-10 sentences of markdown prose"}],
+  "flags": ["anything a human should look at"]
+}
+
+Rules:
+- "items": exactly one entry per database listed below (cdb1, cdb2). Any other database is dropped.
+- "open_incident_notes": refer to an open incident by its number below, never by name or path; note only what this window says about it. Leave the list empty when this window says nothing about any of them. Never propose closing or resolving an incident — events stopping is not recovery.
+- "overview": no database is in trouble unless the items below say so; describe the window, do not speculate about causes.
+- "flags": short strings; use [] when there is nothing to flag.
+- Never state a fact this prompt does not show, and never turn a collection gap into a database outage.
+
+Databases ingested in this window:
+- cdb1: NOTABLE — ORA-00600 storm (trigger: notable: ora_error)
+- cdb2: routine — quiet day on cdb2
+
+Collection health (telemetry, not database state — never report a collection gap as a database outage, and never treat absent events as recovery):
+- sources: alert=ok(0.0h) listener=ok(0.0h)
+- recovery evidence: none — no recovery event in the window
+
+Open incidents (any database):
+1. cdb1 loses its standby link — db cdb1 (status: open)
+
+Escalated-window rules (in addition to the rules above):
+- "notable_analysis": exactly one entry per NOTABLE database listed above, and no other database.
+- Compare this window against the Material only: prior occurrences of the same codes/groups, open incidents, error-class history. State only facts the Material shows.
+- You may cite a wiki page in "analysis" only as a [[...]] wikilink that appears verbatim in the Material below; never invent one, and never link a page the Material does not show.
+- Never declare recovery or a root cause the Material does not show — events stopping is not recovery.
+- A "Database history" section is what that database did on earlier days: use it to say whether this window is new, recurring, or follows a recorded change; never cite it as evidence for this window.
+
+
+Material (assembled deterministically; you may cite a page only as a [[...]] wikilink that appears verbatim below):
+
+### Notable ingest — cdb1 (digests/cdb1/2026-07-12.md)
+
+## Deltas (never seen before / anomalies)
+
+- **first-ever error code** `TNS-12543` (listener, first seen 2026-07-12T00:00:32Z)
+
+
+### Notable
+
+- **[error] ora_error** ×500 (`ORA-00600`) — 2026-07-12T01:00:00Z
+  > ORA-00600: internal error, arguments: [x]
+
+### Database history — cdb1
+
+Database history for cdb1 (last 90 days; context from earlier days, not evidence for today):
+Journal (days with events):
+- 2026-07-11 — cdb1 2026-07-11: standby transport stalled
+
+### Prior report this day ([[reports/2026-07-12-0600]])
+
+# morning report
+
+### Open incident: [[incidents/2026-07-11-cdb1-standby-gap]] — cdb1 loses its standby link (cdb1, status: open)
+
+---
+type: incident
+status: open
+db: cdb1
+opened: 2026-07-11T00:00:00Z
+---
+
+# cdb1 loses its standby link
+
+Ongoing.
+
+## Errors
+
+- [[errors/ORA-00600]]
+
+### Error history: [[errors/ORA-00600]]
+
+---
+type: error-class
+---
+
+# ORA-00600
+
+## Occurrences
+
+| day | db | note | evidence |
+|---|---|---|---|
+| 2026-06-01 | cdb1 | first seen | digests/cdb1/2026-06-01.md |

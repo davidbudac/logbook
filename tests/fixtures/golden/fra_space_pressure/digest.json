@@ -1,0 +1,132 @@
+{
+ "changes": [],
+ "db": "cdb1",
+ "deltas": [
+  {
+   "first_seen": "2026-07-11T02:11:00Z",
+   "source": "alert",
+   "type": "first_ever_code",
+   "value": "ORA-19815"
+  }
+ ],
+ "generated_by": "dbwiki-compactor/(fixture)",
+ "notable": true,
+ "pattern_versions": {
+  "alert": 2,
+  "dataguard": 1,
+  "listener": 1
+ },
+ "sources": {
+  "alert": {
+   "by_class": {
+    "error": 2,
+    "routine": 2,
+    "warning": 2
+   },
+   "dropped_notable_groups": {},
+   "notable": [
+    {
+     "class": "error",
+     "codes": [
+      "ORA-19815"
+     ],
+     "count": 1,
+     "es_samples": [
+      {
+       "id": "fra-a1",
+       "index": ".ds-logs-oracle.alert-default-2026.07.11-000020",
+       "ts": "2026-07-11T02:11:00Z"
+      }
+     ],
+     "first_ts": "2026-07-11T02:11:00Z",
+     "last_ts": "2026-07-11T02:11:00Z",
+     "message": "ORA-19815: WARNING: db_recovery_file_dest_size of 10737418240 bytes is 100.00% used, and has 0 remaining bytes available.",
+     "rule": "ora_error",
+     "template": "ORA-19815: WARNING: db_recovery_file_dest_size of # bytes is #.#% used, and has # remaining bytes available."
+    },
+    {
+     "class": "error",
+     "codes": [
+      "ORA-16038"
+     ],
+     "count": 1,
+     "es_samples": [
+      {
+       "id": "fra-a3",
+       "index": ".ds-logs-oracle.alert-default-2026.07.11-000020",
+       "ts": "2026-07-11T02:11:06Z"
+      }
+     ],
+     "first_ts": "2026-07-11T02:11:06Z",
+     "last_ts": "2026-07-11T02:11:06Z",
+     "message": "ORA-16038: log 3 sequence# 4712 cannot be archived",
+     "rule": "ora_error",
+     "template": "ORA-16038: log # sequence# # cannot be archived"
+    },
+    {
+     "class": "warning",
+     "codes": [],
+     "count": 1,
+     "es_samples": [
+      {
+       "id": "fra-a4",
+       "index": ".ds-logs-oracle.alert-default-2026.07.11-000020",
+       "ts": "2026-07-11T02:12:30Z"
+      }
+     ],
+     "first_ts": "2026-07-11T02:12:30Z",
+     "last_ts": "2026-07-11T02:12:30Z",
+     "message": "cannot allocate new log, sequence 4713",
+     "rule": "cannot_allocate_log",
+     "template": "cannot allocate new log, sequence #"
+    },
+    {
+     "class": "warning",
+     "codes": [],
+     "count": 1,
+     "es_samples": [
+      {
+       "id": "fra-a5",
+       "index": ".ds-logs-oracle.alert-default-2026.07.11-000020",
+       "ts": "2026-07-11T02:12:30Z"
+      }
+     ],
+     "first_ts": "2026-07-11T02:12:30Z",
+     "last_ts": "2026-07-11T02:12:30Z",
+     "message": "Checkpoint not complete",
+     "rule": "cannot_allocate_log",
+     "template": "Checkpoint not complete"
+    }
+   ],
+   "routine_counters": {
+    "archived_log": 1,
+    "log_switch": 1
+   },
+   "total_events": 6
+  },
+  "dataguard": {
+   "by_class": {},
+   "dropped_notable_groups": {},
+   "notable": [],
+   "routine_counters": {},
+   "total_events": 0
+  },
+  "listener": {
+   "by_class": {},
+   "dropped_notable_groups": {},
+   "notable": [],
+   "routine_counters": {},
+   "total_events": 0
+  }
+ },
+ "totals": {
+  "events": 6,
+  "notable_events": 4,
+  "notable_groups": 4
+ },
+ "window": {
+  "day": "2026-07-11",
+  "from": "2026-07-11T00:00:00Z",
+  "to": "2026-07-12T00:00:00Z"
+ }
+}

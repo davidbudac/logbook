@@ -1,0 +1,121 @@
+# Example link board: copy to config/links.yaml and point the URLs at your own
+# Kibana, Langfuse, wiki remote and dashboards. The portal renders it as-is.
+title: Operator Link Board
+intro: >-
+  Everything reachable for the Logbook pipeline on `dbhost`
+  (`192.0.2.10`, `dbhost.example.net`). Credentials live in the environment
+  of the box, never here; see docs/langfuse.md and docs/user-guide.md.
+sections:
+  - title: Which model or agent ran when, and what it did
+    note: >-
+      On the box itself: `uv run dbwiki stats` aggregates
+      `.state/agent_runs.jsonl`; wiki commits carry a `Run-ID:` trailer that
+      joins to the same ledger.
+    links:
+      - name: "Kibana · dbwiki agent runs"
+        what: "One row per LLM stage attempt: per-model breakdown, tokens and cost, validation failures, rollbacks, timeouts, raw run list."
+        url: "http://192.0.2.10:5601/app/dashboards#/view/dbwiki-agent-runs"
+        tag: tailscale
+      - name: "Kibana · dbwiki loop overview"
+        what: "Ingest / report / lint / research rounds by loop, what runs next, stages inside each round joined on run_id."
+        url: "http://192.0.2.10:5601/app/dashboards#/view/dbwiki-loop-overview"
+        tag: tailscale
+      - name: "Kibana · dbwiki pipeline observability"
+        what: "Command health, wake vs skip per database, ledger detail, cron log and agent audit trail."
+        url: "http://192.0.2.10:5601/app/dashboards#/view/dbwiki-pipeline"
+        tag: tailscale
+      - name: "Kibana · Discover, agent_runs stream"
+        what: "Raw `logs-dbwiki.agent_runs*` documents: filter on task, adapter, model, run_id."
+        url: "http://192.0.2.10:5601/app/discover#/?_a=(dataSource:(dataViewId:dbwiki-dv-agent-runs,type:dataView))"
+        tag: tailscale
+      - name: "Langfuse · traces"
+        what: "Full prompt, model answer, model name and token usage per run. Since 2026-09-09 each trace links its prompt version, carries the app release and shows tool calls as children."
+        url: "http://192.0.2.10:3000/project/dbwiki-pipeline/traces"
+        tag: tailscale
+      - name: "Langfuse · dashboards"
+        what: "Usage and cost over time by model and tag."
+        url: "http://192.0.2.10:3000/project/dbwiki-pipeline/dashboards"
+        tag: tailscale
+      - name: "Langfuse · datasets and experiments"
+        what: "Dataset `dbwiki-ingest` (7 real digests) and every `dbwiki eval run` as an experiment: compare local models on the same input."
+        url: "http://192.0.2.10:3000/project/dbwiki-pipeline/datasets"
+        tag: tailscale
+      - name: "Langfuse · prompt versions"
+        what: "The instruction blocks each stage runs under (`dbwiki/ingest-structured`, `report-escalated`, `agents-md`, ...), versioned from code by `dbwiki langfuse sync`; every generation links its version."
+        url: "http://192.0.2.10:3000/project/dbwiki-pipeline/prompts"
+        tag: tailscale
+      - name: "Langfuse · model prices"
+        what: "Rows for the local Nemotron (0) and `gpt-5.6-luna` (placeholder 0, fill in list price); cost charts stay empty until the codex row has a price."
+        url: "http://192.0.2.10:3000/project/dbwiki-pipeline/settings/models"
+        tag: tailscale
+      - name: "Langfuse · sessions (one per pipeline run)"
+        what: "Session id = run_id: all stages of one tick together, with per-turn tool calls under each stage."
+        url: "http://192.0.2.10:3000/project/dbwiki-pipeline/sessions"
+        tag: tailscale
+  - title: Oracle fleet dashboards (docker-elk)
+    links:
+      - name: "Fleet triage (on call)"
+        url: "http://192.0.2.10:5601/app/dashboards#/view/oracle-dashboard-fleet-triage"
+        tag: tailscale
+      - name: "Fleet status wall"
+        url: "http://192.0.2.10:5601/app/dashboards#/view/oracle-dashboard-fleet-status"
+        tag: tailscale
+      - name: "Alert log and errors"
+        url: "http://192.0.2.10:5601/app/dashboards#/view/oracle-dashboard-ora-error-tracking"
+        tag: tailscale
+      - name: "Data Guard health"
+        url: "http://192.0.2.10:5601/app/dashboards#/view/oracle-dashboard-dataguard"
+        tag: tailscale
+      - name: "Listener and connectivity"
+        url: "http://192.0.2.10:5601/app/dashboards#/view/oracle-dashboard-listener-activity"
+        tag: tailscale
+      - name: "Incident timeline"
+        url: "http://192.0.2.10:5601/app/dashboards#/view/oracle-dashboard-incident-timeline"
+        tag: tailscale
+      - name: "Database detail (per-database drilldown)"
+        url: "http://192.0.2.10:5601/app/dashboards#/view/oracle-dashboard-per-database-drilldown"
+        tag: tailscale
+      - name: "All dashboards"
+        what: "Also: capacity forecast, database load, restarts and uptime, audit, KVM fleet."
+        url: "http://192.0.2.10:5601/app/dashboards"
+        tag: tailscale
+  - title: Services
+    links:
+      - name: "Elasticsearch"
+        what: "The cluster dbwiki reads from and ships its telemetry into. Try `/_cat/indices/logs-dbwiki*?v` and `/_cluster/health`."
+        url: "http://192.0.2.10:9200/_cat/indices/logs-dbwiki*?v"
+        tag: tailscale
+      - name: "Unsloth Studio (local model server)"
+        what: "Serves Nemotron 30B-A3B to the structured stages. `/api/inference/models` shows the loaded model and its context length."
+        url: "http://192.0.2.10:8888/"
+        tag: tailscale
+      - name: "Langfuse health"
+        url: "http://192.0.2.10:3000/api/public/health"
+        tag: tailscale
+      - name: "Logstash monitoring API"
+        what: "Pipeline stats for the Oracle filebeat input on 5044."
+        url: "http://192.0.2.10:9600/_node/stats/pipelines?pretty"
+        tag: tailscale
+      - name: "dbwiki portal (incident workbench, review inbox)"
+        what: "Incident workbench and weekly review inbox, run by the user unit `dbwiki-portal.service`; bound to the Tailscale address since 2026-09-09."
+        url: "http://192.0.2.10:8765/"
+        tag: tailscale
+  - title: Repositories and docs
+    links:
+      - name: "logbook (pipeline code)"
+        url: "https://github.com/davidbudac/logbook"
+        tag: github
+      - name: "dbwiki (the knowledge base itself)"
+        what: "Incidents, journals, error pages, reports, digests. Every machine commit carries Run-ID and Actor trailers."
+        url: "https://github.com/<you>/<wiki-repo>"
+        tag: github
+      - name: "Verification report, 2026-09-08"
+        url: "https://claude.ai/code/artifact/137c7e28-a668-4aea-b68a-76ddf2e3a60f"
+        tag: artifact
+      - name: "Kibana dashboard source"
+        what: "Dashboards are generated; edit `elk/kibana/build_dashboards.py` and rerun `elk/setup.sh`, not the Kibana UI."
+        url: "https://github.com/davidbudac/logbook/blob/main/elk/README.md"
+        tag: github
+      - name: "Langfuse setup notes"
+        url: "https://github.com/davidbudac/logbook/blob/main/docs/langfuse.md"
+        tag: github

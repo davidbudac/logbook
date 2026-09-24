@@ -1,0 +1,21 @@
+You are summarising the evidence gathered on incident 2026-08-05-cdb1-ora-00600 on cdb1, ORA-00600 on cdb1, for an engineer deciding what to do next.
+
+Write at most 1200 characters of plain prose: what the digests and the monitoring window show, and where they disagree with each other or with the page.
+
+Rules:
+- State only what the Material below shows. Never claim a cause, a fix or a recovery it does not show.
+- Events stopping is not recovery: say the errors stopped, never that the problem is solved.
+- Name a path only as the Material spells it, and only when it is the evidence for the claim; never invent one.
+- No [[wikilinks]], no headings, no URLs.
+
+Material (assembled deterministically; each section is headed by the wiki path it was read from, or by what derived it):
+
+### incidents/2026-08-05-cdb1-ora-00600.md
+
+# ORA-00600 on cdb1
+
+Apply stopped.
+
+### the monitoring window
+
+verdict: not_met

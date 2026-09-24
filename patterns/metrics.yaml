@@ -1,0 +1,58 @@
+# Fleet-metric classification rules. Evaluated in order; first match wins.
+# Normalized fields: metric_kind, metric_name, metric_target, metric_value,
+# metric_unit, metric_values, db_role, instance_status, instance_available,
+# outcome, level, error_message, message.
+#
+# Deliberately threshold-free: a utilization sample is a *counter*, never an
+# alarm. No rule here compares metric_value against a number — "95% full is
+# bad" is interpretation, and interpretation belongs to the deltas
+# (rate_anomaly / silence), to the log sources that record the actual Oracle
+# error, and to the agent. The only notable rules below key off a signal the
+# document itself carries: `event.outcome: failure` with `error.message`,
+# emitted when the collector could not read the database at all (evidenced in
+# `.ds-logs-oracle.metrics-*`: 22 of 63,286 docs, 2026-07-07). No
+# threshold/alarm/severity field exists anywhere in that layout.
+version: 1
+rules:
+  # ---- notable: document-carried collection failures ----------------------
+  - name: metric_collection_failure
+    class: error
+    where: { outcome: failure }
+
+  - name: instance_unavailable
+    class: error
+    where: { instance_available: false }
+
+  # ---- routine: utilization and load samples ------------------------------
+  - name: sysmetric_sample
+    class: routine
+    where: { metric_kind: sysmetric }
+    counter: "sysmetric:{metric_name}"
+
+  - name: tablespace_utilization
+    class: routine
+    where: { metric_kind: tablespace }
+    counter: "tablespace:{metric_target}"
+
+  - name: fra_utilization
+    class: routine
+    where: { metric_kind: fra }
+    counter: fra_utilization
+
+  - name: instance_health
+    class: routine
+    where: { metric_kind: health }
+    counter: "health:{db_role}"
+
+  - name: dataguard_lag
+    class: routine
+    where: { metric_kind: dataguard }
+    counter: dataguard_lag
+
+  # any other kind the collector starts emitting is still a sample, not an
+  # incident; a document with no metric kind at all is a layout change and
+  # falls through to `unmatched` (notable) on purpose
+  - name: metric_sample
+    class: routine
+    where_not: { metric_kind: "" }
+    counter: "metric:{metric_kind}"

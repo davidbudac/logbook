@@ -1,0 +1,43 @@
+# User unit. Install it at ~/.config/systemd/user/dbwiki-portal.service.
+# Every path below is absolute and specific to this machine, so another host
+# needs WorkingDirectory and ExecStart edited. Install steps, logs and the
+# first-run check are in deploy/README.md.
+
+[Unit]
+Description=Logbook incident workbench (dbwiki portal serve)
+Documentation=file:///opt/logbook/deploy/README.md file:///opt/logbook/docs/monitoring.md
+
+[Service]
+# Type=exec rather than simple, so a broken ExecStart fails the start instead
+# of reporting success. Available since systemd 240 and this host runs 255.
+Type=exec
+WorkingDirectory=/opt/logbook
+# Narrower than the crontab's PATH on purpose. The portal runs no agentic
+# stage, so it never needs codex under linuxbrew. It always needs uv and git,
+# and it needs pi if portal.draft_summary is ever turned on. uv and pi are the
+# two that live in ~/.local/bin.
+Environment=PATH=/usr/local/bin:/usr/bin:/bin
+# The one-line access log is all this process tells an operator, and a
+# buffered stdout hides it from journalctl until the pipe flushes.
+Environment=PYTHONUNBUFFERED=1
+# Deliberately not set: DBWIKI_LOCK_WAIT, because the portal caps its own wait
+# with portal.lock_wait_s and an ambient hour would turn every click during a
+# tick into an hour-long hang instead of a 423; and the ES and Langfuse
+# secrets, because the portal reads the wiki and the state dir and nothing
+# else.
+# systemd does not search the PATH= above for the ExecStart binary. It searches
+# a fixed system list that does not include ~/.local/bin, so the path to uv is
+# absolute here.
+ExecStart=/usr/local/bin/uv run dbwiki portal serve
+Restart=on-failure
+RestartSec=5
+# exit 2 = no attributable actor (resolve_actor); restarting into the same
+# unresolvable config would only burn the restart budget
+RestartPreventExitStatus=2
+# A commit in flight has to be allowed to finish, and gitutil caps a push at
+# 60 s. A SIGKILL landing inside `git commit` leaves an index.lock behind in
+# the checkout the cron tick shares.
+TimeoutStopSec=90
+
+[Install]
+WantedBy=default.target

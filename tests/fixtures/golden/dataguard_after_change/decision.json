@@ -1,0 +1,75 @@
+{
+ "content_hash": "dcfe488ea406ace4",
+ "db": "cdb1",
+ "explanation": "cdb1: wake (cheap tier) \u2014 after_change, notable_class.",
+ "model_tier": "cheap",
+ "outcome": "wake",
+ "reasons": [
+  {
+   "code": "after_change",
+   "evidence": {
+    "change": "ALTER SYSTEM SET log_archive_dest_2='SERVICE=cdb1_stby ASYNC VALID_FOR=(ONLINE_LOGFILES,PRIMARY_ROLE) DB_UNIQUE_NAME=cdb1_stby' SCOPE=BOTH;",
+    "change_rule": "parameter_change",
+    "change_ts": "2026-08-05T01:00:00Z",
+    "codes": [],
+    "first_ts": "2026-08-05T01:12:00Z",
+    "gap_s": 720,
+    "rule": "dg_gap",
+    "source": "alert",
+    "type": "after_change"
+   }
+  },
+  {
+   "code": "after_change",
+   "evidence": {
+    "change": "DGMGRL> SWITCHOVER TO cdb1_stby",
+    "change_rule": "cli_command",
+    "change_ts": "2026-08-05T03:00:00Z",
+    "codes": [],
+    "first_ts": "2026-08-05T03:02:30Z",
+    "gap_s": 150,
+    "rule": "role_change",
+    "source": "dataguard",
+    "type": "after_change"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "lifecycle",
+    "count": 1,
+    "rule": "parameter_change"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "dataguard",
+    "count": 1,
+    "rule": "dg_gap"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "lifecycle",
+    "count": 1,
+    "rule": "cli_command"
+   }
+  },
+  {
+   "code": "notable_class",
+   "evidence": {
+    "class": "dataguard",
+    "count": 1,
+    "rule": "role_change"
+   }
+  }
+ ],
+ "schema_version": 1,
+ "window": {
+  "day": "2026-08-05",
+  "from": "2026-08-05T00:00:00Z",
+  "to": "2026-08-06T00:00:00Z"
+ }
+}

@@ -1,0 +1,148 @@
+{
+  "index_patterns": ["logs-dbwiki.*"],
+  "data_stream": {},
+  "priority": 200,
+  "_meta": {
+    "description": "dbwiki telemetry data streams (run health, cron output, agent audit trail, per-db run records, ledger events). Installed by elk/setup.sh; parsing is done by the dbwiki-* ingest pipelines via default_pipeline."
+  },
+  "template": {
+    "settings": {
+      "index": {
+        "default_pipeline": "dbwiki-router",
+        "mapping": { "ignore_malformed": true },
+        "number_of_replicas": 0
+      }
+    },
+    "mappings": {
+      "dynamic": true,
+      "properties": {
+        "@timestamp": { "type": "date" },
+        "message": { "type": "text" },
+        "tags": { "type": "keyword" },
+
+        "event": { "properties": { "module": { "type": "keyword" }, "dataset": { "type": "keyword" } } },
+        "log": { "properties": { "level": { "type": "keyword" }, "offset": { "type": "long" }, "file": { "properties": { "path": { "type": "keyword" } } } } },
+
+        "run_id": { "type": "keyword" },
+        "command": { "type": "keyword" },
+        "outcome": { "type": "keyword" },
+        "run_outcome": { "type": "keyword" },
+        "error_category": { "type": "keyword" },
+        "duration_s": { "type": "double" },
+        "started": { "type": "date" },
+        "finished": { "type": "date" },
+        "schema_version": { "type": "long" },
+        "db_count": { "type": "long" },
+        "dbs": { "type": "flattened", "depth_limit": 20 },
+        "facts": { "type": "flattened", "depth_limit": 20 },
+
+        "db": { "type": "keyword" },
+        "decision": { "type": "keyword" },
+        "decision_reasons": { "type": "keyword" },
+        "decision_reason_count": { "type": "long" },
+        "events": { "type": "long" },
+        "notable": { "type": "boolean" },
+        "notable_events": { "type": "long" },
+        "notable_groups": { "type": "long" },
+        "model_tier": { "type": "keyword" },
+        "commit": { "type": "keyword" },
+        "content_hash": { "type": "keyword" },
+        "digest": { "type": "keyword" },
+        "watermark_before": { "type": "date" },
+        "watermark_after": { "type": "date" },
+        "window": { "properties": { "day": { "type": "keyword" }, "from": { "type": "date" }, "to": { "type": "date" } } },
+        "deltas": { "type": "flattened", "depth_limit": 20 },
+        "telemetry": {
+          "properties": {
+            "task": { "type": "keyword" },
+            "adapter": { "type": "keyword" },
+            "mode": { "type": "keyword" },
+            "model": { "type": "keyword" },
+            "model_tier": { "type": "keyword" },
+            "run_id": { "type": "keyword" },
+            "usage": { "type": "keyword" },
+            "duration_s": { "type": "double" },
+            "digest_bytes": { "type": "long" },
+            "pages_touched": { "type": "long" },
+            "incidents_opened": { "type": "long" },
+            "incidents_updated": { "type": "long" },
+            "lint_findings": { "type": "long" },
+            "rolled_back": { "type": "boolean" },
+            "timed_out": { "type": "boolean" },
+            "validation_ok": { "type": "boolean" }
+          }
+        },
+
+        "digest_path": { "type": "keyword" },
+        "day": { "type": "keyword" },
+        "status": { "type": "keyword" },
+        "at": { "type": "date" },
+        "window_to": { "type": "date" },
+        "adapter": { "type": "keyword" },
+        "mode": { "type": "keyword" },
+        "model": { "type": "keyword" },
+        "task": { "type": "keyword" },
+        "usage": { "type": "keyword" },
+        "digest_bytes": { "type": "long" },
+        "pages_touched": { "type": "long" },
+        "incidents_opened": { "type": "long" },
+        "incidents_updated": { "type": "long" },
+        "lint_findings": { "type": "long" },
+        "rolled_back": { "type": "boolean" },
+        "timed_out": { "type": "boolean" },
+        "validation_ok": { "type": "boolean" },
+        "flags": { "type": "keyword" },
+        "incidents": { "type": "keyword" },
+        "summary": { "type": "text" },
+        "decision_outcome": { "type": "keyword" },
+        "decision_explanation": { "type": "text" },
+        "decision_reason_codes": { "type": "keyword" },
+
+        "input_tokens": { "type": "long" },
+        "output_tokens": { "type": "long" },
+        "cost_usd": { "type": "double" },
+        "usage_known": { "type": "boolean" },
+        "prompt_bytes": { "type": "long" },
+        "stdout_bytes": { "type": "long" },
+        "exit_code": { "type": "long" },
+        "telemetry_error": { "type": "keyword" },
+
+        "dbwiki": {
+          "properties": {
+            "db": { "type": "keyword" },
+            "decision": { "type": "keyword" },
+            "reason": { "type": "keyword" },
+            "action": { "type": "keyword" },
+            "commit": { "type": "keyword" },
+            "task": { "type": "keyword" },
+            "ts": { "type": "keyword" },
+            "summary": { "type": "text" }
+          }
+        },
+
+        "entry": { "type": "keyword" },
+        "cron_expr": { "type": "keyword" },
+        "node": { "type": "keyword" },
+        "run_host": { "type": "keyword" },
+        "fingerprint": { "type": "keyword" },
+        "category": { "type": "keyword" },
+        "source": { "type": "keyword" },
+        "reason": { "type": "keyword" },
+        "escalated_from": { "type": "keyword" },
+        "description": { "type": "text" },
+        "recovery_hint": { "type": "text" },
+        "next_run_at": { "type": "date" },
+        "first_seen": { "type": "date" },
+        "last_success": { "type": "flattened", "depth_limit": 20 },
+        "pid": { "type": "long" },
+        "interval_s": { "type": "long" },
+        "pending_count": { "type": "long" },
+        "claimed_count": { "type": "long" },
+        "failed_count": { "type": "long" },
+        "stale_claimed_count": { "type": "long" },
+        "oldest_pending_hours": { "type": "double" },
+        "failed_by_category": { "type": "flattened", "depth_limit": 20 }
+      }
+    }
+  }
+}

@@ -1,0 +1,825 @@
+{
+ "name": "metrics_collection_failure",
+ "title": "collector could not read the database (event.outcome: failure)",
+ "db": "cdb1",
+ "window": {
+  "from": "2026-07-12T00:00:00Z",
+  "to": "2026-07-13T00:00:00Z",
+  "day": "2026-07-12"
+ },
+ "sources": [
+  "metrics"
+ ],
+ "registry": {
+  "daily_counts": [
+   {
+    "day": "2026-07-09",
+    "source": "metrics",
+    "total": 28,
+    "seconds": 86400.0,
+    "counters": {
+     "sysmetric:Host CPU Utilization (%)": 4,
+     "sysmetric:Database Wait Time Ratio": 4,
+     "sysmetric:Executions Per Sec": 4,
+     "tablespace:SYSTEM": 4,
+     "tablespace:USERS": 4,
+     "fra_utilization": 4,
+     "health:PRIMARY": 4
+    }
+   },
+   {
+    "day": "2026-07-10",
+    "source": "metrics",
+    "total": 28,
+    "seconds": 86400.0,
+    "counters": {
+     "sysmetric:Host CPU Utilization (%)": 4,
+     "sysmetric:Database Wait Time Ratio": 4,
+     "sysmetric:Executions Per Sec": 4,
+     "tablespace:SYSTEM": 4,
+     "tablespace:USERS": 4,
+     "fra_utilization": 4,
+     "health:PRIMARY": 4
+    }
+   },
+   {
+    "day": "2026-07-11",
+    "source": "metrics",
+    "total": 28,
+    "seconds": 86400.0,
+    "counters": {
+     "sysmetric:Host CPU Utilization (%)": 4,
+     "sysmetric:Database Wait Time Ratio": 4,
+     "sysmetric:Executions Per Sec": 4,
+     "tablespace:SYSTEM": 4,
+     "tablespace:USERS": 4,
+     "fra_utilization": 4,
+     "health:PRIMARY": 4
+    }
+   }
+  ]
+ },
+ "hits": {
+  "metrics": [
+   {
+    "_index": ".ds-logs-oracle.metrics-default-2026.07.12-000002",
+    "_id": "r00-sys0",
+    "_source": {
+     "@timestamp": "2026-07-12T00:00:18.890Z",
+     "data_stream": {
+      "dataset": "oracle.metrics",
+      "namespace": "default",
+      "type": "logs"
+     },
+     "event": {
+      "dataset": "oracle.metrics",
+      "kind": "metric",
+      "module": "oracle",
+      "outcome": "success"
+     },
+     "host": {
+      "name": "lab-dg1.localdomain"
+     },
+     "log": {
+      "level": "INFO"
+     },
+     "log_type": "oracle_metrics",
+     "oracle": {
+      "observability": {
+       "pipeline_lag_ms": 4710,
+       "source_lag_ms": 7517
+      },
+      "database": {
+       "name": "cdb1"
+      },
+      "metric": {
+       "name": "Host CPU Utilization (%)",
+       "type": "sysmetric",
+       "unit": "% Busy/(Idle+Busy)",
+       "value": 0.99
+      }
+     }
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.metrics-default-2026.07.12-000002",
+    "_id": "r00-sys1",
+    "_source": {
+     "@timestamp": "2026-07-12T00:00:18.890Z",
+     "data_stream": {
+      "dataset": "oracle.metrics",
+      "namespace": "default",
+      "type": "logs"
+     },
+     "event": {
+      "dataset": "oracle.metrics",
+      "kind": "metric",
+      "module": "oracle",
+      "outcome": "success"
+     },
+     "host": {
+      "name": "lab-dg1.localdomain"
+     },
+     "log": {
+      "level": "INFO"
+     },
+     "log_type": "oracle_metrics",
+     "oracle": {
+      "observability": {
+       "pipeline_lag_ms": 4710,
+       "source_lag_ms": 7517
+      },
+      "database": {
+       "name": "cdb1"
+      },
+      "metric": {
+       "name": "Database Wait Time Ratio",
+       "type": "sysmetric",
+       "unit": "% Wait/DB_Time",
+       "value": 12.4
+      }
+     }
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.metrics-default-2026.07.12-000002",
+    "_id": "r00-sys2",
+    "_source": {
+     "@timestamp": "2026-07-12T00:00:18.890Z",
+     "data_stream": {
+      "dataset": "oracle.metrics",
+      "namespace": "default",
+      "type": "logs"
+     },
+     "event": {
+      "dataset": "oracle.metrics",
+      "kind": "metric",
+      "module": "oracle",
+      "outcome": "success"
+     },
+     "host": {
+      "name": "lab-dg1.localdomain"
+     },
+     "log": {
+      "level": "INFO"
+     },
+     "log_type": "oracle_metrics",
+     "oracle": {
+      "observability": {
+       "pipeline_lag_ms": 4710,
+       "source_lag_ms": 7517
+      },
+      "database": {
+       "name": "cdb1"
+      },
+      "metric": {
+       "name": "Executions Per Sec",
+       "type": "sysmetric",
+       "unit": "Executes Per Second",
+       "value": 31.2
+      }
+     }
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.metrics-default-2026.07.12-000002",
+    "_id": "r00-tbs0",
+    "_source": {
+     "@timestamp": "2026-07-12T00:00:18.890Z",
+     "data_stream": {
+      "dataset": "oracle.metrics",
+      "namespace": "default",
+      "type": "logs"
+     },
+     "event": {
+      "dataset": "oracle.metrics",
+      "kind": "metric",
+      "module": "oracle",
+      "outcome": "success"
+     },
+     "host": {
+      "name": "lab-dg1.localdomain"
+     },
+     "log": {
+      "level": "INFO"
+     },
+     "log_type": "oracle_metrics",
+     "oracle": {
+      "observability": {
+       "pipeline_lag_ms": 4710,
+       "source_lag_ms": 7517
+      },
+      "database": {
+       "name": "cdb1"
+      },
+      "metric": {
+       "type": "tablespace"
+      },
+      "tablespace": {
+       "name": "SYSTEM",
+       "total_blocks": 1758211,
+       "used_blocks": 1210004,
+       "used_pct": 68.82
+      }
+     }
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.metrics-default-2026.07.12-000002",
+    "_id": "r00-tbs1",
+    "_source": {
+     "@timestamp": "2026-07-12T00:00:18.890Z",
+     "data_stream": {
+      "dataset": "oracle.metrics",
+      "namespace": "default",
+      "type": "logs"
+     },
+     "event": {
+      "dataset": "oracle.metrics",
+      "kind": "metric",
+      "module": "oracle",
+      "outcome": "success"
+     },
+     "host": {
+      "name": "lab-dg1.localdomain"
+     },
+     "log": {
+      "level": "INFO"
+     },
+     "log_type": "oracle_metrics",
+     "oracle": {
+      "observability": {
+       "pipeline_lag_ms": 4710,
+       "source_lag_ms": 7517
+      },
+      "database": {
+       "name": "cdb1"
+      },
+      "metric": {
+       "type": "tablespace"
+      },
+      "tablespace": {
+       "name": "USERS",
+       "total_blocks": 1758211,
+       "used_blocks": 12400,
+       "used_pct": 0.71
+      }
+     }
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.metrics-default-2026.07.12-000002",
+    "_id": "r00-fra",
+    "_source": {
+     "@timestamp": "2026-07-12T00:00:18.890Z",
+     "data_stream": {
+      "dataset": "oracle.metrics",
+      "namespace": "default",
+      "type": "logs"
+     },
+     "event": {
+      "dataset": "oracle.metrics",
+      "kind": "metric",
+      "module": "oracle",
+      "outcome": "success"
+     },
+     "host": {
+      "name": "lab-dg1.localdomain"
+     },
+     "log": {
+      "level": "INFO"
+     },
+     "log_type": "oracle_metrics",
+     "oracle": {
+      "observability": {
+       "pipeline_lag_ms": 4710,
+       "source_lag_ms": 7517
+      },
+      "database": {
+       "name": "cdb1"
+      },
+      "metric": {
+       "type": "fra"
+      },
+      "fra": {
+       "limit_bytes": 21474836480,
+       "reclaimable_bytes": 0,
+       "used_bytes": 21466622976,
+       "used_pct": 99.96
+      }
+     }
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.metrics-default-2026.07.12-000002",
+    "_id": "r00-hlt",
+    "_source": {
+     "@timestamp": "2026-07-12T00:00:18.890Z",
+     "data_stream": {
+      "dataset": "oracle.metrics",
+      "namespace": "default",
+      "type": "logs"
+     },
+     "event": {
+      "dataset": "oracle.metrics",
+      "kind": "metric",
+      "module": "oracle",
+      "outcome": "success"
+     },
+     "host": {
+      "name": "lab-dg1.localdomain"
+     },
+     "log": {
+      "level": "INFO"
+     },
+     "log_type": "oracle_metrics",
+     "oracle": {
+      "observability": {
+       "pipeline_lag_ms": 4710,
+       "source_lag_ms": 7517
+      },
+      "database": {
+       "name": "cdb1",
+       "open_mode": "READ WRITE",
+       "protection_mode": "MAXIMUM AVAILABILITY",
+       "role": "PRIMARY",
+       "switchover_status": "TO STANDBY"
+      },
+      "instance": {
+       "available": true,
+       "database_status": "ACTIVE",
+       "name": "cdb1",
+       "startup_time": "2026-07-10T17:22:21",
+       "status": "OPEN",
+       "version": "19.0.0.0.0"
+      },
+      "metric": {
+       "type": "health"
+      },
+      "metrics": {
+       "blocking_sessions": 3,
+       "failed_jobs_24h": 0,
+       "processes": {
+        "current": 90,
+        "limit": 300,
+        "utilization_pct": 30.0
+       },
+       "sessions": {
+        "current": 120,
+        "limit": 472,
+        "utilization_pct": 25.42
+       }
+      }
+     }
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.metrics-default-2026.07.12-000002",
+    "_id": "fail0",
+    "_source": {
+     "@timestamp": "2026-07-12T08:50:24.000Z",
+     "data_stream": {
+      "dataset": "oracle.metrics",
+      "namespace": "default",
+      "type": "logs"
+     },
+     "event": {
+      "dataset": "oracle.metrics",
+      "kind": "metric",
+      "module": "oracle",
+      "outcome": "failure"
+     },
+     "host": {
+      "name": "lab-dg1.localdomain"
+     },
+     "log": {
+      "level": "ERROR"
+     },
+     "log_type": "oracle_metrics",
+     "oracle": {
+      "observability": {
+       "pipeline_lag_ms": 4710,
+       "source_lag_ms": 7517
+      },
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "available": false,
+       "name": "cdb1"
+      },
+      "metric": {
+       "type": "health"
+      }
+     },
+     "error": {
+      "id": "031d219d33217b4065bedb3f5e55faac915cb61db64f9e215e5a6218dd43b69b",
+      "message": "database connection or metrics query failed"
+     }
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.metrics-default-2026.07.12-000002",
+    "_id": "fail1",
+    "_source": {
+     "@timestamp": "2026-07-12T08:51:24.000Z",
+     "data_stream": {
+      "dataset": "oracle.metrics",
+      "namespace": "default",
+      "type": "logs"
+     },
+     "event": {
+      "dataset": "oracle.metrics",
+      "kind": "metric",
+      "module": "oracle",
+      "outcome": "failure"
+     },
+     "host": {
+      "name": "lab-dg1.localdomain"
+     },
+     "log": {
+      "level": "ERROR"
+     },
+     "log_type": "oracle_metrics",
+     "oracle": {
+      "observability": {
+       "pipeline_lag_ms": 4710,
+       "source_lag_ms": 7517
+      },
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "available": false,
+       "name": "cdb1"
+      },
+      "metric": {
+       "type": "health"
+      }
+     },
+     "error": {
+      "id": "031d219d33217b4065bedb3f5e55faac915cb61db64f9e215e5a6218dd43b69b",
+      "message": "database connection or metrics query failed"
+     }
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.metrics-default-2026.07.12-000002",
+    "_id": "fail2",
+    "_source": {
+     "@timestamp": "2026-07-12T08:52:24.000Z",
+     "data_stream": {
+      "dataset": "oracle.metrics",
+      "namespace": "default",
+      "type": "logs"
+     },
+     "event": {
+      "dataset": "oracle.metrics",
+      "kind": "metric",
+      "module": "oracle",
+      "outcome": "failure"
+     },
+     "host": {
+      "name": "lab-dg1.localdomain"
+     },
+     "log": {
+      "level": "ERROR"
+     },
+     "log_type": "oracle_metrics",
+     "oracle": {
+      "observability": {
+       "pipeline_lag_ms": 4710,
+       "source_lag_ms": 7517
+      },
+      "database": {
+       "name": "cdb1"
+      },
+      "instance": {
+       "available": false,
+       "name": "cdb1"
+      },
+      "metric": {
+       "type": "health"
+      }
+     },
+     "error": {
+      "id": "031d219d33217b4065bedb3f5e55faac915cb61db64f9e215e5a6218dd43b69b",
+      "message": "database connection or metrics query failed"
+     }
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.metrics-default-2026.07.12-000002",
+    "_id": "r18-sys0",
+    "_source": {
+     "@timestamp": "2026-07-12T18:00:18.890Z",
+     "data_stream": {
+      "dataset": "oracle.metrics",
+      "namespace": "default",
+      "type": "logs"
+     },
+     "event": {
+      "dataset": "oracle.metrics",
+      "kind": "metric",
+      "module": "oracle",
+      "outcome": "success"
+     },
+     "host": {
+      "name": "lab-dg1.localdomain"
+     },
+     "log": {
+      "level": "INFO"
+     },
+     "log_type": "oracle_metrics",
+     "oracle": {
+      "observability": {
+       "pipeline_lag_ms": 4710,
+       "source_lag_ms": 7517
+      },
+      "database": {
+       "name": "cdb1"
+      },
+      "metric": {
+       "name": "Host CPU Utilization (%)",
+       "type": "sysmetric",
+       "unit": "% Busy/(Idle+Busy)",
+       "value": 0.99
+      }
+     }
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.metrics-default-2026.07.12-000002",
+    "_id": "r18-sys1",
+    "_source": {
+     "@timestamp": "2026-07-12T18:00:18.890Z",
+     "data_stream": {
+      "dataset": "oracle.metrics",
+      "namespace": "default",
+      "type": "logs"
+     },
+     "event": {
+      "dataset": "oracle.metrics",
+      "kind": "metric",
+      "module": "oracle",
+      "outcome": "success"
+     },
+     "host": {
+      "name": "lab-dg1.localdomain"
+     },
+     "log": {
+      "level": "INFO"
+     },
+     "log_type": "oracle_metrics",
+     "oracle": {
+      "observability": {
+       "pipeline_lag_ms": 4710,
+       "source_lag_ms": 7517
+      },
+      "database": {
+       "name": "cdb1"
+      },
+      "metric": {
+       "name": "Database Wait Time Ratio",
+       "type": "sysmetric",
+       "unit": "% Wait/DB_Time",
+       "value": 12.4
+      }
+     }
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.metrics-default-2026.07.12-000002",
+    "_id": "r18-sys2",
+    "_source": {
+     "@timestamp": "2026-07-12T18:00:18.890Z",
+     "data_stream": {
+      "dataset": "oracle.metrics",
+      "namespace": "default",
+      "type": "logs"
+     },
+     "event": {
+      "dataset": "oracle.metrics",
+      "kind": "metric",
+      "module": "oracle",
+      "outcome": "success"
+     },
+     "host": {
+      "name": "lab-dg1.localdomain"
+     },
+     "log": {
+      "level": "INFO"
+     },
+     "log_type": "oracle_metrics",
+     "oracle": {
+      "observability": {
+       "pipeline_lag_ms": 4710,
+       "source_lag_ms": 7517
+      },
+      "database": {
+       "name": "cdb1"
+      },
+      "metric": {
+       "name": "Executions Per Sec",
+       "type": "sysmetric",
+       "unit": "Executes Per Second",
+       "value": 31.2
+      }
+     }
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.metrics-default-2026.07.12-000002",
+    "_id": "r18-tbs0",
+    "_source": {
+     "@timestamp": "2026-07-12T18:00:18.890Z",
+     "data_stream": {
+      "dataset": "oracle.metrics",
+      "namespace": "default",
+      "type": "logs"
+     },
+     "event": {
+      "dataset": "oracle.metrics",
+      "kind": "metric",
+      "module": "oracle",
+      "outcome": "success"
+     },
+     "host": {
+      "name": "lab-dg1.localdomain"
+     },
+     "log": {
+      "level": "INFO"
+     },
+     "log_type": "oracle_metrics",
+     "oracle": {
+      "observability": {
+       "pipeline_lag_ms": 4710,
+       "source_lag_ms": 7517
+      },
+      "database": {
+       "name": "cdb1"
+      },
+      "metric": {
+       "type": "tablespace"
+      },
+      "tablespace": {
+       "name": "SYSTEM",
+       "total_blocks": 1758211,
+       "used_blocks": 1210004,
+       "used_pct": 68.82
+      }
+     }
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.metrics-default-2026.07.12-000002",
+    "_id": "r18-tbs1",
+    "_source": {
+     "@timestamp": "2026-07-12T18:00:18.890Z",
+     "data_stream": {
+      "dataset": "oracle.metrics",
+      "namespace": "default",
+      "type": "logs"
+     },
+     "event": {
+      "dataset": "oracle.metrics",
+      "kind": "metric",
+      "module": "oracle",
+      "outcome": "success"
+     },
+     "host": {
+      "name": "lab-dg1.localdomain"
+     },
+     "log": {
+      "level": "INFO"
+     },
+     "log_type": "oracle_metrics",
+     "oracle": {
+      "observability": {
+       "pipeline_lag_ms": 4710,
+       "source_lag_ms": 7517
+      },
+      "database": {
+       "name": "cdb1"
+      },
+      "metric": {
+       "type": "tablespace"
+      },
+      "tablespace": {
+       "name": "USERS",
+       "total_blocks": 1758211,
+       "used_blocks": 12400,
+       "used_pct": 0.71
+      }
+     }
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.metrics-default-2026.07.12-000002",
+    "_id": "r18-fra",
+    "_source": {
+     "@timestamp": "2026-07-12T18:00:18.890Z",
+     "data_stream": {
+      "dataset": "oracle.metrics",
+      "namespace": "default",
+      "type": "logs"
+     },
+     "event": {
+      "dataset": "oracle.metrics",
+      "kind": "metric",
+      "module": "oracle",
+      "outcome": "success"
+     },
+     "host": {
+      "name": "lab-dg1.localdomain"
+     },
+     "log": {
+      "level": "INFO"
+     },
+     "log_type": "oracle_metrics",
+     "oracle": {
+      "observability": {
+       "pipeline_lag_ms": 4710,
+       "source_lag_ms": 7517
+      },
+      "database": {
+       "name": "cdb1"
+      },
+      "metric": {
+       "type": "fra"
+      },
+      "fra": {
+       "limit_bytes": 21474836480,
+       "reclaimable_bytes": 0,
+       "used_bytes": 21466622976,
+       "used_pct": 99.96
+      }
+     }
+    }
+   },
+   {
+    "_index": ".ds-logs-oracle.metrics-default-2026.07.12-000002",
+    "_id": "r18-hlt",
+    "_source": {
+     "@timestamp": "2026-07-12T18:00:18.890Z",
+     "data_stream": {
+      "dataset": "oracle.metrics",
+      "namespace": "default",
+      "type": "logs"
+     },
+     "event": {
+      "dataset": "oracle.metrics",
+      "kind": "metric",
+      "module": "oracle",
+      "outcome": "success"
+     },
+     "host": {
+      "name": "lab-dg1.localdomain"
+     },
+     "log": {
+      "level": "INFO"
+     },
+     "log_type": "oracle_metrics",
+     "oracle": {
+      "observability": {
+       "pipeline_lag_ms": 4710,
+       "source_lag_ms": 7517
+      },
+      "database": {
+       "name": "cdb1",
+       "open_mode": "READ WRITE",
+       "protection_mode": "MAXIMUM AVAILABILITY",
+       "role": "PRIMARY",
+       "switchover_status": "TO STANDBY"
+      },
+      "instance": {
+       "available": true,
+       "database_status": "ACTIVE",
+       "name": "cdb1",
+       "startup_time": "2026-07-10T17:22:21",
+       "status": "OPEN",
+       "version": "19.0.0.0.0"
+      },
+      "metric": {
+       "type": "health"
+      },
+      "metrics": {
+       "blocking_sessions": 3,
+       "failed_jobs_24h": 0,
+       "processes": {
+        "current": 90,
+        "limit": 300,
+        "utilization_pct": 30.0
+       },
+       "sessions": {
+        "current": 120,
+        "limit": 472,
+        "utilization_pct": 25.42
+       }
+      }
+     }
+    }
+   }
+  ]
+ }
+}

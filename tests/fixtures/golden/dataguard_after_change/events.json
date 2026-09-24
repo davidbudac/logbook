@@ -1,0 +1,50 @@
+[
+ {
+  "con_id": "",
+  "db": "cdb1",
+  "id": "dac-a1",
+  "index": ".ds-logs-oracle.alert-default-2026.08.05-000021",
+  "level": null,
+  "message": "ALTER SYSTEM SET log_archive_dest_2='SERVICE=cdb1_stby ASYNC VALID_FOR=(ONLINE_LOGFILES,PRIMARY_ROLE) DB_UNIQUE_NAME=cdb1_stby' SCOPE=BOTH;",
+  "msg_id": "",
+  "msg_type": "INFO",
+  "source": "alert",
+  "ts": "2026-08-05T01:00:00Z"
+ },
+ {
+  "con_id": "",
+  "db": "cdb1",
+  "id": "dac-a2",
+  "index": ".ds-logs-oracle.alert-default-2026.08.05-000021",
+  "level": null,
+  "message": "FAL: Failed to request gap sequence",
+  "msg_id": "",
+  "msg_type": "INFO",
+  "source": "alert",
+  "ts": "2026-08-05T01:12:00Z"
+ },
+ {
+  "db": "cdb1",
+  "error_code": "",
+  "event_type": "cli_command",
+  "id": "dac-d1",
+  "index": ".ds-logs-oracle.dataguard-default-2026.08.05-000021",
+  "member": "cdb1",
+  "message": "DGMGRL> SWITCHOVER TO cdb1_stby",
+  "severity": "INFO",
+  "source": "dataguard",
+  "ts": "2026-08-05T03:00:00Z"
+ },
+ {
+  "db": "cdb1",
+  "error_code": "",
+  "event_type": "role_change",
+  "id": "dac-d2",
+  "index": ".ds-logs-oracle.dataguard-default-2026.08.05-000021",
+  "member": "cdb1_stby",
+  "message": "Switchover succeeded, new primary is \"cdb1_stby\"",
+  "severity": "INFO",
+  "source": "dataguard",
+  "ts": "2026-08-05T03:02:30Z"
+ }
+]

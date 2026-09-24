@@ -1,0 +1,19 @@
+{
+  "description": "Route dbwiki docs to the per-stream pipeline. Installed as index.default_pipeline on every logs-dbwiki.* data stream by the dbwiki-telemetry index template, so filebeat needs no pipeline config.",
+  "processors": [
+    { "pipeline": { "name": "dbwiki-run-health", "if": "ctx._index != null && ctx._index.contains('run_health')" } },
+    { "pipeline": { "name": "dbwiki-cron",       "if": "ctx._index != null && ctx._index.contains('dbwiki.cron')" } },
+    { "pipeline": { "name": "dbwiki-audit",      "if": "ctx._index != null && ctx._index.contains('dbwiki.audit')" } },
+    { "pipeline": { "name": "dbwiki-agent-runs", "if": "ctx._index != null && ctx._index.contains('agent_runs')" } },
+    { "pipeline": { "name": "dbwiki-db-runs",    "if": "ctx._index != null && ctx._index.contains('db_runs')" } },
+    { "pipeline": { "name": "dbwiki-ledger",     "if": "ctx._index != null && ctx._index.contains('dbwiki.ledger')" } },
+    { "pipeline": { "name": "dbwiki-run-starts", "if": "ctx._index != null && ctx._index.contains('run_starts')" } },
+    { "pipeline": { "name": "dbwiki-schedule",   "if": "ctx._index != null && ctx._index.contains('dbwiki.schedule')" } },
+    { "pipeline": { "name": "dbwiki-queue-state","if": "ctx._index != null && ctx._index.contains('queue_state')" } },
+    { "pipeline": { "name": "dbwiki-alerts",     "if": "ctx._index != null && ctx._index.contains('dbwiki.alerts')" } }
+  ],
+  "on_failure": [
+    { "append": { "field": "tags", "value": "dbwiki_pipeline_failure" } },
+    { "set": { "field": "error.pipeline_message", "value": "{{ _ingest.on_failure_message }}" } }
+  ]
+}

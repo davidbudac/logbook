@@ -1,0 +1,38 @@
+{
+ "name": "dataguard_after_change",
+ "title": "a redo-transport parameter change followed by a gap, and a DGMGRL switchover followed by the role change",
+ "layout": "ecs",
+ "db": "cdb1",
+ "window": {"from": "2026-08-05T00:00:00Z", "to": "2026-08-06T00:00:00Z", "day": "2026-08-05"},
+ "registry": {},
+ "trigger": {"ledger_entry": null, "manual": false, "consolidation": false},
+ "hits": {
+  "alert": [
+   {"_index": ".ds-logs-oracle.alert-default-2026.08.05-000021", "_id": "dac-a1",
+    "_source": {"@timestamp": "2026-08-05T01:00:00Z",
+     "oracle": {"database": {"name": "cdb1"}, "instance": {"name": "cdb1"}},
+     "log": {"level": "INFO"},
+     "message": "ALTER SYSTEM SET log_archive_dest_2='SERVICE=cdb1_stby ASYNC VALID_FOR=(ONLINE_LOGFILES,PRIMARY_ROLE) DB_UNIQUE_NAME=cdb1_stby' SCOPE=BOTH;"}},
+   {"_index": ".ds-logs-oracle.alert-default-2026.08.05-000021", "_id": "dac-a2",
+    "_source": {"@timestamp": "2026-08-05T01:12:00Z",
+     "oracle": {"database": {"name": "cdb1"}, "instance": {"name": "cdb1"}},
+     "log": {"level": "INFO"},
+     "message": "FAL: Failed to request gap sequence"}}
+  ],
+  "listener": [],
+  "dataguard": [
+   {"_index": ".ds-logs-oracle.dataguard-default-2026.08.05-000021", "_id": "dac-d1",
+    "_source": {"@timestamp": "2026-08-05T03:00:00Z",
+     "oracle": {"database": {"name": "cdb1"},
+      "dataguard": {"event_type": "cli_command", "member": "cdb1"}},
+     "log": {"level": "INFO"},
+     "message": "DGMGRL> SWITCHOVER TO cdb1_stby"}},
+   {"_index": ".ds-logs-oracle.dataguard-default-2026.08.05-000021", "_id": "dac-d2",
+    "_source": {"@timestamp": "2026-08-05T03:02:30Z",
+     "oracle": {"database": {"name": "cdb1"},
+      "dataguard": {"event_type": "role_change", "member": "cdb1_stby"}},
+     "log": {"level": "INFO"},
+     "message": "Switchover succeeded, new primary is \"cdb1_stby\""}}
+  ]
+ }
+}

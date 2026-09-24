@@ -1,0 +1,9 @@
+{
+ "task": "ingestion",
+ "db": "cdb1",
+ "summary": "silence on cdb1",
+ "pages_touched": [
+  "incidents/2026-07-13-cdb1-telemetry-blackout.md",
+  "log.md"
+ ]
+}
